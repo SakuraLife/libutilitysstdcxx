@@ -23,7 +23,7 @@ cmake_host_system_information(RESULT CXX_BITS QUERY IS_64BIT)
 type_size()
 check_endian()
 
-# message("char:        " ${CXX_CHAR})
+# set(CXX_CHAR_BITS ${CXX_CHAR})
 # message("short:       " ${CXX_SHORT})
 # message("int:         " ${CXX_INT})
 # message("long:        " ${CXX_LONG})
