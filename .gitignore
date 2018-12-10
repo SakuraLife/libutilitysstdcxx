@@ -1,3 +1,14 @@
+# Project
+include/utility/config/utility_preconfig.hpp
+script/*
+
+#vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
 # cmake
 CMakeLists.txt.user
 CMakeCache.txt
