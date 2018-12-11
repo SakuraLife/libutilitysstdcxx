@@ -6,9 +6,6 @@
 
 namespace utility
 {
-  enum class byte: unsigned char
-  { };
-
   namespace type
   {
     namespace __impl
@@ -138,6 +135,9 @@ namespace utility
       };
     }
 
+    enum class byte: unsigned char
+    { };
+
     template<typename _Integer>
     constexpr inline typename __impl::__is_integer<_Integer>::integer_type
     to_integer(byte _by) noexcept
@@ -189,55 +189,58 @@ namespace utility
         }
 
     };
+
+    constexpr byte operator|(byte _x, byte _y) noexcept
+    {
+      return static_cast<byte>(
+        static_cast<unsigned char>(_x) | static_cast<unsigned char>(_y)
+      );
+    }
+    constexpr byte operator&(byte _x, byte _y) noexcept
+    {
+      return static_cast<byte>(
+        static_cast<unsigned char>(_x) & static_cast<unsigned char>(_y)
+      );
+    }
+    constexpr byte operator^(byte _x, byte _y) noexcept
+    {
+      return static_cast<byte>(
+        static_cast<unsigned char>(_x) ^ static_cast<unsigned char>(_y)
+      );
+    }
+    __UTILITY_CPP14_CONSTEXPR__
+    inline byte& operator|=(byte& _x, byte _y) noexcept
+    { return _x = (_x | _y);}
+    __UTILITY_CPP14_CONSTEXPR__
+    inline byte& operator&=(byte& _x, byte _y) noexcept
+    { return _x = (_x & _y);}
+    __UTILITY_CPP14_CONSTEXPR__
+    inline byte& operator^=(byte& _x, byte _y) noexcept
+    { return _x = (_x ^ _y);}
+
+    constexpr inline byte operator~(byte _by) noexcept
+    { return static_cast<byte>(~static_cast<unsigned char>(_by));}
+
+    template<typename _Integer>
+    constexpr inline typename type::__impl::__is_integer<_Integer>::type
+    operator<<(byte _by, _Integer _shift) noexcept
+    { return static_cast<byte>(static_cast<unsigned char>(_by) << _shift);}
+    template<typename _Integer>
+    constexpr inline typename type::__impl::__is_integer<_Integer>::type
+    operator>>(byte _by, _Integer _shift) noexcept
+    { return static_cast<byte>(static_cast<unsigned char>(_by) >> _shift);}
+    template<typename _Integer>
+    constexpr inline typename type::__impl::__is_integer<_Integer>::type
+    operator<<=(byte& _by, _Integer _shift) noexcept
+    { return _by = _by << _shift;}
+    template<typename _Integer>
+    constexpr inline typename type::__impl::__is_integer<_Integer>::type
+    operator>>=(byte& _by, _Integer _shift) noexcept
+    { return _by = _by >> _shift;}
   }
 
-  constexpr byte operator|(byte _x, byte _y) noexcept
-  {
-    return static_cast<byte>(
-      static_cast<unsigned char>(_x) | static_cast<unsigned char>(_y)
-    );
-  }
-  constexpr byte operator&(byte _x, byte _y) noexcept
-  {
-    return static_cast<byte>(
-      static_cast<unsigned char>(_x) & static_cast<unsigned char>(_y)
-    );
-  }
-  constexpr byte operator^(byte _x, byte _y) noexcept
-  {
-    return static_cast<byte>(
-      static_cast<unsigned char>(_x) ^ static_cast<unsigned char>(_y)
-    );
-  }
-  __UTILITY_CPP14_CONSTEXPR__
-  inline byte& operator|=(byte& _x, byte _y) noexcept
-  { return _x = (_x | _y);}
-  __UTILITY_CPP14_CONSTEXPR__
-  inline byte& operator&=(byte& _x, byte _y) noexcept
-  { return _x = (_x & _y);}
-  __UTILITY_CPP14_CONSTEXPR__
-  inline byte& operator^=(byte& _x, byte _y) noexcept
-  { return _x = (_x ^ _y);}
+  using type::byte;
 
-  constexpr inline byte operator~(byte _by) noexcept
-  { return static_cast<byte>(~static_cast<unsigned char>(_by));}
-
-  template<typename _Integer>
-  constexpr inline typename type::__impl::__is_integer<_Integer>::type
-  operator<<(byte _by, _Integer _shift) noexcept
-  { return static_cast<byte>(static_cast<unsigned char>(_by) << _shift);}
-  template<typename _Integer>
-  constexpr inline typename type::__impl::__is_integer<_Integer>::type
-  operator>>(byte _by, _Integer _shift) noexcept
-  { return static_cast<byte>(static_cast<unsigned char>(_by) >> _shift);}
-  template<typename _Integer>
-  constexpr inline typename type::__impl::__is_integer<_Integer>::type
-  operator<<=(byte& _by, _Integer _shift) noexcept
-  { return _by = _by << _shift;}
-  template<typename _Integer>
-  constexpr inline typename type::__impl::__is_integer<_Integer>::type
-  operator>>=(byte& _by, _Integer _shift) noexcept
-  { return _by = _by >> _shift;}
 }
 
 #endif // ! __UTILITY_TYPE_BYTE__
