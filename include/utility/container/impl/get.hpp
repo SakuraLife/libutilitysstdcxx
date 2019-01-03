@@ -9,16 +9,20 @@ namespace utility
   namespace container
   {
     template<size_t _Id, typename _T>
-    _T& get(_T& _val)
+    __UTILITY_CPP14_CONSTEXPR__
+    inline _T& get(_T& _val)
     { return _val;}
     template<size_t _Id, typename _T>
-    const _T& get(const _T& _val)
+    __UTILITY_CPP14_CONSTEXPR__
+    inline const _T& get(const _T& _val)
     { return _val;}
     template<size_t _Id, typename _T>
-    _T&& get(_T&& _val)
+    __UTILITY_CPP14_CONSTEXPR__
+    inline _T&& get(_T&& _val)
     { return static_cast<_T&&>(_val);}
     template<size_t _Id, typename _T>
-    const _T&& get(const _T&& _val)
+    __UTILITY_CPP14_CONSTEXPR__
+    inline const _T&& get(const _T&& _val)
     { return static_cast<const _T&&>(_val);}
   }
 }
