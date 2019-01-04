@@ -43,69 +43,49 @@ namespace utility
 
       public:
         reference operator*() const noexcept
-        { return *(this->__ptr);}
+        { return *__ptr;}
         pointer operator->() const noexcept
-        { return (this->__ptr);}
+        { return __ptr;}
 
       public:
-        self& operator++() noexcept
+        raw_pointer_iterator& operator++() noexcept
         {
-          ++(this->__ptr);
+          ++__ptr;
           return *this;
         }
-        self operator++(int) noexcept
+        raw_pointer_iterator operator++(int) noexcept
         {
-          self __it = *this;
-          ++(this->__ptr);
+          raw_pointer_iterator __it = *this;
+          ++__ptr;
           return __it;
         }
-        self& operator--() noexcept
+        raw_pointer_iterator& operator--() noexcept
         {
-          --(this->__ptr);
+          --__ptr;
           return *this;
         }
-        self operator--(int) noexcept
+        raw_pointer_iterator operator--(int) noexcept
         {
-          self __it = *this;
-          --(this->__ptr);
+          raw_pointer_iterator __it = *this;
+          --__ptr;
           return __it;
         }
 
       public:
-        self& operator+=(difference_type _len) noexcept
+        raw_pointer_iterator& operator+=(difference_type _len) noexcept
         {
-          this->__ptr += _len;
+          __ptr += _len;
           return *this;
         }
-        self& operator-=(difference_type _len) noexcept
+        raw_pointer_iterator& operator-=(difference_type _len) noexcept
         {
-          this->__ptr -= _len;
+          __ptr -= _len;
           return *this;
         }
-        self operator+(difference_type _len) const noexcept
-        { return self(this->__ptr + _len);}
-        self operator-(difference_type _len) const noexcept
-        { return self(this->__ptr - _len);}
-
-      public:
-        friend bool operator==(const self& _x, const self& _y) noexcept
-        { return _x.__ptr == _y.__ptr;}
-        friend bool operator!=(const self& _x, const self& _y) noexcept
-        { return _x.__ptr != _y.__ptr;}
-
-      public:
-        friend bool operator<(const self& _x, const self& _y) noexcept
-        { return _x.__ptr < _y.__ptr;}
-        friend bool operator>(const self& _x, const self& _y) noexcept
-        { return _x.__ptr > _y.__ptr;}
-        friend bool operator<=(const self& _x, const self& _y) noexcept
-        { return _x.__ptr <= _y.__ptr;}
-        friend bool operator>=(const self& _x, const self& _y) noexcept
-        { return _x.__ptr >= _y.__ptr;}
-
-      public:
-        friend difference_type operator-(const self& _x, const self _y) noexcept
-        { return _x.__ptr - _y.__ptr;}
+        raw_pointer_iterator operator+(difference_type _len) const noexcept
+        { return raw_pointer_iterator{__ptr + _len};}
+        raw_pointer_iterator operator-(difference_type _len) const noexcept
+        { return raw_pointer_iterator{__ptr - _len};}
 
     };
     template<typename _T>
@@ -145,81 +125,98 @@ namespace utility
           const raw_pointer_iterator& _other
         ) noexcept = default;
 
-        inline self& operator=(
+        inline raw_pointer_iterator& operator=(
           const raw_pointer_iterator<non_const_value_type>& _other
         ) noexcept
         {
-          this->__ptr = _other.__ptr;
+          __ptr = _other.__ptr;
           return *this;
         }
 
       public:
         reference operator*() const noexcept
-        { return *(this->__ptr);}
+        { return *__ptr;}
         pointer operator->() const noexcept
-        { return (this->__ptr);}
+        { return __ptr;}
 
       public:
-        self& operator++() noexcept
+        raw_pointer_iterator& operator++() noexcept
         {
-          ++(this->__ptr);
+          ++__ptr;
           return *this;
         }
-        self operator++(int) noexcept
+        raw_pointer_iterator operator++(int) noexcept
         {
-          self __it = *this;
-          ++(this->__ptr);
+          raw_pointer_iterator __it = *this;
+          ++__ptr;
           return __it;
         }
-        self& operator--() noexcept
+        raw_pointer_iterator& operator--() noexcept
         {
-          --(this->__ptr);
+          --__ptr;
           return *this;
         }
-        self operator--(int) noexcept
+        raw_pointer_iterator operator--(int) noexcept
         {
-          self __it = *this;
-          --(this->__ptr);
+          raw_pointer_iterator __it = *this;
+          --__ptr;
           return __it;
         }
 
       public:
-        self& operator+=(difference_type _len) noexcept
+        raw_pointer_iterator& operator+=(difference_type _len) noexcept
         {
-          this->__ptr += _len;
+          __ptr += _len;
           return *this;
         }
-        self& operator-=(difference_type _len) noexcept
+        raw_pointer_iterator& operator-=(difference_type _len) noexcept
         {
-          this->__ptr -= _len;
+          __ptr -= _len;
           return *this;
         }
-        self operator+(difference_type _len) const noexcept
-        { return self(this->__ptr + _len);}
-        self operator-(difference_type _len) const noexcept
-        { return self(this->__ptr - _len);}
-
-      public:
-        friend bool operator==(const self& _x, const self& _y) noexcept
-        { return _x.__ptr == _y.__ptr;}
-        friend bool operator!=(const self& _x, const self& _y) noexcept
-        { return _x.__ptr != _y.__ptr;}
-
-      public:
-        friend bool operator<(const self& _x, const self& _y) noexcept
-        { return _x.__ptr < _y.__ptr;}
-        friend bool operator>(const self& _x, const self& _y) noexcept
-        { return _x.__ptr > _y.__ptr;}
-        friend bool operator<=(const self& _x, const self& _y) noexcept
-        { return _x.__ptr <= _y.__ptr;}
-        friend bool operator>=(const self& _x, const self& _y) noexcept
-        { return _x.__ptr >= _y.__ptr;}
-
-      public:
-        friend difference_type operator-(const self& _x, const self _y) noexcept
-        { return _x.__ptr - _y.__ptr;}
+        raw_pointer_iterator operator+(difference_type _len) const noexcept
+        { return raw_pointer_iterator{__ptr + _len};}
+        raw_pointer_iterator operator-(difference_type _len) const noexcept
+        { return raw_pointer_iterator{__ptr - _len};}
 
     };
+
+    template<typename _T>
+    bool operator==(
+      const raw_pointer_iterator<_T>& _x, const raw_pointer_iterator<_T>& _y
+    ) noexcept
+    { return _x.__ptr == _y.__ptr;}
+    template<typename _T>
+    bool operator!=(
+      const raw_pointer_iterator<_T>& _x, const raw_pointer_iterator<_T>& _y
+    ) noexcept
+    { return _x.__ptr != _y.__ptr;}
+    template<typename _T>
+    bool operator<(
+      const raw_pointer_iterator<_T>& _x, const raw_pointer_iterator<_T>& _y
+    ) noexcept
+    { return _x.__ptr < _y.__ptr;}
+    template<typename _T>
+    bool operator>(
+      const raw_pointer_iterator<_T>& _x, const raw_pointer_iterator<_T>& _y
+    ) noexcept
+    { return _x.__ptr > _y.__ptr;}
+    template<typename _T>
+    bool operator<=(
+      const raw_pointer_iterator<_T>& _x, const raw_pointer_iterator<_T>& _y
+    ) noexcept
+    { return _x.__ptr <= _y.__ptr;}
+    template<typename _T>
+    bool operator>=(
+      const raw_pointer_iterator<_T>& _x, const raw_pointer_iterator<_T>& _y
+    ) noexcept
+    { return _x.__ptr >= _y.__ptr;}
+
+    template<typename _T>
+    typename raw_pointer_iterator<_T>::difference_type operator-(
+      const raw_pointer_iterator<_T>& _x, const raw_pointer_iterator<_T>& _y
+    ) noexcept
+    { return _x.__ptr - _y.__ptr;}
   }
 }
 
