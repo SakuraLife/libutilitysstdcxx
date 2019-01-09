@@ -33,6 +33,10 @@ namespace utility
       constexpr ignore_t ignore{};
 
     } // helper
+
+    using helper::ignore_t;
+    using helper::ignore;
+
   }
 }
 

@@ -23,6 +23,10 @@ namespace utility
 
       __UTILITY_CPP17_INLINE__ constexpr nullopt_t nullopt{};
     }
+
+    using helper::nullopt_t;
+    using helper::nullopt;
+
   }
 } // utility
 

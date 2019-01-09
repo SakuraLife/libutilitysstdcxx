@@ -21,24 +21,23 @@ namespace utility
     {
       struct in_place_t
       { explicit in_place_t() = default;};
-      __UTILITY_CPP17_INLINE__
-      constexpr in_place_t in_place{};
 
       template<typename _T>
       struct in_place_type_t
       { explicit in_place_type_t() = default;};
 
-#ifndef __UTILITY_NO_CPP14__
-      template<typename _T>
-      __UTILITY_CPP17_INLINE__
-      constexpr in_place_type_t<_T> in_place_type{};
-#endif // ! __UTILITY_NO_CPP14__
-
       template<size_t _I>
       struct in_place_index_t
       { explicit in_place_index_t() = default;};
 
+      __UTILITY_CPP17_INLINE__
+      constexpr in_place_t in_place{};
+
 #ifndef __UTILITY_NO_CPP14__
+      template<typename _T>
+      __UTILITY_CPP17_INLINE__
+      constexpr in_place_type_t<_T> in_place_type{};
+
       template<size_t _I>
       __UTILITY_CPP17_INLINE__
       constexpr in_place_index_t<_I> in_place_index{};
@@ -56,6 +55,17 @@ namespace utility
       struct is_in_place_type<helper::in_place_type_t<_T>>:  public trait::true_type
       { };
     }
+
+    using helper::in_place_t;
+    using helper::in_place_index_t;
+    using helper::in_place_type_t;
+
+    using helper::in_place;
+#ifndef __UTILITY_NO_CPP14__
+    using helper::in_place_index;
+    using helper::in_place_type;
+#endif // ! __UTILITY_NO_CPP14__
+
   }
 }
 
