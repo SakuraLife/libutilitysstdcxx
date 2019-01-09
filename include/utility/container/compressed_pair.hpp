@@ -19,6 +19,7 @@
 #include<utility/container/impl/compressed_index.hpp>
 
 #include<utility/trait/opt/__types__.hpp>
+#include<utility/trait/opt/__types_op__.hpp>
 
 namespace utility
 {
