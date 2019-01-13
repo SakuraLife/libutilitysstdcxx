@@ -16,7 +16,8 @@
 
 #include<utility/trait/type/categories/is_array.hpp>
 #include<utility/trait/type/releations/is_same.hpp>
-#include<utility/trait/type/property/is_pod.hpp>
+#include<utility/trait/type/property/is_standard_layout.hpp>
+#include<utility/trait/type/property/is_trivial.hpp>
 #include<utility/trait/type/miscellaneous/enable_if.hpp>
 #include<utility/trait/type/features/is_nothrow_swappable.hpp>
 #include<utility/trait/type/features/is_nothrow_possible_swappable.hpp>
@@ -49,7 +50,8 @@ namespace utility
     {
       using namespace iterator;
       using trait::type::categories::is_array;
-      using trait::type::property::is_pod;
+      using trait::type::property::is_standard_layout;
+      using trait::type::property::is_trivial;
       using trait::type::releations::is_same;
 
       template<typename _CharT, typename _ST>
@@ -124,19 +126,23 @@ namespace utility
       public:
         static_assert(
           !__detail::is_array<value_type>::value,
-          "The char type of the basic_string can't be an array."
+          "The char type of the basic_string can't be an array"
         );
         static_assert(
-          __detail::is_pod<value_type>::value,
-          "The char type of the basic_string must be pod."
+          __detail::is_standard_layout<value_type>::value,
+          "The char type of the basic_string_view must have standard layout"
+        );
+        static_assert(
+          __detail::is_trivial<value_type>::value,
+          "The char type of the basic_string_view must be trivial"
         );
         static_assert(
           __detail::is_same<typename traits_type::char_type, value_type>::value,
-          "The traits_type::char_type must be the same as value_type(_CharT)."
+          "The traits_type::char_type must be the same as value_type(_CharT)"
         );
         static_assert(
           __detail::is_same<typename allocator_type::value_type, value_type>::value,
-          "the allocator's alloc type must be the same as value_type(_CharT)."
+          "the allocator's alloc type must be the same as value_type(_CharT)"
         );
 
       private:
