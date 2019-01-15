@@ -10,7 +10,7 @@ namespace utility
   namespace algorithm
   {
     template<typename _T>
-    inline __UTILITY_CPP14_CONSTEXPR__
+    inline constexpr
     typename trait::type::transform::remove_reference<_T>::type&&
     move(_T&& _val) noexcept
     {
