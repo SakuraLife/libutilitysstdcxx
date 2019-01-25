@@ -19,18 +19,17 @@ namespace utility
         namespace __common_type_impl
         {
           using trait::__opt__::__empty__;
+          using trait::type::special::declval;
+          using trait::type::transform::decay;
 
           template<typename _T, typename _U>
           struct __common_type_two_helper
           {
             private:
               template<typename __T, typename __U>
-              static typename
-              trait::type::transform::decay<decltype(
-                true ?
-                trait::type::special::declval<__T>() :
-                trait::type::special::declval<__U>())>
-              __test(int);
+              static decay<
+                decltype(declval<bool>() ? declval<__T>() : declval<__U>())
+              > __test(int);
               template<typename, typename>
               static __empty__ __test(...);
 
@@ -72,10 +71,11 @@ namespace utility
 
           template<typename _T, typename _U, typename... _Args>
           struct __common_type_helper<_T, _U, _Args...> : public
-            __common_type_wrapper<typename
-              __common_type_unfold_helper<
+            __common_type_wrapper<
+              typename __common_type_unfold_helper<
                 __common_type_helper<_T, _U>
-                >::type, _Args...>::type
+              >::type, _Args...
+            >::type
           { };
         }
         template<typename... _Ts>
