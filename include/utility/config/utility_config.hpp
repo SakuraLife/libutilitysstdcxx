@@ -29,22 +29,28 @@
 
 #ifndef __UTILITY_NO_CPP14__
 # define __UTILITY_CPP14_CONSTEXPR__ constexpr
+# define __UTILITY_CPP14_ATTRIBUTE__(_attr) [[_attr]]
 #else
 # define __UTILITY_CPP14_CONSTEXPR__
+# define __UTILITY_CPP14_ATTRIBUTE__(_attr)
 #endif // ! __UTILITY_NO_CPP14__
 
 #ifndef __UTILITY_NO_CPP17__
 # define __UTILITY_CPP17_CONSTEXPR__ constexpr
 # define __UTILITY_CPP17_INLINE__ inline
+# define __UTILITY_CPP17_ATTRIBUTE__(_attr) [[_attr]]
 #else
 # define __UTILITY_CPP17_CONSTEXPR__
 # define __UTILITY_CPP17_INLINE__
+# define __UTILITY_CPP17_ATTRIBUTE__(_attr)
 #endif // ! __UTILITY_NO_CPP17__
 
 #ifndef __UTILITY_NO_CPP20__
 # define __UTILITY_CPP20_CONSTEXPR__ constexpr
+# define __UTILITY_CPP20_ATTRIBUTE__(_attr) [[_attr]]
 #else
 # define __UTILITY_CPP20_CONSTEXPR__
+# define __UTILITY_CPP20_ATTRIBUTE__(_attr)
 #endif // ! __UTILITY_NO_CPP17__
 
 #define UTILITY_INTERFACE       1L
@@ -53,7 +59,8 @@
 #define UTILITY_VERSION         10101L
 
 // utility preconfig generate by system.
-#include<utility/config/utility_preconfig.hpp>
+// will used if need.
+// #include<utility/config/utility_preconfig.hpp>
 
 #ifdef UTILITY_USE_HEADERS
 #define __utility_inline inline
