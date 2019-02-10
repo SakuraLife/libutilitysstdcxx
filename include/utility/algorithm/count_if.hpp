@@ -6,8 +6,7 @@
 #include<utility/iterator/iterator_traits.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     /**
      * \brief Return number of elements in range satisfying condition
      *
@@ -46,7 +45,7 @@ __utility_globalspace_start(utility)
       return __res;
     }
 
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_COUNT_IF__

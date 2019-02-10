@@ -7,8 +7,7 @@
 #include<utility/algorithm/forward.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     template<typename _T = void>
     struct plus
     {
@@ -320,7 +319,7 @@ __utility_globalspace_start(utility)
         ->decltype(~forward<_T>(_x))
       { return ~forward<_T>(_x);}
     };
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! ___UTILITY__ALGORITHM__ALGORITHM__AUXILIARY___

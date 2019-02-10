@@ -8,8 +8,7 @@
 #include<utility/trait/opt/__twochar__.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(memory)
-  {
+  __utility_interspace_start(memory)
     namespace __detail
     {
       using trait::__opt__::__twochar__;
@@ -48,7 +47,7 @@ __utility_globalspace_start(utility)
       constexpr bool uses_allocator_v = uses_allocator<_T, _Alloc>::value;
 #endif
 
-  }
+  __utility_interspace_end(memory)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_USES_ALLOCATOR__

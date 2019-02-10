@@ -7,8 +7,7 @@
 #include<utility/trait/type/miscellaneous/enable_if.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     /**
      * \brief Exchange values of two array
      *
@@ -36,7 +35,7 @@ __utility_globalspace_start(utility)
       for(size_t __i = 0; __i < __size; ++__i)
       { swap(__a[__i], __b[__i]);}
     }
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_SWAP_ARRAY__

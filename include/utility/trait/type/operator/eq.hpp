@@ -6,12 +6,9 @@
 #include<utility/trait/type/type_trait_special.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(op)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(op)
         // operatot == -> eq
         namespace __impl
         {
@@ -39,9 +36,9 @@ __utility_globalspace_start(utility)
             __impl::__eq_test<_T, _U>::value>
         { };
 
-      }
-    }
-  }
+      __utility_interspace_end(op)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_TYPE_TRAIT_OPERATOR_EQ__

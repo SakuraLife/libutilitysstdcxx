@@ -22,8 +22,7 @@
 
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(functional)
-  {
+  __utility_interspace_start(functional)
     template<typename _Expr>
     struct is_bind_expression: public trait::false_type
     { };
@@ -331,7 +330,7 @@ __utility_globalspace_start(utility)
       };
     }
 
-  }
+  __utility_interspace_end(functional)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_FUNCTIONAL_BIND__

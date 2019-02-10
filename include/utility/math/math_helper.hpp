@@ -5,11 +5,10 @@
 #include<utility/config/utility_config.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  { }
+  __utility_interspace_start(algorithm)
+  __utility_interspace_end(algorithm)
 
-   __utility_interspace_start(math)
-  {
+  __utility_interspace_start(math)
     namespace helper
     {
       typedef unsigned char         _uc;
@@ -81,7 +80,7 @@ __utility_globalspace_start(utility)
       }
     }
     using namespace algorithm;
-  }
+  __utility_interspace_end(math)
 
   using math::helper::_char_bits;
 __utility_globalspace_end(utility)

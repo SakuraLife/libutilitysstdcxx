@@ -10,8 +10,7 @@
 #include<utility/iterator/reverse_iterator.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(container)
-  {
+  __utility_interspace_start(container)
     template
     <
       typename _T,
@@ -77,7 +76,7 @@ __utility_globalspace_start(utility)
         { return _Size;}
 
     };
-  }
+  __utility_interspace_end(container)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_CYCLE_ARRAY__

@@ -6,8 +6,7 @@
 #include<utility/algorithm/algorithm_auxiliary.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     template<typename _InputIterator1, typename _InputIterator2,
       typename _Compare>
     bool lexicographical_compare(
@@ -36,7 +35,7 @@ __utility_globalspace_start(utility)
         algorithm::less<void>()
       );
     }
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_LEXICOGRAPGICAL_COMPARE__

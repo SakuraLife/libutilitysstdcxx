@@ -12,8 +12,7 @@
 #include<initializer_list>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(container)
-  {
+  __utility_interspace_start(container)
     // template<typename _T>
     // class initializer_list
     // {
@@ -86,7 +85,7 @@ __utility_globalspace_start(utility)
     // { return __ilist.end();}
 
     using std::initializer_list;
-  }
+  __utility_interspace_end(container)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_INITIALIZER_LIST__

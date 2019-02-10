@@ -21,8 +21,7 @@
 #include<utility/trait/type/features/is_nothrow_possible_swappable.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(container)
-  {
+  __utility_interspace_start(container)
     namespace __detail
     {
       using trait::make_index_sequence;
@@ -226,7 +225,7 @@ __utility_globalspace_start(utility)
 
 
     }
-  }
+  __utility_interspace_end(container)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_DETAIL_TUPLE_HELPER__

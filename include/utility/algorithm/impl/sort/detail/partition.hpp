@@ -5,8 +5,7 @@
 #include<utility/algorithm/iter_swap.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     namespace impl
     {
       namespace sort_impl
@@ -33,7 +32,7 @@ __utility_globalspace_start(utility)
 
       }
     }
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_IMPL_SORT_PARTITION__

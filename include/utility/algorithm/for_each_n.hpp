@@ -5,8 +5,7 @@
 #include<utility/config/utility_config.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     /**
      * \brief Applies function to n element
      *
@@ -42,7 +41,7 @@ __utility_globalspace_start(utility)
       { __unary(*__first);}
       return __first;
     }
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_FOR_EACH_N__

@@ -11,10 +11,8 @@
 #include<utility/memory/allocator.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(container)
-  {
-     __utility_interspace_start(_helper)
-    {
+  __utility_interspace_start(container)
+    __utility_interspace_start(_helper)
       template<typename _Node>
       class __node_pool
       {
@@ -91,8 +89,8 @@ __utility_globalspace_start(utility)
           }
       };
 
-    }
-  }
+    __utility_interspace_end(_helper)
+  __utility_interspace_end(container)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_HELPER_NODE_POOL__

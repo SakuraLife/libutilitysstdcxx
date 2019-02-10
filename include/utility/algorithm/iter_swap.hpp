@@ -7,8 +7,7 @@
 #include<utility/trait/type/type_trait_special.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     /**
      * \brief Exchange values of objects pointed to by two iterators
      *
@@ -26,7 +25,7 @@ __utility_globalspace_start(utility)
       using algorithm::swap;
       swap(*__ita, *__itb);
     }
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_ITER_SWAP__

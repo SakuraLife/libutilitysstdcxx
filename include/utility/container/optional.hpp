@@ -46,8 +46,7 @@
 #include<utility/sstd/new.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(container)
-  {
+  __utility_interspace_start(container)
     namespace __detail
     {
       using trait::__opt__::__and__;
@@ -1045,16 +1044,15 @@ __utility_globalspace_start(utility)
       return optional<_T>{in_place, _init, forward<_T>(_args)...};
     }
 
-  }
+  __utility_interspace_end(container)
 
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     template<typename _T>
     void swap(container::optional<_T>& _x, container::optional<_T>& _y) noexcept(noexcept(_x.swap(_y)))
     {
       _x.swap(_y);
     }
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_OPTIONAL__

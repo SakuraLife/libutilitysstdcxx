@@ -8,12 +8,9 @@
 #include<utility/trait/type/releations/is_convertible.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(features)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(features)
         namespace __invoke_related
         {
           using namespace trait::type::miscellaneous::__invoke_related;
@@ -111,9 +108,9 @@ __utility_globalspace_start(utility)
           >
         { };
 
-      }
-    }
-  }
+      __utility_interspace_end(features)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_TRAIT_TYPE_FEATURES_IS_INVOCABLE__

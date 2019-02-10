@@ -14,8 +14,7 @@
 #include<utility/memory/addressof.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(functional)
-  {
+  __utility_interspace_start(functional)
     template<typename _T>
     class reference_wrapper
     {
@@ -92,7 +91,7 @@ __utility_globalspace_start(utility)
         }
       };
     }
-  }
+  __utility_interspace_end(functional)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_FUNCTIONAL_REFERENCE_WRAPPER__

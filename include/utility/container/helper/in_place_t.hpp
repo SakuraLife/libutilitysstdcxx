@@ -13,10 +13,8 @@
 #include<utility/trait/trait_helper.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(container)
-  {
-     __utility_interspace_start(_helper)
-    {
+  __utility_interspace_start(container)
+    __utility_interspace_start(_helper)
       struct in_place_t
       { explicit in_place_t() = default;};
 
@@ -49,7 +47,7 @@ __utility_globalspace_start(utility)
       struct is_in_place_type<in_place_type_t<_T>>: public trait::true_type
       { };
 
-    } // _helper
+    __utility_interspace_end(_helper)
 
     using _helper::in_place_t;
     using _helper::in_place_index_t;
@@ -61,7 +59,7 @@ __utility_globalspace_start(utility)
     using _helper::in_place_type;
 #endif // ! __UTILITY_NO_CPP14__
 
-  }
+  __utility_interspace_end(container)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_HELPER_IN_PLACE_T__

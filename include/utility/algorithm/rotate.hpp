@@ -10,8 +10,7 @@
 #include<utility/iterator/next.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     namespace __detail
     {
       template
@@ -98,7 +97,7 @@ __utility_globalspace_start(utility)
           __first, __mid, __last
         );
     }
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_ROTATE__

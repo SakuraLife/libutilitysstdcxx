@@ -20,8 +20,7 @@
 #include<utility/sstd/new.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(memory)
-  {
+  __utility_interspace_start(memory)
     namespace __impl
     {
       using __two = trait::__opt__::__twochar__;
@@ -646,7 +645,7 @@ __utility_globalspace_start(utility)
               allocator_type>::__aux(__alloc);
         }
     };
-  }
+  __utility_interspace_end(memory)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_ALLOCATOR_TRAITS__

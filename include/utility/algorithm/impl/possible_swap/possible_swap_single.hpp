@@ -17,8 +17,7 @@
 #include<utility/trait/type/miscellaneous/enable_if.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     namespace __impl
     {
       using trait::type::releations::is_same;
@@ -155,7 +154,7 @@ __utility_globalspace_start(utility)
       noexcept(__impl::__possible_swap<_T>::__aux(__x, __y))
     )
     { __impl::__possible_swap<_T>::__aux(__x, __y);}
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_POSSIBLE_SWAP_SINGLE__

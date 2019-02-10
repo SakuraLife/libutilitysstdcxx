@@ -7,10 +7,8 @@
 #include<utility/memory/allocator_traits.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(container)
-  {
-     __utility_interspace_start(_helper)
-    {
+  __utility_interspace_start(container)
+    __utility_interspace_start(_helper)
       template<typename _Alloc>
       struct allocator_deleter
       {
@@ -33,8 +31,8 @@ __utility_globalspace_start(utility)
             );
           }
       };
-    }
-  }
+    __utility_interspace_end(_helper)
+  __utility_interspace_end(container)
 __utility_globalspace_end(utility)
 
 

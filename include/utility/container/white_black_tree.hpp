@@ -45,10 +45,8 @@
 #include<utility/iterator/distance.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(container)
-  {
-     __utility_interspace_start(_helper)
-    {
+  __utility_interspace_start(container)
+    __utility_interspace_start(_helper)
       struct __wbtree_node
       {
         public:
@@ -163,7 +161,7 @@ __utility_globalspace_start(utility)
         }
       };
 
-    }
+    __utility_interspace_end(_helper)
 
     template<
       typename _Key,
@@ -1551,10 +1549,9 @@ __utility_globalspace_start(utility)
       const white_black_tree<_Key, _Value, _Compare, _Container, _Alloc>& _y
     )
     { return !(_x < _y);}
-  }
+  __utility_interspace_end(container)
 
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     template<
       typename _Key, typename _Value, typename _Compare,
       typename _Container, typename _Alloc,
@@ -1584,7 +1581,7 @@ __utility_globalspace_start(utility)
     {
       _X.possible_swap(_y);
     }
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 

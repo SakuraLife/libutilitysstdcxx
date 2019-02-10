@@ -29,8 +29,7 @@
 
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(wrapper)
-  {
+  __utility_interspace_start(wrapper)
     namespace __detail
     {
       using trait::type::special::declval;
@@ -412,10 +411,9 @@ __utility_globalspace_start(utility)
     bool operator>=(const _U& _x, const propagate_const<_U>& _y)
     { return _x >= _y.get_underlying();}
 
-  }
+  __utility_interspace_end(wrapper)
 
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     template<typename _T>
     inline void swap(
       wrapper::propagate_const<_T>& _x, wrapper::propagate_const<_T>& _y
@@ -426,7 +424,7 @@ __utility_globalspace_start(utility)
       wrapper::propagate_const<_T>& _x, wrapper::propagate_const<_T>& _y
     ) noexcept(noexcept(_x.possible_swap(_y)))
     { _x.possible_swap(_y);}
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_WRAPPER_PROPAGATE_CONST__

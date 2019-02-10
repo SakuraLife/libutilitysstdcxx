@@ -16,8 +16,7 @@
 #include<utility/iterator/iterator_tag.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(iterator)
-  {
+  __utility_interspace_start(iterator)
     namespace __detail
     {
       using trait::__opt__::__if__;
@@ -252,7 +251,7 @@ __utility_globalspace_start(utility)
     __UTILITY_CPP17_CONSTEXPR__
     inline move_iterator<_Iterator> make_move_iterator(_Iterator __it)
     { return move_iterator<_Iterator>(__it);}
-  }
+  __utility_interspace_end(iterator)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ITERATOR_MOVE_ITERATOR__

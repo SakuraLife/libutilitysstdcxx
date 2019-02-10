@@ -14,12 +14,9 @@
 #include<utility/trait/type/transform/remove_all_extents.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(transform)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(transform)
         template<typename _T>
         struct remove_all
         {
@@ -30,9 +27,9 @@ __utility_globalspace_start(utility)
 
         template<typename _T>
         using remove_all_t = typename remove_all<_T>::type;
-      }
-    }
-  }
+      __utility_interspace_end(transform)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_TRANSFORM_REMOVE_ALL__

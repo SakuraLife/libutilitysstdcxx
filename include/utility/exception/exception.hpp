@@ -6,8 +6,7 @@
 #include<utility/config/builtin_function.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(exception)
-  {
+  __utility_interspace_start(exception)
     class exception
     {
       public:
@@ -37,7 +36,7 @@ __utility_globalspace_start(utility)
       ;
 #endif // __UTILITY_NO_EXCEPTION__
     }
-  }
+  __utility_interspace_end(exception)
 __utility_globalspace_end(utility)
 
 #endif // ! ___UTILITY__EXCEPTION__EXCEPTION___

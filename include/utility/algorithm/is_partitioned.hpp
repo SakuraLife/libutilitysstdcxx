@@ -5,8 +5,7 @@
 #include<utility/config/utility_config.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     /**
      * \brief Test whether range is partitioned
      *
@@ -43,7 +42,7 @@ __utility_globalspace_start(utility)
       }
       return true;
     }
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_IS_PARTITIONED__

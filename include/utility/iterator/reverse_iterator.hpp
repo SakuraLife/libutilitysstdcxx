@@ -11,8 +11,7 @@
 #include<utility/trait/type/releations/is_convertible.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(iterator)
-  {
+  __utility_interspace_start(iterator)
 
     template<typename __Iterator>
     class reverse_iterator
@@ -223,7 +222,7 @@ __utility_globalspace_start(utility)
     __UTILITY_CPP17_CONSTEXPR__
     inline reverse_iterator<__Iterator> make_reverse_iterator(__Iterator _it)
     { return reverse_iterator<__Iterator>(_it);}
-  }
+  __utility_interspace_end(iterator)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ITERATOR_REVERSE_ITERATOR__

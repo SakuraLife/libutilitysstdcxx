@@ -5,8 +5,7 @@
 #include<utility/config/utility_config.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
+  __utility_interspace_start(trait)
     namespace __opt__
     {
       template<typename _Type, _Type _val>
@@ -26,7 +25,7 @@ __utility_globalspace_start(utility)
       using __true__    = __bool_constant__<true>;
       using __false__   = __bool_constant__<false>;
     }
-  }
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_TRAIT_OPT___CONSTANT____

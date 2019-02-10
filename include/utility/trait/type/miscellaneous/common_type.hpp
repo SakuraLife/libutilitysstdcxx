@@ -8,12 +8,9 @@
 #include<utility/trait/type/type_trait_special.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(miscellaneous)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(miscellaneous)
         // common_type
         namespace __impl
         {
@@ -84,9 +81,9 @@ __utility_globalspace_start(utility)
 
         template<typename... _Ts>
         using common_type_t = typename common_type<_Ts...>::type;
-      }
-    }
-  }
+      __utility_interspace_end(miscellaneous)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_MISCELLANEOUS_COMMON_TYPE__

@@ -12,8 +12,7 @@
 #include<utility/algorithm/hash_detail/murmur_hash_2.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
 
     template<typename _T>
     struct hash;
@@ -151,7 +150,7 @@ __utility_globalspace_start(utility)
       inline size_t operator()(_T* __v) const noexcept
       { return reinterpret_cast<size_t>(__v);}
     };
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #include<utility/trait/config/trait_undef.hpp>

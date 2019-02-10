@@ -6,8 +6,7 @@
 #include<utility/trait/type/transform/add_cv.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(miscellaneous)
-  {
+  __utility_interspace_start(miscellaneous)
     /**
      * \brief Forms value to const type
      *
@@ -23,7 +22,7 @@ __utility_globalspace_start(utility)
 
     template<typename _T>
     void as_const(const _T&&) = delete;
-  }
+  __utility_interspace_end(miscellaneous)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MISCELLANEOUS_AS_CONST__

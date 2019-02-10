@@ -6,11 +6,10 @@
 #include<utility/info/exception/bad_alloc.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(memory)
-  {
+  __utility_interspace_start(memory)
     struct nothrow_t { };
     constexpr nothrow_t nothrow;
-  }
+  __utility_interspace_end(memory)
 __utility_globalspace_end(utility)
 
 void* operator new(size_t __size, void* __ptr)

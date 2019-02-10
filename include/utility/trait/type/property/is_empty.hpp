@@ -10,21 +10,18 @@
 # include<utility/trait/config/trait_config.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(property)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(property)
         // is_empty
         template<typename _T>
         struct is_empty :
           public integral_constant<bool, __utility_is_empty(_T)>
         { };
 
-      }
-    }
-  }
+      __utility_interspace_end(property)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #else // __utility_has_is_empty
@@ -32,12 +29,9 @@ __utility_globalspace_end(utility)
 # include<utility/trait/type/categories/is_class.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(property)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(property)
         // is_empty
         namespace __impl
         {
@@ -64,9 +58,9 @@ __utility_globalspace_start(utility)
         struct is_empty: public __impl::__is_empty_test<_T>
         { };
 
-      }
-    }
-  }
+      __utility_interspace_end(property)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // ! __utility_has_is_empty

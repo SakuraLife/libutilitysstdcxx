@@ -6,12 +6,9 @@
 #include<utility/trait/type/miscellaneous/aligned_storage.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(miscellaneous)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(miscellaneous)
         // aligned_union
         namespace __impl
         {
@@ -50,9 +47,9 @@ __utility_globalspace_start(utility)
 
         template<size_t _Len, typename... _Ts>
         using aligned_union_t = typename aligned_union<_Len, _Ts...>::type;
-      }
-    }
-  }
+      __utility_interspace_end(miscellaneous)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_MISCELLANEOUS__

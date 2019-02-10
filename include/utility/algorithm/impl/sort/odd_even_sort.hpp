@@ -5,8 +5,7 @@
 #include<utility/algorithm/swap.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     namespace sort_tag
     {
       struct odd_even_sort_tag { };
@@ -53,7 +52,7 @@ __utility_globalspace_start(utility)
 
     }
 
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_SORTIMPL_ODD_EVEN_SORT__

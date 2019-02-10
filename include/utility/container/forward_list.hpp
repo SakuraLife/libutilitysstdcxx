@@ -34,8 +34,7 @@
 #include<utility/iterator/next.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(container)
-  {
+  __utility_interspace_start(container)
     template<
       typename _T,
       typename _Alloc = memory::allocator<_T>
@@ -1186,10 +1185,9 @@ __utility_globalspace_start(utility)
       const forward_list<_T, _Alloc>& _x, const forward_list<_T, _Alloc>& _y
     )
     { return !(_x < _y);}
-  }
+  __utility_interspace_end(container)
 
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     template<typename _T, typename _Alloc>
     inline void swap(
       container::forward_list<_T, _Alloc>& _x,
@@ -1202,7 +1200,7 @@ __utility_globalspace_start(utility)
       container::forward_list<_T, _Alloc>& _y
     ) noexcept(noexcept(_x.possible_swap(_y)))
     { _x.possible_swap(_y);}
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 

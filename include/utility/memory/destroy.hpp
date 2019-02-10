@@ -9,8 +9,7 @@
 #include<utility/trait/type/type_trait_special.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(memory)
-  {
+  __utility_interspace_start(memory)
     namespace __detail
     {
       using trait::type::features::is_trivially_destructible;
@@ -40,7 +39,7 @@ __utility_globalspace_start(utility)
     template<typename _ForwardIterator>
     void destroy(_ForwardIterator __first, _ForwardIterator __last)
     { __detail::__destroy<_ForwardIterator>::__aux(__first, __last);}
-  }
+  __utility_interspace_end(memory)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_DESTROY__

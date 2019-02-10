@@ -6,10 +6,8 @@
 #include<utility/trait/opt/__logical__.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(operation)
-    {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(operation)
       // conjunction
       template<typename... _Types>
       struct conjunction: __opt__::__type_and__<_Types...>
@@ -20,8 +18,8 @@ __utility_globalspace_start(utility)
       constexpr bool conjunction_v = conjunction<_Types...>::value;
 #endif
 
-    }
-  }
+    __utility_interspace_end(operation)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_TRAIT_OPERATION_CONJUNCTION__

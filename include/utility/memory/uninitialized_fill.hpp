@@ -8,8 +8,7 @@
 #include<utility/sstd/new.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(memory)
-  {
+  __utility_interspace_start(memory)
     /*!
     * \brief Fill block of memory
     *
@@ -51,7 +50,7 @@ __utility_globalspace_start(utility)
         { __epos->~__value_type();}
       )
     }
-  }
+  __utility_interspace_end(memory)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_UNINITIALIZED_FILL__

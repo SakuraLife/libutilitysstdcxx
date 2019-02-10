@@ -7,10 +7,8 @@
 #include<utility/algorithm/max.hpp>
 
 
-namespace utility
-{
-  namespace charS
-  {
+__utility_globalspace_start(utility)
+  __utility_interspace_start(charS)
     namespace impl
     {
       // Two ways algorithm
@@ -429,7 +427,7 @@ namespace utility
         return _npos;
       }
     }
-  }
-}
+  __utility_interspace_end(charS)
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CHARS_IMPL_STRING_FIND__

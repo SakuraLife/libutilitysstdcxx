@@ -3,15 +3,12 @@
 #define __UTILITY_TRAIT_TYPE_FWD__
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
+  __utility_interspace_start(trait)
     template<typename Type, Type val>
     struct integral_constant;
 
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(categories)
-      {
+    __utility_interspace_start(type)
+      __utility_interspace_start(categories)
         // is_void
         template<typename _T>
         struct is_void;
@@ -98,10 +95,9 @@ __utility_globalspace_start(utility)
         template<typename _T>
         struct is_member_pointer;
 
-      }
+      __utility_interspace_end(categories)
 
-       __utility_interspace_start(property)
-      {
+      __utility_interspace_start(property)
         // is_const
         template<typename _T>
         struct is_const;
@@ -164,10 +160,9 @@ __utility_globalspace_start(utility)
         template<typename _T>
         struct is_unsigned;
 
-      }
+      __utility_interspace_end(property)
 
-       __utility_interspace_start(property_query)
-      {
+      __utility_interspace_start(property_query)
         // extent
         template<typename _T, unsigned int I = 0>
         struct extent;
@@ -180,10 +175,9 @@ __utility_globalspace_start(utility)
         template<typename _T>
         struct alignment_of;
 
-      }
+      __utility_interspace_end(property_query)
 
-       __utility_interspace_start(features)
-      {
+      __utility_interspace_start(features)
         // is_constructible
         template<class _T, class... Args>
         struct is_constructible;
@@ -300,10 +294,9 @@ __utility_globalspace_start(utility)
         template<typename _T, typename U>
         struct is_nothrow_swappable;
 
-      }
+      __utility_interspace_end(features)
 
-       __utility_interspace_start(releations)
-      {
+      __utility_interspace_start(releations)
         // is_same
         template<typename _T1, typename _T2>
         struct is_same;
@@ -332,11 +325,10 @@ __utility_globalspace_start(utility)
         template<class R, class Fn, class... ArgTypes>
         struct is_nothrow_invocable_r;
 
-      }
+      __utility_interspace_end(releations)
 
 
-       __utility_interspace_start(transform)
-      {
+      __utility_interspace_start(transform)
         // remove_const
         template<typename _T>
         struct remove_const;
@@ -393,10 +385,9 @@ __utility_globalspace_start(utility)
         template<typename _T>
         struct decay;
 
-      }
+      __utility_interspace_end(transform)
 
-       __utility_interspace_start(operation)
-      {
+      __utility_interspace_start(operation)
         // conjunction
         template<class... B>
         struct conjunction;
@@ -408,10 +399,9 @@ __utility_globalspace_start(utility)
         // negation
         template<class B>
         struct negation;
-      }
+      __utility_interspace_end(operation)
 
-       __utility_interspace_start(miscellaneous)
-      {
+      __utility_interspace_start(miscellaneous)
         // make_signed
         template<typename _T>
         struct make_signed;
@@ -452,9 +442,9 @@ __utility_globalspace_start(utility)
         template<class F, typename... ArgTypes>
         class invoke_result;
 
-      }
-    }
-  }
+      __utility_interspace_end(miscellaneous)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_TRAIT_TYPE_FWD__

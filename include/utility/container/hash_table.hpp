@@ -42,8 +42,7 @@
 #include<utility/container/impl/hash_table_impl.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(container)
-  {
+  __utility_interspace_start(container)
     template<
       typename _Key,                  typename _Value,
       typename _Key_Value_Container,  typename _Hash,
@@ -1353,10 +1352,9 @@ __utility_globalspace_start(utility)
       const hash_table<_Key, _Value, _Key_Value_Container, _Hash, _Key_eq, _Alloc>& __y
     )
     { return !(__x == __y);}
-  }
+  __utility_interspace_end(container)
 
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     template<
       typename _Key,
       typename _Value,
@@ -1388,7 +1386,7 @@ __utility_globalspace_start(utility)
     ) noexcept(noexcept(__x.possible_swap(__y)))
     { __x.possible_swap(__y);}
 
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_HASH_TABLE__

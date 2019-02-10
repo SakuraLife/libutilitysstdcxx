@@ -11,21 +11,18 @@
 # include<utility/trait/config/trait_config.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(releations)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(releations)
         // is_base_of
         template<typename _T1, typename _T2>
         struct is_base_of:
           public integral_constant<bool, __utility_is_base_of(_T1, _T2)>
         { };
 
-      }
-    }
-  }
+      __utility_interspace_end(releations)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #else
@@ -35,12 +32,9 @@ __utility_globalspace_end(utility)
 #include<utility/trait/type/categories/is_class.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(releations)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(releations)
         // is_base_of
         namespace __impl
         {
@@ -92,28 +86,25 @@ __utility_globalspace_start(utility)
           >
         { };
 
-      }
-    }
-  }
+      __utility_interspace_end(releations)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // ! __utility_has_is_base_of
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(releations)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(releations)
 #if !defined(__UTILITY_NO_CPP14__)
         template<typename _T1, typename _T2>
         constexpr bool is_base_of_v = is_base_of<_T1, _T2>::value;
 #endif
 
-      }
-    }
-  }
+      __utility_interspace_end(releations)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #include<utility/trait/config/trait_undef.hpp>

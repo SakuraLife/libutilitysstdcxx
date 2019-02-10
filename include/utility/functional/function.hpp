@@ -30,8 +30,7 @@
 #include<utility/sstd/new.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(functional)
-  {
+  __utility_interspace_start(functional)
     template<typename>
     class function;
 
@@ -547,7 +546,7 @@ __utility_globalspace_start(utility)
         return invoke(*__ptr, forward<_Args>(_args)...);
       }
     }
-  }
+  __utility_interspace_end(functional)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_FUNCTIONAL_FUNCTION__

@@ -5,10 +5,8 @@
 #include<utility/config/utility_config.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(logic)
-  {
-     __utility_interspace_start(boolean)
-    {
+  __utility_interspace_start(logic)
+    __utility_interspace_start(boolean)
       /*!
       * \brief the indeterminate tag
       *
@@ -203,8 +201,8 @@ __utility_globalspace_start(utility)
       }
 
       // }
-    }
-  }
+    __utility_interspace_end(boolean)
+  __utility_interspace_end(logic)
 
   namespace literals
   {

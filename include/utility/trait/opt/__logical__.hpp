@@ -6,8 +6,7 @@
 #include<utility/trait/opt/__constant__.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
+  __utility_interspace_start(trait)
     namespace __opt__
     {
       template<bool _B>
@@ -131,7 +130,7 @@ __utility_globalspace_start(utility)
       struct __type_or__<_T, _Ts...>: __type_or_impl__<false, _T, _Ts...>
       { };
     }
-  }
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_TRAIT_OPT___LOGICAL___

@@ -16,8 +16,7 @@
 #include<utility/sstd/new.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(memory)
-  {
+  __utility_interspace_start(memory)
     template<typename _T>
     inline _T* default_allocate(size_t __size)
     { return  static_cast<_T*>(::operator new(__size* sizeof(_T)));}
@@ -145,7 +144,7 @@ __utility_globalspace_start(utility)
       const basic_allocator<_T1>,
       const basic_allocator<_T2>) noexcept
     { return false;}
-  }
+  __utility_interspace_end(memory)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_BASIC_ALLOCATOR__

@@ -8,8 +8,7 @@
 #include<utility/iterator/iterator_traits.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     namespace impl
     {
       template<typename _RandomAccessIterator, typename _Compare>
@@ -42,7 +41,7 @@ __utility_globalspace_start(utility)
         __value_type;
       merge_sort(__first, __last, __tfirst, __tlast, algorithm::less<__value_type>());
     }
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_MERGE_SORT__

@@ -5,8 +5,7 @@
 #include<utility/config/utility_config.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(memory)
-  {
+  __utility_interspace_start(memory)
     struct allocator_arg_t
     {
       explicit allocator_arg_t() = default;
@@ -14,7 +13,7 @@ __utility_globalspace_start(utility)
 
     __UTILITY_CPP17_INLINE__
     constexpr memory::allocator_arg_t allocator_arg{};
-  }
+  __utility_interspace_end(memory)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_ALLOCATOR_HELPER__

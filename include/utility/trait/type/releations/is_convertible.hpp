@@ -16,12 +16,9 @@
 # include<utility/trait/type/releations/is_base_of.hpp>
 # include<utility/trait/type/releations/is_same.hpp>
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(releations)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(releations)
         namespace __impl
         {
           using trait::type::special::declval;
@@ -158,9 +155,9 @@ __utility_globalspace_start(utility)
         constexpr bool is_convertible_v = is_convertible<_F, _T>::value;
 #endif
 
-      }
-    }
-  }
+      __utility_interspace_end(releations)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_RELEATIONS_IS_CONVERTIBLE__

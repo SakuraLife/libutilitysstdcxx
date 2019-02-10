@@ -5,8 +5,7 @@
 #include<utility/config/utility_config.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(memory)
-  {
+  __utility_interspace_start(memory)
     /*!
     * \brief Get the pointer of the reference
     *
@@ -33,7 +32,7 @@ __utility_globalspace_start(utility)
     */
     template<typename _T>
     const _T* addressof(const _T&&) = delete;
-  }
+  __utility_interspace_end(memory)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_ADDRESSOF__

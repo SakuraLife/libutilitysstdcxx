@@ -8,8 +8,7 @@
 #include<utility/iterator/iterator_tag.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(iterator)
-  {
+  __utility_interspace_start(iterator)
     namespace __impl
     {
       template<typename __Iterator>
@@ -149,7 +148,7 @@ __utility_globalspace_start(utility)
     using is_output_iterator =
       is_vaild_iterator_type<_Iterator, output_iterator_tag>;
 
-  }
+  __utility_interspace_end(iterator)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ITERATOR_ITERATOR_TRAITS__

@@ -6,12 +6,9 @@
 #include<utility/config/utility_config.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(property_query)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(property_query)
         // belong_to
         template<typename _T>
         struct belong_to
@@ -20,9 +17,9 @@ __utility_globalspace_start(utility)
         struct belong_to<_T _Inn::*>
         { typedef _Inn type;};
 
-      }
-    }
-  }
+      __utility_interspace_end(property_query)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 

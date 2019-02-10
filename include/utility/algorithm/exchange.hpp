@@ -9,8 +9,7 @@
 
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     /**
      * \brief Replaces the old value with new value and returns the old value.
      *
@@ -31,7 +30,7 @@ __utility_globalspace_start(utility)
       _obj = forward<_U>(_new);
       return __old;
     }
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_EXCHANGE__

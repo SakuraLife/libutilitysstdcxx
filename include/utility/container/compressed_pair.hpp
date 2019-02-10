@@ -22,8 +22,7 @@
 #include<utility/trait/opt/__types_op__.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(container)
-  {
+  __utility_interspace_start(container)
     template<typename _T1, typename _T2>
     class compressed_pair : private compressed_index<_T1, 0>,
                             private compressed_index<_T2, 1>
@@ -405,10 +404,9 @@ __utility_globalspace_start(utility)
           possible_swap(this->second(), __other.second());
         }
     };
-  }
+  __utility_interspace_end(container)
 
-   __utility_interspace_start(trait)
-  {
+  __utility_interspace_start(trait)
     namespace __opt__
     {
       template<typename _T1, typename _T2>
@@ -418,10 +416,9 @@ __utility_globalspace_start(utility)
       struct __checkout_type_feature__<container::compressed_pair<_T1, _T2>>
       { typedef __type_pair__<_T1, _T2> type;};
     }
-  }
+  __utility_interspace_end(trait)
 
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     template<typename _T1, typename _T2>
     void swap(
       container::compressed_pair<_T1, _T2>& _x,
@@ -434,10 +431,9 @@ __utility_globalspace_start(utility)
       container::compressed_pair<_T1, _T2>& _y
     ) noexcept(noexcept(_x.possible_swap(_y)))
     { _x.possible_swap(_y);}
-  }
+  __utility_interspace_end(algorithm)
 
-   __utility_interspace_start(container)
-  {
+  __utility_interspace_start(container)
     namespace __detail
     {
       using trait::__opt__::__checkout_type_feature__;
@@ -550,7 +546,7 @@ __utility_globalspace_start(utility)
       using algorithm::move;
       return __detail::__get_compressed_pair<_Id>::get(move(_pair));
     }
-  }
+  __utility_interspace_end(container)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_COMPRESSED_PAIR__

@@ -11,8 +11,7 @@
 #include<utility/iterator/iterator_traits.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     namespace sort_tag
     {
       struct introspective_sort_tag { };
@@ -114,7 +113,7 @@ __utility_globalspace_start(utility)
 
     }
 
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_SORTIMPL_INTROSPECTIVE_SORT__

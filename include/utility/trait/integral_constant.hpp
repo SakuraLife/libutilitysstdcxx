@@ -3,8 +3,7 @@
 #define __UTILITY_TRAIT_INTEGRAL_CONSTANT__
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
+  __utility_interspace_start(trait)
     // helper class and declaration
     template<typename _type, _type _val>
     struct integral_constant
@@ -23,7 +22,7 @@ __utility_globalspace_start(utility)
     using true_type   = bool_constant<true>;
     using false_type  = bool_constant<false>;
 
-  }
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_TRAIT_INTEGRAL_CONSTANT__

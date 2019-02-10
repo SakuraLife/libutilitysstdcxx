@@ -8,10 +8,8 @@
 #include<utility/memory/addressof.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(miscellaneous)
-    {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(miscellaneous)
       namespace __impl
       {
         template<class _T>
@@ -136,8 +134,8 @@ __utility_globalspace_start(utility)
               element_type>::type& __ref)
           { return memory::addressof(__ref);}
       };
-    }
-  }
+    __utility_interspace_end(miscellaneous)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MISCELLANEOUS_POINTER_TRAITS__

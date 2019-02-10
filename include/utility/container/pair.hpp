@@ -21,8 +21,7 @@
 #include<utility/trait/opt/__types_op__.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(container)
-  {
+  __utility_interspace_start(container)
     /*!
     * \brief the pair container
     * \todo another need combine version constructor
@@ -282,10 +281,9 @@ __utility_globalspace_start(utility)
       public trait::integral_constant<size_t, 2>
     { };
 
-  }
+  __utility_interspace_end(container)
 
-   __utility_interspace_start(trait)
-  {
+  __utility_interspace_start(trait)
     namespace __opt__
     {
       template<typename _Fp, typename _Sp>
@@ -295,10 +293,9 @@ __utility_globalspace_start(utility)
       struct __checkout_type_feature__<container::pair<_Fp, _Sp>>
       { typedef __type_pair__<_Fp, _Sp> type;};
     }
-  }
+  __utility_interspace_end(trait)
 
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     template<typename _T1, typename _T2>
     void swap(
       container::pair<_T1, _T2>& __a,
@@ -311,10 +308,9 @@ __utility_globalspace_start(utility)
       container::pair<_T1, _T2>& __b
     ) noexcept(noexcept(__a.possible_swap(__b)))
     { __a.possible_swap(__b);}
-  }
+  __utility_interspace_end(algorithm)
 
-   __utility_interspace_start(container)
-  {
+  __utility_interspace_start(container)
     namespace __detail
     {
       using trait::__opt__::__checkout_type_feature__;
@@ -427,7 +423,7 @@ __utility_globalspace_start(utility)
       using algorithm::move;
       return __detail::__get_pair<_Id>::get(move(_pair));
     }
-  }
+  __utility_interspace_end(container)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_PAIR__

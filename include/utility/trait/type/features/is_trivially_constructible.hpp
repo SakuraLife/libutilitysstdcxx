@@ -10,21 +10,18 @@
 #include<utility/trait/config/trait_config.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(features)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(features)
         // is_trivially_constructible
         template<class _T, typename... _Args>
         struct is_trivially_constructible:
           public integral_constant<bool,
             __utility_is_trivially_constructible(_T, _Args...)>
         { };
-      }
-    }
-  }
+      __utility_interspace_end(features)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #else // __utility_has_has_trivial_constructor
@@ -32,12 +29,9 @@ __utility_globalspace_end(utility)
 #include<utility/trait/type/categories/is_scalar.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(features)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(features)
         // is_trivially_constructible
         template<class _T, typename... Args>
         struct is_trivially_constructible:
@@ -67,9 +61,9 @@ __utility_globalspace_start(utility)
             trait::type::categories::is_scalar<_T>::value
           >
         { };
-      }
-    }
-  }
+      __utility_interspace_end(features)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // __utility_has_has_trivial_constructor

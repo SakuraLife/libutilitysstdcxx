@@ -30,8 +30,7 @@
 #include<utility/trait/operation/conjunction.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(container)
-  {
+  __utility_interspace_start(container)
     template<typename _T, size_t _N>
     class array
     {
@@ -329,10 +328,9 @@ __utility_globalspace_start(utility)
         typedef _T type;
     };
 
-  }
+  __utility_interspace_end(container)
 
-   __utility_interspace_start(trait)
-  {
+  __utility_interspace_start(trait)
     namespace __opt__
     {
       template<typename _T, size_t _N>
@@ -346,10 +344,9 @@ __utility_globalspace_start(utility)
       struct  __type_tuple_size__<container::array<_T, _N>>
       { constexpr static size_t value = 1;};
     }
-  }
+  __utility_interspace_end(trait)
 
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     template<typename _T, size_t _N>
     void swap(
       container::array<_T, _N>& _x, container::array<_T, _N>& _y
@@ -360,7 +357,7 @@ __utility_globalspace_start(utility)
       container::array<_T, _N>& _x, container::array<_T, _N>& _y
     ) noexcept(noexcept(_x.possible_swap(_y)))
     { _x.possible_swap(_y);}
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_ARRAY__

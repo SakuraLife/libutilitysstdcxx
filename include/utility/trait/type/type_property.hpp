@@ -18,12 +18,9 @@
 #include<utility/trait/type/property/is_volatile.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(property)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(property)
 
         // has_unique_object_representations(C++17)
         template<typename _T>
@@ -33,9 +30,9 @@ __utility_globalspace_start(utility)
         template<typename _T>
         struct is_aggregate;
 
-      }
-    }
-  }
+      __utility_interspace_end(property)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_TRAIT_TYPE_PROPERTY__

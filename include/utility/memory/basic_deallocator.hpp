@@ -6,8 +6,7 @@
 #include<utility/memory/allocator_traits.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(memory)
-  {
+  __utility_interspace_start(memory)
     template<typename _Alloc>
     class basic_deallocator
     {
@@ -32,7 +31,7 @@ __utility_globalspace_start(utility)
         inline void operator()(pointer __ptr) noexcept
         { allocator_traits_type::deallocate(__allocator, __ptr, __size);}
     };
-  }
+  __utility_interspace_end(memory)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_BASIC_DEALLOCATOR__

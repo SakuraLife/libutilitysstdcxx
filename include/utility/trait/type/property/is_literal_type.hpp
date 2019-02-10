@@ -8,12 +8,9 @@
 #include<utility/trait/type/transform/remove_all_extents.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(property)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(property)
         // is_literal_type
         template<typename _T>
         struct is_literal_type : public
@@ -26,9 +23,9 @@ __utility_globalspace_start(utility)
             >::value
           >
         { };
-      }
-    }
-  }
+      __utility_interspace_end(property)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_PROPERTY_IS_LITERAL_TYPE__

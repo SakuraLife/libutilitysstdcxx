@@ -10,8 +10,7 @@
 #include<utility/trait/type/transform/remove_reference.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     /**
      * \brief Move a value if noexcept
      *
@@ -34,7 +33,7 @@ __utility_globalspace_start(utility)
       typedef trait::type::transform::remove_reference_t<_T> _U;
       return static_cast<_U&&>(_val)
     }
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_MOVE_IF_NOEXCEPT__

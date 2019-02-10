@@ -6,8 +6,7 @@
 #include<utility/algorithm/iter_swap.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     /**
      * \brief exchanges elements between range
      * Exchanges elements between range [\a _first, \a _last)
@@ -28,7 +27,7 @@ __utility_globalspace_start(utility)
       { iter_swap(_first++, _ffirst++);}
       return _ffirst;
     }
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 

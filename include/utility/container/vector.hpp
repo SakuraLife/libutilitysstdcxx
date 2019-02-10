@@ -37,8 +37,7 @@
 #include<utility/iterator/distance.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(container)
-  {
+  __utility_interspace_start(container)
     namespace __detail
     {
       using trait::__opt__::__eq__;
@@ -709,10 +708,9 @@ __utility_globalspace_start(utility)
     )
     { return !(_x < _y);}
 
-  }
+  __utility_interspace_end(container)
 
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     template<typename _T, typename _Alloc>
     inline void swap(
       container::vector<_T, _Alloc>& _x,
@@ -725,7 +723,7 @@ __utility_globalspace_start(utility)
       container::vector<_T, _Alloc>& _y
     ) noexcept(noexcept(_x.possible_swap(_y)))
     { _x.possible_swap(_y);}
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_VECTOR__

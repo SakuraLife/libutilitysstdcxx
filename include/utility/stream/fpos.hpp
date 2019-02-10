@@ -13,8 +13,7 @@
 #include<utility/sstd/cstring.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(stream)
-  {
+  __utility_interspace_start(stream)
     template<typename _Status>
     class fpos
     {
@@ -78,7 +77,7 @@ __utility_globalspace_start(utility)
     typedef fpos<sstd::mbstate_t> wstreampos;
     typedef fpos<sstd::mbstate_t> u16streampos;
     typedef fpos<sstd::mbstate_t> u32streampos;
-  }
+  __utility_interspace_end(stream)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CHARS_FPOS__

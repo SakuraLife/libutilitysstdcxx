@@ -8,12 +8,9 @@
 #include<utility/trait/type/categories/is_void.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(features)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(features)
         // is_assignable
         namespace __impl
         {
@@ -59,9 +56,9 @@ __utility_globalspace_start(utility)
         template<typename _T, typename _U>
         constexpr bool is_assignable_v = is_assignable<_T, _U>::value;
 #endif
-      }
-    }
-  }
+      __utility_interspace_end(features)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_FEATURES_IS_ASSIGNABLE__

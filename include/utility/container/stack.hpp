@@ -27,8 +27,7 @@
 #include<utility/trait/type/features/is_nothrow_possible_swappable.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(container)
-  {
+  __utility_interspace_start(container)
     template
     <
       typename _T,
@@ -183,10 +182,9 @@ __utility_globalspace_start(utility)
     )
     { return !(__x < __y);}
 
-  }
+  __utility_interspace_end(container)
 
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     template<typename _T, typename _Container>
     void swap(
       container::stack<_T, _Container>& __x,
@@ -199,7 +197,7 @@ __utility_globalspace_start(utility)
       container::stack<_T, _Container>& __y
     ) noexcept(noexcept(__x.possible_swap(__y)))
     { __x.possible_swap(__y);}
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_STACK__

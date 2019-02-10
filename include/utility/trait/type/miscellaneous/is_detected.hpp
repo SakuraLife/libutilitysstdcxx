@@ -15,12 +15,9 @@
 #endif // ! UTILITY_NEED_EXPERIMENTAL
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(miscellaneous)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(miscellaneous)
         namespace __impl
         {
           template<typename _Default, typename _Void, template<typename...> class _Op, typename... _Args>
@@ -75,9 +72,9 @@ __utility_globalspace_start(utility)
 
 #endif // ! __UTILITY_NO_CPP14__
 
-      }
-    }
-  }
+      __utility_interspace_end(miscellaneous)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_TRAIT_TYPE_MISCELLANEOUS_IS_DETECTED__

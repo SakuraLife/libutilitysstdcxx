@@ -22,8 +22,7 @@
 #include<utility/iterator/iterator_traits.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     /**
      * \brief Sort the elements in the range.
      *
@@ -234,7 +233,7 @@ __utility_globalspace_start(utility)
         algorithm::less<__value_type>()
       );
     }
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_SORT__

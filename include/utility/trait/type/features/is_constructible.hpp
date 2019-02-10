@@ -10,12 +10,9 @@
 # include<utility/trait/config/trait_config.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(features)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(features)
         // is_constructible
         template<class _T, typename... _Args>
         struct is_constructible:
@@ -23,9 +20,9 @@ __utility_globalspace_start(utility)
             __utility_is_constructible(_T, _Args...)
           >
         { };
-      }
-    }
-  }
+      __utility_interspace_end(features)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #else // __utility_has_is_constructible
@@ -42,12 +39,9 @@ __utility_globalspace_end(utility)
 # include<utility/trait/type/features/is_destructible.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(features)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(features)
         namespace __impl
         {
           using trait::__opt__::__type_and__;
@@ -179,9 +173,9 @@ __utility_globalspace_start(utility)
         struct is_constructible: public
           __impl::__is_constructible_helper<_T, _Args...>::type
         { };
-      }
-    }
-  }
+      __utility_interspace_end(features)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // __utility_has_is_constructible

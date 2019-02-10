@@ -8,8 +8,7 @@
 #include<utility/trait/type/miscellaneous/enable_if.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(memory)
-  {
+  __utility_interspace_start(memory)
     template<typename _T>
     struct default_delete
     {
@@ -83,7 +82,7 @@ __utility_globalspace_start(utility)
 
     };
 
-  }
+  __utility_interspace_end(memory)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_DEFAULT_DELETE__

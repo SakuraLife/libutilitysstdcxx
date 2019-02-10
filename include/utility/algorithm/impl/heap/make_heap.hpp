@@ -9,8 +9,7 @@
 #include<utility/iterator/iterator_traits.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     namespace impl
     {
       template<typename _RandomAccessIterator, typename _Compare, typename _Difference>
@@ -76,7 +75,7 @@ __utility_globalspace_start(utility)
         __value_type;
       algorithm::make_heap(__first, __last, algorithm::less<__value_type>());
     }
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_IMPL_HEAP_MAKE_HEAP__

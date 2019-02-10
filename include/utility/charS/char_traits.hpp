@@ -15,8 +15,7 @@
 #include<utility/stream/fpos.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(charS)
-  {
+  __utility_interspace_start(charS)
     template<typename _CharT>
     struct char_traits
     {
@@ -579,7 +578,7 @@ __utility_globalspace_start(utility)
       { return eq_int_type(__ch, eof()) ? ~eof() : __ch;}
     };
 
-  }
+  __utility_interspace_end(charS)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CHARS_CHAR_TRAITS__

@@ -6,8 +6,7 @@
 #include<utility/trait/type/features/is_trivially_destructible.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(memory)
-  {
+  __utility_interspace_start(memory)
     namespace __detail
     {
       using trait::type::features::is_trivially_destructible;
@@ -31,7 +30,7 @@ __utility_globalspace_start(utility)
     template<typename _T>
     inline void destroy_at(_T* __ptr)
     { __detail::__destroy_at<_T>::__aux(__ptr);}
-  }
+  __utility_interspace_end(memory)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_DESTROY_AT__

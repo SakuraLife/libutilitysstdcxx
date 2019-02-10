@@ -38,8 +38,7 @@
 #include<utility/trait/type/miscellaneous/common_type.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(memory)
-  {
+  __utility_interspace_start(memory)
     namespace __detail
     {
       using __two = trait::__opt__::__twochar__;
@@ -1081,26 +1080,24 @@ __utility_globalspace_start(utility)
     inline typename __detail::__check_unique_type<_T>::__bound_array
     make_unique(_Args&&... _args) = delete;
 
-  }
+  __utility_interspace_end(memory)
 
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     template<typename _T, typename _D>
     inline void swap(
       memory::unique_ptr<_T, _D> __x,
       memory::unique_ptr<_T, _D> __y
     ) noexcept
     { __x.swap(__y);}
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(memory)
-  {
+  __utility_interspace_start(memory)
     template<typename _T>
     using unique_array = memory::unique_ptr<_T[], memory::default_delete<_T[]>>;
 
-  }
+  __utility_interspace_end(memory)
 
 __utility_globalspace_end(utility)
 

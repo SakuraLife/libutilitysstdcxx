@@ -5,8 +5,7 @@
 #include<utility/config/utility_config.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(type)
-  {
+  __utility_interspace_start(type)
     namespace __impl
     {
       template<typename _T>
@@ -236,7 +235,7 @@ __utility_globalspace_start(utility)
     constexpr inline typename type::__impl::__is_integer<_Integer>::type
     operator>>=(byte& _by, _Integer _shift) noexcept
     { return _by = _by >> _shift;}
-  }
+  __utility_interspace_end(type)
 
   using type::byte;
 

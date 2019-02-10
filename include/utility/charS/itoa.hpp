@@ -5,8 +5,7 @@
 #include<utility/config/utility_config.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(charS)
-  {
+  __utility_interspace_start(charS)
     /**
      * \brief convert integer to string
      *
@@ -184,7 +183,7 @@ __utility_globalspace_start(utility)
       return __res;
     }
     /** @}*/
-  }
+  __utility_interspace_end(charS)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CHARS_ITOA__

@@ -5,8 +5,7 @@
 #define __UTILITY_CONTAINER_IMPL_HASH_TABLE_IMPL__
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(container)
-  {
+  __utility_interspace_start(container)
     template<
       typename _Key,
       typename _Value = _Key,
@@ -503,7 +502,7 @@ __utility_globalspace_start(utility)
 
       };
     }
-  }
+  __utility_interspace_end(container)
 __utility_globalspace_end(utility)
 
 

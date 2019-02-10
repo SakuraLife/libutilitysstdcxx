@@ -5,8 +5,7 @@
 #include<utility/config/utility_config.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(iterator)
-  {
+  __utility_interspace_start(iterator)
     struct input_iterator_tag
     { };
     struct output_iterator_tag
@@ -20,7 +19,7 @@ __utility_globalspace_start(utility)
     struct contiguous_iterator_tag : public random_access_iterator_tag
     { };
 
-  }
+  __utility_interspace_end(iterator)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ITERATOR_ITERATOR_TAG__

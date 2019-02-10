@@ -11,12 +11,9 @@
 #include<utility/trait/type/features/is_destructible.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(features)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(features)
         // is_trivially_destructible
         template<typename _T>
         struct is_trivially_destructible: public integral_constant<bool,
@@ -25,9 +22,9 @@ __utility_globalspace_start(utility)
           >
         { };
 
-      }
-    }
-  }
+      __utility_interspace_end(features)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #else // __utility_has_has_trivial_destructor
@@ -37,12 +34,9 @@ __utility_globalspace_end(utility)
 #include<utility/trait/type/transform/remove_all_extents.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(features)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(features)
         // is_trivially_destructible
         namespace __impl
         {
@@ -64,9 +58,9 @@ __utility_globalspace_start(utility)
           public trait::false_type
         { };
 
-      }
-    }
-  }
+      __utility_interspace_end(features)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // __utility_has_has_trivial_destructor

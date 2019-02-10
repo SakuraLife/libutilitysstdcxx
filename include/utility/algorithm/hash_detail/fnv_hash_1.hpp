@@ -5,8 +5,7 @@
 #include<utility/config/utility_config.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     namespace hash_detail
     {
       template<size_t = sizeof(size_t)>
@@ -74,7 +73,7 @@ __utility_globalspace_start(utility)
           }
       };
     }
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 // FNV_prime value

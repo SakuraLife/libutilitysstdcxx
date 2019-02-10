@@ -11,8 +11,7 @@
 #include<utility/trait/type/miscellaneous/invoke_result.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(functional)
-  {
+  __utility_interspace_start(functional)
     template<typename _Fn>
     class mem_fner
     {
@@ -44,7 +43,7 @@ __utility_globalspace_start(utility)
     template<typename _Ret, typename _C>
     inline mem_fner<_Ret _C::*> mem_fn(_Ret _C::* _mem_func) noexcept
     { return mem_fner<_Ret _C::*>{_mem_func};}
-  }
+  __utility_interspace_end(functional)
 __utility_globalspace_end(utility)
 
 

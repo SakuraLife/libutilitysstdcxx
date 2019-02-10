@@ -6,12 +6,9 @@
 #include<utility/trait/type/transform/remove_cv.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(categories)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(categories)
         // is_null_pointer && is_nullptr_t
         namespace __impl
         {
@@ -42,9 +39,9 @@ __utility_globalspace_start(utility)
         constexpr bool is_null_pointer_v = is_null_pointer<_T>::value;
 #endif
 
-      }
-    }
-  }
+      __utility_interspace_end(categories)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_TRAIT_TYPE_CATEGORIES_IS_NULL_POINTER__

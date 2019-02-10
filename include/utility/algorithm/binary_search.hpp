@@ -6,8 +6,7 @@
 #include<utility/algorithm/lower_bound.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     /**
      * \brief Test if value exists in sorted sequence
      *
@@ -59,7 +58,7 @@ __utility_globalspace_start(utility)
         algorithm::lower_bound(__first, __last, __val);
       return !(__first == __last) && !(__val < *__first);
     }
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_BINARY_SEARCH__

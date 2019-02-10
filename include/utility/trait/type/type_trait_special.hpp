@@ -5,12 +5,9 @@
 #include<utility/config/utility_config.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(special)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(special)
         // declval
         namespace __impl
         {
@@ -22,9 +19,9 @@ __utility_globalspace_start(utility)
         template<typename T>
         decltype(__impl::__declval_helper<T>(0))
           declval() noexcept;
-      }
-    }
-  }
+      __utility_interspace_end(special)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // ! ___UTILITY__TRAIT__SPECIAL__

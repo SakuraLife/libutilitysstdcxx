@@ -6,8 +6,7 @@
 #include<utility/algorithm/copy.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     /**
      * \brief Copy range rotated left
      *
@@ -35,7 +34,7 @@ __utility_globalspace_start(utility)
       __ofirst = algorithm::copy(__mid, __last, __ofirst);
       return algorithm::copy(__first, __mid, __ofirst);
     }
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_ROTATE_COPY__

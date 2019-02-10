@@ -12,8 +12,7 @@
 #include<utility/sstd/cstring.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(memory)
-  {
+  __utility_interspace_start(memory)
     namespace __detail
     {
       template<typename _InputIterator, typename _ForwardIterator>
@@ -172,7 +171,7 @@ __utility_globalspace_start(utility)
         _first, _last, _result, __identify{}
       );
     }
-  }
+  __utility_interspace_end(memory)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_UNINITIALIZED_COPY__

@@ -7,16 +7,14 @@
 
 // Forward declaration
 __utility_globalspace_start(utility)
-   __utility_interspace_start(functional)
-  {
+  __utility_interspace_start(functional)
     template<typename _T>
     class reference_wrapper;
-  }
+  __utility_interspace_end(functional)
 __utility_globalspace_end(utility)
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
+  __utility_interspace_start(trait)
     template<typename... Ts>
     struct void_type
     { typedef void type;};
@@ -68,7 +66,7 @@ __utility_globalspace_start(utility)
       struct __transport__
       { typedef _T type;};
     }
-  }
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 

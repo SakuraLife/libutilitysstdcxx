@@ -15,8 +15,7 @@
 
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(memory)
-  {
+  __utility_interspace_start(memory)
     namespace __detail
     {
       using trait::type::releations::is_convertible;
@@ -161,7 +160,7 @@ __utility_globalspace_start(utility)
     template<typename _T>
     observer_ptr<_T> make_observer(_T* _ptr) noexcept
     { return observer_ptr<_T>{_ptr};}
-  }
+  __utility_interspace_end(memory)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_OBSERVER_PTR__

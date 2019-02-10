@@ -5,8 +5,7 @@
 #include<utility/config/utility_config.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     /**
      * \brief Copy range reversed
      *
@@ -36,7 +35,7 @@ __utility_globalspace_start(utility)
       { *(++__ofirst) = *(--__last);}
       return __ofirst;
     }
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_REVERSE_COPY__

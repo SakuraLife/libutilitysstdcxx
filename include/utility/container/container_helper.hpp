@@ -20,8 +20,7 @@
 #include<utility/iterator/iterator_tag.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(container)
-  {
+  __utility_interspace_start(container)
     namespace helper
     {
       struct __success
@@ -35,7 +34,7 @@ __utility_globalspace_start(utility)
     using memory::allocator_arg_t;
     using memory::allocator_arg;
 
-  }
+  __utility_interspace_end(container)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_CONTAINER_HELPER__

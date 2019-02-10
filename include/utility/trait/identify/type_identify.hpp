@@ -6,10 +6,8 @@
 #include<utility/trait/type/type_features.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(identify)
-    {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(identify)
       template<typename _T>
       class type_identification
       {
@@ -35,8 +33,8 @@ __utility_globalspace_start(utility)
           trait::type::features::is_constructible<_T, _Args...>;
 
       };
-    }
-  }
+    __utility_interspace_end(identify)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // ! ___UTILITY__TRAIT__TYPE__IDENTIFT___

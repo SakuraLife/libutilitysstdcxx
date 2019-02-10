@@ -5,8 +5,7 @@
 #include<utility/config/utility_config.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     /**
      * \brief Applies function to range
      *
@@ -40,7 +39,7 @@ __utility_globalspace_start(utility)
       for(; __first != __last;)
       { __unary(*__first++);}
     }
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_FOR_EACH__

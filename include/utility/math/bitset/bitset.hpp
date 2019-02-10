@@ -5,8 +5,7 @@
 #include<utility/config/utility_config.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(math)
-  {
+  __utility_interspace_start(math)
     using size_t = decltype(sizeof(int));
 
     template
@@ -16,12 +15,11 @@ __utility_globalspace_start(utility)
       typename trait = ::trait::math::bit_trait<bit_type>
     >
     class bitset;
-  }
+  __utility_interspace_end(math)
 __utility_globalspace_end(utility)
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(math)
-  {
+  __utility_interspace_start(math)
     template<size_t Size, typename bit_type, typename trait>
     class bitset
     {
@@ -215,7 +213,7 @@ __utility_globalspace_start(utility)
       unsigned long long val)
     {
     }
-  }
+  __utility_interspace_end(math)
 __utility_globalspace_end(utility)
 
 

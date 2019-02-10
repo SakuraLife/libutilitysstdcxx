@@ -8,8 +8,7 @@
 #include<utility/config/utility_config.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     template<typename _T>
     __UTILITY_CPP14_CONSTEXPR__
     _T&& forward(
@@ -27,7 +26,7 @@ __utility_globalspace_start(utility)
       );
       return static_cast<_T&&>(_val);
     }
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_FORWARD__

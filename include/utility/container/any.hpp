@@ -27,8 +27,7 @@
 #include<utility/trait/type/features/is_nothrow_move_constructible.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(container)
-  {
+  __utility_interspace_start(container)
     class any;
 
     namespace __detail
@@ -570,15 +569,14 @@ __utility_globalspace_start(utility)
       }
 
     }
-  }
+  __utility_interspace_end(container)
 
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     void swap(container::any& __x, container::any& __y) noexcept
     { __x.swap(__y);}
     void possible_swap(container::any& __x, container::any& __y) noexcept
     { __x.swap(__y);}
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_ANY__

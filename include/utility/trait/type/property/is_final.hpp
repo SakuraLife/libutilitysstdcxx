@@ -10,20 +10,17 @@
 # include<utility/trait/config/trait_config.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(property)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(property)
         // is_final
         template<typename _T>
         struct is_final: public integral_constant<bool, __utility_is_final(_T)>
         { };
 
-      }
-    }
-  }
+      __utility_interspace_end(property)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #include<utility/trait/config/trait_undef.hpp>
@@ -31,20 +28,17 @@ __utility_globalspace_end(utility)
 #else // __UTILITY_NO_CPP14__ && __utility_has_is_final
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(property)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(property)
         // is_final
         template<typename _T>
         struct is_final : public trait::unsupport_trait<true>
         { };
 
-      }
-    }
-  }
+      __utility_interspace_end(property)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 

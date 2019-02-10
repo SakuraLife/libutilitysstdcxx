@@ -16,12 +16,9 @@
 #include<utility/trait/type/miscellaneous/conditional.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(trait)
-  {
-     __utility_interspace_start(type)
-    {
-       __utility_interspace_start(miscellaneous)
-      {
+  __utility_interspace_start(trait)
+    __utility_interspace_start(type)
+      __utility_interspace_start(miscellaneous)
         namespace __invoke_related
         {
           using trait::__opt__::__type_success__;
@@ -229,9 +226,9 @@ __utility_globalspace_start(utility)
         using invoke_result_t = typename invoke_result<_Fn, _ArgTypes...>::type;
         template<typename _T>
         using result_of_t = typename result_of<_T>::type;
-      }
-    }
-  }
+      __utility_interspace_end(miscellaneous)
+    __utility_interspace_end(type)
+  __utility_interspace_end(trait)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_TRAIT_TYPE_MISCELLANEOUS_INVOKE_RESULT__

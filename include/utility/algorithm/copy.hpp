@@ -9,8 +9,7 @@
 #include<utility/sstd/cstring.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     namespace __detail
     {
       template<typename _InputIterator, typename _OutputIterator>
@@ -65,7 +64,7 @@ __utility_globalspace_start(utility)
         __identify;
       return __detail::__copy(__first, __last, __result, __identify());
     }
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_COPY__

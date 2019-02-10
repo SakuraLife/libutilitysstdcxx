@@ -10,8 +10,7 @@
 #include<utility/sstd/new.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(memory)
-  {
+  __utility_interspace_start(memory)
     namespace __detail
     {
       template<typename _T>
@@ -130,7 +129,7 @@ __utility_globalspace_start(utility)
         bool is_vaild() const noexcept
         { return this->__item != nullptr;}
     };
-  }
+  __utility_interspace_end(memory)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_TEMPORARY_BUFFER__

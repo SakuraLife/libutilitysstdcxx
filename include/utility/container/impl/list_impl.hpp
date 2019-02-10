@@ -5,8 +5,7 @@
 #define __UTILITY_CONTAINER_IMPL_LIST_IMPL__
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(container)
-  {
+  __utility_interspace_start(container)
     template<
       typename _T,
       typename _Alloc = memory::allocator<_T>
@@ -212,7 +211,7 @@ __utility_globalspace_start(utility)
           { return !(this->operator==(_other));}
       };
     }
-  }
+  __utility_interspace_end(container)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_IMPL_LIST_IMPL__

@@ -6,8 +6,7 @@
 #include<utility/info/exception/exception.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(exception)
-  {
+  __utility_interspace_start(exception)
     class bad_alloc : public exception
     {
       public:
@@ -27,7 +26,7 @@ __utility_globalspace_start(utility)
 
     const char* bad_alloc::what() const noexcept
     { return "exception::bad_alloc";}
-  }
+  __utility_interspace_end(exception)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_EXCEPTION_BAD_ALLOC__

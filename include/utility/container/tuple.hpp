@@ -35,8 +35,7 @@
 
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(container)
-  {
+  __utility_interspace_start(container)
     // Forward Declaration;
     template<typename... _Types>
     class tuple;
@@ -1077,10 +1076,9 @@ __utility_globalspace_start(utility)
       );
     }
 
-  }
+  __utility_interspace_end(container)
 
-   __utility_interspace_start(trait)
-  {
+  __utility_interspace_start(trait)
     namespace __opt__
     {
       template<typename... _Types>
@@ -1090,10 +1088,9 @@ __utility_globalspace_start(utility)
       struct __checkout_type_feature__<container::tuple<_Types...>>
       { typedef __type_tuple__<_Types...> type;};
     }
-  }
+  __utility_interspace_end(trait)
 
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     template<typename... _Types>
     void swap(
       container::tuple<_Types...>& _x, container::tuple<_Types...>& _y
@@ -1104,7 +1101,7 @@ __utility_globalspace_start(utility)
       container::tuple<_Types...>& _x, container::tuple<_Types...>& _y
     ) noexcept(noexcept(_x.swap(_y)))
     { _x.swap(_y);}
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_TUPLE__

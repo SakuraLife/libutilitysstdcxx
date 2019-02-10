@@ -9,8 +9,7 @@
 __utility_globalspace_start(utility)
   namespace __config
   {
-     __utility_interspace_start(builder)
-    {
+    __utility_interspace_start(builder)
       void add_identifier(std::map<std::string, int>& __searcher)
       {
         __searcher.insert({"__has_trivial_destructor", 0});
@@ -191,7 +190,7 @@ __utility_globalspace_start(utility)
         }
         cout << "#endif // __utility_support_compile_extension" << "\n";
       }
-    }
+    __utility_interspace_end(builder)
   }
 __utility_globalspace_end(utility)
 /*

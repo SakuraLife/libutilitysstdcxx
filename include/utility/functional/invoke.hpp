@@ -18,8 +18,7 @@
 #include<utility/trait/type/miscellaneous/invoke_result.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(functional)
-  {
+  __utility_interspace_start(functional)
     namespace __invoke_detail
     {
       using namespace trait::type::miscellaneous::__invoke_related;
@@ -134,7 +133,7 @@ __utility_globalspace_start(utility)
         algorithm::forward<_Args>(__args)...
       );
     }
-  }
+  __utility_interspace_end(functional)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_FUNCTIONAL_INVOKE__

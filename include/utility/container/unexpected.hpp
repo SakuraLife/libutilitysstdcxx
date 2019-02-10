@@ -13,8 +13,7 @@
 #include<utility/trait/type/transform/decay.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(container)
-  {
+  __utility_interspace_start(container)
     namespace __detail
     {
       using trait::type::releations::is_same;
@@ -102,7 +101,7 @@ __utility_globalspace_start(utility)
       return unexpected<__detail::decay_t<_E>>{forward<_E>(_e)};
     }
 
-  }
+  __utility_interspace_end(container)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_UNEXPECTED__

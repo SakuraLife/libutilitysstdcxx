@@ -8,8 +8,7 @@
 #include<utility/iterator/iterator_traits.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(algorithm)
-  {
+  __utility_interspace_start(algorithm)
     namespace impl
     {
       template<
@@ -62,7 +61,7 @@ __utility_globalspace_start(utility)
         algorithm::less<__value_type>()
       );
     }
-  }
+  __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_IMPL_HEAP_PUSH_HEAP__

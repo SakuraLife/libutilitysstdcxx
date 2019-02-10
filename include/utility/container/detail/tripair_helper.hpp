@@ -18,8 +18,7 @@
 #include<utility/trait/type/miscellaneous/enable_if.hpp>
 
 __utility_globalspace_start(utility)
-   __utility_interspace_start(container)
-  {
+  __utility_interspace_start(container)
     namespace __detail
     {
       using trait::__opt__::__type_and__;
@@ -229,7 +228,7 @@ __utility_globalspace_start(utility)
       };
 
     }
-  }
+  __utility_interspace_end(container)
 
 __utility_globalspace_end(utility)
 
