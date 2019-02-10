@@ -11,9 +11,8 @@
 #include<utility/algorithm/hash_detail/fnv_hash_1a.hpp>
 #include<utility/algorithm/hash_detail/murmur_hash_2.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
 
     template<typename _T>
@@ -153,7 +152,7 @@ namespace utility
       { return reinterpret_cast<size_t>(__v);}
     };
   }
-}
+__utility_globalspace_end(utility)
 
 #include<utility/trait/config/trait_undef.hpp>
 

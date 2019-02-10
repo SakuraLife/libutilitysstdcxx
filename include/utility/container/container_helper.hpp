@@ -19,9 +19,8 @@
 #include<utility/iterator/move_iterator.hpp>
 #include<utility/iterator/iterator_tag.hpp>
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
     namespace helper
     {
@@ -37,6 +36,6 @@ namespace utility
     using memory::allocator_arg;
 
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_CONTAINER_HELPER__

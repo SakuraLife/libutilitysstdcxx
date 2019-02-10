@@ -5,9 +5,8 @@
 #include<utility/config/utility_config.hpp>
 #include<utility/algorithm/iter_swap.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     /**
      * \brief exchanges elements between range
@@ -30,7 +29,7 @@ namespace utility
       return _ffirst;
     }
   }
-}
+__utility_globalspace_end(utility)
 
 
 #endif // ! __UTILITY_ALGORITHM_SWAP_RANGES__

@@ -5,16 +5,15 @@
 #include<utility/trait/trait_helper.hpp>
 #include<utility/config/utility_config.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace miscellaneous
+       __utility_interspace_start(miscellaneous)
       {
         // aligned_storage
-        namespace __aligned_storage_impl
+        namespace __impl
         {
           template<size_t _Len>
           struct __aligned_storage_helper
@@ -28,9 +27,9 @@ namespace utility
         }
         template<
           size_t _Len,
-          size_t _Align =
-            __utility_alignof(typename
-              __aligned_storage_impl::__aligned_storage_helper<_Len>::type)
+          size_t _Align = __utility_alignof(
+            typename __impl::__aligned_storage_helper<_Len>::type
+          )
         >
         struct aligned_storage
         {
@@ -43,14 +42,14 @@ namespace utility
 
         template<
           size_t _Len,
-          size_t _Align =
-            __utility_alignof(typename
-              __aligned_storage_impl::__aligned_storage_helper<_Len>::type)
+          size_t _Align = __utility_alignof(
+            typename __impl::__aligned_storage_helper<_Len>::type
+          )
         >
         using aligned_storage_t = typename aligned_storage<_Len, _Align>::type;
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_MISCELLANEOUS_ALIGNED_STORAGE__

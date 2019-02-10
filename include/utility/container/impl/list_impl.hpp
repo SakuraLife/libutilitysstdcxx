@@ -4,9 +4,8 @@
 #ifndef __UTILITY_CONTAINER_IMPL_LIST_IMPL__
 #define __UTILITY_CONTAINER_IMPL_LIST_IMPL__
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
     template<
       typename _T,
@@ -214,7 +213,7 @@ namespace utility
       };
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_IMPL_LIST_IMPL__
 

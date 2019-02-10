@@ -4,11 +4,10 @@
 
 #include<utility/config/utility_config.hpp>
 
-namespace utility
-{
-  namespace logic
+__utility_globalspace_start(utility)
+   __utility_interspace_start(logic)
   {
-    namespace boolean
+     __utility_interspace_start(boolean)
     {
       /*!
       * \brief the indeterminate tag
@@ -230,7 +229,7 @@ namespace utility
     }
 
   }
-}
+__utility_globalspace_end(utility)
 
 
 #endif // ! __UTILITY_LOGIC_TRIBOOL__

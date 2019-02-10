@@ -7,9 +7,8 @@
 
 #include<utility/trait/opt/__twochar__.hpp>
 
-namespace utility
-{
-  namespace memory
+__utility_globalspace_start(utility)
+   __utility_interspace_start(memory)
   {
     namespace __detail
     {
@@ -50,6 +49,6 @@ namespace utility
 #endif
 
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_USES_ALLOCATOR__

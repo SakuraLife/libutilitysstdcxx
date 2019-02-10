@@ -8,18 +8,17 @@
 #include<utility/trait/type/categories/is_union.hpp>
 #include<utility/trait/type/categories/is_class.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace categories
+       __utility_interspace_start(categories)
       {
         // is_object
         template<typename _T>
-        struct is_object :
-          public trait::integral_constant<bool,
+        struct is_object:
+          public integral_constant<bool,
             is_scalar<_T>::value ||
             is_array<_T>::value  ||
             is_union<_T>::value  ||
@@ -34,6 +33,6 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_CATEGORIES_IS_OBJECT__

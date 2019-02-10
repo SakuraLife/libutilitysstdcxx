@@ -4,9 +4,8 @@
 #ifndef __UTILITY_CONTAINER_IMPL_HASH_TABLE_IMPL__
 #define __UTILITY_CONTAINER_IMPL_HASH_TABLE_IMPL__
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
     template<
       typename _Key,
@@ -505,7 +504,7 @@ namespace utility
       };
     }
   }
-}
+__utility_globalspace_end(utility)
 
 
 #endif // ! __UTILITY_CONTAINER_IMPL_HASH_TABLE_IMPL__

@@ -8,15 +8,14 @@
 #include<utility/iterator/next.hpp>
 #include<utility/iterator/distance.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     namespace sort_tag
     {
       struct enhanced_merge_sort_tag { };
     }
-    namespace detail
+    namespace impl
     {
 
       namespace sort_impl
@@ -138,6 +137,6 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_EXPL_ENHANCED_MERGE_SORT__

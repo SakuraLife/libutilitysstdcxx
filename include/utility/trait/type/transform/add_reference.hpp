@@ -5,19 +5,18 @@
 #include<utility/trait/trait_helper.hpp>
 #include<utility/trait/type/transform/is_referenceable.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace transform
+       __utility_interspace_start(transform)
       {
         // add_lvalue_reference
-        namespace __add_lvalue_reference_impl
+        namespace __impl
         {
-          template<typename _T, bool =
-          trait::type::transform::is_referenceable<_T>::value>
+          using trait::type::transform::is_referenceable;
+          template<typename _T, bool = is_referenceable<_T>::value>
           struct __add_lvalue_reference_helper
           { typedef _T type;};
           template<typename _T>
@@ -29,15 +28,13 @@ namespace utility
         struct add_lvalue_reference
         {
           typedef typename
-            __add_lvalue_reference_impl::
-              __add_lvalue_reference_helper<_T>::type type;
+            __impl::__add_lvalue_reference_helper<_T>::type type;
         };
 
         // add_rvalue_reference
-        namespace __add_rvalue_reference_impl
+        namespace __impl
         {
-          template<typename _T, bool =
-           trait::type::transform::is_referenceable<_T>::value>
+          template<typename _T, bool = is_referenceable<_T>::value>
           struct __add_rvalue_reference_helper
           { typedef _T type;};
           template<typename _T>
@@ -48,8 +45,7 @@ namespace utility
         struct add_rvalue_reference
         {
           typedef typename
-            __add_rvalue_reference_impl::
-              __add_rvalue_reference_helper<_T>::type type;
+            __impl::__add_rvalue_reference_helper<_T>::type type;
         };
 
         template<typename _T>
@@ -60,6 +56,6 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_TRANSFORM_ADD_REFERENCE__

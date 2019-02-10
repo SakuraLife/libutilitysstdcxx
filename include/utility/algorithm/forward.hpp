@@ -7,9 +7,8 @@
 #include<utility/trait/type/categories/is_lvalue_reference.hpp>
 #include<utility/config/utility_config.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     template<typename _T>
     __UTILITY_CPP14_CONSTEXPR__
@@ -29,6 +28,6 @@ namespace utility
       return static_cast<_T&&>(_val);
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_FORWARD__

@@ -4,16 +4,15 @@
 
 #include<utility/config/utility_config.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace special
+       __utility_interspace_start(special)
       {
         // declval
-        namespace __declval_impl
+        namespace __impl
         {
           template<typename T>
           T&& __declval_helper(int);
@@ -21,11 +20,11 @@ namespace utility
           T   __declval_helper(long);
         }
         template<typename T>
-        decltype(__declval_impl::__declval_helper<T>(0))
+        decltype(__impl::__declval_helper<T>(0))
           declval() noexcept;
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! ___UTILITY__TRAIT__SPECIAL__

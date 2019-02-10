@@ -5,17 +5,17 @@
 #include<utility/trait/trait_helper.hpp>
 #include<utility/trait/type/type_trait_special.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace op
+       __utility_interspace_start(op)
       {
         // operatot == -> eq
-        namespace __eq_impl
+        namespace __impl
         {
+          using trait::type::special::declval;
 
           template<typename _T, typename _U>
           struct __eq_test
@@ -25,24 +25,23 @@ namespace utility
               static void __help(const __T&);
 
               template<typename __T, typename __U>
-              static char __test(const __T&,decltype(operator==(trait::type::special::declval<_T>(),trait::type::special::declval<_U>()))* = 0);
+              static char __test(const __T&, decltype(declval<_T>() == declval<_U>())* = 0);
               template<typename __T, typename __U>
               static __two __test(...);
 
             public:
               constexpr static bool value = sizeof(char) ==
-                sizeof(decltype(__test<_T, _U>(trait::type::special::declval<_T>())));
+                sizeof(decltype(__test<_T, _U>(declval<_T>())));
           };
         }
         template<typename _T, typename _U = _T>
-        struct eq :
-          public trait::integral_constant<bool,
-            __eq_impl::__eq_test<_T, _U>::value>
+        struct eq : public integral_constant<bool,
+            __impl::__eq_test<_T, _U>::value>
         { };
 
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_TYPE_TRAIT_OPERATOR_EQ__

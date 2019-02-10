@@ -6,16 +6,15 @@
 #include<utility/iterator/next.hpp>
 #include<utility/iterator/prev.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     namespace sort_tag
     {
       struct cocktail_shaker_sort_tag { };
     }
 
-    namespace detail
+    namespace impl
     {
       using algorithm::sort_tag::cocktail_shaker_sort_tag;
       template<typename _BidirectionalIterator, typename _Compare>
@@ -51,6 +50,6 @@ namespace utility
     }
 
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_SORTIMPL_COCKTAIL_SHAKER_SORT__

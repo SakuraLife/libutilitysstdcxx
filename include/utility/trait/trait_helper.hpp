@@ -6,18 +6,16 @@
 #include<utility/trait/integral_constant.hpp>
 
 // Forward declaration
-namespace utility
-{
-  namespace functional
+__utility_globalspace_start(utility)
+   __utility_interspace_start(functional)
   {
     template<typename _T>
     class reference_wrapper;
   }
-}
+__utility_globalspace_end(utility)
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
     template<typename... Ts>
     struct void_type
@@ -71,7 +69,7 @@ namespace utility
       { typedef _T type;};
     }
   }
-}
+__utility_globalspace_end(utility)
 
 
 #endif // ! __UTILITY_TRAIT_TRAIT_HELPER__

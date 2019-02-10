@@ -11,9 +11,8 @@
 #include<utility/config/utility_config.hpp>
 #include<initializer_list>
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
     // template<typename _T>
     // class initializer_list
@@ -88,6 +87,6 @@ namespace utility
 
     using std::initializer_list;
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_INITIALIZER_LIST__

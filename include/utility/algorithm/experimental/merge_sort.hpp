@@ -7,11 +7,10 @@
 #include<utility/iterator/advance.hpp>
 #include<utility/iterator/iterator_traits.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
-    namespace detail
+    namespace impl
     {
       template<typename _RandomAccessIterator, typename _Compare>
       void __merge_sort(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __tfirst, _RandomAccessIterator __tlast, _Compare __compare)
@@ -33,7 +32,7 @@ namespace utility
     template<typename _RandomAccessIterator, typename _Compare>
     inline void merge_sort(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __tfirst, _RandomAccessIterator __tlast,_Compare __compare)
     {
-      detail::__merge_sort(__first, __last, __tfirst, __tlast, __compare);
+      impl::__merge_sort(__first, __last, __tfirst, __tlast, __compare);
     }
     template<typename _RandomAccessIterator>
     inline void merge_sort(_RandomAccessIterator __first, _RandomAccessIterator __last, _RandomAccessIterator __tfirst, _RandomAccessIterator __tlast)
@@ -44,6 +43,6 @@ namespace utility
       merge_sort(__first, __last, __tfirst, __tlast, algorithm::less<__value_type>());
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_MERGE_SORT__

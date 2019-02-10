@@ -30,9 +30,8 @@
 #include<utility/memory/addressof.hpp>
 #include<utility/memory/allocator_traits.hpp>
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
     template<
       typename _Key,
@@ -502,7 +501,7 @@ namespace utility
 
   }
 
-  namespace algorithm
+   __utility_interspace_start(algorithm)
   {
     template<typename _Key, typename _Compare, typename _Alloc>
     void swap(
@@ -521,6 +520,6 @@ namespace utility
       __x.possible_swap(__y);
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_SET__

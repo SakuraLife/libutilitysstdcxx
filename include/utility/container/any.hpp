@@ -26,9 +26,8 @@
 #include<utility/trait/type/features/is_copy_constructible.hpp>
 #include<utility/trait/type/features/is_nothrow_move_constructible.hpp>
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
     class any;
 
@@ -44,8 +43,8 @@ namespace utility
       using trait::type::features::is_copy_constructible;
       using trait::type::features::is_nothrow_move_constructible;
       using trait::type::transform::remove_cv_ref;
-      using container::helper::in_place_type_t;
-      using container::helper_traits::is_in_place_type;
+      using container::_helper::in_place_type_t;
+      using container::_helper::is_in_place_type;
 
       template<typename _Buffer, typename _T,
         bool _Safe = is_nothrow_move_constructible<_T>::value,
@@ -573,13 +572,13 @@ namespace utility
     }
   }
 
-  namespace algorithm
+   __utility_interspace_start(algorithm)
   {
     void swap(container::any& __x, container::any& __y) noexcept
     { __x.swap(__y);}
     void possible_swap(container::any& __x, container::any& __y) noexcept
     { __x.swap(__y);}
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_ANY__

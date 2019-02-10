@@ -6,9 +6,8 @@
 #include<utility/iterator/next.hpp>
 #include<utility/iterator/prev.hpp>
 
-namespace utility
-{
-  namespace iterator
+__utility_globalspace_start(utility)
+   __utility_interspace_start(iterator)
   {
     template<typename _Iterator, typename _Distance>
     __UTILITY_CPP17_CONSTEXPR__
@@ -18,6 +17,6 @@ namespace utility
         iterator::prev(__it, -__dis);
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ITERATOR_ADVANCE__

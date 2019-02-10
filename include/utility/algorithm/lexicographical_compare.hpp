@@ -5,9 +5,8 @@
 #include<utility/config/utility_config.hpp>
 #include<utility/algorithm/algorithm_auxiliary.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     template<typename _InputIterator1, typename _InputIterator2,
       typename _Compare>
@@ -38,6 +37,6 @@ namespace utility
       );
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_LEXICOGRAPGICAL_COMPARE__

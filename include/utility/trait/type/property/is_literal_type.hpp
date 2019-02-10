@@ -7,26 +7,28 @@
 #include<utility/trait/type/categories/is_reference.hpp>
 #include<utility/trait/type/transform/remove_all_extents.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace property
+       __utility_interspace_start(property)
       {
         // is_literal_type
         template<typename _T>
         struct is_literal_type : public
-          trait::integral_constant<bool,
-            trait::type::categories::is_scalar<typename
-              trait::type::transform::remove_all_extents<_T>::type>::value ||
-            trait::type::categories::is_reference<typename
-              trait::type::transform::remove_all_extents<_T>::type>::value>
+          integral_constant<bool,
+            trait::type::categories::is_scalar<
+              trait::type::transform::remove_all_extents_t<_T>
+            >::value ||
+            trait::type::categories::is_reference<
+              trait::type::transform::remove_all_extents_t<_T>
+            >::value
+          >
         { };
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_PROPERTY_IS_LITERAL_TYPE__

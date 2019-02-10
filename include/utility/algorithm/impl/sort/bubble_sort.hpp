@@ -6,16 +6,15 @@
 #include<utility/iterator/next.hpp>
 #include<utility/iterator/prev.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     namespace sort_tag
     {
       struct bubble_sort_tag { };
     }
 
-    namespace detail
+    namespace impl
     {
       using algorithm::sort_tag::bubble_sort_tag;
       template<typename _BidirectionalIterator, typename _Compare>
@@ -53,6 +52,6 @@ namespace utility
     }
 
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_SORTIMPL_BUBBLE_SORT__

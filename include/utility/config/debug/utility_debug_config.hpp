@@ -2,8 +2,6 @@
 #ifndef ___UTILITY__DEBUG__CONFIG___
 #define ___UTILITY__DEBUG__CONFIG___
 
-#define UTILITY_DEBUG
-
 #ifdef UTILITY_DEBUG
 
 #define __utility_private public
@@ -23,6 +21,8 @@
 #define __utility_interspace_end(_name)
 #define __utility_globalspace_end(_name) }
 
+#define __uspace(_name) _name
+
 #ifndef UTILITY_NO_EXTRA_CHECK
 
 #else
@@ -40,6 +40,8 @@
   inline namespace _name {
 #define __utility_interspace_end(_name)
 #define __utility_globalspace_end(_name) } }
+
+#define __uspace(_name) std::_name
 
 #endif // ! __UTILITY_DEBUG
 

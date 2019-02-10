@@ -33,9 +33,8 @@
 #include<utility/iterator/distance.hpp>
 #include<utility/iterator/next.hpp>
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
     template<
       typename _T,
@@ -45,9 +44,9 @@ namespace utility
 
     namespace __detail
     {
-      using helper::__node;
-      using helper::__snode;
-      using helper::__node_trait;
+      using _helper::__node;
+      using _helper::__snode;
+      using _helper::__node_trait;
       using trait::miscellaneous::pointer_traits;
       using trait::type::transform::add_lvalue_reference_t;
       using trait::type::features::is_nothrow_swappable;
@@ -204,12 +203,12 @@ namespace utility
         typedef typename allocator_traits_type::const_pointer const_pointer;
 
       private:
-        typedef helper::__snode                             __node_type;
+        typedef _helper::__snode                            __node_type;
         typedef __node_type*                                __link_type;
-        typedef helper::__node<value_type, __node_type>     node_type;
+        typedef _helper::__node<value_type, __node_type>    node_type;
         typedef node_type*                                  link_type;
-        typedef helper::__node_trait<__node_type>           node_trait;
-        typedef helper::__node_pool<node_type>              node_pool;
+        typedef _helper::__node_trait<__node_type>          node_trait;
+        typedef _helper::__node_pool<node_type>             node_pool;
 
       public:
         typedef __detail::__slist_iterator<value_type>       iterator;
@@ -1189,7 +1188,7 @@ namespace utility
     { return !(_x < _y);}
   }
 
-  namespace algorithm
+   __utility_interspace_start(algorithm)
   {
     template<typename _T, typename _Alloc>
     inline void swap(
@@ -1204,7 +1203,7 @@ namespace utility
     ) noexcept(noexcept(_x.possible_swap(_y)))
     { _x.possible_swap(_y);}
   }
-}
+__utility_globalspace_end(utility)
 
 
 #endif // ! __UTILITY_CONTAINER_FORWARD_LIST__

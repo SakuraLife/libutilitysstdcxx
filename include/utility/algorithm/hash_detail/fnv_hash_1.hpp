@@ -4,9 +4,8 @@
 
 #include<utility/config/utility_config.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     namespace hash_detail
     {
@@ -76,7 +75,7 @@ namespace utility
       };
     }
   }
-}
+__utility_globalspace_end(utility)
 
 // FNV_prime value
 // 32 bit FNV_prime = 2^24 + 2^8 + 0x93 = 16777619

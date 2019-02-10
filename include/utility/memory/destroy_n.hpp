@@ -8,17 +8,19 @@
 #include<utility/trait/type/features/is_trivially_destructible.hpp>
 #include<utility/trait/type/type_trait_special.hpp>
 
-namespace utility
-{
-  namespace memory
+__utility_globalspace_start(utility)
+   __utility_interspace_start(memory)
   {
-    namespace detail
+    namespace __detail
     {
-      template<typename _ForwardIterator,
-        bool =
-          trait::type::features::is_trivially_destructible<
-            decltype(*trait::type::special::declval<_ForwardIterator>())
-          >::value
+      using trait::type::features::is_trivially_destructible;
+      using trait::type::special::declval;
+
+      template<
+        typename _ForwardIterator,
+        bool = is_trivially_destructible<
+          decltype(*declval<_ForwardIterator>())
+        >::value
       >
       struct __destroy_n
       {
@@ -43,10 +45,8 @@ namespace utility
     }
     template<typename _ForwardIterator, typename _Size>
     void destroy_n(_ForwardIterator __first, _Size __length)
-    {
-      detail::__destroy_n<_ForwardIterator>::__aux(__first, __length);
-    }
+    { __detail::__destroy_n<_ForwardIterator>::__aux(__first, __length);}
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_DESTROY_N__

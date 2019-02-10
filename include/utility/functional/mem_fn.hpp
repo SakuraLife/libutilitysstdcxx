@@ -10,9 +10,8 @@
 
 #include<utility/trait/type/miscellaneous/invoke_result.hpp>
 
-namespace utility
-{
-  namespace functional
+__utility_globalspace_start(utility)
+   __utility_interspace_start(functional)
   {
     template<typename _Fn>
     class mem_fner
@@ -46,7 +45,7 @@ namespace utility
     inline mem_fner<_Ret _C::*> mem_fn(_Ret _C::* _mem_func) noexcept
     { return mem_fner<_Ret _C::*>{_mem_func};}
   }
-}
+__utility_globalspace_end(utility)
 
 
 #endif // ! __UTILITY_FUNCTIONAL_MEM_FN__

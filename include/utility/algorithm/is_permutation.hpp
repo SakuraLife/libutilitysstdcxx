@@ -10,11 +10,10 @@
 #include<utility/iterator/distance.hpp>
 #include<utility/iterator/next.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
-    namespace detail
+    namespace __detail
     {
       template<typename _ForwardIterator1, typename _ForwardIterator2,
         typename _BinaryPredicate
@@ -167,7 +166,7 @@ namespace utility
         trait::type::transform::add_lvalue_reference<_BinaryPredicate>::type
         __pred_ref;
 
-      return detail::__is_permutation_helper<_ForwardIterator1,
+      return __detail::__is_permutation_helper<_ForwardIterator1,
         _ForwardIterator2>::template __aux<__pred_ref>(
           __first1, __last1, __first2, __last2, __pred
       );
@@ -241,7 +240,7 @@ namespace utility
       if(__len == 1)
       { return false;}
 
-      return detail::__is_permutation<_ForwardIterator1, _ForwardIterator2, __pred_ref>(
+      return __detail::__is_permutation<_ForwardIterator1, _ForwardIterator2, __pred_ref>(
         __first1, __last1, __first2,
         iterator::next(__first2, __len), __pred
       );
@@ -266,6 +265,6 @@ namespace utility
       );
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_IS_PERMUTATION__

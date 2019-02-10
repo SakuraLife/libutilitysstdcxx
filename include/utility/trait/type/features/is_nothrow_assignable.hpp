@@ -6,40 +6,42 @@
 #include<utility/trait/type/type_trait_special.hpp>
 #include<utility/trait/type/features/is_assignable.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace features
+       __utility_interspace_start(features)
       {
         // is_nothrow_assignable
-        namespace __is_nothrow_assignable_impl
+        namespace __impl
         {
+          using trait::type::special::declval;
+
           template<bool, typename _To, typename _From>
           struct __is_nothrow_assignable_helper;
 
           template<typename _To, typename _From>
           struct __is_nothrow_assignable_helper<false, _To, _From> :
-            public trait::false_type
+            public false_type
           { };
           template<typename _To, typename _From>
           struct __is_nothrow_assignable_helper<true, _To, _From> :
-            public trait::integral_constant<bool,
-              noexcept(trait::type::special::declval<_To>() = trait::type::special::declval<_From>())>
+            public integral_constant<bool,
+              noexcept(declval<_To>() = declval<_From>())
+            >
           { };
         }
         template<typename _T, typename _U>
-        struct is_nothrow_assignable : public
-          __is_nothrow_assignable_impl::__is_nothrow_assignable_helper<
-            trait::type::features::is_assignable<_T, _U>::value,
-            _T, _U>
+        struct is_nothrow_assignable: public
+          __impl::__is_nothrow_assignable_helper<
+            is_assignable<_T, _U>::value, _T, _U
+          >
         { };
 
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_FEATURES_IS_NOTHROW_ASSIGNABLE__

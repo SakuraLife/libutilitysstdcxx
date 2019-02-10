@@ -6,9 +6,8 @@
 #include<utility/algorithm/swap.hpp>
 #include<utility/trait/type/type_trait_special.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     /**
      * \brief Exchange values of objects pointed to by two iterators
@@ -28,6 +27,6 @@ namespace utility
       swap(*__ita, *__itb);
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_ITER_SWAP__

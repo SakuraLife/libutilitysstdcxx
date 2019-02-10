@@ -7,9 +7,8 @@
 #include<utility/algorithm/impl/heap/pop_heap.hpp>
 #include<utility/iterator/iterator_traits.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     template<typename _RandomAccessIterator, typename _Compare>
     void sort_heap(
@@ -29,6 +28,6 @@ namespace utility
       sort_heap(__first, __last, algorithm::less<__value_type>());
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_IMPL_HEAP_SORT_HEAP__

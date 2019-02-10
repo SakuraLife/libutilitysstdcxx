@@ -6,9 +6,8 @@
 #include<utility/iterator/iterator_tag.hpp>
 #include<utility/trait/miscellaneous/pointer_traits.hpp>
 
-namespace utility
-{
-  namespace iterator
+__utility_globalspace_start(utility)
+   __utility_interspace_start(iterator)
   {
     template<typename _T>
     class raw_pointer_iterator
@@ -218,6 +217,6 @@ namespace utility
     ) noexcept
     { return _x.__ptr - _y.__ptr;}
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ITERATOR_RAW_POINTER_ITERATOR__

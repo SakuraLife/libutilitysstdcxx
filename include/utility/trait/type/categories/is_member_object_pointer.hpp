@@ -6,17 +6,16 @@
 #include<utility/trait/type/categories/is_member_pointer.hpp>
 #include<utility/trait/type/categories/is_member_function_pointer.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace categories
+       __utility_interspace_start(categories)
       {
         // is_member_object_pointer
         template<typename _T>
-        struct is_member_object_pointer :
+        struct is_member_object_pointer:
           public trait::integral_constant<bool,
             is_member_pointer<_T>::value           &&
             !is_member_function_pointer<_T>::value>
@@ -31,6 +30,6 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_CATEGORIES_IS_MEMBER_OBJECT_POINTER__

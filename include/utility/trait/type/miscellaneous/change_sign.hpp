@@ -6,16 +6,15 @@
 #include<utility/trait/type/categories/is_integral.hpp>
 #include<utility/trait/type/releations/is_same.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace miscellaneous
+       __utility_interspace_start(miscellaneous)
       {
         // make_signed & make_unsigned
-        namespace __change_sign_impl
+        namespace __impl
         {
           using trait::type::releations::is_same;
           template<typename _T>
@@ -115,12 +114,10 @@ namespace utility
           { typedef typename __make_unsigned_impl<_T>::type type;};
         }
         template<typename _T>
-        struct make_signed :
-          public __change_sign_impl::__make_signed_helper<_T>
+        struct make_signed: public __impl::__make_signed_helper<_T>
         { };
         template<typename _T>
-        struct make_unsigned :
-          public __change_sign_impl::__make_unsigned_helper<_T>
+        struct make_unsigned: public __impl::__make_unsigned_helper<_T>
         { };
 
         template<typename _T>
@@ -130,6 +127,6 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_PROPERTY_CHANGE_SIGN__

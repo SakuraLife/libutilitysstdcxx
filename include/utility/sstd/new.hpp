@@ -5,8 +5,7 @@
 #include<utility/config/utility_config.hpp>
 #include<new>
 
-namespace utility
-{
+__utility_globalspace_start(utility)
   namespace sstd
   {
     using std::get_new_handler;
@@ -29,6 +28,6 @@ namespace utility
 
 #endif
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! ___UTILITY__STANDARD__LIBRARY__NEW___

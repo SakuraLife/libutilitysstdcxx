@@ -16,12 +16,20 @@
 #include<utility/trait/type/features/is_nothrow_swappable.hpp>
 #include<utility/trait/type/miscellaneous/enable_if.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
-    namespace __possible_swap_impl
+    namespace __impl
     {
+      using trait::type::releations::is_same;
+      using trait::type::special::declval;
+      using trait::type::features::is_moveable;
+      using trait::type::features::is_copyable;
+      using trait::type::features::is_nothrow_move_constructible;
+      using trait::type::features::is_nothrow_move_assignable;
+      using trait::type::features::is_nothrow_copy_constructible;
+      using trait::type::features::is_nothrow_copy_assignable;
+
       template<typename _T>
       struct __has_possible_swap_test
       {
@@ -35,12 +43,9 @@ namespace utility
             -> trait::false_type;
 
         public:
-          constexpr static bool value =
-            trait::type::releations::is_same<
+          constexpr static bool value = is_same<
               trait::true_type,
-              decltype(__test<_T>(
-                trait::type::special::declval<_T>(),
-                trait::type::special::declval<_T>()))
+              decltype(__test<_T>(declval<_T>(), declval<_T>()))
             >::value;
       };
       template<typename _T>
@@ -56,20 +61,17 @@ namespace utility
             -> trait::false_type;
 
         public:
-          constexpr static bool value =
-            trait::type::releations::is_same<
+          constexpr static bool value = is_same<
               trait::true_type,
-              decltype(__test<_T>(
-                trait::type::special::declval<_T>(),
-                trait::type::special::declval<_T>()))
+              decltype(__test<_T>(declval<_T>(), declval<_T>()))
             >::value;
       };
 
       template<typename _T,
         bool = __has_possible_swap_test<_T>::value,
         bool = __has_swap_test<_T>::value,
-        bool = trait::type::features::is_moveable<_T>::value,
-        bool = trait::type::features::is_copyable<_T>::value
+        bool = is_moveable<_T>::value,
+        bool = is_copyable<_T>::value
       >
       struct __possible_swap;
 
@@ -93,8 +95,8 @@ namespace utility
       struct __possible_swap<_T, false, false, true, _Copy>
       {
         static void __aux(_T& __x, _T& __y) noexcept(
-          trait::type::features::is_nothrow_move_constructible<_T>::value &&
-          trait::type::features::is_nothrow_move_assignable<_T>::value
+          is_nothrow_move_constructible<_T>::value &&
+          is_nothrow_move_assignable<_T>::value
         )
         {
           _T __tmp(algorithm::move(__x));
@@ -106,8 +108,8 @@ namespace utility
       struct __possible_swap<_T, false, false, false, true>
       {
         static void __aux(_T& __x, _T& __y)  noexcept(
-          trait::type::features::is_nothrow_copy_constructible<_T>::value &&
-          trait::type::features::is_nothrow_copy_assignable<_T>::value
+          is_nothrow_copy_constructible<_T>::value &&
+          is_nothrow_copy_assignable<_T>::value
         )
         {
           _T __tmp(__x);
@@ -144,18 +146,16 @@ namespace utility
      */
     template<typename _T>
     typename trait::type::miscellaneous::enable_if<
-      __possible_swap_impl::__has_possible_swap_test<_T>::value ||
-      __possible_swap_impl::__has_swap_test<_T>::value ||
+      __impl::__has_possible_swap_test<_T>::value ||
+      __impl::__has_swap_test<_T>::value ||
       trait::type::features::is_moveable<_T>::value ||
       trait::type::features::is_copyable<_T>::value,
     void>::type
     possible_swap(_T& __x, _T& __y) noexcept(
-      noexcept(__possible_swap_impl::__possible_swap<_T>::__aux(__x, __y))
+      noexcept(__impl::__possible_swap<_T>::__aux(__x, __y))
     )
-    {
-      __possible_swap_impl::__possible_swap<_T>::__aux(__x, __y);
-    }
+    { __impl::__possible_swap<_T>::__aux(__x, __y);}
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_POSSIBLE_SWAP_SINGLE__

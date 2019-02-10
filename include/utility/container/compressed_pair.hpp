@@ -21,9 +21,8 @@
 #include<utility/trait/opt/__types__.hpp>
 #include<utility/trait/opt/__types_op__.hpp>
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
     template<typename _T1, typename _T2>
     class compressed_pair : private compressed_index<_T1, 0>,
@@ -408,7 +407,7 @@ namespace utility
     };
   }
 
-  namespace trait
+   __utility_interspace_start(trait)
   {
     namespace __opt__
     {
@@ -421,7 +420,7 @@ namespace utility
     }
   }
 
-  namespace algorithm
+   __utility_interspace_start(algorithm)
   {
     template<typename _T1, typename _T2>
     void swap(
@@ -437,7 +436,7 @@ namespace utility
     { _x.possible_swap(_y);}
   }
 
-  namespace container
+   __utility_interspace_start(container)
   {
     namespace __detail
     {
@@ -552,6 +551,6 @@ namespace utility
       return __detail::__get_compressed_pair<_Id>::get(move(_pair));
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_COMPRESSED_PAIR__

@@ -20,9 +20,8 @@
 #include<utility/trait/opt/__types__.hpp>
 #include<utility/trait/opt/__types_op__.hpp>
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
     /*!
     * \brief the pair container
@@ -285,7 +284,7 @@ namespace utility
 
   }
 
-  namespace trait
+   __utility_interspace_start(trait)
   {
     namespace __opt__
     {
@@ -298,7 +297,7 @@ namespace utility
     }
   }
 
-  namespace algorithm
+   __utility_interspace_start(algorithm)
   {
     template<typename _T1, typename _T2>
     void swap(
@@ -314,7 +313,7 @@ namespace utility
     { __a.possible_swap(__b);}
   }
 
-  namespace container
+   __utility_interspace_start(container)
   {
     namespace __detail
     {
@@ -429,6 +428,6 @@ namespace utility
       return __detail::__get_pair<_Id>::get(move(_pair));
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_PAIR__

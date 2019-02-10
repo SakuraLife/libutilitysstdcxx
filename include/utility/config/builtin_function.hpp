@@ -2,8 +2,7 @@
 #ifndef ___UTILITY__BUILTIN__FUNCTION___
 #define ___UTILITY__BUILTIN__FUNCTION___
 
-namespace utility
-{
+__utility_globalspace_start(utility)
   namespace _builtin
   {
     extern bool _add_overflow(
@@ -40,6 +39,6 @@ namespace utility
     extern int _popcount(unsigned long _val) noexcept;
     extern int _popcount(unsigned long long _val) noexcept;
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! ___UTILITY__BUILTIN__FUNCTION___

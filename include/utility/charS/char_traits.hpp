@@ -14,9 +14,8 @@
 #include<utility/stream/streamoff.hpp>
 #include<utility/stream/fpos.hpp>
 
-namespace utility
-{
-  namespace charS
+__utility_globalspace_start(utility)
+   __utility_interspace_start(charS)
   {
     template<typename _CharT>
     struct char_traits
@@ -581,6 +580,6 @@ namespace utility
     };
 
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CHARS_CHAR_TRAITS__

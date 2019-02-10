@@ -28,9 +28,8 @@
 #include<utility/trait/type/miscellaneous/enable_if.hpp>
 
 
-namespace utility
-{
-  namespace wrapper
+__utility_globalspace_start(utility)
+   __utility_interspace_start(wrapper)
   {
     namespace __detail
     {
@@ -415,7 +414,7 @@ namespace utility
 
   }
 
-  namespace algorithm
+   __utility_interspace_start(algorithm)
   {
     template<typename _T>
     inline void swap(
@@ -428,6 +427,6 @@ namespace utility
     ) noexcept(noexcept(_x.possible_swap(_y)))
     { _x.possible_swap(_y);}
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_WRAPPER_PROPAGATE_CONST__

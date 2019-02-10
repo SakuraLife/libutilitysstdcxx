@@ -8,21 +8,24 @@
 #include<utility/trait/type/property/is_const.hpp>
 #include<utility/trait/type/property/is_volatile.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace transform
+       __utility_interspace_start(transform)
       {
         // add_const
-        namespace __add_const_impl
+        namespace __impl
         {
+          using trait::type::property::is_const;
+          using trait::type::categories::is_function;
+          using trait::type::categories::is_reference;
+
           template<typename _T, bool =
-            trait::type::property::is_const<_T>::value       ||
-            trait::type::categories::is_function<_T>::value  ||
-            trait::type::categories::is_reference<_T>::value>
+            is_const<_T>::value || is_function<_T>::value ||
+            is_reference<_T>::value
+          >
           struct __add_const_helper
           { typedef _T type;};
           template<typename _T>
@@ -32,15 +35,17 @@ namespace utility
         template<typename _T>
         struct add_const
         { typedef typename
-            __add_const_impl::__add_const_helper<_T>::type type;};
+            __impl::__add_const_helper<_T>::type type;};
 
         // add_volatile
-        namespace __add_volatile_impl
+        namespace __impl
         {
+          using trait::type::property::is_volatile;
+
           template<typename _T, bool =
-            trait::type::property::is_volatile<_T>::value    ||
-            trait::type::categories::is_function<_T>::value  ||
-            trait::type::categories::is_reference<_T>::value>
+            is_volatile<_T>::value || is_function<_T>::value ||
+            is_reference<_T>::value
+          >
           struct __add_volatile_helper
           { typedef _T type;};
           template<typename _T>
@@ -49,14 +54,16 @@ namespace utility
         }
         template<typename _T>
         struct add_volatile
-        { typedef typename
-            __add_volatile_impl::__add_volatile_helper<_T>::type type;};
+        { typedef typename __impl::__add_volatile_helper<_T>::type type;};
 
         // add_cv
         template<typename _T>
         struct add_cv
-        { typedef typename add_const<typename
-            add_volatile<_T>::type>::type type;};
+        {
+          typedef typename add_const<
+            typename add_volatile<_T>::type
+          >::type type;
+        };
 
         template<typename _T>
         using add_cv_t = typename add_cv<_T>::type;
@@ -68,6 +75,6 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_TRANSFORM_ADD_CV__

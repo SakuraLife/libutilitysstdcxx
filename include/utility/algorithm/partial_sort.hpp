@@ -7,9 +7,8 @@
 #include<utility/algorithm/heap.hpp>
 #include<utility/iterator/iterator_traits.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     /**
      * \brief Partially sort elements in range
@@ -45,7 +44,7 @@ namespace utility
         if(__compare(*__i, *__first))
         {
           algorithm::swap(*__i, *__first);
-          detail::__pop_heap_aux(
+          impl::__pop_heap_aux(
             __first, __difference_type(__middle-__first-1), __compare
           );
         }
@@ -73,6 +72,6 @@ namespace utility
         partial_sort(__first, __last, algorithm::less<__value_type>());
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_PARTIAL_SORT__

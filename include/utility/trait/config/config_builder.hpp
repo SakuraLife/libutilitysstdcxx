@@ -6,11 +6,10 @@
 #include<string>
 #include<iostream>
 
-namespace utility
-{
+__utility_globalspace_start(utility)
   namespace __config
   {
-    namespace builder
+     __utility_interspace_start(builder)
     {
       void add_identifier(std::map<std::string, int>& __searcher)
       {
@@ -194,7 +193,7 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 /*
 GNU support
 __is_enum

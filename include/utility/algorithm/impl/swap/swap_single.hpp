@@ -10,9 +10,8 @@
 #include<utility/trait/type/features/is_nothrow_move_constructible.hpp>
 #include<utility/trait/type/miscellaneous/enable_if.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     /**
      * \brief Exchange values of two objects
@@ -47,6 +46,6 @@ namespace utility
       __b = algorithm::move(__tmp);
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_SWAP_SINGLE__

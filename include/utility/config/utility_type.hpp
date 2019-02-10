@@ -3,8 +3,7 @@
 #ifndef ___UTILITY__TYPE__DECLARARTION___
 #define ___UTILITY__TYPE__DECLARARTION___
 
-namespace utility
-{
+__utility_globalspace_start(utility)
   using size_t = decltype(sizeof(char));  ///< size type
   using nullptr_t = decltype(nullptr);    ///< nullptr type
   using ptrdiff_t = decltype(reinterpret_cast<char*>(0)-reinterpret_cast<char*>(0));         ///< pointer storage type
@@ -40,6 +39,6 @@ namespace utility
 
   using ssize_t = typename _impl::__ssize_t<size_t>::type;
   using uptrdiff_t = typename _impl::__uptrdiff_t<ptrdiff_t>::type;
-}
+__utility_globalspace_end(utility)
 
 #endif // ! ___UTILITY__TYPE__DECLARARTION___

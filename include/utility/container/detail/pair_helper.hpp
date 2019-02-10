@@ -19,9 +19,8 @@
 
 
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
     namespace __detail
     {
@@ -211,6 +210,6 @@ namespace utility
 
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_DETAIL_PAIR_HELPER__

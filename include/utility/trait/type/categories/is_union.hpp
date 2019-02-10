@@ -9,13 +9,12 @@
 
 # include<utility/trait/config/trait_config.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace categories
+       __utility_interspace_start(categories)
       {
         // is_union
         template<typename _T>
@@ -26,22 +25,21 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #else // __utility_has_is_union
 
 # include<utility/trait/type/transform/remove_cv.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace categories
+       __utility_interspace_start(categories)
       {
         // is_union
-        namespace __is_union_impl
+        namespace __impl
         {
           template<typename _T>
           struct __is_union_test : pulic trait::unsupport_trait<false>
@@ -49,7 +47,7 @@ namespace utility
         }
         template<typename _T>
         struct is_union :
-          public __is_union_impl::__is_union_test<
+          public __impl::__is_union_test<
             typename
               trait::type::transform::remove_cv<_T>::type>
         { };
@@ -57,18 +55,17 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __utility_has_is_union
 
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace categories
+       __utility_interspace_start(categories)
       {
 #if !defined(__UTILITY_NO_CPP14__)
         template<typename _T>
@@ -78,7 +75,7 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 
 #include<utility/trait/config/trait_undef.hpp>

@@ -13,23 +13,19 @@
 #include<utility/trait/type/transform/remove_extent.hpp>
 #include<utility/trait/type/transform/remove_all_extents.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace transform
+       __utility_interspace_start(transform)
       {
         template<typename _T>
         struct remove_all
         {
-          typedef
-            typename remove_cv<
-              typename remove_all_pointer_reference<
-                typename remove_all_extents<_T>::type
-              >::type
-            >::type type;
+          typedef remove_cv_t<
+            remove_all_pointer_reference_t<remove_all_extents_t<_T>>
+          > type;
         };
 
         template<typename _T>
@@ -37,6 +33,6 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_TRANSFORM_REMOVE_ALL__

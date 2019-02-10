@@ -7,11 +7,10 @@
 #include<utility/trait/type/releations/is_convertible.hpp>
 #include<utility/iterator/iterator_tag.hpp>
 
-namespace utility
-{
-  namespace iterator
+__utility_globalspace_start(utility)
+   __utility_interspace_start(iterator)
   {
-    namespace __trait_impl
+    namespace __impl
     {
       template<typename __Iterator>
       struct __has_iterator_category_tag
@@ -42,8 +41,8 @@ namespace utility
     }
     template<typename __Iterator>
     struct iterator_traits : public
-      __trait_impl::__iterator_traits_helper<__Iterator,
-        __trait_impl::__has_iterator_category_tag<__Iterator>::value>
+      __impl::__iterator_traits_helper<__Iterator,
+        __impl::__has_iterator_category_tag<__Iterator>::value>
     { };
     template<typename _T>
     struct iterator_traits<_T*>
@@ -77,7 +76,7 @@ namespace utility
     template<typename _T>
     using is_iterator =
       trait::integral_constant<bool,
-        iterator::__trait_impl::__has_iterator_category_tag<
+        iterator::__impl::__has_iterator_category_tag<
           iterator::iterator_traits<_T>
         >::value
       >;
@@ -151,6 +150,6 @@ namespace utility
       is_vaild_iterator_type<_Iterator, output_iterator_tag>;
 
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ITERATOR_ITERATOR_TRAITS__

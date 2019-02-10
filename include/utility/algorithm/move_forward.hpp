@@ -11,11 +11,10 @@
 #include<utility/trait/type/miscellaneous/enable_if.hpp>
 #include<utility/sstd/cstring.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
-    namespace detail
+    namespace __detail
     {
     }
 
@@ -52,6 +51,6 @@ namespace utility
       return __result + __len;
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_MOVE_BACKWARD__

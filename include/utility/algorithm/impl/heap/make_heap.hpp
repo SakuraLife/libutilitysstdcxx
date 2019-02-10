@@ -8,11 +8,10 @@
 #include<utility/algorithm/swap.hpp>
 #include<utility/iterator/iterator_traits.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
-    namespace detail
+    namespace impl
     {
       template<typename _RandomAccessIterator, typename _Compare, typename _Difference>
       void __make_heap_aux(
@@ -62,7 +61,7 @@ namespace utility
 
       for(__difference_type __hole = (__len-1) / 2; __hole >= 0; --__hole)
       {
-        detail::__make_heap_aux<_RandomAccessIterator, __comp_ref, __difference_type>(
+        impl::__make_heap_aux<_RandomAccessIterator, __comp_ref, __difference_type>(
           __first, __hole, __len, __compare
         );
       }
@@ -78,6 +77,6 @@ namespace utility
       algorithm::make_heap(__first, __last, algorithm::less<__value_type>());
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_IMPL_HEAP_MAKE_HEAP__

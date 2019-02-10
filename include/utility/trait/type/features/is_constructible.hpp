@@ -9,24 +9,24 @@
 
 # include<utility/trait/config/trait_config.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace features
+       __utility_interspace_start(features)
       {
         // is_constructible
         template<class _T, typename... _Args>
-        struct is_constructible :
-          public trait::integral_constant<bool,
-            __utility_is_constructible(_T, _Args...)>
+        struct is_constructible:
+          public integral_constant<bool,
+            __utility_is_constructible(_T, _Args...)
+          >
         { };
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #else // __utility_has_is_constructible
 
@@ -41,15 +41,14 @@ namespace utility
 # include<utility/trait/type/releations/is_base_of.hpp>
 # include<utility/trait/type/features/is_destructible.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace features
+       __utility_interspace_start(features)
       {
-        namespace __is_constructible_impl
+        namespace __impl
         {
           using trait::__opt__::__type_and__;
           using trait::__opt__::__type_or__;
@@ -110,43 +109,43 @@ namespace utility
             public:
               template<typename _To, typename _From,
                 typename = decltype(__help<_To>(declval<_From>()))>
-              static trait::true_type __test_cast(int);
+              static true_type __test_cast(int);
 
               template<typename _To, typename _From,
                 typename = decltype(static_cast<_To>(declval<_From>()))>
-              static trait::integral_constant<bool,
+              static integral_constant<bool,
                 !__is_invaild_base_to_derived_cast<_To, _From>::value &&
                 !__is_invalid_lvalue_to_rvalue_cast<_To, _From>::value>
                 __test_cast(long);
               template<typename, typename>
-              static trait::false_type __test_cast(...);
+              static false_type __test_cast(...);
 
             public:
               template<typename _T, typename... _Args,
                 typename = decltype(_T(declval<_Args>()...))>
-              static trait::true_type __test_nary(int);
+              static true_type __test_nary(int);
               template<typename _T, typename...>
-              static trait::false_type __test_nary(...);
+              static false_type __test_nary(...);
 
             public:
               template<typename _T, typename _U, typename =
                 decltype(new _T(declval<_U>()))>
               static is_destructible<_T> __test_unary(int);
               template<typename, typename>
-              static trait::false_type __test_unary(...);
+              static false_type __test_unary(...);
           };
 
           template<typename _T, bool = is_void<_T>::value>
-          struct __is_default_constructible_test :
+          struct __is_default_constructible_test:
             public decltype(__is_constructible_test_helper::__test_nary<_T>(0))
           { };
           template<typename _T>
-          struct __is_default_constructible_test<_T, true> : public
-            trait::false_type
+          struct __is_default_constructible_test<_T, true>: public
+            false_type
           { };
           template<typename _T>
-          struct __is_default_constructible_test<_T[], false> : public
-            trait::false_type
+          struct __is_default_constructible_test<_T[], false>: public
+            false_type
           { };
           template<typename _T, size_t _Size>
           struct __is_default_constructible_test<_T[_Size], false>: public
@@ -161,29 +160,29 @@ namespace utility
               decltype(__is_constructible_test_helper::__test_nary<_T, _Args...>(0)) type;
           };
           template<typename _T>
-          struct __is_constructible_helper<_T> : public __is_default_constructible_test<_T>
+          struct __is_constructible_helper<_T>: public __is_default_constructible_test<_T>
           { };
           template<typename _T, typename _Arg>
-          struct __is_constructible_helper<_T, _Arg> : public
+          struct __is_constructible_helper<_T, _Arg>: public
             decltype(__is_constructible_test_helper::__test_unary<_T, _Arg>(0))
           { };
           template<typename _T, typename _Arg>
-          struct __is_constructible_helper<_T&, _Arg> : public
+          struct __is_constructible_helper<_T&, _Arg>: public
             decltype(__is_constructible_test_helper::__test_cast<_T&, _Arg>(0))
           { };
           template<typename _T, typename _Arg>
-          struct __is_constructible_helper<_T&&, _Arg> : public
+          struct __is_constructible_helper<_T&&, _Arg>: public
             decltype(__is_constructible_test_helper::__test_cast<_T&&, _Arg>(0))
           { };
         }
         template<class _T, class... _Args>
-        struct is_constructible : public
-          __is_constructible_impl::__is_constructible_helper<_T, _Args...>::type
+        struct is_constructible: public
+          __impl::__is_constructible_helper<_T, _Args...>::type
         { };
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __utility_has_is_constructible
 

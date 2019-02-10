@@ -13,8 +13,7 @@
 #include<utility/memory/allocator_helper.hpp>
 #include<utility/iterator/iterator_traits.hpp>
 
-namespace utility
-{
+__utility_globalspace_start(utility)
   namespace persistent_container
   {
     using iterator::is_iterator;
@@ -34,6 +33,6 @@ namespace utility
     using container::initializer_list;
 
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_PERSISTENT_CONTAINER_CONTAINER_HELPER__

@@ -8,9 +8,8 @@
 
 #include<utility/iterator/iterator_traits.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     namespace sort_tag
     {
@@ -22,7 +21,7 @@ namespace utility
       constexpr ptrdiff_t __qsort_min = 8;
     }
 
-    namespace detail
+    namespace impl
     {
       namespace sort_impl
       {
@@ -95,6 +94,6 @@ namespace utility
     }
 
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_SORTIMPL_QUICK_SORT__

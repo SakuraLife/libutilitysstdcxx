@@ -7,9 +7,8 @@
 #include<utility/algorithm/copy.hpp>
 #include<utility/iterator/iterator_traits.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     /**
      * \brief Merge sorted ranges
@@ -70,6 +69,6 @@ namespace utility
       );
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_MERGE__

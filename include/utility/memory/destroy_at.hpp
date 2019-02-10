@@ -5,14 +5,16 @@
 #include<utility/config/utility_config.hpp>
 #include<utility/trait/type/features/is_trivially_destructible.hpp>
 
-namespace utility
-{
-  namespace memory
+__utility_globalspace_start(utility)
+   __utility_interspace_start(memory)
   {
-    namespace detail
+    namespace __detail
     {
-      template<typename _T,
-        bool = trait::type::features::is_trivially_destructible<_T>::value
+      using trait::type::features::is_trivially_destructible;
+
+      template<
+        typename _T,
+        bool = is_trivially_destructible<_T>::value
       >
       struct __destroy_at
       {
@@ -28,8 +30,8 @@ namespace utility
     }
     template<typename _T>
     inline void destroy_at(_T* __ptr)
-    { detail::__destroy_at<_T>::__aux(__ptr);}
+    { __detail::__destroy_at<_T>::__aux(__ptr);}
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_DESTROY_AT__

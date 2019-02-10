@@ -8,11 +8,10 @@
 #include<utility/algorithm/swap.hpp>
 #include<utility/algorithm/impl/heap/push_heap.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
-    namespace detail
+    namespace impl
     {
       template<typename _RandomAccessIterator, typename _Compare, typename _Difference>
       void __pop_heap_aux(_RandomAccessIterator __first, _Difference __len, _Compare __compare)
@@ -53,7 +52,7 @@ namespace utility
         __comp_ref;
 
       algorithm::swap(*(__last-1), *__first);
-      detail::__pop_heap_aux<_RandomAccessIterator, __comp_ref, __difference_type>(
+      impl::__pop_heap_aux<_RandomAccessIterator, __comp_ref, __difference_type>(
         __first, __difference_type(__last-__first-1), __compare
       );
     }
@@ -69,5 +68,5 @@ namespace utility
       );
     }
   }
-}
+__utility_globalspace_end(utility)
 #endif // ! __UTILITY_ALGORITHM_IMPL_HEAP_POP_HEAP__

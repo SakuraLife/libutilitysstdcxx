@@ -4,9 +4,8 @@
 
 #include<utility/config/utility_config.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     /**
      * \brief Checks whether all elementes satisfied some condition.
@@ -40,6 +39,6 @@ namespace utility
       return true;
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_ALL_OF__

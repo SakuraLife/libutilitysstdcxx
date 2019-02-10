@@ -4,9 +4,8 @@
 
 #include<utility/config/utility_config.hpp>
 
-namespace utility
-{
-  namespace iterator
+__utility_globalspace_start(utility)
+   __utility_interspace_start(iterator)
   {
     struct input_iterator_tag
     { };
@@ -22,6 +21,6 @@ namespace utility
     { };
 
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ITERATOR_ITERATOR_TAG__

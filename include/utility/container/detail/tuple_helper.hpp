@@ -20,9 +20,8 @@
 #include<utility/trait/type/features/is_nothrow_constructible.hpp>
 #include<utility/trait/type/features/is_nothrow_possible_swappable.hpp>
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
     namespace __detail
     {
@@ -228,6 +227,6 @@ namespace utility
 
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_DETAIL_TUPLE_HELPER__

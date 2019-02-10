@@ -15,13 +15,12 @@
 #include<utility/trait/type/releations/is_base_of.hpp>
 #include<utility/trait/type/miscellaneous/conditional.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace miscellaneous
+       __utility_interspace_start(miscellaneous)
       {
         namespace __invoke_related
         {
@@ -170,12 +169,12 @@ namespace utility
 
           template<bool/*member_function*/, bool/*member_object*/,
             typename _Fn, typename... _Args>
-          struct __invoke_result_helper :
+          struct __invoke_result_helper:
             public __invoke_process<__empty__, __invoke_failed>
           { };
 
           template<typename _Fn, typename... _Args>
-          struct __invoke_result_helper<true, false, _Fn, _Args...> :
+          struct __invoke_result_helper<true, false, _Fn, _Args...>:
             public __invoke_process<__empty__, __invoke_failed>
           { };
           template<typename _Fn, typename _Arg, typename... _Args>
@@ -187,7 +186,7 @@ namespace utility
           { };
 
           template<typename _Fn, typename... _Args>
-          struct __invoke_result_helper<false, true, _Fn, _Args...> :
+          struct __invoke_result_helper<false, true, _Fn, _Args...>:
             public __invoke_process<__empty__, __invoke_failed>
           { };
           template<typename _Fn, typename _Arg, typename... _Args>
@@ -195,19 +194,20 @@ namespace utility
             public __invoke_member_object_helper<
               decay_t<_Fn>,
               typename __wrapper__<_Arg, decay_t<_Arg>>::type
-              >::type
+            >::type
           { };
 
           template<typename _Fn, typename... _Args>
-          struct __invoke_result_helper<false, false, _Fn, _Args...> :
+          struct __invoke_result_helper<false, false, _Fn, _Args...>:
             public __invoke_operators_helper<_Fn, _Args...>::type
           { };
 
           template<typename _Fn, typename... _Args>
-          struct __invoke_result : public __invoke_result_helper<
-            is_member_function_pointer<_Fn>::value,
-            is_member_object_pointer<_Fn>::value,
-            _Fn, _Args...>
+          struct __invoke_result: public __invoke_result_helper<
+              is_member_function_pointer<_Fn>::value,
+              is_member_object_pointer<_Fn>::value,
+              _Fn, _Args...
+            >
           { };
 
         }
@@ -215,13 +215,13 @@ namespace utility
         template<typename _T>
         struct result_of;
         template<typename _Fn, typename... _ArgTypes>
-        struct result_of<_Fn(_ArgTypes...)> :
+        struct result_of<_Fn(_ArgTypes...)>:
           public __invoke_related::__invoke_result<_Fn, _ArgTypes...>::type
         { };
 
         // invoke_result
         template<typename _Fn, typename... _ArgTypes>
-        struct invoke_result :
+        struct invoke_result:
           public __invoke_related::__invoke_result<_Fn, _ArgTypes...>::type
         { };
 
@@ -232,6 +232,6 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_TRAIT_TYPE_MISCELLANEOUS_INVOKE_RESULT__

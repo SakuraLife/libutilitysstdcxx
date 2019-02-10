@@ -6,51 +6,49 @@
 #include<utility/trait/type/type_trait_special.hpp>
 #include<utility/trait/type/features/is_destructible.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace features
+       __utility_interspace_start(features)
       {
         // is_nothrow_destructible
-        namespace __is_nothrow_destructible_impl
+        namespace __impl
         {
+          using trait::type::special::declval;
+
           template<bool, typename _T>
           struct __is_nothrow_destructible_helper;
 
           template<typename _T>
-          struct __is_nothrow_destructible_helper<false, _T> : public
-            trait::false_type
+          struct __is_nothrow_destructible_helper<false, _T>: public
+            false_type
           { };
           template<typename _T>
-          struct __is_nothrow_destructible_helper<true, _T> : public
-            trait::integral_constant<bool,
-              noexcept(trait::type::special::declval<_T>().~_T())>
+          struct __is_nothrow_destructible_helper<true, _T>: public
+            integral_constant<bool, noexcept(declval<_T>().~_T())>
           { };
         }
         template<typename _T>
-        struct is_nothrow_destructible : public
-          __is_nothrow_destructible_impl::__is_nothrow_destructible_helper<
-            trait::type::features::is_destructible<_T>::value,
-            _T>
+        struct is_nothrow_destructible: public
+          __impl::__is_nothrow_destructible_helper<
+            is_destructible<_T>::value,_T
+          >
         { };
         template<typename _T>
-        struct is_nothrow_destructible<_T&> :
-          public trait::true_type
+        struct is_nothrow_destructible<_T&>: public true_type
         { };
         template<typename _T>
-        struct is_nothrow_destructible<_T&&> :
-          public trait::true_type
+        struct is_nothrow_destructible<_T&&>: public true_type
         { };
         template<typename _T, size_t _Size>
-        struct is_nothrow_destructible<_T[_Size]> :
+        struct is_nothrow_destructible<_T[_Size]>:
           public is_nothrow_destructible<_T>
         { };
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_FEATURES_IS_NOTHROW_DESTRUCTIBLE__

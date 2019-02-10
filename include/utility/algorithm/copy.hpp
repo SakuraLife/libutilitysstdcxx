@@ -8,11 +8,10 @@
 #include<utility/iterator/iterator_traits.hpp>
 #include<utility/sstd/cstring.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
-    namespace detail
+    namespace __detail
     {
       template<typename _InputIterator, typename _OutputIterator>
       _OutputIterator __copy(_InputIterator __first, _InputIterator __last,
@@ -64,9 +63,9 @@ namespace utility
           trait::type::categories::is_pointer<_OutputIterator>::value &&
           (trait::type::property::is_pod<__value_type>::value)>
         __identify;
-      return detail::__copy(__first, __last, __result, __identify());
+      return __detail::__copy(__first, __last, __result, __identify());
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_COPY__

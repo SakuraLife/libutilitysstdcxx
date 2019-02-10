@@ -4,11 +4,10 @@
 
 #include<utility/config/utility_config.hpp>
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
-    namespace helper
+     __utility_interspace_start(_helper)
     {
       struct __single_tag
       { };
@@ -239,6 +238,6 @@ namespace utility
       };
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_HELPER_NODE__

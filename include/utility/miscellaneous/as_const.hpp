@@ -5,9 +5,8 @@
 #include<utility/config/utility_config.hpp>
 #include<utility/trait/type/transform/add_cv.hpp>
 
-namespace utility
-{
-  namespace miscellaneous
+__utility_globalspace_start(utility)
+   __utility_interspace_start(miscellaneous)
   {
     /**
      * \brief Forms value to const type
@@ -25,6 +24,6 @@ namespace utility
     template<typename _T>
     void as_const(const _T&&) = delete;
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MISCELLANEOUS_AS_CONST__

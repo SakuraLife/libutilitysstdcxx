@@ -22,9 +22,8 @@
  *
  */
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
     namespace __opt__
     {
@@ -62,6 +61,6 @@ namespace utility
       { };
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_TRAIT_OPT___TYPES____

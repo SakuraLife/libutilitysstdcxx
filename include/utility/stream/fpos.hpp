@@ -12,9 +12,8 @@
 #include<utility/stream/streamoff.hpp>
 #include<utility/sstd/cstring.hpp>
 
-namespace utility
-{
-  namespace stream
+__utility_globalspace_start(utility)
+   __utility_interspace_start(stream)
   {
     template<typename _Status>
     class fpos
@@ -80,6 +79,6 @@ namespace utility
     typedef fpos<sstd::mbstate_t> u16streampos;
     typedef fpos<sstd::mbstate_t> u32streampos;
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CHARS_FPOS__

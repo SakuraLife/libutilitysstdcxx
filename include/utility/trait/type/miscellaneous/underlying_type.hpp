@@ -9,27 +9,24 @@
 
 #include<utility/trait/config/trait_config.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace miscellaneous
+       __utility_interspace_start(miscellaneous)
       {
         // underlying_type
         template<typename _T>
         struct underlying_type
-        {
-          typedef __utility_underlying_type(_T) type;
-        };
+        { typedef __utility_underlying_type(_T) type;};
 
         template<typename _T>
         using underlying_type_t = typename underlying_type<_T>::type;
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __utility_has_underlying_type
 

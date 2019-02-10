@@ -5,29 +5,28 @@
 #include<utility/trait/trait_helper.hpp>
 #include<utility/trait/type/transform/remove_cv.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace categories
+       __utility_interspace_start(categories)
       {
         // is_void
-        namespace __is_void_impl
+        namespace __impl
         {
           template<typename _T>
-          struct __is_void_test : public trait::false_type
+          struct __is_void_test: public false_type
           { };
           template<>
-          struct __is_void_test<void> : public trait::true_type
+          struct __is_void_test<void>: public true_type
           { };
         }
         template<typename _T>
         struct is_void :
-          public __is_void_impl::__is_void_test<
-            typename
-              trait::type::transform::remove_cv<_T>::type>
+          public __impl::__is_void_test<
+            trait::type::transform::remove_cv_t<_T>
+          >
         { };
 
 #if !defined(__UTILITY_NO_CPP14__)
@@ -38,7 +37,7 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 
 #endif // ! __UTILITY_TRAIT_TYPE_CATEGORIES_IS_VOID__

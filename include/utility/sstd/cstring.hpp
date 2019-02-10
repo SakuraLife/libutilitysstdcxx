@@ -11,8 +11,8 @@
 */
 
 
-#ifndef ___UTILITY__STANDARD__LIBRARY__CSTDING___
-#define ___UTILITY__STANDARD__LIBRARY__CSTDING___
+#ifndef ___UTILITY__STANDARD__LIBRARY__CSTRING___
+#define ___UTILITY__STANDARD__LIBRARY__CSTRING___
 
 #include<utility/config/utility_config.hpp>
 
@@ -30,8 +30,7 @@
 extern "C++"
 {
 
-namespace utility
-{
+__utility_globalspace_start(utility)
   namespace sstd
   {
     // Constant
@@ -149,8 +148,7 @@ namespace utility
     // extern char* strfry(char* _str) noexcept;
 
   }
-}
+__utility_globalspace_end(utility)
 
 }
-
-#endif // ! ___UTILITY__STANDARD__LIBRARY__CSTDING___
+#endif // ! ___UTILITY__STANDARD__LIBRARY__CSTRING___

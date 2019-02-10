@@ -2,16 +2,15 @@
 #ifndef __UTILITY_TRAIT_TYPE_FWD__
 #define __UTILITY_TRAIT_TYPE_FWD__
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
     template<typename Type, Type val>
     struct integral_constant;
 
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace categories
+       __utility_interspace_start(categories)
       {
         // is_void
         template<typename _T>
@@ -101,7 +100,7 @@ namespace utility
 
       }
 
-      namespace property
+       __utility_interspace_start(property)
       {
         // is_const
         template<typename _T>
@@ -167,7 +166,7 @@ namespace utility
 
       }
 
-      namespace property_query
+       __utility_interspace_start(property_query)
       {
         // extent
         template<typename _T, unsigned int I = 0>
@@ -183,7 +182,7 @@ namespace utility
 
       }
 
-      namespace features
+       __utility_interspace_start(features)
       {
         // is_constructible
         template<class _T, class... Args>
@@ -303,7 +302,7 @@ namespace utility
 
       }
 
-      namespace releations
+       __utility_interspace_start(releations)
       {
         // is_same
         template<typename _T1, typename _T2>
@@ -336,7 +335,7 @@ namespace utility
       }
 
 
-      namespace transform
+       __utility_interspace_start(transform)
       {
         // remove_const
         template<typename _T>
@@ -396,7 +395,7 @@ namespace utility
 
       }
 
-      namespace operations
+       __utility_interspace_start(operation)
       {
         // conjunction
         template<class... B>
@@ -411,7 +410,7 @@ namespace utility
         struct negation;
       }
 
-      namespace miscellaneous
+       __utility_interspace_start(miscellaneous)
       {
         // make_signed
         template<typename _T>
@@ -456,6 +455,6 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_TRAIT_TYPE_FWD__

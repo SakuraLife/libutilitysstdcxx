@@ -19,11 +19,10 @@
 #include<utility/trait/miscellaneous/pointer_traits.hpp>
 #include<utility/sstd/new.hpp>
 
-namespace utility
-{
-  namespace memory
+__utility_globalspace_start(utility)
+   __utility_interspace_start(memory)
   {
-    namespace __alloc_traits_impl
+    namespace __impl
     {
       using __two = trait::__opt__::__twochar__;
 
@@ -341,7 +340,7 @@ namespace utility
       { typedef _Allocator<_T, _Args...> type;};
     }
 
-    namespace __alloc_traits_impl
+    namespace __impl
     {
       using trait::type::special::declval;
       template<typename _Allocator, typename _Size, typename _Const_Void_Ptr>
@@ -552,45 +551,45 @@ namespace utility
         typedef _Allocator allocator_type;
         typedef typename allocator_type::value_type value_type;
         typedef typename
-          __alloc_traits_impl::__alloc_pointer<value_type, _Allocator
+          __impl::__alloc_pointer<value_type, _Allocator
             >::type pointer;
         typedef typename
-          __alloc_traits_impl::__alloc_const_pointer<value_type, pointer, _Allocator
+          __impl::__alloc_const_pointer<value_type, pointer, _Allocator
             >::type const_pointer;
         typedef typename
-          __alloc_traits_impl::__alloc_void_pointer<_Allocator, pointer
+          __impl::__alloc_void_pointer<_Allocator, pointer
             >::type void_pointer;
         typedef typename
-          __alloc_traits_impl::__alloc_const_void_pointer<_Allocator, pointer
+          __impl::__alloc_const_void_pointer<_Allocator, pointer
             >::type const_void_pointer;
         typedef typename
-          __alloc_traits_impl::__alloc_difference_type<pointer, _Allocator
+          __impl::__alloc_difference_type<pointer, _Allocator
             >::type difference_type;
         typedef typename
-          __alloc_traits_impl::__alloc_size_type<difference_type, _Allocator
+          __impl::__alloc_size_type<difference_type, _Allocator
             >::type size_type;
 
       public:
         typedef typename
-          __alloc_traits_impl::__alloc_propagate_on_container_copy_assignment<
+          __impl::__alloc_propagate_on_container_copy_assignment<
             _Allocator>::type propagate_on_container_copy_assignment;
         typedef typename
-          __alloc_traits_impl::__alloc_propagate_on_container_move_assignment<
+          __impl::__alloc_propagate_on_container_move_assignment<
           _Allocator>::type propagate_on_container_move_assignment;
         typedef typename
-          __alloc_traits_impl::__alloc_propagate_on_container_swap<
+          __impl::__alloc_propagate_on_container_swap<
             _Allocator>::type propagate_on_container_swap;
 
       public:
         typedef typename
-          __alloc_traits_impl::__alloc_is_always_equal<_Allocator
+          __impl::__alloc_is_always_equal<_Allocator
             >::type is_always_equal;
 
       public:
         template<typename _T>
         using rebind_alloc =
          typename
-          __alloc_traits_impl::__alloc_rebind<_Allocator, _T>::type;
+          __impl::__alloc_rebind<_Allocator, _T>::type;
         template<typename _T>
         using rebind_traits = allocator_traits<rebind_alloc<_T>>;
 
@@ -601,10 +600,10 @@ namespace utility
         { return __alloc.allocate(__size);}
         static pointer allocate(allocator_type& __alloc, size_type __size,const_void_pointer __hint)
         {
-          return __alloc_traits_impl::__allocate<
+          return __impl::__allocate<
             allocator_type, size_type, const_void_pointer, pointer>
             (__alloc, __size, __hint,
-              __alloc_traits_impl::__alloc_has_hint<
+              __impl::__alloc_has_hint<
               allocator_type, size_type, const_void_pointer>());
         }
 
@@ -618,8 +617,8 @@ namespace utility
           static_assert(
             trait::type::features::is_constructible<_T, _Args...>::value,
             "The args is not vaild.");
-          __alloc_traits_impl::__construct(
-            __alloc_traits_impl::__alloc_has_construct<allocator_type, _T, _Args...>(),
+          __impl::__construct(
+            __impl::__alloc_has_construct<allocator_type, _T, _Args...>(),
             __alloc, __ptr,
             algorithm::forward<_Args>(__args)...);
         }
@@ -627,14 +626,14 @@ namespace utility
         template<typename _T>
         static inline void destroy(allocator_type& __alloc, _T* __ptr)
         {
-          __alloc_traits_impl::__alloc_destroy<allocator_type, _T
+          __impl::__alloc_destroy<allocator_type, _T
             >::__aux(__alloc, __ptr);
         }
 
       public:
         static inline size_type max_size(const allocator_type& __alloc) noexcept
         {
-          return __alloc_traits_impl::__max_size<allocator_type,
+          return __impl::__max_size<allocator_type,
             size_type, value_type>::__aux(__alloc);
         }
 
@@ -643,11 +642,11 @@ namespace utility
           select_on_container_copy_construction(const allocator_type& __alloc)
         {
           return
-            __alloc_traits_impl::__select_on_container_copy_construction<
+            __impl::__select_on_container_copy_construction<
               allocator_type>::__aux(__alloc);
         }
     };
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_ALLOCATOR_TRAITS__

@@ -4,9 +4,8 @@
 
 #include<utility/config/utility_config.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     /**
      * Finds value in range
@@ -35,6 +34,6 @@ namespace utility
       return __last;
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_FIND__

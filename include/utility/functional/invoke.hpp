@@ -17,9 +17,8 @@
 #include<utility/trait/type/features/is_nothrow_invocable.hpp>
 #include<utility/trait/type/miscellaneous/invoke_result.hpp>
 
-namespace utility
-{
-  namespace functional
+__utility_globalspace_start(utility)
+   __utility_interspace_start(functional)
   {
     namespace __invoke_detail
     {
@@ -136,6 +135,6 @@ namespace utility
       );
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_FUNCTIONAL_INVOKE__

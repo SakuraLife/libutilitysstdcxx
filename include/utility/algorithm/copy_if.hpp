@@ -4,9 +4,8 @@
 
 #include<utility/config/utility_config.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     /**
      * \brief Copy certain elements of range
@@ -47,6 +46,6 @@ namespace utility
       return __ffirst;
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_COPY_IF__

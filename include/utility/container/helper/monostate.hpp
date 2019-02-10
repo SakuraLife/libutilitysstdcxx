@@ -10,12 +10,11 @@
 
 #include<utility/config/utility_config.hpp>
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
 
-    namespace helper
+     __utility_interspace_start(_helper)
     {
       struct monostate
       { };
@@ -32,11 +31,11 @@ namespace utility
       constexpr bool operator!=(monostate, monostate) noexcept
       { return false;}
 
-    } // helper
+    } // _helper
 
-    using helper::monostate;
+    using _helper::monostate;
 
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_HELPER_MONOSTATE__

@@ -5,11 +5,10 @@
 #include<utility/trait/trait_helper.hpp>
 #include<utility/trait/opt/__logical__.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace operation
+     __utility_interspace_start(operation)
     {
       // disjunction
       template<typename... _Types>
@@ -23,6 +22,6 @@ namespace utility
 
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_TRAIT_OPERATION_DISJUNCTION__

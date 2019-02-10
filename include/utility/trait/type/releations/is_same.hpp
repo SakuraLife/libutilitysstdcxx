@@ -4,20 +4,19 @@
 
 #include<utility/trait/trait_helper.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace releations
+       __utility_interspace_start(releations)
       {
         // is_same
         template<typename _T1, typename _T2>
-        struct is_same : public trait::false_type
+        struct is_same : public false_type
         { };
         template<typename _T>
-        struct is_same<_T, _T> : public trait::true_type
+        struct is_same<_T, _T> : public true_type
         { };
 
 #if !defined(__UTILITY_NO_CPP14__)
@@ -28,6 +27,6 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_RELEATIONS_IS_SAME__

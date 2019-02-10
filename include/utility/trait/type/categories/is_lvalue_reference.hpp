@@ -4,22 +4,19 @@
 
 #include<utility/trait/trait_helper.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace categories
+       __utility_interspace_start(categories)
       {
         // is_lvalue_reference
         template<typename _T>
-        struct is_lvalue_reference :
-          public trait::false_type
+        struct is_lvalue_reference: public false_type
         { };
         template<typename _T>
-        struct is_lvalue_reference<_T&> :
-          public trait::true_type
+        struct is_lvalue_reference<_T&>: public true_type
         { };
 
 #if !defined(__UTILITY_NO_CPP14__)
@@ -30,6 +27,6 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_CATEGORIES_IS_LVALUE_REFERENCE__

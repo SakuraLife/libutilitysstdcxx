@@ -8,11 +8,10 @@
 #include<utility/trait/type/releations/is_convertible.hpp>
 #include<utility/trait/type/miscellaneous/enable_if.hpp>
 
-namespace utility
-{
-  namespace iterator
+__utility_globalspace_start(utility)
+   __utility_interspace_start(iterator)
   {
-    namespace detail
+    namespace __detail
     {
       template<typename _Difference, bool = false>
       struct __distance
@@ -30,34 +29,28 @@ namespace utility
       {
         template<typename _Iterator>
         static _Difference __aux(_Iterator __first, _Iterator __last)
-        {
-          return __last - __first;
-        }
+        { return __last - __first;}
       };
 
     }
     template<typename _Iterator>
-    inline
-    typename
-    trait::type::miscellaneous::enable_if<
+    inline typename trait::type::miscellaneous::enable_if<
       iterator::is_iterator<_Iterator>::value,
-      typename
-      iterator::iterator_traits<_Iterator>::difference_type
+      typename iterator::iterator_traits<_Iterator>::difference_type
     >::type
     distance(_Iterator __first, _Iterator __last)
     {
-      typedef trait::type::releations::is_convertible<
-        typename
+      typedef trait::type::releations::is_convertible< typename
         iterator::iterator_traits<_Iterator>::iterator_category,
         iterator::random_access_iterator_tag>
         __identify;
       typedef typename
         iterator::iterator_traits<_Iterator>::difference_type
         __difference_type;
-      return detail::__distance<__difference_type, __identify::value
+      return __detail::__distance<__difference_type, __identify::value
         >::__aux(__first, __last);
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ITERATOR_DISTANCE__

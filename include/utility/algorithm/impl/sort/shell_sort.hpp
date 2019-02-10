@@ -6,16 +6,15 @@
 #include<utility/iterator/iterator_traits.hpp>
 #include<utility/iterator/distance.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     namespace sort_tag
     {
       struct shell_sort_tag { };
     }
 
-    namespace detail
+    namespace impl
     {
       using algorithm::sort_tag::shell_sort_tag;
       template<typename _RandomAccessIterator, typename _Compare>
@@ -54,6 +53,6 @@ namespace utility
     }
 
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_SORTIMPL_SHELL_SORT__

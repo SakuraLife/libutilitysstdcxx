@@ -8,16 +8,15 @@
 #include<utility/iterator/iterator_traits.hpp>
 #include<utility/algorithm/partial_sort.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     namespace sort_tag
     {
       struct heap_sort_tag { };
     }
 
-    namespace detail
+    namespace impl
     {
       using algorithm::sort_tag::heap_sort_tag;
       template<typename _RandomAccessIterator, typename _Compare>
@@ -39,6 +38,6 @@ namespace utility
     }
 
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_SORTIMPL_HEAP_SORT__

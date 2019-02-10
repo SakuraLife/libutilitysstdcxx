@@ -4,9 +4,8 @@
 
 #include<utility/config/utility_config.hpp>
 
-namespace utility
-{
-  namespace math
+__utility_globalspace_start(utility)
+   __utility_interspace_start(math)
   {
     using size_t = decltype(sizeof(int));
 
@@ -18,11 +17,10 @@ namespace utility
     >
     class bitset;
   }
-}
+__utility_globalspace_end(utility)
 
-namespace utility
-{
-  namespace math
+__utility_globalspace_start(utility)
+   __utility_interspace_start(math)
   {
     template<size_t Size, typename bit_type, typename trait>
     class bitset
@@ -218,7 +216,7 @@ namespace utility
     {
     }
   }
-}
+__utility_globalspace_end(utility)
 
 
 

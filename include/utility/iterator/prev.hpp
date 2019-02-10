@@ -6,14 +6,14 @@
 #include<utility/iterator/iterator_tag.hpp>
 #include<utility/iterator/iterator_traits.hpp>
 
-namespace utility
-{
-  namespace iterator
+__utility_globalspace_start(utility)
+   __utility_interspace_start(iterator)
   {
-    namespace detail
+    namespace __detail
     {
       template<typename _Iterator,
-        bool = is_vaild_iterator_type<_Iterator,random_access_iterator_tag>::value>
+        bool = is_vaild_iterator_type<_Iterator,random_access_iterator_tag>::value
+      >
       struct __prev
       {
         template<typename _Difference>
@@ -41,9 +41,9 @@ namespace utility
       typename iterator_traits<_BidirectionalIterator>::difference_type __len = 1
     )
     {
-      return detail::__prev<_BidirectionalIterator>::__aux(__it, __len);
+      return __detail::__prev<_BidirectionalIterator>::__aux(__it, __len);
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ITERATOR_PREV__

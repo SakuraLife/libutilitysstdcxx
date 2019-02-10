@@ -65,111 +65,113 @@
 #define UINTMAX_MAX       ___UTILITY_UINTMAX_MAX
 
 
-namespace utility
-{
+__utility_globalspace_start(utility)
+  namespace sstd
+  {
 #if defined(___UTILITY_INT8_T)
-  typedef ___UTILITY_INT8_T int8_t;
+    typedef ___UTILITY_INT8_T int8_t;
 #endif
 
 #if defined(___UTILITY_INT16_T)
-  typedef ___UTILITY_INT16_T int16_t;
+    typedef ___UTILITY_INT16_T int16_t;
 #endif
 
 #if defined(___UTILITY_INT32_T)
-  typedef ___UTILITY_INT32_T int32_t;
+    typedef ___UTILITY_INT32_T int32_t;
 #endif
 
 #if defined(___UTILITY_INT64_T)
-  typedef ___UTILITY_INT64_T int64_t;
+    typedef ___UTILITY_INT64_T int64_t;
 #endif
 
 #if defined(___UTILITY_UINT8_T)
-  typedef ___UTILITY_UINT8_T uint8_t;
+    typedef ___UTILITY_UINT8_T uint8_t;
 #endif
 
 #if defined(___UTILITY_UINT16_T)
-  typedef ___UTILITY_UINT16_T uint16_t;
+    typedef ___UTILITY_UINT16_T uint16_t;
 #endif
 
 #if defined(___UTILITY_UINT32_T)
-  typedef ___UTILITY_UINT32_T uint32_t;
+    typedef ___UTILITY_UINT32_T uint32_t;
 #endif
 
 #if defined(___UTILITY_UINT64_T)
-  typedef ___UTILITY_UINT64_T uint64_t;
+    typedef ___UTILITY_UINT64_T uint64_t;
 #endif
 
 #if defined(___UTILITY_INT_FAST8_T)
-  typedef ___UTILITY_INT_FAST8_T int_fast8_t;
+    typedef ___UTILITY_INT_FAST8_T int_fast8_t;
 #endif
 
 #if defined(___UTILITY_INT_FAST16_T)
-  typedef ___UTILITY_INT_FAST16_T int_fast16_t;
+    typedef ___UTILITY_INT_FAST16_T int_fast16_t;
 #endif
 
 #if defined(___UTILITY_INT_FAST32_T)
-  typedef ___UTILITY_INT_FAST32_T int_fast32_t;
+    typedef ___UTILITY_INT_FAST32_T int_fast32_t;
 #endif
 
 #if defined(___UTILITY_INT_FAST64_T)
-  typedef ___UTILITY_INT_FAST64_T int_fast64_t;
+    typedef ___UTILITY_INT_FAST64_T int_fast64_t;
 #endif
 
 #if defined(___UTILITY_UINT_FAST8_T)
-  typedef ___UTILITY_UINT_FAST8_T uint_fast8_t;
+    typedef ___UTILITY_UINT_FAST8_T uint_fast8_t;
 #endif
 
 #if defined(___UTILITY_UINT_FAST16_T)
-  typedef ___UTILITY_UINT_FAST16_T uint_fast16_t;
+    typedef ___UTILITY_UINT_FAST16_T uint_fast16_t;
 #endif
 
 #if defined(___UTILITY_UINT_FAST32_T)
-  typedef ___UTILITY_UINT_FAST32_T uint_fast32_t;
+    typedef ___UTILITY_UINT_FAST32_T uint_fast32_t;
 #endif
 
 #if defined(___UTILITY_UINT_FAST64_T)
-  typedef ___UTILITY_UINT_FAST64_T uint_fast64_t;
+    typedef ___UTILITY_UINT_FAST64_T uint_fast64_t;
 #endif
 
 #if defined(___UTILITY_INT_LEAST8_T)
-  typedef ___UTILITY_INT_LEAST8_T int_least8_t;
+    typedef ___UTILITY_INT_LEAST8_T int_least8_t;
 #endif
 
 #if defined(___UTILITY_INT_LEAST16_T)
-  typedef ___UTILITY_INT_LEAST16_T int_least16_t;
+    typedef ___UTILITY_INT_LEAST16_T int_least16_t;
 #endif
 
 #if defined(___UTILITY_INT_LEAST32_T)
-  typedef ___UTILITY_INT_LEAST32_T int_least32_t;
+    typedef ___UTILITY_INT_LEAST32_T int_least32_t;
 #endif
 
 #if defined(___UTILITY_INT_LEAST64_T)
-  typedef ___UTILITY_INT_LEAST64_T int_least64_t;
+    typedef ___UTILITY_INT_LEAST64_T int_least64_t;
 #endif
 
 #if defined(___UTILITY_UINT_LEAST8_T)
-  typedef ___UTILITY_UINT_LEAST8_T uint_least8_t;
+    typedef ___UTILITY_UINT_LEAST8_T uint_least8_t;
 #endif
 
 #if defined(___UTILITY_UINT_LEAST16_T)
-  typedef ___UTILITY_UINT_LEAST16_T uint_least16_t;
+    typedef ___UTILITY_UINT_LEAST16_T uint_least16_t;
 #endif
 
 #if defined(___UTILITY_UINT_LEAST32_T)
-  typedef ___UTILITY_UINT_LEAST32_T uint_least32_t;
+    typedef ___UTILITY_UINT_LEAST32_T uint_least32_t;
 #endif
 
 #if defined(___UTILITY_UINT_LEAST64_T)
-  typedef ___UTILITY_UINT_LEAST64_T uint_least64_t;
+    typedef ___UTILITY_UINT_LEAST64_T uint_least64_t;
 #endif
 
 #if defined(___UTILITY_INTMAX_T)
-  typedef ___UTILITY_INTMAX_T intmax_t;
+    typedef ___UTILITY_INTMAX_T intmax_t;
 #endif
 
 #if defined(___UTILITY_UINTMAX_T)
-  typedef ___UTILITY_UINTMAX_T uintmax_t;
+    typedef ___UTILITY_UINTMAX_T uintmax_t;
 #endif
-}
+  }
+__utility_globalspace_end(utility)
 
 #endif // ! ___UTILITY__STANDARD__LIBRARY__CSTDINT___

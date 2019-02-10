@@ -36,9 +36,8 @@
 #include<utility/iterator/raw_pointer_iterator.hpp>
 #include<utility/iterator/distance.hpp>
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
     namespace __detail
     {
@@ -712,7 +711,7 @@ namespace utility
 
   }
 
-  namespace algorithm
+   __utility_interspace_start(algorithm)
   {
     template<typename _T, typename _Alloc>
     inline void swap(
@@ -727,6 +726,6 @@ namespace utility
     ) noexcept(noexcept(_x.possible_swap(_y)))
     { _x.possible_swap(_y);}
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_VECTOR__

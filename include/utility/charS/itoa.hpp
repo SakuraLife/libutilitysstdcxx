@@ -4,9 +4,8 @@
 
 #include<utility/config/utility_config.hpp>
 
-namespace utility
-{
-  namespace charS
+__utility_globalspace_start(utility)
+   __utility_interspace_start(charS)
   {
     /**
      * \brief convert integer to string
@@ -186,6 +185,6 @@ namespace utility
     }
     /** @}*/
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CHARS_ITOA__

@@ -9,9 +9,8 @@
 #include<utility/iterator/iterator_traits.hpp>
 #include<utility/iterator/reverse_iterator.hpp>
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
     template
     <
@@ -79,6 +78,6 @@ namespace utility
 
     };
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_CYCLE_ARRAY__

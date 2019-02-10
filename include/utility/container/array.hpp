@@ -29,9 +29,8 @@
 #include<utility/trait/operation/negation.hpp>
 #include<utility/trait/operation/conjunction.hpp>
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
     template<typename _T, size_t _N>
     class array
@@ -332,7 +331,7 @@ namespace utility
 
   }
 
-  namespace trait
+   __utility_interspace_start(trait)
   {
     namespace __opt__
     {
@@ -349,7 +348,7 @@ namespace utility
     }
   }
 
-  namespace algorithm
+   __utility_interspace_start(algorithm)
   {
     template<typename _T, size_t _N>
     void swap(
@@ -362,6 +361,6 @@ namespace utility
     ) noexcept(noexcept(_x.possible_swap(_y)))
     { _x.possible_swap(_y);}
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_ARRAY__

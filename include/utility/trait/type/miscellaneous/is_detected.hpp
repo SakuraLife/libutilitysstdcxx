@@ -14,15 +14,14 @@
 # define __cpp_lib_experimental_detect 201505L
 #endif // ! UTILITY_NEED_EXPERIMENTAL
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace miscellaneous
+       __utility_interspace_start(miscellaneous)
       {
-        namespace __detail
+        namespace __impl
         {
           template<typename _Default, typename _Void, template<typename...> class _Op, typename... _Args>
           struct __detector
@@ -40,16 +39,16 @@ namespace utility
 
         typedef __opt__::__none__ nonesuch;
         template<template<typename...> class _Op, typename... _Args>
-        using is_detected = typename __detail::__detector<nonesuch, void, _Op, _Args...>::value_t;
+        using is_detected = typename __impl::__detector<nonesuch, void, _Op, _Args...>::value_t;
 
         template<template<typename...> class _Op, typename... _Args>
-        using detected_t = typename __detail::__detector<nonesuch, void, _Op, _Args...>::type;
+        using detected_t = typename __impl::__detector<nonesuch, void, _Op, _Args...>::type;
 
         template<typename _Default, template<typename...> class _Op, typename... _Args>
-        using detected_or = __detail::__detector<_Default, void, _Op, _Args...>;
+        using detected_or = __impl::__detector<_Default, void, _Op, _Args...>;
 
         template<typename _Default, template<typename...> class _Op, typename... _Args>
-        using detected_or_t = typename __detail::__detector<_Default, void, _Op, _Args...>::type;
+        using detected_or_t = typename __impl::__detector<_Default, void, _Op, _Args...>::type;
 
         template<typename _Expected, template<typename...> class _Op, typename... _Args>
         using is_detected_exact = releations::is_same<detected_t<_Op, _Args...>, _Expected>;
@@ -79,6 +78,6 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_TRAIT_TYPE_MISCELLANEOUS_IS_DETECTED__

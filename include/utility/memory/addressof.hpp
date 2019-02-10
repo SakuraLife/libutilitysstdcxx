@@ -4,9 +4,8 @@
 
 #include<utility/config/utility_config.hpp>
 
-namespace utility
-{
-  namespace memory
+__utility_globalspace_start(utility)
+   __utility_interspace_start(memory)
   {
     /*!
     * \brief Get the pointer of the reference
@@ -35,6 +34,6 @@ namespace utility
     template<typename _T>
     const _T* addressof(const _T&&) = delete;
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_ADDRESSOF__

@@ -4,13 +4,12 @@
 
 #include<utility/trait/trait_helper.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace transform
+       __utility_interspace_start(transform)
       {
         // remove_const
         template<typename _T>
@@ -32,8 +31,9 @@ namespace utility
         template<typename _T>
         struct remove_cv
         {
-          typedef typename remove_volatile<typename
-            remove_const<_T>::type>::type type;
+          typedef typename remove_volatile<
+            typename remove_const<_T>::type
+          >::type type;
         };
 
         template<typename _T>
@@ -45,6 +45,6 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_TRANSFORM_REMOVE_CV__

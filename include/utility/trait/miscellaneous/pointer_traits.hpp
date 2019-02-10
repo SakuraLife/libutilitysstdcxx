@@ -7,16 +7,15 @@
 #include<utility/trait/type/categories/is_void.hpp>
 #include<utility/memory/addressof.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace miscellaneous
+     __utility_interspace_start(miscellaneous)
     {
-      namespace __pointer_trait_impl
+      namespace __impl
       {
         template<class _T>
-        struct __has_element_type
+        struct __ptr_has_element_type
         {
           private:
             struct ___
@@ -29,7 +28,7 @@ namespace utility
             static const bool value = sizeof(__test<_T>(0)) == 1;
         };
 
-        template<class _T_ptr, bool = __has_element_type<_T_ptr>::value>
+        template<class _T_ptr, bool = __ptr_has_element_type<_T_ptr>::value>
         struct __pointer_has_element_type;
 
         template<class _T_ptr>
@@ -99,13 +98,13 @@ namespace utility
         public:
           typedef _T_ptr pointer;
           typedef typename
-            __pointer_trait_impl::__pointer_has_element_type<pointer>::type element_type;
+            __impl::__pointer_has_element_type<pointer>::type element_type;
           typedef typename
-          __pointer_trait_impl::__pointer_has_difference_type<pointer>::type difference_type;
+          __impl::__pointer_has_difference_type<pointer>::type difference_type;
 
           template<typename _U>
           using rebind = typename
-          __pointer_trait_impl::__pointer_has_rebind<pointer, _U>::type;
+          __impl::__pointer_has_rebind<pointer, _U>::type;
         private:
           struct __fail { };
         public:
@@ -139,6 +138,6 @@ namespace utility
       };
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MISCELLANEOUS_POINTER_TRAITS__

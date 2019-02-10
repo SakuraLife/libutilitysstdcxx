@@ -6,34 +6,34 @@
 #include<utility/trait/opt/__twochar__.hpp>
 #include<utility/trait/type/releations/is_same.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace transform
+       __utility_interspace_start(transform)
       {
-        namespace __is_referenceable_impl
+        namespace __impl
         {
+          using trait::__opt__::__twochar__;
           template<typename _T>
           _T& __is_referenceable_test(int);
           template<typename _T>
-          trait::__opt__::__twochar__
-            __is_referenceable_test(...);
+          __twochar__ __is_referenceable_test(...);
 
         }
         template<typename _T>
-        struct is_referenceable :
-          public trait::integral_constant<bool,
-          !trait::type::releations::is_same<
-            decltype(__is_referenceable_impl::__is_referenceable_test<_T>(0)),
-            trait::__opt__::__twochar__>::value>
+        struct is_referenceable: public integral_constant<bool,
+            !trait::type::releations::is_same<
+              decltype(__impl::__is_referenceable_test<_T>(0)),
+              trait::__opt__::__twochar__
+            >::value
+          >
         { };
 
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_TRANSFORM_IS_REFERENECABLE__

@@ -23,8 +23,7 @@
 extern "C++"
 {
 
-namespace utility
-{
+__utility_globalspace_start(utility)
   namespace sstd
   {
     extern int cctype(int _ch) noexcept;
@@ -45,7 +44,7 @@ namespace utility
     extern int tolower(int _ch) noexcept;
     extern int toupper(int _ch) noexcept;
   }
-}
+__utility_globalspace_end(utility)
 
 }
 

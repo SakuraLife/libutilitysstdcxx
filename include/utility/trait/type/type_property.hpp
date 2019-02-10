@@ -17,13 +17,12 @@
 #include<utility/trait/type/property/is_unsigned.hpp>
 #include<utility/trait/type/property/is_volatile.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace property
+       __utility_interspace_start(property)
       {
 
         // has_unique_object_representations(C++17)
@@ -37,6 +36,6 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_TRAIT_TYPE_PROPERTY__

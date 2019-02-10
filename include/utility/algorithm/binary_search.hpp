@@ -5,9 +5,8 @@
 #include<utility/config/utility_config.hpp>
 #include<utility/algorithm/lower_bound.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     /**
      * \brief Test if value exists in sorted sequence
@@ -61,7 +60,7 @@ namespace utility
       return !(__first == __last) && !(__val < *__first);
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_BINARY_SEARCH__
 

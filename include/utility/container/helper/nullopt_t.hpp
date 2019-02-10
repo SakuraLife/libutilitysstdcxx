@@ -4,11 +4,10 @@
 
 #include<utility/config/utility_config.hpp>
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
-    namespace helper
+     __utility_interspace_start(_helper)
     {
       struct nullopt_t
       {
@@ -24,11 +23,11 @@ namespace utility
       __UTILITY_CPP17_INLINE__ constexpr nullopt_t nullopt{};
     }
 
-    using helper::nullopt_t;
-    using helper::nullopt;
+    using _helper::nullopt_t;
+    using _helper::nullopt;
 
   }
-} // utility
+__utility_globalspace_end(utility)
 
 
 #endif // ! __UTILITY_CONTAINER_HELPER_NULLOPT_T__

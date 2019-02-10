@@ -8,11 +8,10 @@
 #include<utility/iterator/iterator_traits.hpp>
 #include<utility/sstd/cstring.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
-    namespace detail
+    namespace __detail
     {
       template<
         typename _Iterator,
@@ -78,11 +77,11 @@ namespace utility
       _BidirectionalIterator2 __flast
     )
     {
-      return detail::__copy_backward<_BidirectionalIterator2>::__aux(
+      return __detail::__copy_backward<_BidirectionalIterator2>::__aux(
         __first, __last, __flast
       );
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_COPY_BACKWARD__

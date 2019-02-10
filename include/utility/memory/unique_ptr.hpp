@@ -37,9 +37,8 @@
 #include<utility/trait/type/miscellaneous/conditional.hpp>
 #include<utility/trait/type/miscellaneous/common_type.hpp>
 
-namespace utility
-{
-  namespace memory
+__utility_globalspace_start(utility)
+   __utility_interspace_start(memory)
   {
     namespace __detail
     {
@@ -1084,7 +1083,7 @@ namespace utility
 
   }
 
-  namespace algorithm
+   __utility_interspace_start(algorithm)
   {
     template<typename _T, typename _D>
     inline void swap(
@@ -1093,18 +1092,17 @@ namespace utility
     ) noexcept
     { __x.swap(__y);}
   }
-}
+__utility_globalspace_end(utility)
 
-namespace utility
-{
-  namespace memory
+__utility_globalspace_start(utility)
+   __utility_interspace_start(memory)
   {
     template<typename _T>
     using unique_array = memory::unique_ptr<_T[], memory::default_delete<_T[]>>;
 
   }
 
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_UNIQUE_PTR__
 

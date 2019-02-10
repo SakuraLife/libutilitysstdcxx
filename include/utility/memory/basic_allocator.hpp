@@ -15,9 +15,8 @@
 
 #include<utility/sstd/new.hpp>
 
-namespace utility
-{
-  namespace memory
+__utility_globalspace_start(utility)
+   __utility_interspace_start(memory)
   {
     template<typename _T>
     inline _T* default_allocate(size_t __size)
@@ -147,6 +146,6 @@ namespace utility
       const basic_allocator<_T2>) noexcept
     { return false;}
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_BASIC_ALLOCATOR__

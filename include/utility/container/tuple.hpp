@@ -34,9 +34,8 @@
 #include<utility/miscellaneous/ignore_unused.hpp>
 
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
     // Forward Declaration;
     template<typename... _Types>
@@ -1080,7 +1079,7 @@ namespace utility
 
   }
 
-  namespace trait
+   __utility_interspace_start(trait)
   {
     namespace __opt__
     {
@@ -1093,7 +1092,7 @@ namespace utility
     }
   }
 
-  namespace algorithm
+   __utility_interspace_start(algorithm)
   {
     template<typename... _Types>
     void swap(
@@ -1106,6 +1105,6 @@ namespace utility
     ) noexcept(noexcept(_x.swap(_y)))
     { _x.swap(_y);}
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_TUPLE__

@@ -7,16 +7,15 @@
 #include<utility/trait/type/transform/decay.hpp>
 #include<utility/trait/type/type_trait_special.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace miscellaneous
+       __utility_interspace_start(miscellaneous)
       {
         // common_type
-        namespace __common_type_impl
+        namespace __impl
         {
           using trait::__opt__::__empty__;
           using trait::type::special::declval;
@@ -49,6 +48,7 @@ namespace utility
             public:
               typedef decltype(__test<_T>(0)) type;
           };
+
           template<typename... _Args>
           struct __common_type_helper
           { };
@@ -65,12 +65,12 @@ namespace utility
           { typedef typename trait::type::transform::decay<_T>::type type;};
 
           template<typename _T, typename _U>
-          struct __common_type_helper<_T, _U> : public
+          struct __common_type_helper<_T, _U>: public
             __common_type_two_helper<_T, _U>::type
           { };
 
           template<typename _T, typename _U, typename... _Args>
-          struct __common_type_helper<_T, _U, _Args...> : public
+          struct __common_type_helper<_T, _U, _Args...>: public
             __common_type_wrapper<
               typename __common_type_unfold_helper<
                 __common_type_helper<_T, _U>
@@ -79,8 +79,7 @@ namespace utility
           { };
         }
         template<typename... _Ts>
-        struct common_type : public
-          __common_type_impl::__common_type_helper<_Ts...>
+        struct common_type : public __impl::__common_type_helper<_Ts...>
         { };
 
         template<typename... _Ts>
@@ -88,6 +87,6 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_MISCELLANEOUS_COMMON_TYPE__

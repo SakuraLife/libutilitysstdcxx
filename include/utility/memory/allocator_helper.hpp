@@ -4,9 +4,8 @@
 
 #include<utility/config/utility_config.hpp>
 
-namespace utility
-{
-  namespace memory
+__utility_globalspace_start(utility)
+   __utility_interspace_start(memory)
   {
     struct allocator_arg_t
     {
@@ -16,6 +15,6 @@ namespace utility
     __UTILITY_CPP17_INLINE__
     constexpr memory::allocator_arg_t allocator_arg{};
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_ALLOCATOR_HELPER__

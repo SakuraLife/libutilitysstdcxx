@@ -9,11 +9,10 @@
 #include<utility/memory/destroy.hpp>
 #include<utility/sstd/new.hpp>
 
-namespace utility
-{
-  namespace memory
+__utility_globalspace_start(utility)
+   __utility_interspace_start(memory)
   {
-    namespace detail
+    namespace __detail
     {
       template<typename _T>
       container::pair<
@@ -85,7 +84,7 @@ namespace utility
         temporary_buffer(size_type __s):__req_size{__s}
         {
           container::pair<pointer, size_type> __res =
-            detail::get_temporary_buffer<value_type>(__s);
+            __detail::get_temporary_buffer<value_type>(__s);
           this->__size = __res.second;
           this->__item = __res.first;
         }
@@ -100,7 +99,7 @@ namespace utility
           if(this->__item != nullptr)
           {
             memory::destroy(this->__item, this->__item + this->__size);
-            detail::return_temporary_buffer(this->__item);
+            __detail::return_temporary_buffer(this->__item);
           }
         }
 
@@ -132,6 +131,6 @@ namespace utility
         { return this->__item != nullptr;}
     };
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_TEMPORARY_BUFFER__

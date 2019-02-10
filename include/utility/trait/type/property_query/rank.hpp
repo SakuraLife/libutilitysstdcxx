@@ -4,33 +4,28 @@
 
 #include<utility/trait/trait_helper.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace property_query
+       __utility_interspace_start(property_query)
       {
         // rank
         template<typename _T>
-        struct rank :
-          public trait::integral_constant<size_t, 0>
+        struct rank: public integral_constant<size_t, 0>
         { };
         template<typename _T>
-        struct rank<_T[]> :
-          public trait::integral_constant<
-            size_t, rank<_T>::value+1>
+        struct rank<_T[]>: public integral_constant<size_t, rank<_T>::value+1>
         { };
         template<typename _T, size_t _size>
-        struct rank<_T[_size]> :
-          public trait::integral_constant<
-            size_t, rank<_T>::value+1>
+        struct rank<_T[_size]>:
+          public integral_constant<size_t, rank<_T>::value+1>
         { };
 
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_PROPERTY_QUERY_RANK__

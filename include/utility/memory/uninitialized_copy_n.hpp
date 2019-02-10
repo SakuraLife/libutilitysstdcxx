@@ -11,11 +11,10 @@
 #include<utility/sstd/new.hpp>
 #include<utility/sstd/cstring.hpp>
 
-namespace utility
-{
-  namespace memory
+__utility_globalspace_start(utility)
+   __utility_interspace_start(memory)
   {
-    namespace detail
+    namespace __detail
     {
       template<typename _InputIterator, typename _Size, typename _ForwardIterator>
       _ForwardIterator
@@ -142,7 +141,7 @@ namespace utility
            is_pointer<__type>::value ||
            is_pod<__type>::value)>
         __identify;
-      return detail::__uninitialized_copy_n(
+      return __detail::__uninitialized_copy_n(
         _first, _size, _result, __identify{}
       );
     }
@@ -166,11 +165,11 @@ namespace utility
            is_pointer<__type>::value ||
            is_pod<__type>::value)>
         __identify;
-      return detail::__uninitialized_copy_n(
+      return __detail::__uninitialized_copy_n(
         _last, _size, _result, __identify{}
       );
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_UNINITIALIZED_COPY_N__

@@ -9,66 +9,68 @@
 
 #include<utility/trait/config/trait_config.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace features
+       __utility_interspace_start(features)
       {
         // is_trivially_constructible
         template<class _T, typename... _Args>
-        struct is_trivially_constructible :
-          public trait::integral_constant<bool,
+        struct is_trivially_constructible:
+          public integral_constant<bool,
             __utility_is_trivially_constructible(_T, _Args...)>
         { };
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #else // __utility_has_has_trivial_constructor
 
 #include<utility/trait/type/categories/is_scalar.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace features
+       __utility_interspace_start(features)
       {
         // is_trivially_constructible
         template<class _T, typename... Args>
-        struct is_trivially_constructible :
-          public trait::false_type
+        struct is_trivially_constructible:
+          public false_type
         { };
         template<class _T>
-        struct is_trivially_constructible<_T> :
-          public trait::integral_constant<bool,
-            trait::type::categories::is_scalar<_T>::value>
+        struct is_trivially_constructible<_T>:
+          public integral_constant<bool,
+            trait::type::categories::is_scalar<_T>::value
+          >
         { };
         template<class _T>
-        struct is_trivially_constructible<_T, _T&> :
-          public trait::integral_constant<bool,
-            trait::type::categories::is_scalar<_T>::value>
+        struct is_trivially_constructible<_T, _T&>:
+          public integral_constant<bool,
+            trait::type::categories::is_scalar<_T>::value
+          >
         { };
         template<class _T>
-        struct is_trivially_constructible<_T, _T&&> :
-          public trait::integral_constant<bool,
-            trait::type::categories::is_scalar<_T>::value>
+        struct is_trivially_constructible<_T, _T&&>:
+          public integral_constant<bool,
+            trait::type::categories::is_scalar<_T>::value
+          >
         { };
         template<class _T>
-        struct is_trivially_constructible<_T, const _T&> :
-          public trait::integral_constant<bool,
-            trait::type::categories::is_scalar<_T>::value>
+        struct is_trivially_constructible<_T, const _T&>:
+          public integral_constant<bool,
+            trait::type::categories::is_scalar<_T>::value
+          >
         { };
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __utility_has_has_trivial_constructor
 

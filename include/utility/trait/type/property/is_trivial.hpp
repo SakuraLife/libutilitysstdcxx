@@ -7,50 +7,48 @@
 
 #if __utility_has_is_trivial
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace property
+       __utility_interspace_start(property)
       {
         // is_trivial
         template<typename _T>
-        struct is_trivial : public
-          trait::integral_constant<bool, __utility_is_trivial(_T)>
+        struct is_trivial: public
+          integral_constant<bool, __utility_is_trivial(_T)>
         { };
 
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #else // __utility_has_is_trivial
 
 #include<utility/trait/type/property/is_trivially_copyable.hpp>
 #include<utility/trait/type/features/is_trivially_default_constructible.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace property
+       __utility_interspace_start(property)
       {
         // is_trivial
         template<typename _T>
-        struct is_trivial : public
-          trait::integral_constant<bool,
+        struct is_trivial: public integral_constant<bool,
             is_trivially_copyable<_T>::value &&
-            features::is_trivially_default_constructible<_T>::value>
+            features::is_trivially_default_constructible<_T>::value
+          >
         { };
 
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __utility_has_is_trivial
 

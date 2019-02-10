@@ -9,9 +9,8 @@
 #include<utility/trait/type/features/is_nothrow_copy_constructible.hpp>
 #include<utility/trait/type/transform/remove_reference.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     /**
      * \brief Move a value if noexcept
@@ -36,6 +35,6 @@ namespace utility
       return static_cast<_U&&>(_val)
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_MOVE_IF_NOEXCEPT__

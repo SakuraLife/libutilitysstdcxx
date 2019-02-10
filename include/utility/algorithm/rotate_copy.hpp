@@ -5,9 +5,8 @@
 #include<utility/config/utility_config.hpp>
 #include<utility/algorithm/copy.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     /**
      * \brief Copy range rotated left
@@ -37,6 +36,6 @@ namespace utility
       return algorithm::copy(__first, __mid, __ofirst);
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_ROTATE_COPY__

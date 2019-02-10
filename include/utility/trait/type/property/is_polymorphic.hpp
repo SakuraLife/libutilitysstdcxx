@@ -9,25 +9,23 @@
 
 # include<utility/trait/config/trait_config.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace property
+       __utility_interspace_start(property)
       {
         // is_polymorphic
         template<typename _T>
         struct is_polymorphic :
-          public trait::integral_constant<bool,
-            __utility_is_polymorphic(_T)>
+          public integral_constant<bool, __utility_is_polymorphic(_T)>
         { };
 
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #else
 
@@ -35,37 +33,42 @@ namespace utility
 # include<utility/trait/type/miscellaneous/enable_if.hpp>
 # include<utility/trait/type/type_trait_special.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace property
+       __utility_interspace_start(property)
       {
         // is_polymorphic
-        namespace __is_polymorphic_impl
+        namespace __impl
         {
+          using trait::type::miscellaneous::enable_if;
+          using trait::type::special::declval;
+          using trait::__opt__::__twochar__;
+
           template<typename _T>
-          char& __is_polymorphic_test(
-            typename trait::type::miscellaneous::enable_if<
-              sizeof(reinterpret_cast<_T*>(dynamic_cast<const volatile void*>(trait::type::special::declval<_T>()))) != 0,
-              int>::type
-              );
+          char __is_polymorphic_test(
+            typename enable_if<
+              sizeof(reinterpret_cast<_T*>(
+                  dynamic_cast<const volatile void*>(declval<_T>())
+              )) != 0,
+              int
+            >::type
+          );
           template<typename _T>
-          trait::__opt__::__twochar__&
-            __is_polymorphic_test(...);
+          __twochar__ __is_polymorphic_test(...);
         }
         template<typename _T>
-        struct is_polymorphic :
-          public trait::integral_constant<bool,
-            sizeof(__is_polymorphic_impl::__is_polymorphic_test<_T>(0)) == 1>
+        struct is_polymorphic: public integral_constant<bool,
+            sizeof(__impl::__is_polymorphic_test<_T>(0)) == 1
+          >
         { };
 
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif
 

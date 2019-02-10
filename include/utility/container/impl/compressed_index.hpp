@@ -24,9 +24,8 @@
 #include<utility/trait/type/features/is_nothrow_possible_swappable.hpp>
 #include<utility/trait/type/miscellaneous/enable_if.hpp>
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
     template<typename _T, size_t _Index,
       bool = trait::type::property::is_empty<_T>::value &&
@@ -292,6 +291,6 @@ namespace utility
         { }
     };
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_IMPL_COMPRESSED_INDEX__

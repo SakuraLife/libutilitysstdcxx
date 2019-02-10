@@ -9,23 +9,22 @@
 
 # include<utility/trait/config/trait_config.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace categories
+       __utility_interspace_start(categories)
       {
         // is_enum
         template<typename _T>
-        struct is_enum :
+        struct is_enum:
           public trait::integral_constant<bool, __utility_is_enum(_T)>
         { };
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #else // __utility_has_is_enum
 
@@ -42,17 +41,16 @@ namespace utility
 # include<utility/trait/type/categories/is_class.hpp>
 # include<utility/trait/type/categories/is_function.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace categories
+       __utility_interspace_start(categories)
       {
         // is_enum
         template<typename _T>
-        struct is_enum :
+        struct is_enum:
           public trait::integral_constant<bool,
             !is_void<_T>::value             &&
             !is_integral<_T>::value         &&
@@ -68,39 +66,37 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 # else // __utility_has_is_union
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace categories
+       __utility_interspace_start(categories)
       {
         // is_enum
         template<typename _T>
-        struct is_enum : pulic trait::unsupport_trait<false>
+        struct is_enum: pulic unsupport_trait<false>
         { };
 
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 # endif // __utility_has_is_union
 
 #endif // __utility_has_is_enum
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace categories
+       __utility_interspace_start(categories)
       {
 #if !defined(__UTILITY_NO_CPP14__)
         template<typename _T>
@@ -110,7 +106,7 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #include<utility/trait/config/trait_undef.hpp>
 

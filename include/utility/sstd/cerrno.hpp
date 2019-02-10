@@ -7,13 +7,12 @@
 extern "C++"
 {
 
-namespace utility
-{
+__utility_globalspace_start(utility)
   namespace sstd
   {
     extern int* errno_ptr() noexcept;
   }
-}
+__utility_globalspace_end(utility)
 
 }
 

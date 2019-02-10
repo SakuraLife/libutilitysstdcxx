@@ -29,9 +29,8 @@
 
 #include<utility/sstd/new.hpp>
 
-namespace utility
-{
-  namespace functional
+__utility_globalspace_start(utility)
+   __utility_interspace_start(functional)
   {
     template<typename>
     class function;
@@ -549,6 +548,6 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_FUNCTIONAL_FUNCTION__

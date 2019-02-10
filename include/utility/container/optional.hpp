@@ -45,9 +45,8 @@
 
 #include<utility/sstd/new.hpp>
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
     namespace __detail
     {
@@ -107,7 +106,7 @@ namespace utility
         >
         __UTILITY_CPP14_CONSTEXPR__
         explicit __optional_storage(
-          helper::in_place_t, _Args&&... _args
+          _helper::in_place_t, _Args&&... _args
         ) noexcept(
           is_nothrow_constructible<_T, _Args&&...>::value
         ): val{algorithm::forward<_Args>(_args)...}, __info{1U}
@@ -423,7 +422,7 @@ namespace utility
 
       private:
         static_assert(
-          !__detail::is_same<value_type, helper::in_place_t>::value,
+          !__detail::is_same<value_type, _helper::in_place_t>::value,
           "optional<in_place_t> is ill-formed"
         );
         static_assert(
@@ -432,7 +431,7 @@ namespace utility
         );
         static_assert(
           !__detail::is_same<
-            __detail::remove_cv_ref_t<value_type>, helper::nullopt_t
+            __detail::remove_cv_ref_t<value_type>, _helper::nullopt_t
           >::value,
           "optional use nullopt_t is ill-formed"
         );
@@ -450,7 +449,7 @@ namespace utility
       public:
         constexpr optional() noexcept: __base{}
         { }
-        constexpr optional(helper::nullopt_t) noexcept: __base{}
+        constexpr optional(_helper::nullopt_t) noexcept: __base{}
         { }
 
         __UTILITY_CPP14_CONSTEXPR__
@@ -611,7 +610,7 @@ namespace utility
           bool>::type = true
         >
         __UTILITY_CPP14_CONSTEXPR__
-        explicit optional(helper::in_place_t, _Args&&... _args) noexcept(
+        explicit optional(_helper::in_place_t, _Args&&... _args) noexcept(
           __detail::is_nothrow_constructible<_T, _Args&&...>::value
         ): __base{}
         {
@@ -629,7 +628,7 @@ namespace utility
         >
         __UTILITY_CPP14_CONSTEXPR__
         explicit optional(
-          helper::in_place_t, initializer_list<_U> _init, _Args&&... _args
+          _helper::in_place_t, initializer_list<_U> _init, _Args&&... _args
         ) noexcept(
           __detail::is_nothrow_constructible<
             initializer_list<_U>&, _T, _Args&&...
@@ -645,7 +644,7 @@ namespace utility
         }
 
       public:
-        optional& operator=(helper::nullopt_t) noexcept
+        optional& operator=(_helper::nullopt_t) noexcept
         {
           __base.reset();
           return *this;
@@ -925,51 +924,51 @@ namespace utility
     }
     template<typename _T>
     __UTILITY_CPP14_CONSTEXPR__
-    inline bool operator==(const optional<_T>& _x, helper::nullopt_t) noexcept
+    inline bool operator==(const optional<_T>& _x, _helper::nullopt_t) noexcept
     { return _x.empty();}
     template<typename _T>
     __UTILITY_CPP14_CONSTEXPR__
-    inline bool operator==(helper::nullopt_t, const optional<_T>& _y) noexcept
+    inline bool operator==(_helper::nullopt_t, const optional<_T>& _y) noexcept
     { return _y.empty();}
     template<typename _T>
     __UTILITY_CPP14_CONSTEXPR__
-    inline bool operator!=(const optional<_T>& _x, helper::nullopt_t) noexcept
+    inline bool operator!=(const optional<_T>& _x, _helper::nullopt_t) noexcept
     { return _x.has_value();}
     template<typename _T>
     __UTILITY_CPP14_CONSTEXPR__
-    inline bool operator!=(helper::nullopt_t, const optional<_T>& _y) noexcept
+    inline bool operator!=(_helper::nullopt_t, const optional<_T>& _y) noexcept
     { return _y.has_value();}
     template<typename _T>
     __UTILITY_CPP14_CONSTEXPR__
-    inline bool operator<(const optional<_T>& _x, helper::nullopt_t) noexcept
+    inline bool operator<(const optional<_T>& _x, _helper::nullopt_t) noexcept
     { return false;}
     template<typename _T>
     __UTILITY_CPP14_CONSTEXPR__
-    inline bool operator<(helper::nullopt_t, const optional<_T>& _y) noexcept
+    inline bool operator<(_helper::nullopt_t, const optional<_T>& _y) noexcept
     { return _y.has_value();}
     template<typename _T>
     __UTILITY_CPP14_CONSTEXPR__
-    inline bool operator>(const optional<_T>& _x, helper::nullopt_t) noexcept
+    inline bool operator>(const optional<_T>& _x, _helper::nullopt_t) noexcept
     { return _x.has_value();}
     template<typename _T>
     __UTILITY_CPP14_CONSTEXPR__
-    inline bool operator>(helper::nullopt_t, const optional<_T>& _y) noexcept
+    inline bool operator>(_helper::nullopt_t, const optional<_T>& _y) noexcept
     { return false;}
     template<typename _T>
     __UTILITY_CPP14_CONSTEXPR__
-    inline bool operator<=(const optional<_T>& _x, helper::nullopt_t) noexcept
+    inline bool operator<=(const optional<_T>& _x, _helper::nullopt_t) noexcept
     { return _x.empty();}
     template<typename _T>
     __UTILITY_CPP14_CONSTEXPR__
-    inline bool operator<=(helper::nullopt_t, const optional<_T>& _y) noexcept
+    inline bool operator<=(_helper::nullopt_t, const optional<_T>& _y) noexcept
     { return true;}
     template<typename _T>
     __UTILITY_CPP14_CONSTEXPR__
-    inline bool operator>=(const optional<_T>& _x, helper::nullopt_t) noexcept
+    inline bool operator>=(const optional<_T>& _x, _helper::nullopt_t) noexcept
     { return true;}
     template<typename _T>
     __UTILITY_CPP14_CONSTEXPR__
-    inline bool operator>=(helper::nullopt_t, const optional<_T>& _y) noexcept
+    inline bool operator>=(_helper::nullopt_t, const optional<_T>& _y) noexcept
     { return _y.empty();}
     template<typename _T, typename _U>
     __UTILITY_CPP14_CONSTEXPR__
@@ -1032,7 +1031,7 @@ namespace utility
     inline optional<_T> make_optional(_Args&&... _args)
     {
       using algorithm::forward;
-      using helper::in_place;
+      using _helper::in_place;
       return optional<_T>{in_place, forward<_T>(_args)...};
     }
     template<typename _T, typename _U, typename... _Args>
@@ -1042,13 +1041,13 @@ namespace utility
     )
     {
       using algorithm::forward;
-      using helper::in_place;
+      using _helper::in_place;
       return optional<_T>{in_place, _init, forward<_T>(_args)...};
     }
 
   }
 
-  namespace algorithm
+   __utility_interspace_start(algorithm)
   {
     template<typename _T>
     void swap(container::optional<_T>& _x, container::optional<_T>& _y) noexcept(noexcept(_x.swap(_y)))
@@ -1056,6 +1055,6 @@ namespace utility
       _x.swap(_y);
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_OPTIONAL__

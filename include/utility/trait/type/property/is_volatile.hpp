@@ -4,27 +4,24 @@
 
 #include<utility/trait/trait_helper.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace property
+       __utility_interspace_start(property)
       {
         // is_volatile
         template<typename _T>
-        struct is_volatile :
-          public trait::false_type
+        struct is_volatile: public false_type
         { };
         template<typename _T>
-        struct is_volatile<_T volatile> :
-          public trait::true_type
+        struct is_volatile<_T volatile>: public true_type
         { };
 
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_PROPERTY_IS_VOLATILE__

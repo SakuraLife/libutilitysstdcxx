@@ -9,69 +9,65 @@
 
 # include<utility/trait/config/trait_config.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace property
+       __utility_interspace_start(property)
       {
         // is_empty
         template<typename _T>
         struct is_empty :
-          public trait::integral_constant<
-            bool, __utility_is_empty(_T)>
+          public integral_constant<bool, __utility_is_empty(_T)>
         { };
 
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #else // __utility_has_is_empty
 
 # include<utility/trait/type/categories/is_class.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace property
+       __utility_interspace_start(property)
       {
         // is_empty
-        namespace __is_empty_impl
+        namespace __impl
         {
+          using trait::type::categories::is_class;
+
           // avoid align
           template<typename _T>
-          struct __is_empty_helper : public _T
+          struct __is_empty_helper: public _T
           { long __nouse;};
           struct __is_empty_base_helper
           { long __nouse;};
 
-          template<typename _T,
-            bool = trait::type::categories::is_class<_T>::value>
-          struct __is_empty_test :
-            public trait::integral_constant<bool,
-              sizeof(__is_empty_helper<_T>) ==
-              sizeof(__is_empty_base_helper)>
+          template<typename _T, bool = is_class<_T>::value>
+          struct __is_empty_test:
+            public integral_constant<bool,
+              sizeof(__is_empty_helper<_T>) == sizeof(__is_empty_base_helper)
+            >
           { };
           template<typename _T>
-          struct __is_empty_test<_T, false> :
-            public trait::false_type
+          struct __is_empty_test<_T, false>: public false_type
           { };
         }
         template<typename _T>
-        struct is_empty :
-          public __is_empty_impl::__is_empty_test<_T>
+        struct is_empty: public __impl::__is_empty_test<_T>
         { };
 
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __utility_has_is_empty
 

@@ -4,9 +4,8 @@
 
 #include<utility/config/utility_config.hpp>
 
-namespace utility
-{
-  namespace type
+__utility_globalspace_start(utility)
+   __utility_interspace_start(type)
   {
     namespace __impl
     {
@@ -241,6 +240,6 @@ namespace utility
 
   using type::byte;
 
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_TYPE_BYTE__

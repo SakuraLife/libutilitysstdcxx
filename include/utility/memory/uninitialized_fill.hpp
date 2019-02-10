@@ -7,9 +7,8 @@
 #include<utility/iterator/iterator_traits.hpp>
 #include<utility/sstd/new.hpp>
 
-namespace utility
-{
-  namespace memory
+__utility_globalspace_start(utility)
+   __utility_interspace_start(memory)
   {
     /*!
     * \brief Fill block of memory
@@ -53,6 +52,6 @@ namespace utility
       )
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_UNINITIALIZED_FILL__

@@ -6,9 +6,8 @@
 
 #include<utility/algorithm/forward.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     template<typename _T = void>
     struct plus
@@ -322,6 +321,6 @@ namespace utility
       { return ~forward<_T>(_x);}
     };
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! ___UTILITY__ALGORITHM__ALGORITHM__AUXILIARY___

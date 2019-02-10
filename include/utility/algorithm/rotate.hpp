@@ -9,11 +9,10 @@
 #include<utility/iterator/distance.hpp>
 #include<utility/iterator/next.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
-    namespace detail
+    namespace __detail
     {
       template
       <
@@ -95,11 +94,11 @@ namespace utility
     )
     {
       return
-        algorithm::detail::__rotate<_ForwardIterator>::__aux(
+        algorithm::__detail::__rotate<_ForwardIterator>::__aux(
           __first, __mid, __last
         );
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_ROTATE__

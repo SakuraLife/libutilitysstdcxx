@@ -9,11 +9,10 @@
 #include<utility/iterator/iterator_tag.hpp>
 #include<utility/iterator/iterator_traits.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
-    namespace detail
+    namespace __detail
     {
       template<
         typename _ForwardIterator1,
@@ -179,7 +178,7 @@ namespace utility
       typedef typename iterator_traits<_ForwardIterator1>::iterator_category
         __category2;
 
-      return detail::__find_end<_ForwardIterator1, _ForwardIterator2,
+      return __detail::__find_end<_ForwardIterator1, _ForwardIterator2,
         typename add_lvalue_reference<_BinaryPredicate>::type>(
           _first, _last, _ffirst, _flast, _pred,
           __category1{}, __category2{}
@@ -200,6 +199,6 @@ namespace utility
     }
     /** @}*/
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_FIND_END__

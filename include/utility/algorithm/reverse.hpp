@@ -6,14 +6,12 @@
 #include<utility/algorithm/iter_swap.hpp>
 #include<utility/iterator/iterator_traits.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
-    namespace detail
+    namespace __detail
     {
-      template
-      <
+      template<
         typename _Iterator,
         bool = iterator::is_vaild_iterator_type<
           _Iterator, iterator::random_access_iterator_tag
@@ -30,7 +28,7 @@ namespace utility
           {
             if(__first == --__last)
             { break;}
-            algorithm::iter_swap(__first, __last);
+            iter_swap(__first, __last);
             ++__first;
           }
         }
@@ -46,7 +44,7 @@ namespace utility
           if(__first != __last)
           {
             for(;__first < --__last; ++__first)
-            { algorithm::iter_swap(__first, __last);}
+            { iter_swap(__first, __last);}
           }
         }
       };
@@ -64,11 +62,11 @@ namespace utility
     template<typename _BidirectionalIterator>
     void reverse(_BidirectionalIterator __first, _BidirectionalIterator __last)
     {
-      algorithm::detail::__reverse<_BidirectionalIterator>::__aux(
+      __detail::__reverse<_BidirectionalIterator>::__aux(
         __first, __last
       );
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_REVERSE__

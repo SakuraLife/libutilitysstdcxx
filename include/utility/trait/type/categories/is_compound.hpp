@@ -7,17 +7,16 @@
 #include<utility/trait/type/categories/is_arithmetic.hpp>
 #include<utility/trait/type/categories/is_null_pointer.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace categories
+       __utility_interspace_start(categories)
       {
         // is_compound
         template<typename _T>
-        struct is_compound :
+        struct is_compound:
           public trait::integral_constant<bool,
             !is_void<_T>::value       &&
             !is_arithmetic<_T>::value &&
@@ -32,6 +31,6 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_CATEGORIES_IS_COMPOUND__

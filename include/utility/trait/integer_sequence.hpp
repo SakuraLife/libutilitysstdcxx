@@ -6,9 +6,8 @@
 #include<utility/trait/trait_helper.hpp>
 #include<utility/trait/type/categories/is_integral.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
     template<typename _type, _type... _vals>
     struct integer_sequence
@@ -29,7 +28,7 @@ namespace utility
     template<size_t... _Vals>
     using index_sequence = integer_sequence<size_t, _Vals...>;
 
-    namespace __make_integer_sequence_impl
+    namespace __impl
     {
       // typedef long long __i_size_t;
       using __i_size_t = long long;
@@ -144,12 +143,12 @@ namespace utility
 
     template<typename _T, _T _EVal, _T _BVal = 0>
     using make_integer_sequence =
-      typename __make_integer_sequence_impl::__make_integer_sequence_helper<_T, _EVal, _BVal>::type;
+      typename __impl::__make_integer_sequence_helper<_T, _EVal, _BVal>::type;
 
     template<size_t _EVal, size_t _BVal = 0>
     using make_index_sequence =
       make_integer_sequence<size_t, _EVal, _BVal>;
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_TRAIT_INTEGER_SEQUENCE__

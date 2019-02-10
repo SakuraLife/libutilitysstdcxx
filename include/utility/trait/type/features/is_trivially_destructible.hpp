@@ -10,26 +10,25 @@
 #include<utility/trait/config/trait_config.hpp>
 #include<utility/trait/type/features/is_destructible.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace features
+       __utility_interspace_start(features)
       {
         // is_trivially_destructible
         template<typename _T>
-        struct is_trivially_destructible : public
-          trait::integral_constant<bool,
-            trait::type::features::is_destructible<_T>::value
-            && __utility_has_trivial_destructor(_T)>
+        struct is_trivially_destructible: public integral_constant<bool,
+            is_destructible<_T>::value &&
+            __utility_has_trivial_destructor(_T)
+          >
         { };
 
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #else // __utility_has_has_trivial_destructor
 
@@ -37,19 +36,18 @@ namespace utility
 #include<utility/trait/type/categories/is_reference.hpp>
 #include<utility/trait/type/transform/remove_all_extents.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace features
+       __utility_interspace_start(features)
       {
         // is_trivially_destructible
-        namespace __is_trivially_destructible_impl
+        namespace __impl
         {
           template<typename _T>
-          struct __is_trivially_destructible_helper : public
+          struct __is_trivially_destructible_helper: public
             trait::integral_constant<bool,
               trait::type::categories::is_scalar<_T>::value ||
               trait::type::categories::is_reference<_T>::value>
@@ -57,7 +55,7 @@ namespace utility
         }
         template<typename _T>
         struct is_trivially_destructible : public
-          __is_trivially_destructible_impl::__is_trivially_destructible_helper<
+          __impl::__is_trivially_destructible_helper<
             typename
             trait::type::transform::remove_all_extents<_T>::type>
         { };
@@ -69,7 +67,7 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __utility_has_has_trivial_destructor
 

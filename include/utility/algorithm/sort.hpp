@@ -21,9 +21,8 @@
 #include<utility/iterator/iterator_tag.hpp>
 #include<utility/iterator/iterator_traits.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     /**
      * \brief Sort the elements in the range.
@@ -208,7 +207,7 @@ namespace utility
         trait::type::transform::add_lvalue_reference<_Compare>::type
         __comp_ref;
 
-      algorithm::detail::__sort<_Iterator, __comp_ref>(
+      algorithm::impl::__sort<_Iterator, __comp_ref>(
         __first, __last, __compare, SortTag()
       );
     }
@@ -236,6 +235,6 @@ namespace utility
       );
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_SORT__

@@ -10,12 +10,11 @@
 
 #include<utility/config/utility_config.hpp>
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
 
-    namespace helper
+     __utility_interspace_start(_helper)
     {
       struct ignore_t
       {
@@ -32,12 +31,12 @@ namespace utility
       __UTILITY_CPP17_INLINE__
       constexpr ignore_t ignore{};
 
-    } // helper
+    } // _helper
 
-    using helper::ignore_t;
-    using helper::ignore;
+    using _helper::ignore_t;
+    using _helper::ignore;
 
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_HELPER_IGNORE_T__

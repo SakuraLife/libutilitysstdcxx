@@ -15,9 +15,8 @@
 
 #include<utility/iterator/iterator_tag.hpp>
 
-namespace utility
-{
-  namespace iterator
+__utility_globalspace_start(utility)
+   __utility_interspace_start(iterator)
   {
     namespace __detail
     {
@@ -254,6 +253,6 @@ namespace utility
     inline move_iterator<_Iterator> make_move_iterator(_Iterator __it)
     { return move_iterator<_Iterator>(__it);}
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ITERATOR_MOVE_ITERATOR__

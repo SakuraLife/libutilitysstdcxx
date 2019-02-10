@@ -8,9 +8,8 @@
 #include<utility/algorithm/forward.hpp>
 
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     /**
      * \brief Replaces the old value with new value and returns the old value.
@@ -33,6 +32,6 @@ namespace utility
       return __old;
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_EXCHANGE__

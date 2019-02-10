@@ -4,8 +4,7 @@
 
 #include<utility/config/utility_config.hpp>
 
-namespace utility
-{
+__utility_globalspace_start(utility)
   namespace persistent_container
   {
     namespace config
@@ -81,6 +80,6 @@ namespace utility
     }
     using persistent_container::config::base_cache_sg;
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! ___UTILITY__PERSISTENT__CONTAINER__CONFIG___

@@ -6,18 +6,17 @@
 #include<utility/config/utility_config.hpp>
 #include<utility/memory/allocator_traits.hpp>
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
-    namespace helper
+     __utility_interspace_start(_helper)
     {
       template<typename _Alloc>
       struct allocator_deleter
       {
         public:
           typedef _Alloc allocator_type;
-          typedef utility::memory::allocator_traits<allocator_type>
+          typedef memory::allocator_traits<allocator_type>
             allocator_traits_type;
           typedef typename allocator_traits_type::pointer pointer;
           typedef typename allocator_traits_type::const_pointer const_pointer;
@@ -36,7 +35,7 @@ namespace utility
       };
     }
   }
-} // utility
+__utility_globalspace_end(utility)
 
 
 #endif // ! __UTILITY_CONTAINER_HELPER_ALLOCATOR_DELETER__

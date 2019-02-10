@@ -5,16 +5,15 @@
 #include<utility/trait/trait_helper.hpp>
 #include<utility/trait/type/miscellaneous/aligned_storage.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace miscellaneous
+       __utility_interspace_start(miscellaneous)
       {
         // aligned_union
-        namespace __aligned_union_impl
+        namespace __impl
         {
           template<typename... _Ts>
           struct __aligned_union_helper
@@ -31,20 +30,21 @@ namespace utility
             constexpr static size_t __align =
               alignof(_T) > __aligned_union_helper<_Ts...>::__align ?
               alignof(_T) : __aligned_union_helper<_Ts...>::__align;
-        };
+          };
         }
+
         template<size_t _Len, typename... _Ts>
         struct aligned_union
         {
           private:
             static_assert(sizeof...(_Ts) != 0, "Need at least ont type");
             using __type =
-              __aligned_union_impl::__aligned_union_helper<_Ts...>;
+              __impl::__aligned_union_helper<_Ts...>;
             constexpr static size_t __align =
               _Len > __type::__size ? _Len : __type::__size;
+
           public:
-            constexpr static size_t alignment_value =
-              __type::__align;
+            constexpr static size_t alignment_value = __type::__align;
             typedef typename aligned_storage<__align, alignment_value>::type type;
         };
 
@@ -53,6 +53,6 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_MISCELLANEOUS__

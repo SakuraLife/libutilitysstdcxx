@@ -5,9 +5,8 @@
 #include<utility/algorithm/swap.hpp>
 #include<utility/iterator/iterator_traits.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     namespace sort_tag
     {
@@ -20,7 +19,7 @@ namespace utility
       static_assert(__comb_shrink_factor < 1.0, "Shrink Factor must be smaller than 1.");
     }
 
-    namespace detail
+    namespace impl
     {
       using algorithm::sort_tag::comb_sort_tag;
       template<typename _RandomAccessIterator, typename _Compare>
@@ -63,6 +62,6 @@ namespace utility
     }
 
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_SORTIMPL_COMB_SORT__

@@ -8,11 +8,10 @@
 #include<utility/iterator/iterator_traits.hpp>
 #include<utility/sstd/cstring.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
-    namespace detail
+    namespace __detail
     {
       template<
         typename _Iterator,
@@ -84,11 +83,11 @@ namespace utility
       _OutputIterator __ffirst
     )
     {
-      return detail::__copy_if<_OutputIterator>::__aux(
+      return __detail::__copy_if<_OutputIterator>::__aux(
         __first, __size, __ffirst
       );
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_COPY_N__

@@ -10,12 +10,11 @@
 
 #include<utility/config/utility_config.hpp>
 
-namespace utility
-{
-  namespace stream
+__utility_globalspace_start(utility)
+   __utility_interspace_start(stream)
   {
     typedef long long streamoff;
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CHARS_STEAMOFF__

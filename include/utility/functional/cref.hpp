@@ -4,9 +4,8 @@
 
 #include<utility/functional/reference_wrapper.hpp>
 
-namespace utility
-{
-  namespace functional
+__utility_globalspace_start(utility)
+   __utility_interspace_start(functional)
   {
     template<typename _T>
     inline reference_wrapper<const _T> cref(const _T& _val) noexcept
@@ -19,6 +18,6 @@ namespace utility
     template<typename _T>
     inline void cref(const _T&&) = delete;
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_FUNCTIONAL_CREF__

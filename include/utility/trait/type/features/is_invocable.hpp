@@ -7,13 +7,12 @@
 #include<utility/trait/type/miscellaneous/invoke_result.hpp>
 #include<utility/trait/type/releations/is_convertible.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace features
+       __utility_interspace_start(features)
       {
         namespace __invoke_related
         {
@@ -23,7 +22,7 @@ namespace utility
           using trait::type::releations::is_convertible;
 
           template<bool/*Select*/, typename _Res, typename _T, typename = void>
-          struct __is_invocable_helper : public false_type
+          struct __is_invocable_helper: public false_type
           { };
           template<typename _Res, typename _T>
           struct __is_invocable_helper<
@@ -31,9 +30,10 @@ namespace utility
           >: public true_type
           { };
           template<typename _Res, typename _T>
-          struct __is_invocable_helper<true, _Res, _T, void_t<typename _Res::type>> :
+          struct __is_invocable_helper<true, _Res, _T, void_t<typename _Res::type>>:
             public integral_constant<bool,
-              is_convertible<typename _Res::type, _T>::value>
+              is_convertible<typename _Res::type, _T>::value
+            >
           { };
 
           template<typename _Tag, typename _Fn, typename... _Args>
@@ -77,7 +77,7 @@ namespace utility
         }
         // is_invocable
         template<class _Fn, typename... _ArgTypes>
-        struct is_invocable :
+        struct is_invocable:
           public __invoke_related::__is_invocable_helper<
             false, typename __invoke_related::__invoke_result<_Fn, _ArgTypes...>::type,
             void>
@@ -85,7 +85,7 @@ namespace utility
 
         // is_invocable_r
         template<typename _R, class _Fn, typename... _ArgTypes>
-        struct is_invocable_r :
+        struct is_invocable_r:
           public __invoke_related::__is_invocable_helper<
             true, typename __invoke_related::__invoke_result<_Fn, _ArgTypes...>::type,
             _R>
@@ -93,7 +93,7 @@ namespace utility
 
         // is_nothrow_invocable
         template<class _Fn, typename... _ArgTypes>
-        struct is_nothrow_invocable :
+        struct is_nothrow_invocable:
           public __invoke_related::__type_and__<is_invocable<_Fn, _ArgTypes...>,
             __invoke_related::__is_noexcept_invoke_test<
               typename __invoke_related::__invoke_result<_Fn, _ArgTypes...>::invoke_tag,
@@ -103,7 +103,7 @@ namespace utility
 
         // is_nothrow_invocable_r
         template<typename _R, class _Fn, typename... _ArgTypes>
-        struct is_nothrow_invocable_r :
+        struct is_nothrow_invocable_r:
           public __invoke_related::__type_and__<is_invocable_r<_R, _Fn, _ArgTypes...>,
             __invoke_related::__is_noexcept_invoke_test<
               typename __invoke_related::__invoke_result<_Fn, _ArgTypes...>::invoke_tag,
@@ -114,6 +114,6 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_TRAIT_TYPE_FEATURES_IS_INVOCABLE__

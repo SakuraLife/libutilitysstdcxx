@@ -5,9 +5,8 @@
 #include<utility/config/utility_config.hpp>
 #include<utility/memory/allocator_traits.hpp>
 
-namespace utility
-{
-  namespace memory
+__utility_globalspace_start(utility)
+   __utility_interspace_start(memory)
   {
     template<typename _Alloc>
     class basic_deallocator
@@ -34,6 +33,6 @@ namespace utility
         { allocator_traits_type::deallocate(__allocator, __ptr, __size);}
     };
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_BASIC_DEALLOCATOR__

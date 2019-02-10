@@ -15,38 +15,44 @@
 # include<utility/trait/type/property/is_volatile.hpp>
 # include<utility/trait/type/releations/is_base_of.hpp>
 # include<utility/trait/type/releations/is_same.hpp>
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace releations
+       __utility_interspace_start(releations)
       {
-        namespace __is_convertible_impl
+        namespace __impl
         {
+          using trait::type::special::declval;
+          using trait::type::categories::is_array;
+          using trait::type::categories::is_function;
+          using trait::type::categories::is_void;
+          using trait::type::categories::is_reference;
+          using trait::type::transform::remove_cv_t;
+          using trait::type::transform::remove_reference_t;
+          using trait::type::property::is_const;
+          using trait::type::property::is_volatile;
+          using trait::type::releations::is_same;
+          using trait::type::releations::is_base_of;
+
           template<typename _T>
           void __is_convertible_test_conv(_T);
           template<typename _F, typename _T, typename = void>
           struct __is_convertible_test :
-            public trait::false_type
+            public false_type
           { };
           template<typename _F, typename _T>
           struct __is_convertible_test<_F, _T,
-            decltype(__is_convertible_test_conv<_T>
-              (trait::type::special::declval<_F>()))>:
-            public trait::true_type
+            decltype(__is_convertible_test_conv<_T>(declval<_F>()))
+          >: public true_type
           { };
 
-          template
-          <
+          template<
             typename _T,
-            bool _is_array =
-              trait::type::categories::is_array<_T>::value,
-            bool _is_function =
-              trait::type::categories::is_function<_T>::value,
-            bool _is_void =
-              trait::type::categories::is_void<_T>::value
+            bool _is_array = is_array<_T>::value,
+            bool _is_function = is_function<_T>::value,
+            bool _is_void = is_void<_T>::value
           >
           struct __is_convertible_type_test
           { enum { value = 0};};
@@ -62,21 +68,15 @@ namespace utility
 
           // @special
           template<typename _T, unsigned int =
-            __is_convertible_type_test<typename
-              trait::type::transform::remove_cv<_T>::type
-                >::value>
+            __is_convertible_type_test<remove_cv_t<_T>>::value
+          >
           struct __is_convertible_check
-          {
-            constexpr static size_t __size = 0;
-          };
+          { constexpr static size_t __size = 0;};
           template<typename _T>
           struct __is_convertible_check<_T, 0>
-          {
-            constexpr static size_t __size = sizeof(_T);
-          };
+          { constexpr static size_t __size = sizeof(_T);};
 
-          template
-          <
+          template<
             typename _T1,
             typename _T2,
             unsigned int _T1_type_test =
@@ -85,78 +85,72 @@ namespace utility
               __is_convertible_type_test<_T2>::value
           >
           struct __is_convertible_helper :
-            public trait::integral_constant<bool,
+            public integral_constant<bool,
               __is_convertible_test<_T1, _T2>::value &&
-              !(!trait::type::categories::is_function<_T1>::value  &&
-                !trait::type::categories::is_reference<_T1>::value &&
-                trait::type::categories::is_reference<_T2>::value &&
-                (!trait::type::property::is_const<typename
-                  trait::type::transform::remove_reference<_T2
-                  >::type>::value ||
-                  trait::type::property::is_volatile<typename
-                  trait::type::transform::remove_reference<_T2
-                  >::type>::value) &&
-                (trait::type::releations::is_same<typename
-                  trait::type::transform::remove_cv<_T1>::type,
-                  typename trait::type::transform::remove_cv<
-                  typename trait::type::transform::remove_reference<_T2
-                  >::type>::type>::value ||
-                 trait::type::releations::is_base_of<typename
-                  trait::type::transform::remove_reference<_T2
-                  >::type, _T1>::value))>
+              !(!is_function<_T1>::value  &&
+                !is_reference<_T1>::value &&
+                is_reference<_T2>::value &&
+                (!is_const<remove_reference_t<_T2>>::value ||
+                  is_volatile<remove_reference_t<_T2>>::value) &&
+                (is_same<
+                  remove_cv_t<_T1>,
+                  remove_cv_t<remove_reference_t<_T2>>
+                 >::value ||
+                 is_base_of<remove_reference_t<_T2>, _T1>::value))
+              >
           { };
           template<typename _T1, typename _T2>
           struct __is_convertible_helper<_T1, _T2, 0, 1> :
-            public trait::false_type
+            public false_type
           { };
           template<typename _T1, typename _T2>
           struct __is_convertible_helper<_T1, _T2, 0, 2> :
-            public trait::false_type
+            public false_type
           { };
           template<typename _T1, typename _T2>
           struct __is_convertible_helper<_T1, _T2, 0, 3> :
-            public trait::false_type
+            public false_type
           { };
           template<typename _T1, typename _T2>
           struct __is_convertible_helper<_T1, _T2, 1, 1> :
-            public trait::false_type
+            public false_type
           { };
           template<typename _T1, typename _T2>
           struct __is_convertible_helper<_T1, _T2, 1, 2> :
-            public trait::false_type
+            public false_type
           { };
           template<typename _T1, typename _T2>
           struct __is_convertible_helper<_T1, _T2, 1, 3> :
-            public trait::false_type
+            public false_type
           { };
           template<typename _T1, typename _T2>
           struct __is_convertible_helper<_T1, _T2, 2, 1> :
-            public trait::false_type
+            public false_type
           { };
           template<typename _T1, typename _T2>
           struct __is_convertible_helper<_T1, _T2, 2, 2> :
-            public trait::false_type
+            public false_type
           { };
           template<typename _T1, typename _T2>
           struct __is_convertible_helper<_T1, _T2, 2, 3> :
-            public trait::false_type
+            public false_type
           { };
           template<typename _T1, typename _T2>
           struct __is_convertible_helper<_T1, _T2, 3, 1> :
-            public trait::false_type
+            public false_type
           { };
           template<typename _T1, typename _T2>
           struct __is_convertible_helper<_T1, _T2, 3, 2> :
-            public trait::false_type
+            public false_type
           { };
           template<typename _T1, typename _T2>
           struct __is_convertible_helper<_T1, _T2, 3, 3> :
-            public trait::true_type
+            public true_type
           { };
         }
         template<typename _F, typename _T>
         struct is_convertible :
-          public __is_convertible_impl::__is_convertible_helper<_F, _T>
+          public __impl::__is_convertible_helper<_F, _T>
         { };
 
 #if !defined(__UTILITY_NO_CPP14__)
@@ -167,6 +161,6 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_RELEATIONS_IS_CONVERTIBLE__

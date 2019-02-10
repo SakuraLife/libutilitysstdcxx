@@ -7,51 +7,50 @@
 
 #if __utility_has_is_standard_layout
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace property
+       __utility_interspace_start(property)
       {
         // is_standard_layout
         template<typename _T>
-        struct is_standard_layout : public
-          trait::integral_constant<bool,
-            __utility_is_standard_layout(_T)>
+        struct is_standard_layout: public
+          integral_constant<bool, __utility_is_standard_layout(_T)>
         { };
 
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #else // __utility_has_is_standard_layout
 
 #include<utility/trait/type/categories/is_scalar.hpp>
 #include<utility/trait/type/transform/remove_all_extents.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace property
+       __utility_interspace_start(property)
       {
         // is_standard_layout
         template<typename _T>
-        struct is_standard_layout : public
-          trait::integral_constant<bool,
-            trait::type::categories::is_scalar<typename
-              trait::type::transform::remove_all_extents<_T>::type>::value>
+        struct is_standard_layout: public
+          integral_constant<bool,
+            trait::type::categories::is_scalar<
+              trait::type::transform::remove_all_extents_t<_T>
+            >::value
+          >
         { };
 
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __utility_has_is_standard_layout
 

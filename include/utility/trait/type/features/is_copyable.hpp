@@ -6,24 +6,23 @@
 #include<utility/trait/type/features/is_copy_constructible.hpp>
 #include<utility/trait/type/features/is_copy_assignable.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace features
+       __utility_interspace_start(features)
       {
         // is_copyable
         template<typename _T>
-        struct is_copyable :
-          public trait::integral_constant<bool,
-            trait::type::features::is_copy_constructible<_T>::value &&
-            trait::type::features::is_copy_assignable<_T>::value>
+        struct is_copyable: public trait::integral_constant<bool,
+            is_copy_constructible<_T>::value &&
+            is_copy_assignable<_T>::value
+          >
         { };
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_TRAIT_TYPE_FEATURES_IS_COPYABLE__

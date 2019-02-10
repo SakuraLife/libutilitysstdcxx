@@ -26,9 +26,8 @@
 #include<utility/trait/type/features/is_nothrow_swappable.hpp>
 #include<utility/trait/type/features/is_nothrow_possible_swappable.hpp>
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
     template
     <
@@ -186,7 +185,7 @@ namespace utility
 
   }
 
-  namespace algorithm
+   __utility_interspace_start(algorithm)
   {
     template<typename _T, typename _Container>
     void swap(
@@ -202,6 +201,6 @@ namespace utility
     { __x.possible_swap(__y);}
   }
 
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_QUEUE__

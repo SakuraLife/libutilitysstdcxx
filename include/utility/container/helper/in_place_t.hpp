@@ -4,7 +4,7 @@
 
 
 /**
- * \file ignore_t.hpp
+ * \file in_place_t.hpp
  * \author Inochi Amaoto
  *
  */
@@ -12,12 +12,10 @@
 #include<utility/config/utility_config.hpp>
 #include<utility/trait/trait_helper.hpp>
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
-
-    namespace helper
+     __utility_interspace_start(_helper)
     {
       struct in_place_t
       { explicit in_place_t() = default;};
@@ -43,30 +41,27 @@ namespace utility
       constexpr in_place_index_t<_I> in_place_index{};
 #endif // ! __UTILITY_NO_CPP14__
 
-    } // helper
-
-    namespace helper_traits
-    {
       template<typename _T>
       struct is_in_place_type: public trait::false_type
       { };
 
       template<typename _T>
-      struct is_in_place_type<helper::in_place_type_t<_T>>:  public trait::true_type
+      struct is_in_place_type<in_place_type_t<_T>>: public trait::true_type
       { };
-    }
 
-    using helper::in_place_t;
-    using helper::in_place_index_t;
-    using helper::in_place_type_t;
+    } // _helper
 
-    using helper::in_place;
+    using _helper::in_place_t;
+    using _helper::in_place_index_t;
+    using _helper::in_place_type_t;
+
+    using _helper::in_place;
 #ifndef __UTILITY_NO_CPP14__
-    using helper::in_place_index;
-    using helper::in_place_type;
+    using _helper::in_place_index;
+    using _helper::in_place_type;
 #endif // ! __UTILITY_NO_CPP14__
 
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CONTAINER_HELPER_IN_PLACE_T__

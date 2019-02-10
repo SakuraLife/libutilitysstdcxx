@@ -7,9 +7,8 @@
 #include<utility/iterator/distance.hpp>
 #include<utility/iterator/advance.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     /**
      * \brief Return iterator to upper bound
@@ -98,6 +97,6 @@ namespace utility
       return __first;
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_UPPER_BOUND__

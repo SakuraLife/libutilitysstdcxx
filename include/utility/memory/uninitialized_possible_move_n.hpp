@@ -10,11 +10,10 @@
 #include<utility/trait/type/features/is_nothrow_move_constructible.hpp>
 #include<utility/iterator/iterator_traits.hpp>
 
-namespace utility
-{
-  namespace memory
+__utility_globalspace_start(utility)
+   __utility_interspace_start(memory)
   {
-    namespace detail
+    namespace __detail
     {
       template<typename _InputIterator, typename _Size, typename _ForwardIterator>
       inline
@@ -65,7 +64,7 @@ namespace utility
         typename iterator::iterator_traits<_InputIterator>::value_type>
         __identify;
 
-      return detail::__uninitialized_possible_move_n(
+      return __detail::__uninitialized_possible_move_n(
         _first, _size, _result, __identify{}
       );
     }
@@ -80,12 +79,12 @@ namespace utility
         typename iterator::iterator_traits<_InputIterator>::value_type>
         __identify;
 
-      return detail::__uninitialized_possible_move_backward_n(
+      return __detail::__uninitialized_possible_move_backward_n(
         _first, _size, _result, __identify{}
       );
     }
 
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_POSSIBLE_MOVE_N__

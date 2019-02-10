@@ -4,12 +4,11 @@
 
 #include<utility/config/utility_config.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   { }
 
-  namespace math
+   __utility_interspace_start(math)
   {
     namespace helper
     {
@@ -24,7 +23,7 @@ namespace utility
       typedef signed long           _sl;
       typedef signed long long      _sll;
 
-      namespace
+      inline namespace _inner
       {
         template<unsigned long long _N>
         struct _bits
@@ -85,6 +84,6 @@ namespace utility
   }
 
   using math::helper::_char_bits;
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MATH_MATH_HELPER__

@@ -6,9 +6,8 @@
 
 #include<utility/memory/basic_deallocator.hpp>
 
-namespace utility
-{
-  namespace memory
+__utility_globalspace_start(utility)
+   __utility_interspace_start(memory)
   {
     struct raw_delete
     {
@@ -17,6 +16,6 @@ namespace utility
       { default_deallocate(_ptr);}
     };
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_RAW_DELETE__

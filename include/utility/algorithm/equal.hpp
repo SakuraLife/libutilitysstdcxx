@@ -7,9 +7,8 @@
 #include<utility/iterator/iterator_traits.hpp>
 #include<utility/iterator/distance.hpp>
 
-namespace utility
-{
-  namespace algorithm
+__utility_globalspace_start(utility)
+   __utility_interspace_start(algorithm)
   {
     /**
      * \brief Test whether the elements in two ranges are equal
@@ -129,6 +128,6 @@ namespace utility
     }
 
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_ALGORITHM_EQUAL__

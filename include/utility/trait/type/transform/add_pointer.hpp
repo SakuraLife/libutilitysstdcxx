@@ -8,23 +8,24 @@
 #include<utility/trait/type/transform/remove_reference.hpp>
 #include<utility/trait/type/releations/is_same.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace transform
+       __utility_interspace_start(transform)
       {
         // add_pointer
-        namespace __add_pointer_impl
+        namespace __impl
         {
-          template<typename _T, bool =
-          trait::type::transform::is_referenceable<_T>::value||
-            trait::type::releations::is_same<
-              typename
-                trait::type::transform::remove_cv<_T>::type,
-                  void>::value>
+          using trait::type::transform::is_referenceable;
+          using trait::type::releations::is_same;
+          using trait::type::transform::remove_cv_t;
+
+          template<typename _T,
+            bool = is_referenceable<_T>::value ||
+                   is_same<remove_cv_t<_T>, void>::value
+          >
           struct __add_pointer_helper
           { typedef typename remove_reference<_T>::type* type;};
           template<typename _T>
@@ -33,10 +34,7 @@ namespace utility
         }
         template<typename _T>
         struct add_pointer
-        {
-          typedef typename
-            __add_pointer_impl::__add_pointer_helper<_T>::type type;
-        };
+        { typedef typename __impl::__add_pointer_helper<_T>::type type;};
 
         template<typename _T>
         using add_pointer_t = typename add_pointer<_T>::type;
@@ -44,6 +42,6 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_TRANSFORM_ADD_POINTER__

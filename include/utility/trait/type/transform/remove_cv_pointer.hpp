@@ -7,60 +7,43 @@
 #include<utility/trait/type/transform/remove_pointer.hpp>
 #include<utility/trait/type/transform/remove_all_pointer.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace type
+     __utility_interspace_start(type)
     {
-      namespace transform
+       __utility_interspace_start(transform)
       {
         // remove_const_pointer
         template<typename _T>
         struct remove_const_pointer
-        {
-          typedef typename
-            remove_const<typename remove_pointer<_T>::type>::type type;
-        };
+        { typedef remove_const_t<remove_pointer_t<_T>> type;};
 
         // remove_volatile_pointer
         template<typename _T>
         struct remove_volatile_pointer
-        {
-          typedef typename
-            remove_volatile<typename remove_pointer<_T>::type>::type type;
-        };
+        { typedef remove_volatile_t<remove_const_t<_T>> type;};
 
         // remove_cv_pointer
         template<typename _T>
         struct remove_cv_pointer
-        {
-          typedef typename
-            remove_cv<typename remove_pointer<_T>::type>::type type;
-        };
+        { typedef remove_cv_t<remove_pointer_t<_T>> type;};
 
         // remove_const_all_pointer
         template<typename _T>
         struct remove_const_all_pointer
-        {
-          typedef typename
-            remove_const<typename remove_all_pointer<_T>::type>::type type;
-        };
+        { typedef remove_const_t<remove_all_pointer_t<_T>> type;};
 
         // remove_volatile_all_pointer
         template<typename _T>
         struct remove_volatile_all_pointer
-        {
-          typedef typename
-            remove_volatile<typename remove_all_pointer<_T>::type>::type type;
-        };
+        { typedef remove_volatile_t<remove_all_pointer_t<_T>> type;};
 
         // remove_cv_all_pointer
         template<typename _T>
         struct remove_cv_all_pointer
         {
-          typedef typename
-            remove_cv<typename remove_all_pointer<_T>::type>::type type;
+          typedef remove_cv_t<remove_all_pointer_t<_T>> type;
         };
 
         template<typename _T>
@@ -69,6 +52,6 @@ namespace utility
       }
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // __UTILITY_TRAIT_TYPE_TRANSFORM_REMOVE_CV_POINTER__

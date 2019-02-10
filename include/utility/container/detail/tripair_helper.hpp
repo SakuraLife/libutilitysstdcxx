@@ -17,9 +17,8 @@
 #include<utility/trait/type/features/is_nothrow_possible_swappable.hpp>
 #include<utility/trait/type/miscellaneous/enable_if.hpp>
 
-namespace utility
-{
-  namespace container
+__utility_globalspace_start(utility)
+   __utility_interspace_start(container)
   {
     namespace __detail
     {
@@ -232,7 +231,7 @@ namespace utility
     }
   }
 
-}
+__utility_globalspace_end(utility)
 
 
 #endif // ! __UTILITY_CONTAINER_DETAIL_TRIPAIR_HELPER__

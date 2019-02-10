@@ -5,9 +5,8 @@
 #include<utility/trait/trait_helper.hpp>
 #include<utility/trait/type/releations/is_base_of.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
     template<typename _T>
     struct is_unsupport_trait :
@@ -16,6 +15,6 @@ namespace utility
         trait::type::releations::is_base_of<unsupport_trait<true>, _T>::value>
     { };
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_TRAIT_TRAIT_HELPER_IS_SUPPORTED_TRAIT__

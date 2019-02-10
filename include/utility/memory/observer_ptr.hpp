@@ -14,9 +14,8 @@
 #include<utility/trait/type/miscellaneous/common_type.hpp>
 
 
-namespace utility
-{
-  namespace memory
+__utility_globalspace_start(utility)
+   __utility_interspace_start(memory)
   {
     namespace __detail
     {
@@ -163,6 +162,6 @@ namespace utility
     observer_ptr<_T> make_observer(_T* _ptr) noexcept
     { return observer_ptr<_T>{_ptr};}
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MEMORY_OBSERVER_PTR__

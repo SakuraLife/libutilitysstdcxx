@@ -5,11 +5,10 @@
 #include<utility/trait/trait_helper.hpp>
 #include<utility/trait/type/type_features.hpp>
 
-namespace utility
-{
-  namespace trait
+__utility_globalspace_start(utility)
+   __utility_interspace_start(trait)
   {
-    namespace identify
+     __utility_interspace_start(identify)
     {
       template<typename _T>
       class type_identification
@@ -38,6 +37,6 @@ namespace utility
       };
     }
   }
-}
+__utility_globalspace_end(utility)
 
 #endif // ! ___UTILITY__TRAIT__TYPE__IDENTIFT___
