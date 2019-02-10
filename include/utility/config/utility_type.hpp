@@ -3,6 +3,8 @@
 #ifndef ___UTILITY__TYPE__DECLARARTION___
 #define ___UTILITY__TYPE__DECLARARTION___
 
+#include<utility/config/debug/utility_debug_config.hpp>
+
 __utility_globalspace_start(utility)
   using size_t = decltype(sizeof(char));  ///< size type
   using nullptr_t = decltype(nullptr);    ///< nullptr type

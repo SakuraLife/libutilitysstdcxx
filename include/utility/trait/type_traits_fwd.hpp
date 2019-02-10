@@ -2,6 +2,8 @@
 #ifndef __UTILITY_TRAIT_TYPE_FWD__
 #define __UTILITY_TRAIT_TYPE_FWD__
 
+#include<utility/config/utility_config.hpp>
+
 __utility_globalspace_start(utility)
   __utility_interspace_start(trait)
     template<typename Type, Type val>
