@@ -91,13 +91,15 @@ namespace
   };
 }
 
-unsigned char utility::_builtin::_breverse(unsigned char _val) noexcept
+__utility_globalspace_start(utility)
+unsigned char _builtin::_breverse(unsigned char _val) noexcept
 { return __breverse<_buc>::aux(_val);}
-unsigned short utility::_builtin::_breverse(unsigned short _val) noexcept
+unsigned short _builtin::_breverse(unsigned short _val) noexcept
 { return __breverse<_bus>::aux(_val);}
-unsigned int utility::_builtin::_breverse(unsigned int _val) noexcept
+unsigned int _builtin::_breverse(unsigned int _val) noexcept
 { return __breverse<_bui>::aux(_val);}
-unsigned long utility::_builtin::_breverse(unsigned long _val) noexcept
+unsigned long _builtin::_breverse(unsigned long _val) noexcept
 { return __breverse<_bul>::aux(_val);}
-unsigned long long utility::_builtin::_breverse(unsigned long long _val) noexcept
+unsigned long long _builtin::_breverse(unsigned long long _val) noexcept
 { return __breverse<_bull>::aux(_val);}
+__utility_globalspace_end(utility)

@@ -150,13 +150,15 @@ namespace
   };
 }
 
-int utility::_builtin::_ntz(unsigned char _val) noexcept
+__utility_globalspace_start(utility)
+int _builtin::_ntz(unsigned char _val) noexcept
 { return _buc - __ntz<_buc>::aux(_val);}
-int utility::_builtin::_ntz(unsigned short _val) noexcept
+int _builtin::_ntz(unsigned short _val) noexcept
 { return _bus - __ntz<_bus>::aux(_val);}
-int utility::_builtin::_ntz(unsigned int _val) noexcept
+int _builtin::_ntz(unsigned int _val) noexcept
 { return _bui - __ntz<_bui>::aux(_val);}
-int utility::_builtin::_ntz(unsigned long _val) noexcept
+int _builtin::_ntz(unsigned long _val) noexcept
 { return _bul - __ntz<_bul>::aux(_val);}
-int utility::_builtin::_ntz(unsigned long long _val) noexcept
+int _builtin::_ntz(unsigned long long _val) noexcept
 { return _bull - __ntz<_bull>::aux(_val);}
+__utility_globalspace_end(utility)

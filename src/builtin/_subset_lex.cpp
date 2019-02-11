@@ -20,24 +20,26 @@ static inline _I subset_lex_prev(_I _val) noexcept
   return (_val + __vl) | 1;
 }
 
-unsigned char utility::_builtin::_lex_next(unsigned char _val) noexcept
+__utility_globalspace_start(utility)
+unsigned char _builtin::_lex_next(unsigned char _val) noexcept
 { return subset_lex_next<_uc>(_val);}
-unsigned short utility::_builtin::_lex_next(unsigned short _val) noexcept
+unsigned short _builtin::_lex_next(unsigned short _val) noexcept
 { return subset_lex_next<_us>(_val);}
-unsigned int utility::_builtin::_lex_next(unsigned int _val) noexcept
+unsigned int _builtin::_lex_next(unsigned int _val) noexcept
 { return subset_lex_next<_ui>(_val);}
-unsigned long utility::_builtin::_lex_next(unsigned long _val) noexcept
+unsigned long _builtin::_lex_next(unsigned long _val) noexcept
 { return subset_lex_next<_ul>(_val);}
-unsigned long long utility::_builtin::_lex_next(unsigned long long _val) noexcept
+unsigned long long _builtin::_lex_next(unsigned long long _val) noexcept
 { return subset_lex_next<_ull>(_val);}
 
-unsigned char utility::_builtin::_lex_prev(unsigned char _val) noexcept
+unsigned char _builtin::_lex_prev(unsigned char _val) noexcept
 { return subset_lex_prev<_uc>(_val);}
-unsigned short utility::_builtin::_lex_prev(unsigned short _val) noexcept
+unsigned short _builtin::_lex_prev(unsigned short _val) noexcept
 { return subset_lex_prev<_us>(_val);}
-unsigned int utility::_builtin::_lex_prev(unsigned int _val) noexcept
+unsigned int _builtin::_lex_prev(unsigned int _val) noexcept
 { return subset_lex_prev<_ui>(_val);}
-unsigned long utility::_builtin::_lex_prev(unsigned long _val) noexcept
+unsigned long _builtin::_lex_prev(unsigned long _val) noexcept
 { return subset_lex_prev<_ul>(_val);}
-unsigned long long utility::_builtin::_lex_prev(unsigned long long _val) noexcept
+unsigned long long _builtin::_lex_prev(unsigned long long _val) noexcept
 { return subset_lex_prev<_ull>(_val);}
+__utility_globalspace_end(utility)

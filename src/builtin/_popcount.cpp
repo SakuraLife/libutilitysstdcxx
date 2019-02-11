@@ -4257,13 +4257,15 @@ namespace
 
 }
 
-int utility::_builtin::_popcount(unsigned char _val) noexcept
+__utility_globalspace_start(utility)
+int _builtin::_popcount(unsigned char _val) noexcept
 { return __popcount<_buc>::aux(_val);}
-int utility::_builtin::_popcount(unsigned short _val) noexcept
+int _builtin::_popcount(unsigned short _val) noexcept
 { return __popcount<_bus>::aux(_val);}
-int utility::_builtin::_popcount(unsigned int _val) noexcept
+int _builtin::_popcount(unsigned int _val) noexcept
 { return __popcount<_bui>::aux(_val);}
-int utility::_builtin::_popcount(unsigned long _val) noexcept
+int _builtin::_popcount(unsigned long _val) noexcept
 { return __popcount<_bul>::aux(_val);}
-int utility::_builtin::_popcount(unsigned long long _val) noexcept
+int _builtin::_popcount(unsigned long long _val) noexcept
 { return __popcount<_bull>::aux(_val);}
+__utility_globalspace_end(utility)

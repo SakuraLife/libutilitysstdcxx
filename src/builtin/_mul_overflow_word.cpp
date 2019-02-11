@@ -4,7 +4,8 @@
 #define _LWORD(_VAL, _SHADOW)   ((_VAL) & (_SHADOW))
 #define _HWORD(_VAL, _SHIFT)    ((_VAL) >> (_SHIFT))
 
-unsigned long utility::_builtin::_mul_overflow_word(
+__utility_globalspace_start(utility)
+unsigned long _builtin::_mul_overflow_word(
   unsigned long _x, unsigned long _y, unsigned long* _val
 ) noexcept
 {
@@ -28,7 +29,7 @@ unsigned long utility::_builtin::_mul_overflow_word(
   return __hxhy + _HWORD(__lxhy, _bull/2) + _HWORD(__hxly, _bull/2) + __carry;
 }
 
-unsigned long long utility::_builtin::_mul_overflow_word(
+unsigned long long _builtin::_mul_overflow_word(
   unsigned long long _x, unsigned long long _y, unsigned long long* _val
 ) noexcept
 {
@@ -51,3 +52,4 @@ unsigned long long utility::_builtin::_mul_overflow_word(
 
   return __hxhy + _HWORD(__lxhy, _bull/2) + _HWORD(__hxly, _bull/2) + __carry;
 }
+__utility_globalspace_end(utility)
