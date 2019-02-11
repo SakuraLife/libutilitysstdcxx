@@ -22,7 +22,7 @@ __utility_globalspace_start(utility)
       typedef signed long           _sl;
       typedef signed long long      _sll;
 
-      inline namespace _inner
+      inline namespace
       {
         template<unsigned long long _N>
         struct _bits
