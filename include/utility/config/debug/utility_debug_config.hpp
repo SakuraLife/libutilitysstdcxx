@@ -2,6 +2,7 @@
 #ifndef ___UTILITY__DEBUG__CONFIG___
 #define ___UTILITY__DEBUG__CONFIG___
 
+
 #ifdef UTILITY_DEBUG
 
 #define __utility_private public
@@ -16,13 +17,6 @@
 #define UTILITY_MEMORY_HAS_EXTRA true
 #define UTILITY_TRAIT_HAS_EXTRA true
 
-#define __utility_interspace_start(_name) namespace _name {
-#define __utility_interspace_end(_name) }
-#define __utility_globalspace_start(_name) namespace _name {
-#define __utility_globalspace_end(_name) }
-
-#define __uspace(_name) _name
-
 #ifndef UTILITY_NO_EXTRA_CHECK
 
 #else
@@ -35,15 +29,26 @@
 #define __utility_debug   private
 #define __UTILITY_ASSGIN(__TYPE, __TYPENAME, __ASS)
 
+#endif // ! __UTILITY_DEBUG
+
+#if defined(UTILITY_DEV) || defined(UTILITY_DEBUG)
+
+#define __utility_interspace_start(_name) namespace _name {
+#define __utility_interspace_end(_name) }
+#define __utility_globalspace_start(_name) namespace _name {
+#define __utility_globalspace_end(_name) }
+#define __uspace(_name) _name
+
+#else
+
 #define __utility_interspace_start(_name) inline namespace _name {
 #define __utility_interspace_end(_name) }
 #define __utility_globalspace_start(_name) namespace std { \
   inline namespace _name {
 #define __utility_globalspace_end(_name) } }
-
 #define __uspace(_name) std::_name
 
-#endif // ! __UTILITY_DEBUG
+#endif // ! __UTILITY_DEV
 
 #ifndef UTILITY_NOEXTRA
 # define __utility_extra   public
