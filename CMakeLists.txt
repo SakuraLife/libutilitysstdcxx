@@ -33,19 +33,29 @@ check_endian()
 # message("long double: " ${CXX_LDOUBE})
 # message("void*:       " ${CXX_PTR})
 
+option(CXX_DEV, "enable dev build" OFF)
+
 configure_file(generate/utility_preconfig.hpp.in include/utility/config/utility_preconfig.hpp @ONLY)
 
 include_directories("./include")
 
-aux_source_directory(./src/charS LIB_SRC)
-aux_source_directory(./src/ctype LIB_SRC)
-aux_source_directory(./src/errno LIB_SRC)
+aux_source_directory("./src/builtin" SSTD_BUILTIN_SRC)
 
-add_library(sstdc++_shared SHARED ${LIB_SRC})
-add_library(sstdc++_static STATIC ${LIB_SRC})
+add_library(sstdabi_shared SHARED ${SSTD_BUILTIN_SRC})
+add_library(sstdabi_static STATIC ${SSTD_BUILTIN_SRC})
 
-set_target_properties(sstdc++_shared PROPERTIES OUTPUT_NAME sstdc++)
-set_target_properties(sstdc++_shared PROPERTIES LINK_FLAGS "-nodefaultlibs -fno-rtti -fno-exceptions")
+set_target_properties(sstdabi_shared PROPERTIES LINKER_LANGUAGE C)
+set_target_properties(sstdabi_shared PROPERTIES OUTPUT_NAME sstdabi)
+set_target_properties(sstdabi_shared PROPERTIES LINK_FLAGS "-fno-rtti -fno-exceptions")
 
-set_target_properties(sstdc++_static PROPERTIES OUTPUT_NAME sstdc++)
-set_target_properties(sstdc++_static PROPERTIES LINK_FLAGS "-nodefaultlibs -fno-rtti -fno-exceptions")
+set_target_properties(sstdabi_static PROPERTIES LINKER_LANGUAGE C)
+set_target_properties(sstdabi_static PROPERTIES OUTPUT_NAME sstdabi)
+set_target_properties(sstdabi_static PROPERTIES LINK_FLAGS "-fno-rtti -fno-exceptions")
+
+# aux_source_directory(./src/charS SSTD_LIB_SRC)
+# aux_source_directory(./src/ctype LIB_SRC)
+# aux_source_directory(./src/errno LIB_SRC)
+
+# add_library(sstdc++_shared SHARED ${LIB_SRC})
+# add_library(sstdc++_static STATIC ${LIB_SRC})
+
