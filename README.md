@@ -54,7 +54,8 @@ module charS
 | string            | basic_static_string.hpp   | F | P |
 | itoa              | itoa.hpp                  | F | U |
 
-module functional
+module functional  
+
 | submodule       | header                | state | test | 
 |:---------------:|:---------------------:|:-----:|:----:|
 | function        | function.hpp          | F | P |
