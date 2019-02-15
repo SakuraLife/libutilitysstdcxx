@@ -9,9 +9,10 @@ libutilitysstdc++ have many implement defined interfaces and some light-weight e
 
 ### state table
 
-module container
+module container  
+
 | submodule       | header                  | state | test | 
-|-----------------|-------------------------|-------|------|
+|:---------------:|:-----------------------:|:-----:|:----:|
 | helper          | container_helper.hpp    | D | - |
 | helper          | initializer_list.hpp    | D | - |
 | array           | array.hpp               | F | P |
@@ -42,9 +43,10 @@ module container
 | heap            | -------                 | P | - |
 
 
-module charS
+module charS  
+
 | submodule         | header                    | state | test | 
-|-------------------|---------------------------|-------|------|
+|:-----------------:|:-------------------------:|:-----:|:----:|
 | string            | char_traits.hpp           | F | P |
 | string            | basic_string.hpp          | F | P |
 | string            | basic_string_builder.hpp  | P | - |
@@ -54,7 +56,7 @@ module charS
 
 module functional
 | submodule       | header                | state | test | 
-|-----------------|-----------------------|-------|------|
+|:---------------:|:---------------------:|:-----:|:----:|
 | function        | function.hpp          | F | P |
 | invoke          | invoke.hpp            | F | P |
 | binder          | bind.hpp              | F | P |
@@ -65,9 +67,10 @@ module functional
 | wrapper         | ref.hpp               | F | U |
 | wrapper         | reference_wrapper.hpp | F | P |
 
-module iterator
+module iterator  
+
 | submodule       | header                    | state | test | 
-|-----------------|---------------------------|-------|------|
+|:---------------:|:-------------------------:|:-----:|:----:|
 | trait           | iterator_tag.hpp          | F | P |
 | trait           | iterator_traits.hpp       | F | P |
 | move            | advance.hpp               | F | P |
@@ -79,9 +82,10 @@ module iterator
 | iterator        | raw_pointer_iterator.hpp  | F | N |
 | iterator        | reverse_iterator.hpp      | F | P |
 
-module memory
+module memory  
+
 | submodule       | header                            | state | test | 
-|-----------------|-----------------------------------|-------|------|
+|:---------------:|:---------------------------------:|:-----:|:----:|
 | helper          | allocator.hpp                     | D | - |
 | trait           | allocator_traits.hpp              | F | P |
 | trait           | uses_allocator.hpp                | F | P |
@@ -107,22 +111,25 @@ module memory
 | memory          | destroy_at.hpp                    | P | - |
 | buffer          | temporary_buffer.hpp              | F | P |
 
-module math
+module math  
+
 | submodule       | header                    | state | test | 
-|-----------------|---------------------------|-------|------|
+|:---------------:|:-------------------------:|:-----:|:----:|
 | helper          | math_helper.hpp           | D | - |
 | bit             | bitset.hpp                | U | - |
 | HP              | cppint.hpp                | P | - |
-| SPMF            | ------                    | P | - |
+| SPMF            | :----:                    | P | - |
 
-module trait
+module trait  
+
 | submodule       | header                            | state | test | 
-|-----------------|-----------------------------------|-------|------|
+|:---------------:|:---------------------------------:|:-----:|:----:|
 | helper          | trait_helper.hpp                  | D | - |
 
-module algorithm
+module algorithm  
+
 | submodule       | header                            | state | test | 
-|-----------------|-----------------------------------|-------|------|
+|:---------------:|:---------------------------------:|:-----:|:----:|
 | core            | swap.hpp                          | F | P |
 | core            | move.hpp                          | F | P |
 | core            | forward.hpp                       | F | P |
