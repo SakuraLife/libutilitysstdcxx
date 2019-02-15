@@ -4,7 +4,7 @@
 #define __UTILITY_CHARS_IMPL_STRING_FIND__
 
 #include<utility/config/utility_config.hpp>
-#include<utility/algorithm/max.hpp>
+#include<utility/algorithm/impl/max.hpp>
 
 
 __utility_globalspace_start(utility)

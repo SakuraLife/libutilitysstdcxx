@@ -6,7 +6,7 @@
 
 #include<utility/memory/addressof.hpp>
 
-#include<utility/algorithm/max.hpp>
+#include<utility/algorithm/impl/max.hpp>
 #include<utility/algorithm/forward.hpp>
 
 #include<utility/trait/type/type_trait_special.hpp>

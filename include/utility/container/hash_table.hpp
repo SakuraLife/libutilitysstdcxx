@@ -16,7 +16,7 @@
 #include<utility/algorithm/possible_swap.hpp>
 #include<utility/algorithm/move.hpp>
 #include<utility/algorithm/forward.hpp>
-#include<utility/algorithm/max.hpp>
+#include<utility/algorithm/impl/max.hpp>
 #include<utility/algorithm/lower_bound.hpp>
 #include<utility/algorithm/is_permutation.hpp>
 

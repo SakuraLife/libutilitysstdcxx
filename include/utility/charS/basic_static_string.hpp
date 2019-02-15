@@ -9,7 +9,7 @@
 #include<utility/algorithm/swap.hpp>
 #include<utility/algorithm/possible_swap.hpp>
 #include<utility/algorithm/move.hpp>
-#include<utility/algorithm/min.hpp>
+#include<utility/algorithm/impl/min.hpp>
 
 #include<utility/trait/type/releations/is_same.hpp>
 #include<utility/trait/type/releations/is_convertible.hpp>

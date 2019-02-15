@@ -4,22 +4,25 @@
 
 #include<utility/config/utility_config.hpp>
 
-#include<utility/algorithm/impl/max.hpp>
-#include<utility/algorithm/max_element.hpp>
-
-#include<utility/container/initializer_list.hpp>
-
 __utility_globalspace_start(utility)
   __utility_interspace_start(algorithm)
     template<typename _T>
     inline __UTILITY_CPP14_CONSTEXPR__
-    _T max(container::initializer_list<_T> _init)
-    { return *max_element(_init.begin(), _init.end());}
+    const _T& max(const _T& _x, const _T& _y)
+    {
+      if(_x > _y)
+      { return _x;}
+      return _y;
+    }
 
     template<typename _T, typename _Compare>
     inline __UTILITY_CPP14_CONSTEXPR__
-    _T max(container::initializer_list<_T> _init, _Compare _comp)
-    { return *max_element(_init.begin(), _init.end(), _comp);}
+    const _T& max(const _T& _x, const _T& _y, _Compare _comp)
+    {
+      if(_comp(_y, _x))
+      { return _x;}
+      return _y;
+    }
   __utility_interspace_end(algorithm)
 __utility_globalspace_end(utility)
 

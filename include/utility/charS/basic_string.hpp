@@ -8,7 +8,7 @@
 #include<utility/algorithm/swap.hpp>
 #include<utility/algorithm/possible_swap.hpp>
 #include<utility/algorithm/move.hpp>
-#include<utility/algorithm/min.hpp>
+#include<utility/algorithm/impl/min.hpp>
 
 #include<utility/container/pair.hpp>
 #include<utility/container/compressed_pair.hpp>
@@ -16,6 +16,7 @@
 
 #include<utility/trait/type/categories/is_array.hpp>
 #include<utility/trait/type/releations/is_same.hpp>
+#include<utility/trait/type/releations/is_convertible.hpp>
 #include<utility/trait/type/property/is_standard_layout.hpp>
 #include<utility/trait/type/property/is_trivial.hpp>
 #include<utility/trait/type/miscellaneous/enable_if.hpp>
@@ -35,10 +36,8 @@
 #include<utility/iterator/raw_pointer_iterator.hpp>
 #include<utility/iterator/distance.hpp>
 
-namespace utility
-{
-  namespace charS
-  {
+__utility_globalspace_start(utility)
+  __utility_interspace_start(charS)
     template<
       typename _CharT,
       typename _Traits = charS::char_traits<_CharT>,
@@ -53,6 +52,10 @@ namespace utility
       using trait::type::property::is_standard_layout;
       using trait::type::property::is_trivial;
       using trait::type::releations::is_same;
+      using trait::type::releations::is_convertible;
+      using trait::type::miscellaneous::enable_if;
+      using trait::type::features::is_nothrow_swappable;
+      using trait::type::features::is_nothrow_possible_swappable;
 
       template<typename _CharT, typename _ST>
       struct string_union_traits
@@ -97,6 +100,9 @@ namespace utility
         typedef memory::allocator_traits<_Alloc>        allocator_traits_type;
 
       public:
+        typedef basic_string_view<char_type, trait_type>  view_type;
+
+      public:
         typedef typename allocator_traits_type::size_type       size_type;
         typedef typename allocator_traits_type::difference_type difference_type;
         typedef typename allocator_traits_type::pointer         pointer;
@@ -130,11 +136,11 @@ namespace utility
         );
         static_assert(
           __detail::is_standard_layout<value_type>::value,
-          "The char type of the basic_string_view must have standard layout"
+          "The char type of the basic_string must have standard layout"
         );
         static_assert(
           __detail::is_trivial<value_type>::value,
-          "The char type of the basic_string_view must be trivial"
+          "The char type of the basic_string must be trivial"
         );
         static_assert(
           __detail::is_same<typename traits_type::char_type, value_type>::value,
@@ -190,7 +196,7 @@ namespace utility
 
         template<
           typename _Iterator,
-          typename trait::type::miscellaneous::enable_if<
+          typename __detail::enable_if<
             __detail::is_iterator<_Iterator>::value,
             bool
           >::type = true
@@ -208,7 +214,7 @@ namespace utility
 
         basic_string(
           const basic_string& _other,
-          const allocator_type& _alloc
+          const allocator_type& _allocis_same
         ):__un{}, __mis{short_tag, _alloc}
         { this->append(_other);}
 
@@ -241,11 +247,37 @@ namespace utility
           }
         }
 
+        template<
+          typename _T,
+          typename __detail::enable_if<
+            __detail::is_convertible<const _T&, view_type>::value &&
+            (!__detail::is_convertible<_T, const char_type*>::value),
+            bool
+          >::type = true
+        >
         explicit basic_string(
-          basic_string_view<_CharT, _Traits> _sv,
+          const _T& _sv, const allocator_type& _alloc = allocator_type{}
+        ):__un{}, __mis{short_tag, _alloc}
+        {
+          view_type __sv = _sv;
+          this->append(__sv.begin(), __sv.end());
+        }
+        template<
+          typename _T,
+          typename __detail::enable_if<
+            __detail::is_convertible<const _T&, view_type>::value &&
+            (!__detail::is_convertible<_T, const char_type*>::value),
+            bool
+          >::type = true
+        >
+        explicit basic_string(
+          const _T& _sv, size_type _pos, size_type _n,
           const allocator_type& _alloc = allocator_type{}
         ):__un{}, __mis{short_tag, _alloc}
-        { this->append(_sv.begin(), _sv.end());}
+        {
+          view_type __sv = _sv;
+          this->append(__sv.begin(), __sv.end());
+        }
 
         basic_string(
           container::initializer_list<char_type> _init,
@@ -304,10 +336,19 @@ namespace utility
           append(_ch);
           return *this;
         }
-        basic_string& operator=(basic_string_view<_CharT, _Traits> _sv)
+        template<
+          typename _T,
+          typename __detail::enable_if<
+            __detail::is_convertible<const _T&, view_type>::value &&
+            (!__detail::is_convertible<_T, const char_type*>::value),
+            bool
+          >::type = true
+        >
+        basic_string& operator=(const _T& _sv)
         {
+          view_type __sv = _sv;
           clear();
-          append(_sv.begin(), _sv.end());
+          append(__sv.begin(), __sv.end());
           return *this;
         }
         basic_string& operator=(
@@ -335,7 +376,7 @@ namespace utility
         }
         template<
           typename _Iterator,
-          typename trait::type::miscellaneous::enable_if<
+          typename __detail::enable_if<
             __detail::is_iterator<_Iterator>::value,
             bool
           >::type = true
@@ -381,8 +422,19 @@ namespace utility
           { }
           return assign(_str, __send);
         }
-        basic_string& assign(basic_string_view<char_type, traits_type> _sv)
-        { return assign(_sv.begin(), _sv.end());}
+        template<
+          typename _T,
+          typename __detail::enable_if<
+            __detail::is_convertible<const _T&, view_type>::value &&
+            (!__detail::is_convertible<_T, const char_type*>::value),
+            bool
+          >::type = true
+        >
+        basic_string& assign(const _T& _sv)
+        {
+          view_type __sv = _sv;
+          return assign(__sv.begin(), __sv.end());
+        }
         basic_string& assign(container::initializer_list<char_type> _init)
         { return assign(_init.begin(), _init.end());}
 
@@ -485,9 +537,7 @@ namespace utility
 
       public:
         operator basic_string_view<char_type, traits_type>() const noexcept
-        {
-          return basic_string_view<char_type, traits_type>{data(), size()};
-        }
+        { return basic_string_view<char_type, traits_type>{data(), size()};}
 
       public:
         inline void reserve(size_type __cap = 0U)
@@ -526,9 +576,9 @@ namespace utility
               __mis.second(), __un.longs.ptr
             );
           }
-          __un.shorts.array[0] = char_type{0};
+          __un.shorts.array[0] = char_type{};
 #else
-          *data() = char_type{0};
+          *data() = char_type{};
 #endif
           __length(__mis, 0U);
         }
@@ -544,8 +594,11 @@ namespace utility
         { append(1U, _ch);}
         inline void pop_back() noexcept
         {
-          *data_end() = char_type{0};
-          --__mis.first();
+          if(__length(__mis))
+          {
+            *data_end() = char_type{};
+            --__mis.first();
+          }
         }
 
       public:
@@ -559,13 +612,13 @@ namespace utility
           char_type* __pos = data_end();
           for(; _count; --_count)
           { *__pos++ = _ch;}
-          *__pos = char_type{0};
+          *__pos = char_type{};
           __length(__mis, __ns);
           return *this;
         }
         template<
           typename _Iterator,
-          typename trait::type::miscellaneous::enable_if<
+          typename __detail::enable_if<
             __detail::is_iterator<_Iterator>::value,
             bool
           >::type = true
@@ -582,7 +635,7 @@ namespace utility
             { reallocate(__fix_capacity(capacity(), __ns));}
             char_type* __ptr =
               uninitialized_copy(_first, _last, data_end());
-            *__ptr = char_type{0};
+            *__ptr = char_type{};
             __length(__mis, __ns);
           }
           return *this;
@@ -594,17 +647,12 @@ namespace utility
           size_type _pos, size_type _count = npos
         )
         {
-          if(_pos > _str.size())
-#ifdef __UTILITY_USE_EXCEPTION
-          { return *this;}
-#else
-          { return *this;}
-#endif
+          _str.check_pos(_pos);
           if(_pos+_count > _str.size())
           { _count = _str.size();}
           else
           { _count += _pos;}
-          return append(data()+_pos, data()+_count);
+          return append(_str.data()+_pos, _str.data()+_count);
         }
         inline basic_string& append(const char_type* _str, size_type _count)
         { return append(_str, _str+_count);}
@@ -619,10 +667,19 @@ namespace utility
           container::initializer_list<char_type> _init
         )
         { return append(_init.first(), _init.end());}
-        inline basic_string& append(
-          basic_string_view<char_type, traits_type> _sv
-        )
-        { return append(_sv.first(), _sv.end());}
+        template<
+          typename _T,
+          typename __detail::enable_if<
+            __detail::is_convertible<const _T&, view_type>::value &&
+            (!__detail::is_convertible<_T, const char_type*>::value),
+            bool
+          >::type = true
+        >
+        inline basic_string& append(const _T& _sv)
+        {
+          view_type __sv = _sv;
+          return append(__sv.first(), __sv.end());
+        }
         inline basic_string& append(char_type _ch)
         { return append(1, _ch);}
 
@@ -631,8 +688,7 @@ namespace utility
         {
           using memory::uninitialized_possible_move_backward;
 
-          if(!check_pos(_pos))
-          { return end();}
+          check_pos(_pos);
 
           size_type __ns = size() + _count;
           if(!check_reallocate(__ns))
@@ -643,8 +699,8 @@ namespace utility
 
           char_type* __ptr= data()+_pos;
           uninitialized_possible_move_backward(
-            __ptr, data_end()+1,
-            data_end()+1+_count
+            __ptr, data_end() + 1,
+            data_end() + 1 + _count
           );
           traits_type::assign(__ptr, _count, _ch);
           __length(__mis, __ns);
@@ -653,7 +709,7 @@ namespace utility
         }
         template<
           typename _Iterator,
-          typename trait::type::miscellaneous::enable_if<
+          typename __detail::enable_if<
             __detail::is_iterator<_Iterator>::value,
             bool
           >::type = true
@@ -663,8 +719,7 @@ namespace utility
           using memory::uninitialized_possible_move_backward;
           using memory::uninitialized_copy;
 
-          if(!check_pos(_pos))
-          { return end();}
+          check_pos(_pos);
 
           size_type _count =
             static_cast<size_type>(__detail::distance(_first, _last));
@@ -679,8 +734,8 @@ namespace utility
           char_type* __ptr= data()+_pos;
 
           uninitialized_possible_move_backward(
-            __ptr, data_end()+1,
-            data_end()+1+_count
+            __ptr, data_end() + 1,
+            data_end() + 1 + _count
           );
           uninitialized_copy(_first, _last, __ptr);
           __length(__mis, __ns);
@@ -689,7 +744,9 @@ namespace utility
         }
 
       public:
-        inline basic_string& insert(size_type _pos, size_type _count, char_type _ch)
+        inline basic_string& insert(
+          size_type _pos, size_type _count, char_type _ch
+        )
         {
           __insert(_pos, _count, _ch);
           return *this;
@@ -726,11 +783,13 @@ namespace utility
         }
         inline iterator insert(const_iterator _pos, char_type _ch)
         { return __insert(iterator_index(_pos), 1U, _ch);}
-        inline iterator insert(const_iterator _pos, size_type _count, char_type _ch)
+        inline iterator insert(
+          const_iterator _pos, size_type _count, char_type _ch
+        )
         { return __insert(iterator_index(_pos), _count, _ch);}
         template<
           typename _Iterator,
-          typename trait::type::miscellaneous::enable_if<
+          typename __detail::enable_if<
             __detail::is_iterator<_Iterator>::value,
             bool
           >::type = true
@@ -749,14 +808,37 @@ namespace utility
             iterator_index(_pos), _init.first(), _init.end()
           );
         }
-        inline iterator insert(
-          const_iterator _pos,
-          basic_string_view<char_type, traits_type> _sv
+        template<
+          typename _T,
+          typename __detail::enable_if<
+            __detail::is_convertible<const _T&, view_type>::value &&
+            (!__detail::is_convertible<_T, const char_type*>::value),
+            bool
+          >::type = true
+        >
+        inline basic_string& insert(size_type _pos, const _T& _sv)
+        {
+          view_type __sv = _sv;
+          __insert(_pos, __sv.first(), __sv.end());
+          return *this;
+        }
+        template<
+          typename _T,
+          typename __detail::enable_if<
+            __detail::is_convertible<const _T&, view_type>::value &&
+            (!__detail::is_convertible<_T, const char_type*>::value),
+            bool
+          >::type = true
+        >
+        inline basic_string& insert(
+          size_type _pos, const _T& _sv,
+          size_type _idx, size_type _count = npos
         )
         {
-          return __insert(
-            iterator_index(_pos), _sv.first(), _sv.end()
-          );
+          view_type __sv = _sv;
+          __sv = __sv.substr(_idx, _count);
+          __insert(_pos, __sv.first(), __sv.end());
+          return *this;
         }
 
       public:
@@ -767,14 +849,13 @@ namespace utility
           using algorithm::min;
           using memory::uninitialized_possible_move;
 
-          if(!check_pos(_idx))
-          { return *this;}
+          check_pos(_pos);
           _count = min(_count, size()-_idx);
           char_type* __ebegin = data() + _idx;
           char_type* __eend = __ebegin + _count;
           *uninitialized_possible_move(
             __eend, data_end(), __ebegin
-          ) = char_type{0};
+          ) = char_type{};
           __mis.first() -= _count;
           return *this;
         }
@@ -784,7 +865,9 @@ namespace utility
           erase(__where, 1U);
           return _where(__where);
         }
-        inline iterator erase(const_iterator _first, const_iterator _last) noexcept
+        inline iterator erase(
+          const_iterator _first, const_iterator _last
+        ) noexcept
         {
           size_type __where = iterator_index(_first);
           erase(__where, static_cast<size_type>(_last-_first));
@@ -799,8 +882,7 @@ namespace utility
         {
           using algorithm::min;
 
-          if(!check_pos(_pos))
-          { return *this;}
+          check_pos(_pos);
           _count = min(size()-_pos, _count);
           size_type __ns = size() - _count + _slen;
           if(!check_reallocate(__ns))
@@ -822,7 +904,7 @@ namespace utility
         }
         template<
           typename _Iterator,
-          typename trait::type::miscellaneous::enable_if<
+          typename __detail::enable_if<
             __detail::is_iterator<_Iterator>::value,
             bool
           >::type = true
@@ -834,8 +916,7 @@ namespace utility
         {
           using algorithm::min;
 
-          if(!check_pos(_pos))
-          { return *this;}
+          check_pos(_pos);
           _count = min(size()-_pos, _count);
           size_type __slen =
             static_cast<size_type>(__detail::distance(_first, _last));
@@ -886,20 +967,55 @@ namespace utility
             _str.data(), _str.data_end()
           );
         }
+        template<
+          typename _T,
+          typename __detail::enable_if<
+            __detail::is_convertible<const _T&, view_type>::value &&
+            (!__detail::is_convertible<_T, const char_type*>::value),
+            bool
+          >::type = true
+        >
         basic_string& replace(
-          size_type _pos, size_type _count,
-          basic_string_view<char_type, traits_type> _sv
-        )
-        { return replace(_pos, _count, _sv.begin(), _sv.end());}
-        basic_string& replace(
-          const_iterator _first, const_iterator _last,
-          basic_string_view<char_type, traits_type> _sv
+          size_type _pos, size_type _count, const _T& _sv
         )
         {
+          view_type __sv = _sv;
+          return replace(_pos, _count, __sv.begin(), __sv.end());
+        }
+        template<
+          typename _T,
+          typename __detail::enable_if<
+            __detail::is_convertible<const _T&, view_type>::value &&
+            (!__detail::is_convertible<_T, const char_type*>::value),
+            bool
+          >::type = true
+        >
+        basic_string& replace(
+          size_type _pos, size_type _count, const _T& _sv,
+          size_type _idx, size_type _clen
+        )
+        {
+          view_type __sv = _sv;
+          __sv = __sv.substr(_idx, _clen);
+          return replace(_pos, _count, __sv.begin(), __sv.end());
+        }
+        template<
+          typename _T,
+          typename __detail::enable_if<
+            __detail::is_convertible<const _T&, view_type>::value &&
+            (!__detail::is_convertible<_T, const char_type*>::value),
+            bool
+          >::type = true
+        >
+        basic_string& replace(
+          const_iterator _first, const_iterator _last, const _T& _sv
+        )
+        {
+          view_type __sv = _sv;
           return replace(
             iterator_index(_first),
             static_cast<size_type>(_last-_first),
-            _sv.begin(), _sv.end()
+            __sv.begin(), __sv.end()
           );
         }
         basic_string& replace(
@@ -914,7 +1030,7 @@ namespace utility
         }
         template<
           typename _Iterator,
-          typename trait::type::miscellaneous::enable_if<
+          typename __detail::enable_if<
             __detail::is_iterator<_Iterator>::value,
             bool
           >::type = true
@@ -1024,19 +1140,55 @@ namespace utility
           { }
           return compare(_pos, _count, _str-__clen, __clen);
         }
+        template<
+          typename _T,
+          typename __detail::enable_if<
+            __detail::is_convertible<const _T&, view_type>::value &&
+            (!__detail::is_convertible<_T, const char_type*>::value),
+            bool
+          >::type = true
+        >
+        int compare(const _T& _sv) const noexcept
+        {
+          view_type __sv = _sv;
+          return compare(0U, npos, __sv.data(), __sv.size());
+        }
+        template<
+          typename _T,
+          typename __detail::enable_if<
+            __detail::is_convertible<const _T&, view_type>::value &&
+            (!__detail::is_convertible<_T, const char_type*>::value),
+            bool
+          >::type = true
+        >
         int compare(
-          basic_string_view<char_type, traits_type> _sv
+          size_type _pos, size_type _count, const _T& _sv
         ) const noexcept
-        { return compare(0U, npos, _sv.data(), _sv.size());}
+        {
+          view_type __sv = _sv;
+          return compare(_pos, _count, __sv.data(), __sv.size());
+        }
+        template<
+          typename _T,
+          typename __detail::enable_if<
+            __detail::is_convertible<const _T&, view_type>::value &&
+            (!__detail::is_convertible<_T, const char_type*>::value),
+            bool
+          >::type = true
+        >
         int compare(
-          size_type _pos, size_type _count,
-          basic_string_view<char_type, traits_type> _sv
+          size_type _pos, size_type _count, const _T& _sv,
+          size_type _idx, size_type _clen
         ) const noexcept
-        { return compare(_pos, _count, _sv.data(), _sv.size());}
+        {
+          view_type __sv = _sv;
+          __sv = __sv.substr(_idx, _clen);
+          return compare(_pos, _count, __sv.data(), __sv.size());
+        }
 
       public:
         size_type copy(
-          char_type* _dest, size_type _count = npos, size_type _pos = 0U
+          char_type* _dest, size_type _count, size_type _pos = 0U
         ) const
         {
           container::pair<const char_type*, const char_type*> __sp =
@@ -1058,7 +1210,7 @@ namespace utility
         ) const noexcept
         {
           return impl::__find<char_type, traits_type, size_type, npos>(
-            data(), size(), _str.data(), _str.size(), _pos
+            data(), size(), _str.data(), _str.size(), check_pos(_pos)
           );
         }
         size_type find(
@@ -1066,7 +1218,7 @@ namespace utility
         ) const noexcept
         {
           return impl::__find<char_type, traits_type, size_type, npos>(
-            data(), size(), _str, traits_type::length(_str), _pos
+            data(), size(), _str, traits_type::length(_str), check_pos(_pos)
           );
         }
         size_type find(
@@ -1074,22 +1226,28 @@ namespace utility
         ) const noexcept
         {
           return impl::__find<char_type, traits_type, size_type, npos>(
-            data(), size(), _str, _count, _pos
+            data(), size(), _str, _count, check_pos(_pos)
           );
         }
         size_type find(char_type _ch, size_type _pos = 0) const noexcept
         {
           return impl::__find<char_type, traits_type, size_type, npos>(
-            data(), size(), _ch, _pos
+            data(), size(), _ch, check_pos(_pos)
           );
         }
-        size_type find(
-          const basic_string_view<char_type, traits_type> _sv,
-          size_type _pos = 0
-        ) const noexcept
+        template<
+          typename _T,
+          typename __detail::enable_if<
+            __detail::is_convertible<const _T&, view_type>::value &&
+            (!__detail::is_convertible<_T, const char_type*>::value),
+            bool
+          >::type = true
+        >
+        size_type find(const _T& _sv, size_type _pos = 0) const noexcept
         {
+          view_type __sv = _sv;
           return impl::__find<char_type, traits_type, size_type, npos>(
-            data(), size(), _sv.data(), _sv.size(), _pos
+            data(), size(), __sv.data(), __sv.size(), check_pos(_pos)
           );
         }
         size_type rfind(
@@ -1097,7 +1255,7 @@ namespace utility
         ) const noexcept
         {
           return impl::__rfind<char_type, traits_type, size_type, npos>(
-            data(), size(), _str.data(), _str.size(), _pos
+            data(), size(), _str.data(), _str.size(), check_pos(_pos)
           );
         }
         size_type rfind(
@@ -1105,7 +1263,7 @@ namespace utility
         ) const noexcept
         {
           return impl::__rfind<char_type, traits_type, size_type, npos>(
-            data(), size(), _str, traits_type::length(_str), _pos
+            data(), size(), _str, traits_type::length(_str), check_pos(_pos)
           );
         }
         size_type rfind(
@@ -1113,22 +1271,28 @@ namespace utility
         ) const noexcept
         {
           return impl::__rfind<char_type, traits_type, size_type, npos>(
-            data(), size(), _str, _count, _pos
+            data(), size(), _str, _count, check_pos(_pos)
           );
         }
         size_type rfind(char_type _ch, size_type _pos = npos) const noexcept
         {
           return impl::__rfind<char_type, traits_type, size_type, npos>(
-            data(), size(), _ch, _pos
+            data(), size(), _ch, check_pos(_pos)
           );
         }
-        size_type rfind(
-          const basic_string_view<char_type, traits_type> _sv,
-          size_type _pos = npos
-        ) const noexcept
+        template<
+          typename _T,
+          typename __detail::enable_if<
+            __detail::is_convertible<const _T&, view_type>::value &&
+            (!__detail::is_convertible<_T, const char_type*>::value),
+            bool
+          >::type = true
+        >
+        size_type rfind(const _T& _sv, size_type _pos = npos) const noexcept
         {
+          view_type __sv = _sv;
           return impl::__rfind<char_type, traits_type, size_type, npos>(
-            data(), size(), _sv.data(), _sv.size(), _pos
+            data(), size(), __sv.data(), __sv.size(), check_pos(_pos)
           );
         }
 
@@ -1138,7 +1302,7 @@ namespace utility
         ) const noexcept
         {
           return impl::__find_first_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _str.data(), _str.size(), _pos
+            data(), size(), _str.data(), _str.size(), check_pos(_pos)
           );
         }
         size_type find_first_of(
@@ -1146,7 +1310,7 @@ namespace utility
         ) const noexcept
         {
           return impl::__find_first_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _str, traits_type::length(_str), _pos
+            data(), size(), _str, traits_type::length(_str), check_pos(_pos)
           );
         }
         size_type find_first_of(
@@ -1154,22 +1318,28 @@ namespace utility
         ) const noexcept
         {
           return impl::__find_first_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _str, _count, _pos
+            data(), size(), _str, _count, check_pos(_pos)
           );
         }
         size_type find_first_of(char_type _ch, size_type _pos = 0) const noexcept
         {
           return impl::__find_first_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _ch, _pos
+            data(), size(), _ch, check_pos(_pos)
           );
         }
-        size_type find_first_of(
-          const basic_string_view<char_type, traits_type> _sv,
-          size_type _pos = 0
-        ) const noexcept
+        template<
+          typename _T,
+          typename __detail::enable_if<
+            __detail::is_convertible<const _T&, view_type>::value &&
+            (!__detail::is_convertible<_T, const char_type*>::value),
+            bool
+          >::type = true
+        >
+        size_type find_first_of(const _T& _sv, size_type _pos = 0) const noexcept
         {
+          view_type __sv = _sv;
           return impl::__find_first_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _sv.data(), _sv.size(), _pos
+            data(), size(), __sv.data(), __sv.size(), check_pos(_pos)
           );
         }
         size_type find_last_of(
@@ -1177,7 +1347,7 @@ namespace utility
         ) const noexcept
         {
           return impl::__find_last_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _str.data(), _str.size(), _pos
+            data(), size(), _str.data(), _str.size(), check_pos(_pos)
           );
         }
         size_type find_last_of(
@@ -1185,7 +1355,7 @@ namespace utility
         ) const noexcept
         {
           return impl::__find_last_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _str, traits_type::length(_str), _pos
+            data(), size(), _str, traits_type::length(_str), check_pos(_pos)
           );
         }
         size_type find_last_of(
@@ -1193,21 +1363,28 @@ namespace utility
         ) const noexcept
         {
           return impl::__find_last_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _str, _count, _pos
+            data(), size(), _str, _count, check_pos(_pos)
           );
         }
         size_type find_last_of(char_type _ch, size_type _pos = npos) const noexcept
         {
           return impl::__find_last_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _ch, _pos
+            data(), size(), _ch, check_pos(_pos)
           );
         }
-        size_type find_last_of(
-          const basic_string_view<char_type, traits_type> _sv, size_type _pos = npos
-        ) const noexcept
+        template<
+          typename _T,
+          typename __detail::enable_if<
+            __detail::is_convertible<const _T&, view_type>::value &&
+            (!__detail::is_convertible<_T, const char_type*>::value),
+            bool
+          >::type = true
+        >
+        size_type find_last_of(const _T& _sv, size_type _pos = npos) const noexcept
         {
+          view_type __sv = _sv;
           return impl::__find_last_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _sv.data(), _sv.size(), _pos
+            data(), size(), __sv.data(), __sv.size(), check_pos(_pos)
           );
         }
         size_type find_first_not_of(
@@ -1215,7 +1392,7 @@ namespace utility
         ) const noexcept
         {
           return impl::__find_first_not_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _str.data(), _str.size(), _pos
+            data(), size(), _str.data(), _str.size(), check_pos(_pos)
           );
         }
         size_type find_first_not_of(
@@ -1223,7 +1400,7 @@ namespace utility
         ) const noexcept
         {
           return impl::__find_first_not_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _str, traits_type::length(_str), _pos
+            data(), size(), _str, traits_type::length(_str), check_pos(_pos)
           );
         }
         size_type find_first_not_of(
@@ -1231,22 +1408,28 @@ namespace utility
         ) const noexcept
         {
           return impl::__find_first_not_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _str, _count, _pos
+            data(), size(), _str, _count, check_pos(_pos)
           );
         }
         size_type find_first_not_of(char_type _ch, size_type _pos = 0) const noexcept
         {
           return impl::__find_first_not_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _ch, _pos
+            data(), size(), _ch, check_pos(_pos)
           );
         }
-        size_type find_first_not_of(
-          const basic_string_view<char_type, traits_type> _sv,
-          size_type _pos = 0
-        ) const noexcept
+        template<
+          typename _T,
+          typename __detail::enable_if<
+            __detail::is_convertible<const _T&, view_type>::value &&
+            (!__detail::is_convertible<_T, const char_type*>::value),
+            bool
+          >::type = true
+        >
+        size_type find_first_not_of(const _T& _sv, size_type _pos = 0) const noexcept
         {
+          view_type __sv = _sv;
           return impl::__find_first_not_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _sv.data(), _sv.size(), _pos
+            data(), size(), __sv.data(), __sv.size(), check_pos(_pos)
           );
         }
         size_type find_last_not_of(
@@ -1254,7 +1437,7 @@ namespace utility
         ) const noexcept
         {
           return impl::__find_last_not_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _str.data(), _str.size(), _pos
+            data(), size(), _str.data(), _str.size(), check_pos(_pos)
           );
         }
         size_type find_last_not_of(
@@ -1262,7 +1445,7 @@ namespace utility
         ) const noexcept
         {
           return impl::__find_last_not_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _str, traits_type::length(_str), _pos
+            data(), size(), _str, traits_type::length(_str), check_pos(_pos)
           );
         }
         size_type find_last_not_of(
@@ -1270,7 +1453,7 @@ namespace utility
         ) const noexcept
         {
           return impl::__find_last_not_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _str, _count, _pos
+            data(), size(), _str, _count, check_pos(_pos)
           );
         }
         size_type find_last_not_of(
@@ -1278,34 +1461,42 @@ namespace utility
         ) const noexcept
         {
           return impl::__find_last_not_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _ch, _pos
+            data(), size(), _ch, check_pos(_pos)
           );
         }
+        template<
+          typename _T,
+          typename __detail::enable_if<
+            __detail::is_convertible<const _T&, view_type>::value &&
+            (!__detail::is_convertible<_T, const char_type*>::value),
+            bool
+          >::type = true
+        >
         size_type find_last_not_of(
-          const basic_string_view<char_type, traits_type> _sv,
-          size_type _pos = npos
+          const _T& _sv, size_type _pos = npos
         ) const noexcept
         {
+          view_type __sv = _sv;
           return impl::__find_last_not_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _sv.data(), _sv.size(), _pos
+            data(), size(), __sv.data(), __sv.size(), check_pos(_pos)
           );
         }
 
       public:
         void swap(basic_string& _other) noexcept(
-          utility::trait::type::features::is_nothrow_swappable<allocator_type>::value
+          __detail::is_nothrow_swappable<allocator_type>::value
         )
         {
-          using utility::algorithm::swap;
+          using algorithm::swap;
           swap(__mis, _other.__mis);
           swap(__un,  _other.__un);
         }
 
         void possible_swap(basic_string& _other) noexcept(
-          utility::trait::type::features::is_nothrow_possible_swappable<allocator_type>::value
+          __detail::is_nothrow_possible_swappable<allocator_type>::value
         )
         {
-          using utility::algorithm::possible_swap;
+          using algorithm::possible_swap;
           possible_swap(__mis, _other.__mis);
           possible_swap(__un,  _other.__un);
         }
@@ -1317,23 +1508,24 @@ namespace utility
         { return append(_ch);}
         inline basic_string operator+=(const char_type* _str)
         { return append(_str);}
-        inline basic_string operator+=(basic_string_view<char_type, traits_type> _sv)
+        template<typename _T>
+        inline basic_string operator+=(const _T& _sv)
         { return append(_sv);}
         inline basic_string operator+=(container::initializer_list<char_type> _init)
         { return append(_init);}
 
       private:
-        bool check_pos(size_type& _pos) const
+        size_type check_pos(size_type& _pos) const
         {
-          if(_pos > size())
-#ifdef UTILITY_BASIC_STRING_CORRECT_OUTRANGE_POS
-          { _pos = size();}
-#elif defined(__UTILITY_USE_EXCEPTION)
+          if(_pos > len)
+#if defined(__UTILITY_USE_EXCEPTION)
           { ;}
+#elif defined(UTILITY_BASIC_STRING_CORRECT_OUTRANGE_POS)
+          { _pos = len;}
 #else
-          { return false;}
+          { } // about
 #endif
-          return true;
+          return _pos;
         }
         bool check_reallocate(size_type _count) const
         {
@@ -1351,8 +1543,8 @@ namespace utility
         substr_ptr(size_type _idx, size_type _count = npos) const noexcept
         {
           typedef container::pair<const char_type*, const char_type*> __result;
-          if(!check_pos(_idx))
-          { return __result{data_end(), data_end()};}
+
+          check_pos(_pos);
           if(_idx+_count > size() || _count == npos)
           { _count = size();}
           else
@@ -1600,7 +1792,7 @@ namespace utility
     typedef basic_string<wchar_t>     wstring;
     typedef basic_string<char16_t>    u16string;
     typedef basic_string<char32_t>    u32string;
-  }
-}
+  __utility_interspace_end(charS)
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CHARS_BASIC_STRING__

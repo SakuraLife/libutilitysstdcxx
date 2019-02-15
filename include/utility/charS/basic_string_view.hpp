@@ -8,7 +8,7 @@
 #include<utility/algorithm/swap.hpp>
 #include<utility/algorithm/possible_swap.hpp>
 #include<utility/algorithm/move.hpp>
-#include<utility/algorithm/min.hpp>
+#include<utility/algorithm/impl/min.hpp>
 
 #include<utility/container/pair.hpp>
 
@@ -22,10 +22,8 @@
 #include<utility/iterator/raw_pointer_iterator.hpp>
 #include<utility/iterator/distance.hpp>
 
-namespace utility
-{
-  namespace charS
-  {
+__utility_globalspace_start(utility)
+  __utility_interspace_start(charS)
     namespace __detail
     {
       using namespace iterator;
@@ -280,13 +278,9 @@ namespace utility
 
       public:
         size_type copy(
-          char_type* _dest, size_type _count = npos, size_type _pos = 0U
+          char_type* _dest, size_type _count, size_type _pos = 0U
         ) const
         {
-#ifdef __UTILITY_USE_EXCEPTION
-          if(_count > __size)
-          { }
-#endif
           container::pair<const char_type*, const char_type*> __sp =
             substr_ptr(_pos, _count);
           size_type __ns = static_cast<size_type>(__sp.second-__sp.first);
@@ -300,8 +294,11 @@ namespace utility
         substr_ptr(size_type _idx, size_type _count = npos) const noexcept
         {
           typedef container::pair<const char_type*, const char_type*> __result;
+
+          ///< TODO: throw exception
           if(_idx >= __size)
-          { return __result{__ptr+__size, __ptr+__size};}
+          { }
+
           if(_idx+_count > __size || _count == npos)
           { _count = __size;}
           else
@@ -541,7 +538,7 @@ namespace utility
     typedef basic_string_view<wchar_t>      wstring_view;
     typedef basic_string_view<char16_t>     u16string_view;
     typedef basic_string_view<char32_t>     u32string_view;
-  }
-}
+  __utility_interspace_end(charS)
+__utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_CHARS_BASIC_STRING_VIEW__
