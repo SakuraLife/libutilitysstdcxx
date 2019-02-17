@@ -76,9 +76,85 @@ __utility_globalspace_start(utility)
         constexpr int          _bsl  = _bul - 1;
         constexpr int          _bsll = _bull - 1;
 
+        constexpr int          _si_uc  = sizeof(_uc);
+        constexpr int          _si_us  = sizeof(_us);
+        constexpr int          _si_ui  = sizeof(_ui);
+        constexpr int          _si_ul  = sizeof(_ul);
+        constexpr int          _si_ull = sizeof(_ull);
+        constexpr int          _si_sc  = sizeof(_sc);
+        constexpr int          _si_ss  = sizeof(_ss);
+        constexpr int          _si_si  = sizeof(_si);
+        constexpr int          _si_sl  = sizeof(_sl);
+        constexpr int          _si_sll = sizeof(_sll);
+
         constexpr unsigned int          _char_bits = _bul / sizeof(_ul);
+
+        template<unsigned long _Size>
+        union _integral
+        {
+          unsigned char uc[(_si_ull / _si_uc) * _Size];
+          unsigned short us[(_si_ull / _si_us) * _Size];
+          unsigned int ui[(_si_ull / _si_ui) * _Size];
+          unsigned long ul[(_si_ull / _si_ul) * _Size];
+          unsigned long long ull[_Size];
+
+          constexpr _integral(unsigned long long _val) noexcept:
+            ull{_val}
+          { }
+        };
       }
     }
+
+    namespace internal
+    {
+      using helper::_uc;
+      using helper::_us;
+      using helper::_uc;
+      using helper::_us;
+      using helper::_ui;
+      using helper::_ul;
+      using helper::_ull;
+      using helper::_sc;
+      using helper::_ss;
+      using helper::_si;
+      using helper::_sl;
+      using helper::_sll;
+      using helper::_muc;
+      using helper::_mus;
+      using helper::_mui;
+      using helper::_mul;
+      using helper::_mull;
+      using helper::_msc;
+      using helper::_mss;
+      using helper::_msi;
+      using helper::_msl;
+      using helper::_msll;
+      using helper::_suc;
+      using helper::_sus;
+      using helper::_sui;
+      using helper::_sul;
+      using helper::_sull;
+      using helper::_ssc;
+      using helper::_sss;
+      using helper::_ssi;
+      using helper::_ssl;
+      using helper::_ssll;
+      using helper::_buc;
+      using helper::_bus;
+      using helper::_bui;
+      using helper::_bul;
+      using helper::_bull;
+      using helper::_bsc;
+      using helper::_bss;
+      using helper::_bsi;
+      using helper::_bsl;
+      using helper::_bsll;
+      using helper::_char_bits;
+
+      template<typename _func>
+      struct storage;
+    }
+
     using namespace algorithm;
   __utility_interspace_end(math)
 
