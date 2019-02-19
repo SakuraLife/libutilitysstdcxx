@@ -14,7 +14,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(categories)
         // is_object
         template<typename _T>
-        struct is_object:
+        struct __UTILITY_TEMPLATE_VIS is_object:
           public integral_constant<bool,
             is_scalar<_T>::value ||
             is_array<_T>::value  ||

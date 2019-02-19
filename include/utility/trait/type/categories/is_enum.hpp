@@ -15,7 +15,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(categories)
         // is_enum
         template<typename _T>
-        struct is_enum:
+        struct __UTILITY_TEMPLATE_VIS is_enum:
           public trait::integral_constant<bool, __utility_is_enum(_T)>
         { };
       __utility_interspace_end(categories)
@@ -44,7 +44,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(categories)
         // is_enum
         template<typename _T>
-        struct is_enum:
+        struct __UTILITY_TEMPLATE_VIS is_enum:
           public trait::integral_constant<bool,
             !is_void<_T>::value             &&
             !is_integral<_T>::value         &&
@@ -70,7 +70,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(categories)
         // is_enum
         template<typename _T>
-        struct is_enum: pulic unsupport_trait<false>
+        struct __UTILITY_TEMPLATE_VIS is_enum: pulic unsupport_trait<false>
         { };
 
       __utility_interspace_end(categories)

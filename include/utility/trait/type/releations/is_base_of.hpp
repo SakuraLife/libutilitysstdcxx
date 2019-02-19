@@ -16,7 +16,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(releations)
         // is_base_of
         template<typename _T1, typename _T2>
-        struct is_base_of:
+        struct __UTILITY_TEMPLATE_VIS is_base_of:
           public integral_constant<bool, __utility_is_base_of(_T1, _T2)>
         { };
 
@@ -80,7 +80,7 @@ __utility_globalspace_start(utility)
           };
         }
         template<typename _T1, typename _T2>
-        struct is_base_of :
+        struct __UTILITY_TEMPLATE_VIS is_base_of :
           public integral_constant<bool,
             __impl::__is_base_of_test<_T1, _T2>::value
           >

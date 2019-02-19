@@ -9,7 +9,7 @@ __utility_globalspace_start(utility)
   __utility_interspace_start(trait)
     namespace __opt__
     {
-      struct __none__
+      struct __UTILITY_TYPE_VIS __none__
       {
         __none__() = delete;
         __none__(const __none__&) = delete;

@@ -14,7 +14,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(features)
         // is_copy_assignable
         template<typename _T>
-        struct is_copy_assignable: public is_assignable<
+        struct __UTILITY_TEMPLATE_VIS is_copy_assignable: public is_assignable<
             trait::type::transform::add_lvalue_reference_t<_T>,
             trait::type::transform::add_lvalue_reference_t<
               trait::type::transform::add_const_t<_T>

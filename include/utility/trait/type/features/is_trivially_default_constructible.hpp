@@ -11,7 +11,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(features)
         // is_trivially_default_constructible
         template<typename _T>
-        struct is_trivially_default_constructible: public
+        struct __UTILITY_TEMPLATE_VIS is_trivially_default_constructible: public
           is_trivially_constructible<_T>
         { };
 

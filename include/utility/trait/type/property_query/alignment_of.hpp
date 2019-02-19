@@ -11,7 +11,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(property_query)
         // alignment_of
         template<typename _T>
-        struct alignment_of :
+        struct __UTILITY_TEMPLATE_VIS alignment_of :
           public integral_constant<size_t, __utility_alignof(_T)>
         { };
 

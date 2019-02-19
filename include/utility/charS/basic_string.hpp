@@ -43,7 +43,7 @@ __utility_globalspace_start(utility)
       typename _Traits = charS::char_traits<_CharT>,
       typename _Alloc = memory::allocator<_CharT>
     >
-    class basic_string;
+    class __UTILITY_TEMPLATE_VIS basic_string;
 
     namespace __detail
     {
@@ -58,7 +58,7 @@ __utility_globalspace_start(utility)
       using trait::type::features::is_nothrow_possible_swappable;
 
       template<typename _CharT, typename _ST>
-      struct string_union_traits
+      struct __UTILITY_TEMPLATE_VIS string_union_traits
       {
         struct __cal
         {
@@ -71,7 +71,7 @@ __utility_globalspace_start(utility)
       };
 
       template<typename _CharT, typename _ST>
-      union string_union
+      union __UTILITY_TEMPLATE_VIS string_union
       {
         struct
         {
@@ -87,7 +87,7 @@ __utility_globalspace_start(utility)
     }
 
     template<typename _CharT, typename _Traits, typename _Alloc>
-    class basic_string
+    class __UTILITY_TEMPLATE_VIS basic_string
     {
       public:
         typedef _CharT                                  value_type;
@@ -100,7 +100,7 @@ __utility_globalspace_start(utility)
         typedef memory::allocator_traits<_Alloc>        allocator_traits_type;
 
       public:
-        typedef basic_string_view<char_type, trait_type>  view_type;
+        typedef basic_string_view<char_type, traits_type>  view_type;
 
       public:
         typedef typename allocator_traits_type::size_type       size_type;
@@ -214,7 +214,7 @@ __utility_globalspace_start(utility)
 
         basic_string(
           const basic_string& _other,
-          const allocator_type& _allocis_same
+          const allocator_type& _alloc
         ):__un{}, __mis{short_tag, _alloc}
         { this->append(_other);}
 
@@ -849,7 +849,7 @@ __utility_globalspace_start(utility)
           using algorithm::min;
           using memory::uninitialized_possible_move;
 
-          check_pos(_pos);
+          check_pos(_idx);
           _count = min(_count, size()-_idx);
           char_type* __ebegin = data() + _idx;
           char_type* __eend = __ebegin + _count;
@@ -1517,11 +1517,11 @@ __utility_globalspace_start(utility)
       private:
         size_type check_pos(size_type& _pos) const
         {
-          if(_pos > len)
+          if(_pos > length())
 #if defined(__UTILITY_USE_EXCEPTION)
           { ;}
 #elif defined(UTILITY_BASIC_STRING_CORRECT_OUTRANGE_POS)
-          { _pos = len;}
+          { _pos = length();}
 #else
           { } // about
 #endif
@@ -1544,7 +1544,7 @@ __utility_globalspace_start(utility)
         {
           typedef container::pair<const char_type*, const char_type*> __result;
 
-          check_pos(_pos);
+          check_pos(_idx);
           if(_idx+_count > size() || _count == npos)
           { _count = size();}
           else
@@ -1792,6 +1792,9 @@ __utility_globalspace_start(utility)
     typedef basic_string<wchar_t>     wstring;
     typedef basic_string<char16_t>    u16string;
     typedef basic_string<char32_t>    u32string;
+
+    // UTILITY_EXTERN_TEMPLATE(class __UTILITY_EXTERN_TEMPLATE_TYPE_VIS basic_string<char>);
+    // UTILITY_EXTERN_TEMPLATE(class __UTILITY_EXTERN_TEMPLATE_TYPE_VIS basic_string<wchar_t>);
   __utility_interspace_end(charS)
 __utility_globalspace_end(utility)
 

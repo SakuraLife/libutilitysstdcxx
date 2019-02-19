@@ -17,7 +17,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(transform)
         // decay
         template<typename _T>
-        struct decay
+        struct __UTILITY_TEMPLATE_VIS decay
         {
           private:
             typedef typename

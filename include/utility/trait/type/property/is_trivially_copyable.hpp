@@ -13,7 +13,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(property)
         // is_trivially_copyable
         template<typename _T>
-        struct is_trivially_copyable: public
+        struct __UTILITY_TEMPLATE_VIS is_trivially_copyable: public
           integral_constant<bool, __utility_is_trivially_copyable(_T)>
         { };
 
@@ -33,7 +33,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(property)
         // is_trivially_copyable
         template<typename _T>
-        struct is_trivially_copyable: public
+        struct __UTILITY_TEMPLATE_VIS is_trivially_copyable: public
           integral_constant<bool,
             categories::is_scalar<
               transform::remove_all_extents_t<_T>

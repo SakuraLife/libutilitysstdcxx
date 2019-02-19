@@ -37,7 +37,7 @@ __utility_globalspace_start(utility)
       typename _Compare = algorithm::less<void>,
       typename _Alloc = memory::allocator<container::pair<const _Key, _Value>>
     >
-    class multimap
+    class __UTILITY_TEMPLATE_VIS multimap
     {
       public:
         class value_compare

@@ -30,7 +30,7 @@ __utility_globalspace_start(utility)
           { typedef const _T type;};
         }
         template<typename _T>
-        struct add_const
+        struct __UTILITY_TEMPLATE_VIS add_const
         { typedef typename
             __impl::__add_const_helper<_T>::type type;};
 
@@ -50,12 +50,12 @@ __utility_globalspace_start(utility)
           { typedef volatile _T type;};
         }
         template<typename _T>
-        struct add_volatile
+        struct __UTILITY_TEMPLATE_VIS add_volatile
         { typedef typename __impl::__add_volatile_helper<_T>::type type;};
 
         // add_cv
         template<typename _T>
-        struct add_cv
+        struct __UTILITY_TEMPLATE_VIS add_cv
         {
           typedef typename add_const<
             typename add_volatile<_T>::type

@@ -15,7 +15,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(features)
         // has_virtual_destructor
         template<typename _T>
-        struct has_virtual_destructor :
+        struct __UTILITY_TEMPLATE_VIS has_virtual_destructor :
           public integral_constant<bool,
             __utility_has_virtual_destructor(_T)>
         { };
@@ -36,7 +36,7 @@ __utility_globalspace_start(utility)
         * \todo
         */
         template<typename _T>
-        struct has_virtual_destructor: public unsupport_trait<false>
+        struct __UTILITY_TEMPLATE_VIS has_virtual_destructor: public unsupport_trait<false>
         { };
 
       __utility_interspace_end(features)

@@ -16,7 +16,7 @@
 __utility_globalspace_start(utility)
   __utility_interspace_start(functional)
     template<typename _T>
-    class reference_wrapper
+    class __UTILITY_TEMPLATE_VIS reference_wrapper
     {
       public:
         typedef _T type;
@@ -52,17 +52,17 @@ __utility_globalspace_start(utility)
     };
 
     template<typename _T>
-    struct unwrap_refwrapper_type
+    struct __UTILITY_TEMPLATE_VIS unwrap_refwrapper_type
     { typedef _T type;};
     template<typename _T>
-    struct unwrap_refwrapper_type<reference_wrapper<_T>>
+    struct __UTILITY_TEMPLATE_VIS unwrap_refwrapper_type<reference_wrapper<_T>>
     { typedef _T& type;};
 
     template<typename _T>
-    struct is_reference_wrapper: public trait::false_type
+    struct __UTILITY_TEMPLATE_VIS is_reference_wrapper: public trait::false_type
     { };
     template<typename _T>
-    struct is_reference_wrapper<reference_wrapper<_T>>:
+    struct __UTILITY_TEMPLATE_VIS is_reference_wrapper<reference_wrapper<_T>>:
       public trait::true_type
     { };
 

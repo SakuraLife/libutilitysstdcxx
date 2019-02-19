@@ -41,21 +41,21 @@ __utility_globalspace_start(utility)
           struct __invoke_operators;
           struct __invoke_failed;
 
-          struct __invoke_member_function_unpacked
+          struct __UTILITY_TYPE_VIS __invoke_member_function_unpacked
           { };
-          struct __invoke_member_function_packed
+          struct __UTILITY_TYPE_VIS __invoke_member_function_packed
           { };
-          struct __invoke_member_object_unpacked
+          struct __UTILITY_TYPE_VIS __invoke_member_object_unpacked
           { };
-          struct __invoke_member_object_packed
+          struct __UTILITY_TYPE_VIS __invoke_member_object_packed
           { };
-          struct __invoke_operators
+          struct __UTILITY_TYPE_VIS __invoke_operators
           { };
-          struct __invoke_failed
+          struct __UTILITY_TYPE_VIS __invoke_failed
           { };
 
           template<typename _T, typename _Invoke_Tag>
-          struct __invoke_process
+          struct __UTILITY_TEMPLATE_VIS __invoke_process
           {
             typedef _T type;
             typedef _Invoke_Tag invoke_tag;
@@ -210,15 +210,15 @@ __utility_globalspace_start(utility)
         }
         // result_of
         template<typename _T>
-        struct result_of;
+        struct __UTILITY_TEMPLATE_VIS result_of;
         template<typename _Fn, typename... _ArgTypes>
-        struct result_of<_Fn(_ArgTypes...)>:
+        struct __UTILITY_TEMPLATE_VIS result_of<_Fn(_ArgTypes...)>:
           public __invoke_related::__invoke_result<_Fn, _ArgTypes...>::type
         { };
 
         // invoke_result
         template<typename _Fn, typename... _ArgTypes>
-        struct invoke_result:
+        struct __UTILITY_TEMPLATE_VIS invoke_result:
           public __invoke_related::__invoke_result<_Fn, _ArgTypes...>::type
         { };
 

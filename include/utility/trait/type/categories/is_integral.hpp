@@ -66,7 +66,7 @@ __utility_globalspace_start(utility)
 
         }
         template<typename _T>
-        struct is_integral: public __impl::__is_integral_test<
+        struct __UTILITY_TEMPLATE_VIS is_integral: public __impl::__is_integral_test<
             trait::type::transform::remove_cv_t<_T>
           >
         { };

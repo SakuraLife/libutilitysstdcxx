@@ -15,7 +15,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(property)
         // is_empty
         template<typename _T>
-        struct is_empty :
+        struct __UTILITY_TEMPLATE_VIS is_empty :
           public integral_constant<bool, __utility_is_empty(_T)>
         { };
 
@@ -55,7 +55,7 @@ __utility_globalspace_start(utility)
           { };
         }
         template<typename _T>
-        struct is_empty: public __impl::__is_empty_test<_T>
+        struct __UTILITY_TEMPLATE_VIS is_empty: public __impl::__is_empty_test<_T>
         { };
 
       __utility_interspace_end(property)

@@ -10,13 +10,13 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(transform)
         // remove_extent
         template<typename _T>
-        struct remove_extent
+        struct __UTILITY_TEMPLATE_VIS remove_extent
         { typedef _T type;};
         template<typename _T>
-        struct remove_extent<_T[]>
+        struct __UTILITY_TEMPLATE_VIS remove_extent<_T[]>
         { typedef _T type;};
         template<typename _T, size_t _size>
-        struct remove_extent<_T[_size]>
+        struct __UTILITY_TEMPLATE_VIS remove_extent<_T[_size]>
         { typedef _T type;};
 
         template<typename _T>

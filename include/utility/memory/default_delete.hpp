@@ -10,15 +10,13 @@
 __utility_globalspace_start(utility)
   __utility_interspace_start(memory)
     template<typename _T>
-    struct default_delete
+    struct __UTILITY_TEMPLATE_VIS default_delete
     {
       constexpr default_delete() noexcept = default;
-      template
-      <
+      template<
         typename _U,
         typename
-        trait::type::miscellaneous::enable_if
-        <
+        trait::type::miscellaneous::enable_if<
           trait::type::releations::is_convertible<_U*,
           _T*>::value,
           bool
@@ -29,8 +27,7 @@ __utility_globalspace_start(utility)
 
       template<typename _U>
       inline typename
-      trait::type::miscellaneous::enable_if
-      <
+      trait::type::miscellaneous::enable_if<
         trait::type::releations::is_convertible<_U*, _T*>::value,
         void
       >::type
@@ -46,15 +43,13 @@ __utility_globalspace_start(utility)
 
     };
     template<typename _T>
-    struct default_delete<_T[]>
+    struct __UTILITY_TEMPLATE_VIS default_delete<_T[]>
     {
       constexpr default_delete() noexcept = default;
-      template
-      <
+      template<
         typename _U,
         typename
-        trait::type::miscellaneous::enable_if
-        <
+        trait::type::miscellaneous::enable_if<
           trait::type::releations::is_convertible<_U(*)[],
           _T(*)[]>::value,
           bool
@@ -65,9 +60,9 @@ __utility_globalspace_start(utility)
 
       template<typename _U>
       inline typename
-      trait::type::miscellaneous::enable_if
-      <
-        trait::type::releations::is_convertible<_U(*)[], _T(*)[]>::value,
+      trait::type::miscellaneous::enable_if<
+          trait::type::releations::is_convertible<_U(*)[], _T(*)[]
+        >::value,
         void
       >::type
       operator()(_U* __ptr) const

@@ -91,7 +91,7 @@ __utility_globalspace_start(utility)
 
       }
       template<typename _T_ptr>
-      struct pointer_traits
+      struct __UTILITY_TEMPLATE_VIS pointer_traits
       {
         public:
           typedef _T_ptr pointer;
@@ -115,7 +115,7 @@ __utility_globalspace_start(utility)
       };
 
       template<typename _T_ptr>
-      struct pointer_traits<_T_ptr*>
+      struct __UTILITY_TEMPLATE_VIS pointer_traits<_T_ptr*>
       {
         public:
           typedef _T_ptr* pointer;

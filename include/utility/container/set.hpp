@@ -37,11 +37,11 @@ __utility_globalspace_start(utility)
       typename _Compare = algorithm::less<void>,
       typename _Alloc = memory::allocator<_Key>
     >
-    class set
+    class __UTILITY_TEMPLATE_VIS set
     {
       private:
         template<typename _Iterator>
-        class __set_iterator
+        class __UTILITY_TEMPLATE_VIS __set_iterator
         {
           private:
             template<typename, typename, typename>

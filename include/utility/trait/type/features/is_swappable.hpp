@@ -71,12 +71,12 @@ __utility_globalspace_start(utility)
           { constexpr static bool value = false;};
         }
         template<typename _T, typename _U>
-        struct is_swappable_with: public
+        struct __UTILITY_TEMPLATE_VIS is_swappable_with: public
           integral_constant<bool,
             __impl::__is_swappable_with_helper<_T, _U>::value>
         { };
         template<typename _T>
-        struct is_swappable: public
+        struct __UTILITY_TEMPLATE_VIS is_swappable: public
           trait::type::miscellaneous::conditional<
             trait::type::transform::is_referenceable<_T>::value,
             is_swappable_with<
@@ -88,13 +88,13 @@ __utility_globalspace_start(utility)
         { };
 
         template<typename _T, typename _U>
-        struct is_nothrow_swappable_with: public
+        struct __UTILITY_TEMPLATE_VIS is_nothrow_swappable_with: public
           integral_constant<bool,
             __impl::__is_nothrow_swappable_with_helper<_T, _U>::value
           >
         { };
         template<typename _T>
-        struct is_nothrow_swappable: public
+        struct __UTILITY_TEMPLATE_VIS is_nothrow_swappable: public
           trait::type::miscellaneous::conditional<
             trait::type::transform::is_referenceable<_T>::value,
             is_nothrow_swappable_with<

@@ -13,7 +13,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(property)
         // is_literal_type
         template<typename _T>
-        struct is_literal_type : public
+        struct __UTILITY_TEMPLATE_VIS is_literal_type : public
           integral_constant<bool,
             trait::type::categories::is_scalar<
               trait::type::transform::remove_all_extents_t<_T>

@@ -52,7 +52,7 @@ __utility_globalspace_start(utility)
           { };
         }
         template<typename _T, typename... _Args>
-        struct is_implicit_constructible:
+        struct __UTILITY_TEMPLATE_VIS is_implicit_constructible:
           public __impl::__is_implicit_constructible_helper<
             is_constructible<_T, _Args...>::value, _T, _Args...
           >

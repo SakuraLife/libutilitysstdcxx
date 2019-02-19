@@ -10,7 +10,7 @@ __utility_globalspace_start(utility)
   __utility_interspace_start(container)
     __utility_interspace_start(_helper)
       template<typename _Alloc>
-      struct allocator_deleter
+      struct __UTILITY_TEMPLATE_VIS allocator_deleter
       {
         public:
           typedef _Alloc allocator_type;

@@ -15,7 +15,7 @@
 __utility_globalspace_start(utility)
   __utility_interspace_start(stream)
     template<typename _Status>
-    class fpos
+    class __UTILITY_TEMPLATE_VIS fpos
     {
       private:
         _Status __status;

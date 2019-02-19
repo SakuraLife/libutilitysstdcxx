@@ -20,7 +20,7 @@ __utility_globalspace_start(utility)
           { };
         }
         template<typename _T>
-        struct is_void :
+        struct __UTILITY_TEMPLATE_VIS is_void :
           public __impl::__is_void_test<
             trait::type::transform::remove_cv_t<_T>
           >

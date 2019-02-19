@@ -10,25 +10,25 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(transform)
         // remove_pointer_reference
         template<typename _T>
-        struct remove_pointer_reference
+        struct __UTILITY_TEMPLATE_VIS remove_pointer_reference
         { typedef _T type;};
         template<typename _T>
-        struct remove_pointer_reference<_T&>
+        struct __UTILITY_TEMPLATE_VIS remove_pointer_reference<_T&>
         { typedef _T type;};
         template<typename _T>
-        struct remove_pointer_reference<_T&&>
+        struct __UTILITY_TEMPLATE_VIS remove_pointer_reference<_T&&>
         { typedef _T type;};
         template<typename _T>
-        struct remove_pointer_reference<_T*>
+        struct __UTILITY_TEMPLATE_VIS remove_pointer_reference<_T*>
         { typedef _T type;};
         template<typename _T>
-        struct remove_pointer_reference<_T* const>
+        struct __UTILITY_TEMPLATE_VIS remove_pointer_reference<_T* const>
         { typedef _T type;};
         template<typename _T>
-        struct remove_pointer_reference<_T* volatile>
+        struct __UTILITY_TEMPLATE_VIS remove_pointer_reference<_T* volatile>
         { typedef _T type;};
         template<typename _T>
-        struct remove_pointer_reference<_T* const volatile>
+        struct __UTILITY_TEMPLATE_VIS remove_pointer_reference<_T* const volatile>
         { typedef _T type;};
 
         template<typename _T>

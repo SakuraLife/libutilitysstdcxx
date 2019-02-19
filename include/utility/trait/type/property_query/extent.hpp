@@ -10,21 +10,21 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(property_query)
         // extent
         template<typename _T, unsigned int _I = 0>
-        struct extent: public integral_constant<size_t, 0>
+        struct __UTILITY_TEMPLATE_VIS extent: public integral_constant<size_t, 0>
         { };
         template<typename _T, unsigned int _I>
-        struct extent<_T[], _I>: public integral_constant<
+        struct __UTILITY_TEMPLATE_VIS extent<_T[], _I>: public integral_constant<
             size_t, extent<_T, _I-1>::value
           >
         { };
         template<typename _T>
-        struct extent<_T[], 0>: public integral_constant<size_t, 0>
+        struct __UTILITY_TEMPLATE_VIS extent<_T[], 0>: public integral_constant<size_t, 0>
         { };
         template<typename _T, size_t _size>
-        struct extent<_T[_size], 0>: public integral_constant<size_t, _size>
+        struct __UTILITY_TEMPLATE_VIS extent<_T[_size], 0>: public integral_constant<size_t, _size>
         { };
         template<typename _T, size_t _size, unsigned int _I>
-        struct extent<_T[_size], _I>: public integral_constant<
+        struct __UTILITY_TEMPLATE_VIS extent<_T[_size], _I>: public integral_constant<
             size_t, extent<_T, _I-1>::value
           >
         { };

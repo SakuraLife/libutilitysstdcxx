@@ -78,17 +78,17 @@ __utility_globalspace_start(utility)
       { return _ptr;}
     }
     template<typename _T>
-    class propagate_const;
+    class __UTILITY_TEMPLATE_VIS propagate_const;
 
     template<typename _T>
-    struct is_propagate_const: trait::false_type
+    struct __UTILITY_TEMPLATE_VIS is_propagate_const: trait::false_type
     { };
     template<typename _T>
-    struct is_propagate_const<propagate_const<_T>>: trait::true_type
+    struct __UTILITY_TEMPLATE_VIS is_propagate_const<propagate_const<_T>>: trait::true_type
     { };
 
     template<typename _T>
-    class propagate_const
+    class __UTILITY_TEMPLATE_VIS propagate_const
     {
       private:
         template<typename>

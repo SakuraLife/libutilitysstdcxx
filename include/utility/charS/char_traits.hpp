@@ -17,7 +17,7 @@
 __utility_globalspace_start(utility)
   __utility_interspace_start(charS)
     template<typename _CharT>
-    struct char_traits
+    struct __UTILITY_TEMPLATE_VIS char_traits
     {
       typedef _CharT                          char_type;
       typedef int                             int_type;
@@ -129,7 +129,7 @@ __utility_globalspace_start(utility)
     };
 
     template<>
-    struct char_traits<char>
+    struct __UTILITY_TYPE_VIS char_traits<char>
     {
       typedef char                            char_type;
       typedef int                             int_type;
@@ -242,7 +242,7 @@ __utility_globalspace_start(utility)
 
 
     template<>
-    struct char_traits<wchar_t>
+    struct __UTILITY_TYPE_VIS char_traits<wchar_t>
     {
       typedef wchar_t                         char_type;
       typedef sstd::wint_t                    int_type;
@@ -355,7 +355,7 @@ __utility_globalspace_start(utility)
 
 
     template<>
-    struct char_traits<char16_t>
+    struct __UTILITY_TYPE_VIS char_traits<char16_t>
     {
       typedef char16_t                        char_type;
       typedef sstd::uint_least16_t            int_type;
@@ -467,7 +467,7 @@ __utility_globalspace_start(utility)
     };
 
     template<>
-    struct char_traits<char32_t>
+    struct __UTILITY_TYPE_VIS char_traits<char32_t>
     {
       typedef char32_t                        char_type;
       typedef sstd::uint_least32_t            int_type;

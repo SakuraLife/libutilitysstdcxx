@@ -8,7 +8,7 @@
 __utility_globalspace_start(utility)
   __utility_interspace_start(trait)
     template<typename _T>
-    struct is_unsupport_trait :
+    struct __UTILITY_TYPE_VIS is_unsupport_trait :
       public trait::integral_constant<bool,
         trait::type::releations::is_base_of<unsupport_trait<false>, _T>::value ||
         trait::type::releations::is_base_of<unsupport_trait<true>, _T>::value>

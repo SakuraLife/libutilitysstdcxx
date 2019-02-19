@@ -29,7 +29,7 @@ __utility_globalspace_start(utility)
           { };
         }
         template<typename _T>
-        struct is_unsigned: public __impl::__is_unsigned_test<_T>
+        struct __UTILITY_TEMPLATE_VIS is_unsigned: public __impl::__is_unsigned_test<_T>
         { };
 
       __utility_interspace_end(property)

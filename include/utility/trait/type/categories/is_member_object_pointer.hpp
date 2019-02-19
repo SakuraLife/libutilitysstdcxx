@@ -12,7 +12,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(categories)
         // is_member_object_pointer
         template<typename _T>
-        struct is_member_object_pointer:
+        struct __UTILITY_TEMPLATE_VIS is_member_object_pointer:
           public trait::integral_constant<bool,
             is_member_pointer<_T>::value           &&
             !is_member_function_pointer<_T>::value>

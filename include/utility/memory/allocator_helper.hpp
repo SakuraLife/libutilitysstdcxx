@@ -6,10 +6,8 @@
 
 __utility_globalspace_start(utility)
   __utility_interspace_start(memory)
-    struct allocator_arg_t
-    {
-      explicit allocator_arg_t() = default;
-    };
+    struct __UTILITY_TYPE_VIS allocator_arg_t
+    { explicit allocator_arg_t() = default;};
 
     __UTILITY_CPP17_INLINE__
     constexpr memory::allocator_arg_t allocator_arg{};

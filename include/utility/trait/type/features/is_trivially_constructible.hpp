@@ -15,7 +15,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(features)
         // is_trivially_constructible
         template<class _T, typename... _Args>
-        struct is_trivially_constructible:
+        struct __UTILITY_TEMPLATE_VIS is_trivially_constructible:
           public integral_constant<bool,
             __utility_is_trivially_constructible(_T, _Args...)>
         { };
@@ -34,29 +34,29 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(features)
         // is_trivially_constructible
         template<class _T, typename... Args>
-        struct is_trivially_constructible:
+        struct __UTILITY_TEMPLATE_VIS is_trivially_constructible:
           public false_type
         { };
         template<class _T>
-        struct is_trivially_constructible<_T>:
+        struct __UTILITY_TEMPLATE_VIS is_trivially_constructible<_T>:
           public integral_constant<bool,
             trait::type::categories::is_scalar<_T>::value
           >
         { };
         template<class _T>
-        struct is_trivially_constructible<_T, _T&>:
+        struct __UTILITY_TEMPLATE_VIS is_trivially_constructible<_T, _T&>:
           public integral_constant<bool,
             trait::type::categories::is_scalar<_T>::value
           >
         { };
         template<class _T>
-        struct is_trivially_constructible<_T, _T&&>:
+        struct __UTILITY_TEMPLATE_VIS is_trivially_constructible<_T, _T&&>:
           public integral_constant<bool,
             trait::type::categories::is_scalar<_T>::value
           >
         { };
         template<class _T>
-        struct is_trivially_constructible<_T, const _T&>:
+        struct __UTILITY_TEMPLATE_VIS is_trivially_constructible<_T, const _T&>:
           public integral_constant<bool,
             trait::type::categories::is_scalar<_T>::value
           >

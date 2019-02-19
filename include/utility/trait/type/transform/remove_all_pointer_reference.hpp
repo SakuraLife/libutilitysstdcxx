@@ -10,25 +10,25 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(transform)
         // remove_all_pointer_reference
         template<typename _T>
-        struct remove_all_pointer_reference
+        struct __UTILITY_TEMPLATE_VIS remove_all_pointer_reference
         { typedef _T type;};
         template<typename _T>
-        struct remove_all_pointer_reference<_T&>
+        struct __UTILITY_TEMPLATE_VIS remove_all_pointer_reference<_T&>
         { typedef typename remove_all_pointer_reference<_T>::type type;};
         template<typename _T>
-        struct remove_all_pointer_reference<_T&&>
+        struct __UTILITY_TEMPLATE_VIS remove_all_pointer_reference<_T&&>
         { typedef typename remove_all_pointer_reference<_T>::type type;};
         template<typename _T>
-        struct remove_all_pointer_reference<_T*>
+        struct __UTILITY_TEMPLATE_VIS remove_all_pointer_reference<_T*>
         { typedef typename remove_all_pointer_reference<_T>::type type;};
         template<typename _T>
-        struct remove_all_pointer_reference<_T* const>
+        struct __UTILITY_TEMPLATE_VIS remove_all_pointer_reference<_T* const>
         { typedef typename remove_all_pointer_reference<_T>::type type;};
         template<typename _T>
-        struct remove_all_pointer_reference<_T* volatile>
+        struct __UTILITY_TEMPLATE_VIS remove_all_pointer_reference<_T* volatile>
         { typedef typename remove_all_pointer_reference<_T>::type type;};
         template<typename _T>
-        struct remove_all_pointer_reference<_T* const volatile>
+        struct __UTILITY_TEMPLATE_VIS remove_all_pointer_reference<_T* const volatile>
         { typedef typename remove_all_pointer_reference<_T>::type type;};
 
         template<typename _T>

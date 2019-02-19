@@ -16,7 +16,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(features)
         // is_trivially_destructible
         template<typename _T>
-        struct is_trivially_destructible: public integral_constant<bool,
+        struct __UTILITY_TEMPLATE_VIS is_trivially_destructible: public integral_constant<bool,
             is_destructible<_T>::value &&
             __utility_has_trivial_destructor(_T)
           >
@@ -48,13 +48,13 @@ __utility_globalspace_start(utility)
           { };
         }
         template<typename _T>
-        struct is_trivially_destructible : public
+        struct __UTILITY_TEMPLATE_VIS is_trivially_destructible : public
           __impl::__is_trivially_destructible_helper<
             typename
             trait::type::transform::remove_all_extents<_T>::type>
         { };
         template<typename _T>
-        struct is_trivially_destructible<_T[]> :
+        struct __UTILITY_TEMPLATE_VIS is_trivially_destructible<_T[]> :
           public trait::false_type
         { };
 

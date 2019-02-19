@@ -10,31 +10,31 @@ __utility_globalspace_start(utility)
     namespace __opt__
     {
       template<bool _B, typename _T>
-      struct __if__
+      struct __UTILITY_TEMPLATE_VIS __if__
       { };
       template<typename _T>
-      struct __if__<true, _T>
+      struct __UTILITY_TEMPLATE_VIS __if__<true, _T>
       { typedef _T type;};
 
       template<bool _B, typename _TI, typename _TE>
-      struct __if_else__
+      struct __UTILITY_TEMPLATE_VIS __if_else__
       { typedef _TI type;};
       template<typename _TI, typename _TE>
-      struct __if_else__<false, _TI, _TE>
+      struct __UTILITY_TEMPLATE_VIS __if_else__<false, _TI, _TE>
       { typedef _TE type;};
 
       template<typename _T1, typename _T2>
-      struct __eq__ : __false__
+      struct __UTILITY_TEMPLATE_VIS __eq__ : __false__
       { };
       template<typename _T>
-      struct __eq__<_T, _T> : __true__
+      struct __UTILITY_TEMPLATE_VIS __eq__<_T, _T> : __true__
       { };
 
       template<typename _T1, typename _T2>
-      struct __neq__ : __true__
+      struct __UTILITY_TEMPLATE_VIS __neq__ : __true__
       { };
       template<typename _T>
-      struct __neq__<_T, _T> : __false__
+      struct __UTILITY_TEMPLATE_VIS __neq__<_T, _T> : __false__
       { };
     }
   __utility_interspace_end(trait)

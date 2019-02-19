@@ -15,7 +15,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(categories)
         // is_union
         template<typename _T>
-        struct is_union :
+        struct __UTILITY_TEMPLATE_VIS is_union :
           public trait::integral_constant<bool, __utility_is_union(_T)>
         { };
 
@@ -40,7 +40,7 @@ __utility_globalspace_start(utility)
           { };
         }
         template<typename _T>
-        struct is_union :
+        struct __UTILITY_TEMPLATE_VIS is_union :
           public __impl::__is_union_test<
             typename
               trait::type::transform::remove_cv<_T>::type>

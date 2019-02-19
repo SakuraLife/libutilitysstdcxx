@@ -10,101 +10,101 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(categories)
         // is_function
         template<typename>
-        struct is_function: public false_type
+        struct __UTILITY_TEMPLATE_VIS is_function: public false_type
         { };
         template<typename _Fn, typename... _Args>
-        struct is_function<_Fn(_Args...)>: public true_type
+        struct __UTILITY_TEMPLATE_VIS is_function<_Fn(_Args...)>: public true_type
         { };
         template<typename _Fn, typename... _Args>
-        struct is_function<_Fn(_Args...) &>:
+        struct __UTILITY_TEMPLATE_VIS is_function<_Fn(_Args...) &>:
           public trait::true_type
         { };
         template<typename _Fn, typename... _Args>
-        struct is_function<_Fn(_Args...) &&>:
+        struct __UTILITY_TEMPLATE_VIS is_function<_Fn(_Args...) &&>:
           public trait::true_type
         { };
         template<typename _Fn, typename... _Args>
-        struct is_function<_Fn(_Args..., ...)>:
+        struct __UTILITY_TEMPLATE_VIS is_function<_Fn(_Args..., ...)>:
           public trait::true_type
         { };
         template<typename _Fn, typename... _Args>
-        struct is_function<_Fn(_Args..., ...) &>:
+        struct __UTILITY_TEMPLATE_VIS is_function<_Fn(_Args..., ...) &>:
           public trait::true_type
         { };
         template<typename _Fn, typename... _Args>
-        struct is_function<_Fn(_Args..., ...) &&>:
+        struct __UTILITY_TEMPLATE_VIS is_function<_Fn(_Args..., ...) &&>:
           public trait::true_type
         { };
         template<typename _Fn, typename... _Args>
-        struct is_function<_Fn(_Args...) const>:
+        struct __UTILITY_TEMPLATE_VIS is_function<_Fn(_Args...) const>:
           public trait::true_type
         { };
         template<typename _Fn, typename... _Args>
-        struct is_function<_Fn(_Args...) const &>:
+        struct __UTILITY_TEMPLATE_VIS is_function<_Fn(_Args...) const &>:
           public trait::true_type
         { };
         template<typename _Fn, typename... _Args>
-        struct is_function<_Fn(_Args...) const &&>:
+        struct __UTILITY_TEMPLATE_VIS is_function<_Fn(_Args...) const &&>:
           public trait::true_type
         { };
         template<typename _Fn, typename... _Args>
-        struct is_function<_Fn(_Args..., ...) const>:
+        struct __UTILITY_TEMPLATE_VIS is_function<_Fn(_Args..., ...) const>:
           public trait::true_type
         { };
         template<typename _Fn, typename... _Args>
-        struct is_function<_Fn(_Args..., ...) const &>:
+        struct __UTILITY_TEMPLATE_VIS is_function<_Fn(_Args..., ...) const &>:
           public trait::true_type
         { };
         template<typename _Fn, typename... _Args>
-        struct is_function<_Fn(_Args..., ...) const &&>:
+        struct __UTILITY_TEMPLATE_VIS is_function<_Fn(_Args..., ...) const &&>:
           public trait::true_type
         { };
         template<typename _Fn, typename... _Args>
-        struct is_function<_Fn(_Args...) volatile>:
+        struct __UTILITY_TEMPLATE_VIS is_function<_Fn(_Args...) volatile>:
           public trait::true_type
         { };
         template<typename _Fn, typename... _Args>
-        struct is_function<_Fn(_Args...) volatile &>:
+        struct __UTILITY_TEMPLATE_VIS is_function<_Fn(_Args...) volatile &>:
           public trait::true_type
         { };
         template<typename _Fn, typename... _Args>
-        struct is_function<_Fn(_Args...) volatile &&>:
+        struct __UTILITY_TEMPLATE_VIS is_function<_Fn(_Args...) volatile &&>:
           public trait::true_type
         { };
         template<typename _Fn, typename... _Args>
-        struct is_function<_Fn(_Args..., ...) volatile>:
+        struct __UTILITY_TEMPLATE_VIS is_function<_Fn(_Args..., ...) volatile>:
           public trait::true_type
         { };
         template<typename _Fn, typename... _Args>
-        struct is_function<_Fn(_Args..., ...) volatile &>:
+        struct __UTILITY_TEMPLATE_VIS is_function<_Fn(_Args..., ...) volatile &>:
           public trait::true_type
         { };
         template<typename _Fn, typename... _Args>
-        struct is_function<_Fn(_Args..., ...) volatile &&>:
+        struct __UTILITY_TEMPLATE_VIS is_function<_Fn(_Args..., ...) volatile &&>:
           public trait::true_type
         { };
         template<typename _Fn, typename... _Args>
-        struct is_function<_Fn(_Args...) const volatile>:
+        struct __UTILITY_TEMPLATE_VIS is_function<_Fn(_Args...) const volatile>:
           public trait::true_type
         { };
         template<typename _Fn, typename... _Args>
-        struct is_function<_Fn(_Args...) const volatile &>:
+        struct __UTILITY_TEMPLATE_VIS is_function<_Fn(_Args...) const volatile &>:
           public trait::true_type
         { };
         template<typename _Fn, typename... _Args>
-        struct is_function<_Fn(_Args...) const volatile &&>:
+        struct __UTILITY_TEMPLATE_VIS is_function<_Fn(_Args...) const volatile &&>:
           public trait::true_type
         { };
         template<typename _Fn, typename... _Args>
-        struct is_function<_Fn(_Args..., ...) const volatile>:
+        struct __UTILITY_TEMPLATE_VIS is_function<_Fn(_Args..., ...) const volatile>:
           public trait::true_type
         { };
         template<typename _Fn, typename... _Args>
-        struct is_function<_Fn(_Args..., ...) const volatile &>:
+        struct __UTILITY_TEMPLATE_VIS is_function<_Fn(_Args..., ...) const volatile &>:
           public trait::true_type
         { };
         template<typename _Fn, typename... _Args>
-        struct is_function<_Fn(_Args..., ...) const volatile &&>:
+        struct __UTILITY_TEMPLATE_VIS is_function<_Fn(_Args..., ...) const volatile &&>:
           public trait::true_type
         { };
 

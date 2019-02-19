@@ -32,7 +32,7 @@ __utility_globalspace_start(utility)
           { };
         }
         template<typename _T>
-        struct is_abstract: public __impl::__is_abstract_test<_T>
+        struct __UTILITY_TEMPLATE_VIS is_abstract: public __impl::__is_abstract_test<_T>
         { };
 
       __utility_interspace_end(property)

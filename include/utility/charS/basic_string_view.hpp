@@ -37,7 +37,7 @@ __utility_globalspace_start(utility)
       typename _CharT,
       typename _Traits = char_traits<_CharT>
     >
-    class basic_string_view
+    class __UTILITY_TEMPLATE_VIS basic_string_view
     {
       public:
         typedef _CharT                value_type;

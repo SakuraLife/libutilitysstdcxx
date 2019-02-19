@@ -23,9 +23,9 @@ __utility_globalspace_start(utility)
   __utility_interspace_start(container)
     namespace helper
     {
-      struct __success
+      struct __UTILITY_TYPE_VIS __success
       { };
-      struct __failure
+      struct __UTILITY_TYPE_VIS __failure
       { };
       using namespace iterator;
     }

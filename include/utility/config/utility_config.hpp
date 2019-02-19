@@ -68,15 +68,44 @@
 #define __utility_inline
 #endif // ! UTILITY_USE_HEADERS
 
-#if defined(__has_attribute)
-#define __utility_has_attribute(_attr) __has_attribute(_attr)
-#else
-#define __utility_has_attribute(_attr) 0
-#endif // ! __has_attribute
+#ifndef __has_attribute
+#define __has_attribute(__x) 0
+#endif
+
+#ifndef __has_builtin
+#define __has_builtin(__x) 0
+#endif
+
+#ifndef __has_extension
+#define __has_extension(__x) 0
+#endif
+
+#ifndef __has_feature
+#define __has_feature(__x) 0
+#endif
+
+#ifndef __has_cpp_attribute
+#define __has_cpp_attribute(__x) 0
+#endif
+
+#ifndef __is_identifier
+#define __is_identifier(__x) 1
+#endif
+
+#ifndef __has_declspec_attribute
+#define __has_declspec_attribute(__x) 0
+#endif
+
+#define __has_keyword(__x) !(__is_identifier(__x))
+
+#ifndef __has_include
+#define __has_include(...) 0
+#endif
 
 // select the support compiler
 #include<utility/config/compiler/select.hpp>
 
+#include<utility/config/utility_visibility_config.hpp>
 #include<utility/config/debug/utility_debug_config.hpp>
 
 #if defined(UTILITY_NO_EXCEPTION)

@@ -10,13 +10,13 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(transform)
         // remove_reference
         template<typename _T>
-        struct remove_reference
+        struct __UTILITY_TEMPLATE_VIS remove_reference
         { typedef _T type;};
         template<typename _T>
-        struct remove_reference<_T&>
+        struct __UTILITY_TEMPLATE_VIS remove_reference<_T&>
         { typedef _T type;};
         template<typename _T>
-        struct remove_reference<_T&&>
+        struct __UTILITY_TEMPLATE_VIS remove_reference<_T&&>
         { typedef _T type;};
 
         template<typename _T>

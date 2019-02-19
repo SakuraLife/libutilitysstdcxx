@@ -10,19 +10,19 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(transform)
         // remove_pointer
         template<typename _T>
-        struct remove_pointer
+        struct __UTILITY_TEMPLATE_VIS remove_pointer
         { typedef _T type;};
         template<typename _T>
-        struct remove_pointer<_T*>
+        struct __UTILITY_TEMPLATE_VIS remove_pointer<_T*>
         { typedef _T type;};
         template<typename _T>
-        struct remove_pointer<_T* const>
+        struct __UTILITY_TEMPLATE_VIS remove_pointer<_T* const>
         { typedef _T type;};
         template<typename _T>
-        struct remove_pointer<_T* volatile>
+        struct __UTILITY_TEMPLATE_VIS remove_pointer<_T* volatile>
         { typedef _T type;};
         template<typename _T>
-        struct remove_pointer<_T* const volatile>
+        struct __UTILITY_TEMPLATE_VIS remove_pointer<_T* const volatile>
         { typedef _T type;};
 
         template<typename _T>

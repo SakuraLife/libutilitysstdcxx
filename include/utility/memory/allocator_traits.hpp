@@ -544,7 +544,7 @@ __utility_globalspace_start(utility)
     }
 
     template<typename _Allocator>
-    struct allocator_traits
+    struct __UTILITY_TEMPLATE_VIS allocator_traits
     {
       public:
         typedef _Allocator allocator_type;

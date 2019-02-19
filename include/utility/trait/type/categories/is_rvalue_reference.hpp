@@ -10,10 +10,10 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(categories)
         // is_rvalue_reference
         template<typename _T>
-        struct is_rvalue_reference : public trait::false_type
+        struct __UTILITY_TEMPLATE_VIS is_rvalue_reference : public trait::false_type
         { };
         template<typename _T>
-        struct is_rvalue_reference<_T&&> : public trait::true_type
+        struct __UTILITY_TEMPLATE_VIS is_rvalue_reference<_T&&> : public trait::true_type
         { };
 
 #if !defined(__UTILITY_NO_CPP14__)

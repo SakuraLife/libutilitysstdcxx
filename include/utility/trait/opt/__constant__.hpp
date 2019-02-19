@@ -9,7 +9,7 @@ __utility_globalspace_start(utility)
     namespace __opt__
     {
       template<typename _Type, _Type _val>
-      struct __constant__
+      struct __UTILITY_TEMPLATE_VIS __constant__
       {
         constexpr static _Type value = _val;
         typedef _Type type;

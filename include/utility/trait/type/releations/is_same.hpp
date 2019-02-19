@@ -10,10 +10,10 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(releations)
         // is_same
         template<typename _T1, typename _T2>
-        struct is_same : public false_type
+        struct __UTILITY_TEMPLATE_VIS is_same : public false_type
         { };
         template<typename _T>
-        struct is_same<_T, _T> : public true_type
+        struct __UTILITY_TEMPLATE_VIS is_same<_T, _T> : public true_type
         { };
 
 #if !defined(__UTILITY_NO_CPP14__)

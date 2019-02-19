@@ -10,7 +10,7 @@ __utility_globalspace_start(utility)
     __utility_interspace_start(operation)
       // negation
       template<typename _T>
-      struct negation: __opt__::__type_not__<_T>
+      struct __UTILITY_TEMPLATE_VIS negation: __opt__::__type_not__<_T>
       { };
 
 #if !defined(__UTILITY_NO_CPP14__)

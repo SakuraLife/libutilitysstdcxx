@@ -14,7 +14,7 @@ __utility_globalspace_start(utility)
   __utility_interspace_start(iterator)
 
     template<typename __Iterator>
-    class reverse_iterator
+    class __UTILITY_TEMPLATE_VIS reverse_iterator
     {
       public:
         typedef typename

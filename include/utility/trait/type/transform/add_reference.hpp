@@ -22,7 +22,7 @@ __utility_globalspace_start(utility)
 
         }
         template<typename _T>
-        struct add_lvalue_reference
+        struct __UTILITY_TEMPLATE_VIS add_lvalue_reference
         {
           typedef typename
             __impl::__add_lvalue_reference_helper<_T>::type type;
@@ -39,7 +39,7 @@ __utility_globalspace_start(utility)
           { typedef _T&& type;};
         }
         template<typename _T>
-        struct add_rvalue_reference
+        struct __UTILITY_TEMPLATE_VIS add_rvalue_reference
         {
           typedef typename
             __impl::__add_rvalue_reference_helper<_T>::type type;

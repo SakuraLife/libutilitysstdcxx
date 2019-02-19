@@ -31,7 +31,7 @@ __utility_globalspace_start(utility)
         }
 
         template<size_t _Len, typename... _Ts>
-        struct aligned_union
+        struct __UTILITY_TEMPLATE_VIS aligned_union
         {
           private:
             static_assert(sizeof...(_Ts) != 0, "Need at least ont type");

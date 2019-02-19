@@ -44,7 +44,7 @@
 __utility_globalspace_start(utility)
   __utility_interspace_start(container)
     template<typename _T, typename _Alloc = memory::allocator<_T>>
-    class list;
+    class __UTILITY_TEMPLATE_VIS list;
 
     namespace __detail
     {
@@ -61,10 +61,10 @@ __utility_globalspace_start(utility)
       using __list_node = __node<_T, __dnode>;
 
       template<typename _T>
-      class __list_const_iterator;
+      class __UTILITY_TEMPLATE_VIS __list_const_iterator;
 
       template<typename _T>
-      class __list_iterator
+      class __UTILITY_TEMPLATE_VIS __list_iterator
       {
         private:
           template<typename>
@@ -137,7 +137,7 @@ __utility_globalspace_start(utility)
       };
 
       template<typename _T>
-      class __list_const_iterator
+      class __UTILITY_TEMPLATE_VIS __list_const_iterator
       {
         private:
           template<typename, typename>
@@ -214,7 +214,7 @@ __utility_globalspace_start(utility)
     }
 
     template<typename _T, typename _Alloc>
-    class list
+    class __UTILITY_TEMPLATE_VIS list
     {
       public:
         typedef _T                                value_type;

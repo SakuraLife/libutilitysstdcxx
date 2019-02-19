@@ -18,7 +18,7 @@ __utility_globalspace_start(utility)
     __utility_interspace_start(type)
       __utility_interspace_start(transform)
         template<typename _T>
-        struct remove_all
+        struct __UTILITY_TEMPLATE_VIS remove_all
         {
           typedef remove_cv_t<
             remove_all_pointer_reference_t<remove_all_extents_t<_T>>

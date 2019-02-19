@@ -20,7 +20,7 @@ __utility_globalspace_start(utility)
 
         }
         template<typename _T>
-        struct is_referenceable: public integral_constant<bool,
+        struct __UTILITY_TEMPLATE_VIS is_referenceable: public integral_constant<bool,
             !trait::type::releations::is_same<
               decltype(__impl::__is_referenceable_test<_T>(0)),
               trait::__opt__::__twochar__

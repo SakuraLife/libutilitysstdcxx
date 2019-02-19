@@ -14,7 +14,7 @@ __utility_globalspace_start(utility)
   __utility_interspace_start(container)
 
     __utility_interspace_start(_helper)
-      struct ignore_t
+      struct __UTILITY_TYPE_VIS ignore_t
       {
         public:
           constexpr ignore_t() = default;

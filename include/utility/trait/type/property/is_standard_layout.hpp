@@ -13,7 +13,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(property)
         // is_standard_layout
         template<typename _T>
-        struct is_standard_layout: public
+        struct __UTILITY_TEMPLATE_VIS is_standard_layout: public
           integral_constant<bool, __utility_is_standard_layout(_T)>
         { };
 
@@ -33,7 +33,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(property)
         // is_standard_layout
         template<typename _T>
-        struct is_standard_layout: public
+        struct __UTILITY_TEMPLATE_VIS is_standard_layout: public
           integral_constant<bool,
             trait::type::categories::is_scalar<
               trait::type::transform::remove_all_extents_t<_T>

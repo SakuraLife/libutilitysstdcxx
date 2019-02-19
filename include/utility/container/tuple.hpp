@@ -38,14 +38,14 @@ __utility_globalspace_start(utility)
   __utility_interspace_start(container)
     // Forward Declaration;
     template<typename... _Types>
-    class tuple;
+    class __UTILITY_TEMPLATE_VIS tuple;
 
     // tuple_element implement;
     template<size_t _Idx, typename _T>
-    struct tuple_element;
+    struct __UTILITY_TEMPLATE_VIS tuple_element;
 
     template<size_t _Idx, typename... _Type>
-    struct tuple_element<_Idx, tuple<_Type...>>
+    struct __UTILITY_TEMPLATE_VIS tuple_element<_Idx, tuple<_Type...>>
     {
       typedef typename trait::__opt__::__type_tuple_get__<
         _Idx,
@@ -54,21 +54,21 @@ __utility_globalspace_start(utility)
     };
 
     template<size_t _Idx, typename _T>
-    struct tuple_element<_Idx, const _T>
+    struct __UTILITY_TEMPLATE_VIS tuple_element<_Idx, const _T>
     {
       typedef typename trait::type::transform::add_const_t<
         typename tuple_element<_Idx, _T>::type
       >::type type;
     };
     template<size_t _Idx, typename _T>
-    struct tuple_element<_Idx, volatile _T>
+    struct __UTILITY_TEMPLATE_VIS tuple_element<_Idx, volatile _T>
     {
       typedef typename trait::type::transform::add_volatile_t<
         typename tuple_element<_Idx, _T>::type
       >::type type;
     };
     template<size_t _Idx, typename _T>
-    struct tuple_element<_Idx, const volatile _T>
+    struct __UTILITY_TEMPLATE_VIS tuple_element<_Idx, const volatile _T>
     {
       typedef typename trait::type::transform::add_cv_t<
         typename tuple_element<_Idx, _T>::type
@@ -80,32 +80,32 @@ __utility_globalspace_start(utility)
 
     // tuple_size implement
     template<typename _T>
-    struct tuple_size;
+    struct __UTILITY_TEMPLATE_VIS tuple_size;
 
     template<typename... _Types>
-    struct tuple_size<tuple<_Types...>>:
+    struct __UTILITY_TEMPLATE_VIS tuple_size<tuple<_Types...>>:
       public trait::integral_constant<
         size_t, sizeof...(_Types)
       >
     { };
     template<typename _T>
-    struct tuple_size<const _T>:
+    struct __UTILITY_TEMPLATE_VIS tuple_size<const _T>:
       public trait::integral_constant<size_t, tuple_size<_T>::value>
     { };
     template<typename _T>
-    struct tuple_size<volatile _T>:
+    struct __UTILITY_TEMPLATE_VIS tuple_size<volatile _T>:
       public trait::integral_constant<size_t, tuple_size<_T>::value>
     { };
     template<typename _T>
-    struct tuple_size<const volatile _T>:
+    struct __UTILITY_TEMPLATE_VIS tuple_size<const volatile _T>:
       public trait::integral_constant<size_t, tuple_size<_T>::value>
     { };
 
     template<typename _T>
-    struct is_tuple: public trait::false_type
+    struct __UTILITY_TEMPLATE_VIS is_tuple: public trait::false_type
     { };
     template<typename... _Types>
-    struct is_tuple<tuple<_Types...>>:
+    struct __UTILITY_TEMPLATE_VIS is_tuple<tuple<_Types...>>:
       public trait::true_type
     { };
 
@@ -168,10 +168,10 @@ __utility_globalspace_start(utility)
       };
 
       template<typename _Idx, typename... _Types>
-      class __tuple_base;
+      class __UTILITY_TEMPLATE_VIS __tuple_base;
 
       template<size_t... _Idx, typename... _Types>
-      class __tuple_base<index_sequence<_Idx...>, _Types...>:
+      class __UTILITY_TEMPLATE_VIS __tuple_base<index_sequence<_Idx...>, _Types...>:
         public compressed_index<_Types, _Idx>...
       {
         private:
@@ -335,7 +335,7 @@ __utility_globalspace_start(utility)
     }
 
     template<typename... _Types>
-    class tuple
+    class __UTILITY_TEMPLATE_VIS tuple
     {
       private:
         template<typename...>
@@ -764,7 +764,7 @@ __utility_globalspace_start(utility)
     };
 
     template<>
-    class tuple<>
+    class __UTILITY_TYPE_VIS tuple<>
     {
       public:
         constexpr tuple() noexcept
@@ -1082,10 +1082,10 @@ __utility_globalspace_start(utility)
     namespace __opt__
     {
       template<typename... _Types>
-      struct __type_tuple_size__<container::tuple<_Types...>>
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_size__<container::tuple<_Types...>>
       { constexpr static size_t value = sizeof...(_Types);};
       template<typename... _Types>
-      struct __checkout_type_feature__<container::tuple<_Types...>>
+      struct __UTILITY_TEMPLATE_VIS __checkout_type_feature__<container::tuple<_Types...>>
       { typedef __type_tuple__<_Types...> type;};
     }
   __utility_interspace_end(trait)

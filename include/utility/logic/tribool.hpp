@@ -13,10 +13,8 @@ __utility_globalspace_start(utility)
       * the stuct is on the behalf of the indeterminate value
       * \see logic::boolean::tribool
       */
-      struct indeterminate_tag
-      {
-        constexpr indeterminate_tag()=default;
-      };
+      struct __UTILITY_TYPE_VIS indeterminate_tag
+      { constexpr indeterminate_tag() = default;};
 
       /*!
       * \relates logic::boolean::tribool
@@ -32,10 +30,10 @@ __utility_globalspace_start(utility)
       *
       *
       */
-      class tribool
+      class __UTILITY_TYPE_VIS tribool
       {
         public:
-          enum value_t : signed short
+          enum __UTILITY_ENUM_VIS value_t : signed short
           {
             true_value = 1,     ///< this value means the boolean value is true
             false_value = 0,    ///< this value means the boolean value is false

@@ -25,7 +25,7 @@ __utility_globalspace_start(utility)
     }
 
     template<typename _T>
-    class observer_ptr
+    class __UTILITY_TEMPLATE_VIS observer_ptr
     {
       public:
         typedef _T element_type;

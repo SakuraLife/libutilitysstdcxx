@@ -14,7 +14,7 @@ __utility_globalspace_start(utility)
       typename _Key_eq = algorithm::equal_to<void>,
       typename _Alloc = memory::allocator<_Key_Value_Container>
     >
-    class hash_table;
+    class __UTILITY_TEMPLATE_VIS hash_table;
 
     namespace __hash_length
     {
@@ -46,7 +46,7 @@ __utility_globalspace_start(utility)
         typename _Value,
         typename _Key_Value_Container
       >
-      struct __hash_table_node
+      struct __UTILITY_TEMPLATE_VIS __hash_table_node
       {
         public:
           typedef _Key                 __key_type;
@@ -69,7 +69,7 @@ __utility_globalspace_start(utility)
         typename _Key_Value_Container,
         typename _Container
       >
-      class __hash_table_const_iterator;
+      class __UTILITY_TEMPLATE_VIS __hash_table_const_iterator;
 
       template<
         typename _Key,
@@ -77,7 +77,7 @@ __utility_globalspace_start(utility)
         typename _Key_Value_Container,
         typename _Container
       >
-      class __hash_table_iterator
+      class __UTILITY_TEMPLATE_VIS __hash_table_iterator
       {
         private:
           template<typename, typename, typename, typename, typename, typename>
@@ -181,7 +181,7 @@ __utility_globalspace_start(utility)
         typename _Key_Value_Container,
         typename _Container
       >
-      class __hash_table_const_iterator
+      class __UTILITY_TEMPLATE_VIS __hash_table_const_iterator
       {
         private:
           template<typename, typename, typename, typename, typename, typename>
@@ -291,7 +291,7 @@ __utility_globalspace_start(utility)
         typename _Key_Value_Container,
         typename _Container
       >
-      class __hash_table_const_local_iterator;
+      class __UTILITY_TEMPLATE_VIS __hash_table_const_local_iterator;
 
       template<
         typename _Key,
@@ -299,7 +299,7 @@ __utility_globalspace_start(utility)
         typename _Key_Value_Container,
         typename _Container
       >
-      class __hash_table_local_iterator
+      class __UTILITY_TEMPLATE_VIS __hash_table_local_iterator
       {
         private:
           template<typename, typename, typename, typename, typename, typename>
@@ -401,7 +401,7 @@ __utility_globalspace_start(utility)
         typename _Key_Value_Container,
         typename _Container
       >
-      class __hash_table_const_local_iterator
+      class __UTILITY_TEMPLATE_VIS __hash_table_const_local_iterator
       {
         private:
           template<typename, typename, typename, typename, typename, typename>

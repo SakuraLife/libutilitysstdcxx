@@ -9,7 +9,7 @@
 __utility_globalspace_start(utility)
   __utility_interspace_start(iterator)
     template<typename _T>
-    class raw_pointer_iterator
+    class __UTILITY_TEMPLATE_VIS raw_pointer_iterator
     {
       public:
         typedef contiguous_iterator_tag     iterator_category;
@@ -87,7 +87,7 @@ __utility_globalspace_start(utility)
 
     };
     template<typename _T>
-    class raw_pointer_iterator<const _T>
+    class __UTILITY_TEMPLATE_VIS raw_pointer_iterator<const _T>
     {
       public:
         typedef contiguous_iterator_tag     iterator_category;

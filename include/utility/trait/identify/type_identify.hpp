@@ -9,7 +9,7 @@ __utility_globalspace_start(utility)
   __utility_interspace_start(trait)
     __utility_interspace_start(identify)
       template<typename _T>
-      class type_identification
+      class __UTILITY_TEMPLATE_VIS type_identification
       {
         // using namespace trait::type::features;
         public:

@@ -11,7 +11,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(features)
         // is_nothrow_default_constructible
         template<typename _T>
-        struct is_nothrow_default_constructible:
+        struct __UTILITY_TEMPLATE_VIS is_nothrow_default_constructible:
           public is_nothrow_constructible<_T>
         { };
 

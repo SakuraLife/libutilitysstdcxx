@@ -24,7 +24,7 @@
 __utility_globalspace_start(utility)
   __utility_interspace_start(container)
     template<typename _T1, typename _T2>
-    class compressed_pair : private compressed_index<_T1, 0>,
+    class __UTILITY_TEMPLATE_VIS compressed_pair : private compressed_index<_T1, 0>,
                             private compressed_index<_T2, 1>
     {
       private:
@@ -222,7 +222,7 @@ __utility_globalspace_start(utility)
         }
     };
     template<typename _T>
-    class compressed_pair<_T, _T> : private compressed_index<_T, 0, false>,
+    class __UTILITY_TEMPLATE_VIS compressed_pair<_T, _T> : private compressed_index<_T, 0, false>,
                                     private compressed_index<_T, 1, false>
     {
       public:
@@ -410,10 +410,10 @@ __utility_globalspace_start(utility)
     namespace __opt__
     {
       template<typename _T1, typename _T2>
-      struct __type_tuple_size__<container::compressed_pair<_T1, _T2>>
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_size__<container::compressed_pair<_T1, _T2>>
       { constexpr static size_t value = 2;};
       template<typename _T1, typename _T2>
-      struct __checkout_type_feature__<container::compressed_pair<_T1, _T2>>
+      struct __UTILITY_TEMPLATE_VIS __checkout_type_feature__<container::compressed_pair<_T1, _T2>>
       { typedef __type_pair__<_T1, _T2> type;};
     }
   __utility_interspace_end(trait)

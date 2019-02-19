@@ -28,7 +28,7 @@ __utility_globalspace_start(utility)
 
 
     template<typename _Iterator>
-    class move_iterator
+    class __UTILITY_TEMPLATE_VIS move_iterator
     {
       private:
         typedef typename

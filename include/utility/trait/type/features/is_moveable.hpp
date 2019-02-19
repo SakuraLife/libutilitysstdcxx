@@ -12,7 +12,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(features)
         // is_moveable
         template<typename _T>
-        struct is_moveable: public integral_constant<bool,
+        struct __UTILITY_TEMPLATE_VIS is_moveable: public integral_constant<bool,
             is_move_constructible<_T>::value &&
             is_move_assignable<_T>::value>
         { };

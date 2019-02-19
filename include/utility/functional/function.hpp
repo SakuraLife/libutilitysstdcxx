@@ -32,7 +32,7 @@
 __utility_globalspace_start(utility)
   __utility_interspace_start(functional)
     template<typename>
-    class function;
+    class __UTILITY_TEMPLATE_VIS function;
 
     namespace __detail
     {
@@ -64,7 +64,7 @@ __utility_globalspace_start(utility)
       struct __is_small_function_object
       { constexpr static bool value = _Safe && _Fits;};
 
-      enum class __function_operator
+      enum class __UTILITY_ENUM_VIS __function_operator
       {
         access,
         copy,
@@ -74,14 +74,14 @@ __utility_globalspace_start(utility)
       };
 
       template<typename _T>
-      union __function_args
+      union __UTILITY_TEMPLATE_VIS __function_args
       {
         void*           __ptr;
         function<_T>*   __func;
       };
 
       template<unsigned short _L = 2U>
-      union __function_storage
+      union __UTILITY_TEMPLATE_VIS __function_storage
       {
         void* __ptr;
         typename aligned_storage<sizeof(void*[_L]), alignof(void*)>::type __buffer;
@@ -94,16 +94,16 @@ __utility_globalspace_start(utility)
       };
 
       template<typename, typename, typename, unsigned short _L = 2U>
-      class __small_function_manager;
+      class __UTILITY_TEMPLATE_VIS __small_function_manager;
       template<typename, typename, typename, unsigned short _L = 2U>
-      class __large_function_manager;
+      class __UTILITY_TEMPLATE_VIS __large_function_manager;
 
       template<
         typename _F, typename _Alloc,
         typename _R, typename... _Args,
         unsigned short _L
       >
-      class __small_function_manager<_F, _Alloc, _R(_Args...), _L>
+      class __UTILITY_TEMPLATE_VIS __small_function_manager<_F, _Alloc, _R(_Args...), _L>
       {
         public:
           typedef _F        cast_type;
@@ -134,7 +134,7 @@ __utility_globalspace_start(utility)
         typename _R, typename... _Args,
         unsigned short _L
       >
-      class __large_function_manager<_F, _Alloc, _R(_Args...), _L>
+      class __UTILITY_TEMPLATE_VIS __large_function_manager<_F, _Alloc, _R(_Args...), _L>
       {
         public:
           typedef _F        cast_type;
@@ -178,7 +178,7 @@ __utility_globalspace_start(utility)
     }
 
     template<typename _R, typename... _Args>
-    class function<_R(_Args...)>
+    class __UTILITY_TEMPLATE_VIS function<_R(_Args...)>
     {
       private:
         template<typename, typename, typename, unsigned short>

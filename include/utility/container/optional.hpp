@@ -81,7 +81,7 @@ __utility_globalspace_start(utility)
         typename _T,
         bool = is_reference<_T>::value
       >
-      struct __optional_storage
+      struct __UTILITY_TEMPLATE_VIS __optional_storage
       {
         public:
           typedef _T                            value_type;
@@ -275,7 +275,7 @@ __utility_globalspace_start(utility)
       };
 
       template<typename _T>
-      struct __optional_storage<_T, true>
+      struct __UTILITY_TEMPLATE_VIS __optional_storage<_T, true>
       {
         // static_assert(false, "");
       };
@@ -410,7 +410,7 @@ __utility_globalspace_start(utility)
     }
 
     template<typename _T>
-    class optional
+    class __UTILITY_TEMPLATE_VIS optional
     {
       private:
         template<typename>

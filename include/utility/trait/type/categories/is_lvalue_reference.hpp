@@ -10,10 +10,10 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(categories)
         // is_lvalue_reference
         template<typename _T>
-        struct is_lvalue_reference: public false_type
+        struct __UTILITY_TEMPLATE_VIS is_lvalue_reference: public false_type
         { };
         template<typename _T>
-        struct is_lvalue_reference<_T&>: public true_type
+        struct __UTILITY_TEMPLATE_VIS is_lvalue_reference<_T&>: public true_type
         { };
 
 #if !defined(__UTILITY_NO_CPP14__)

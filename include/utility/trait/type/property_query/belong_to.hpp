@@ -11,10 +11,10 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(property_query)
         // belong_to
         template<typename _T>
-        struct belong_to
+        struct __UTILITY_TEMPLATE_VIS belong_to
         { };
         template<typename _T, class _Inn>
-        struct belong_to<_T _Inn::*>
+        struct __UTILITY_TEMPLATE_VIS belong_to<_T _Inn::*>
         { typedef _Inn type;};
 
       __utility_interspace_end(property_query)

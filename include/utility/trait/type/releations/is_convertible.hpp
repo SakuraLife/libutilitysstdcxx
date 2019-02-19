@@ -4,17 +4,17 @@
 
 #include<utility/trait/trait_helper.hpp>
 
-# include<utility/trait/type/type_trait_special.hpp>
-# include<utility/trait/type/categories/is_void.hpp>
-# include<utility/trait/type/categories/is_array.hpp>
-# include<utility/trait/type/categories/is_function.hpp>
-# include<utility/trait/type/categories/is_reference.hpp>
-# include<utility/trait/type/transform/remove_cv.hpp>
-# include<utility/trait/type/transform/remove_reference.hpp>
-# include<utility/trait/type/property/is_const.hpp>
-# include<utility/trait/type/property/is_volatile.hpp>
-# include<utility/trait/type/releations/is_base_of.hpp>
-# include<utility/trait/type/releations/is_same.hpp>
+#include<utility/trait/type/type_trait_special.hpp>
+#include<utility/trait/type/categories/is_void.hpp>
+#include<utility/trait/type/categories/is_array.hpp>
+#include<utility/trait/type/categories/is_function.hpp>
+#include<utility/trait/type/categories/is_reference.hpp>
+#include<utility/trait/type/transform/remove_cv.hpp>
+#include<utility/trait/type/transform/remove_reference.hpp>
+#include<utility/trait/type/property/is_const.hpp>
+#include<utility/trait/type/property/is_volatile.hpp>
+#include<utility/trait/type/releations/is_base_of.hpp>
+#include<utility/trait/type/releations/is_same.hpp>
 __utility_globalspace_start(utility)
   __utility_interspace_start(trait)
     __utility_interspace_start(type)
@@ -146,7 +146,7 @@ __utility_globalspace_start(utility)
           { };
         }
         template<typename _F, typename _T>
-        struct is_convertible :
+        struct __UTILITY_TEMPLATE_VIS is_convertible :
           public __impl::__is_convertible_helper<_F, _T>
         { };
 

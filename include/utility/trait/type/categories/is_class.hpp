@@ -15,7 +15,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(categories)
         // is_class
         template<typename _T>
-        struct is_class:
+        struct __UTILITY_TEMPLATE_VIS is_class:
           public integral_constant<bool, __utility_is_class(_T)>
         { };
 
@@ -41,7 +41,7 @@ __utility_globalspace_start(utility)
           __twochar__ __is_class_test(...);
         }
         template<typename _T>
-        struct is_class :
+        struct __UTILITY_TEMPLATE_VIS is_class :
           public integral_constant<bool,
               sizeof(__impl::__is_class_test(0)) == 1 &&
               !is_union<_T>::value

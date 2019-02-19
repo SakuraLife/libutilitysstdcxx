@@ -28,7 +28,7 @@ __utility_globalspace_start(utility)
             typename __impl::__aligned_storage_helper<_Len>::type
           )
         >
-        struct aligned_storage
+        struct __UTILITY_TEMPLATE_VIS aligned_storage
         {
           union type
           {

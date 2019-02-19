@@ -13,7 +13,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(features)
         // is_trivially_copy_assignable
         template<typename _T>
-        struct is_trivially_copy_assignable : public
+        struct __UTILITY_TEMPLATE_VIS is_trivially_copy_assignable : public
           trait::type::features::is_trivially_assignable<
             trait::type::transform::add_lvalue_reference_t<_T>,
             trait::type::transform::add_lvalue_reference_t<

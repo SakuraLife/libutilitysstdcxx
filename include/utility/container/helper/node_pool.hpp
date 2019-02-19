@@ -14,7 +14,7 @@ __utility_globalspace_start(utility)
   __utility_interspace_start(container)
     __utility_interspace_start(_helper)
       template<typename _Node>
-      class __node_pool
+      class __UTILITY_TEMPLATE_VIS __node_pool
       {
         private:
           union __link

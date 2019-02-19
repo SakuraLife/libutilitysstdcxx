@@ -13,35 +13,33 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(transform)
         // remove_const_pointer
         template<typename _T>
-        struct remove_const_pointer
+        struct __UTILITY_TEMPLATE_VIS remove_const_pointer
         { typedef remove_const_t<remove_pointer_t<_T>> type;};
 
         // remove_volatile_pointer
         template<typename _T>
-        struct remove_volatile_pointer
+        struct __UTILITY_TEMPLATE_VIS remove_volatile_pointer
         { typedef remove_volatile_t<remove_const_t<_T>> type;};
 
         // remove_cv_pointer
         template<typename _T>
-        struct remove_cv_pointer
+        struct __UTILITY_TEMPLATE_VIS remove_cv_pointer
         { typedef remove_cv_t<remove_pointer_t<_T>> type;};
 
         // remove_const_all_pointer
         template<typename _T>
-        struct remove_const_all_pointer
+        struct __UTILITY_TEMPLATE_VIS remove_const_all_pointer
         { typedef remove_const_t<remove_all_pointer_t<_T>> type;};
 
         // remove_volatile_all_pointer
         template<typename _T>
-        struct remove_volatile_all_pointer
+        struct __UTILITY_TEMPLATE_VIS remove_volatile_all_pointer
         { typedef remove_volatile_t<remove_all_pointer_t<_T>> type;};
 
         // remove_cv_all_pointer
         template<typename _T>
-        struct remove_cv_all_pointer
-        {
-          typedef remove_cv_t<remove_all_pointer_t<_T>> type;
-        };
+        struct __UTILITY_TEMPLATE_VIS remove_cv_all_pointer
+        { typedef remove_cv_t<remove_all_pointer_t<_T>> type;};
 
         template<typename _T>
         using remove_cv_all_pointer_t = typename remove_cv_all_pointer<_T>::type;

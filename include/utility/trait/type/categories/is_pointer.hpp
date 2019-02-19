@@ -20,7 +20,7 @@ __utility_globalspace_start(utility)
           { };
         }
         template<typename _T>
-        struct is_pointer :
+        struct __UTILITY_TEMPLATE_VIS is_pointer :
           public __impl::__is_pointer_test<
             trait::type::transform::remove_cv_t<_T>
           >

@@ -27,7 +27,7 @@ __utility_globalspace_start(utility)
 
         }
         template<typename _T>
-        struct is_floating_point :
+        struct __UTILITY_TEMPLATE_VIS is_floating_point :
           public __impl::__is_floating_test<
             trait::type::transform::remove_cv_t<_T>
           >

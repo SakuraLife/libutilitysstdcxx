@@ -15,77 +15,77 @@ __utility_globalspace_start(utility)
         {
           using trait::type::releations::is_same;
           template<typename _T>
-          struct __make_signed_impl
+          struct __UTILITY_TEMPLATE_VIS __make_signed_impl
           { };
 
           template<>
-          struct __make_signed_impl<signed char>
+          struct __UTILITY_TYPE_VIS __make_signed_impl<signed char>
           { typedef signed char type;};
           template<>
-          struct __make_signed_impl<unsigned char>
+          struct __UTILITY_TYPE_VIS __make_signed_impl<unsigned char>
           { typedef signed char type;};
           template<>
-          struct __make_signed_impl<signed short>
+          struct __UTILITY_TYPE_VIS __make_signed_impl<signed short>
           { typedef signed short type;};
           template<>
-          struct __make_signed_impl<unsigned short>
+          struct __UTILITY_TYPE_VIS __make_signed_impl<unsigned short>
           { typedef signed short type;};
           template<>
-          struct __make_signed_impl<signed int>
+          struct __UTILITY_TYPE_VIS __make_signed_impl<signed int>
           { typedef signed int type;};
           template<>
-          struct __make_signed_impl<unsigned int>
+          struct __UTILITY_TYPE_VIS __make_signed_impl<unsigned int>
           { typedef signed int type;};
           template<>
-          struct __make_signed_impl<signed long>
+          struct __UTILITY_TYPE_VIS __make_signed_impl<signed long>
           { typedef signed long type;};
           template<>
-          struct __make_signed_impl<unsigned long>
+          struct __UTILITY_TYPE_VIS __make_signed_impl<unsigned long>
           { typedef signed long type;};
           template<>
-          struct __make_signed_impl<signed long long>
+          struct __UTILITY_TYPE_VIS __make_signed_impl<signed long long>
           { typedef signed long long type;};
           template<>
-          struct __make_signed_impl<unsigned long long>
+          struct __UTILITY_TYPE_VIS __make_signed_impl<unsigned long long>
           { typedef signed long long type;};
 
           template<typename _T>
-          struct __make_unsigned_impl
+          struct __UTILITY_TEMPLATE_VIS __make_unsigned_impl
           { };
 
           template<>
-          struct __make_unsigned_impl<signed char>
+          struct __UTILITY_TYPE_VIS __make_unsigned_impl<signed char>
           { typedef unsigned char type;};
           template<>
-          struct __make_unsigned_impl<unsigned char>
+          struct __UTILITY_TYPE_VIS __make_unsigned_impl<unsigned char>
           { typedef unsigned char type;};
           template<>
-          struct __make_unsigned_impl<signed short>
+          struct __UTILITY_TYPE_VIS __make_unsigned_impl<signed short>
           { typedef unsigned short type;};
           template<>
-          struct __make_unsigned_impl<unsigned short>
+          struct __UTILITY_TYPE_VIS __make_unsigned_impl<unsigned short>
           { typedef unsigned short type;};
           template<>
-          struct __make_unsigned_impl<signed int>
+          struct __UTILITY_TYPE_VIS __make_unsigned_impl<signed int>
           { typedef unsigned int type;};
           template<>
-          struct __make_unsigned_impl<unsigned int>
+          struct __UTILITY_TYPE_VIS __make_unsigned_impl<unsigned int>
           { typedef unsigned int type;};
           template<>
-          struct __make_unsigned_impl<signed long>
+          struct __UTILITY_TYPE_VIS __make_unsigned_impl<signed long>
           { typedef unsigned long type;};
           template<>
-          struct __make_unsigned_impl<unsigned long>
+          struct __UTILITY_TYPE_VIS __make_unsigned_impl<unsigned long>
           { typedef unsigned long type;};
           template<>
-          struct __make_unsigned_impl<signed long long>
+          struct __UTILITY_TYPE_VIS __make_unsigned_impl<signed long long>
           { typedef unsigned long long type;};
           template<>
-          struct __make_unsigned_impl<unsigned long long>
+          struct __UTILITY_TYPE_VIS __make_unsigned_impl<unsigned long long>
           { typedef unsigned long long type;};
 
           template<typename _T>
-          struct __change_helper :
+          struct __UTILITY_TEMPLATE_VIS __change_helper :
             public trait::integral_constant<bool,
               trait::type::categories::is_integral<_T>::value
               && !is_same<_T, bool>::value
@@ -111,10 +111,10 @@ __utility_globalspace_start(utility)
           { typedef typename __make_unsigned_impl<_T>::type type;};
         }
         template<typename _T>
-        struct make_signed: public __impl::__make_signed_helper<_T>
+        struct __UTILITY_TEMPLATE_VIS make_signed: public __impl::__make_signed_helper<_T>
         { };
         template<typename _T>
-        struct make_unsigned: public __impl::__make_unsigned_helper<_T>
+        struct __UTILITY_TEMPLATE_VIS make_unsigned: public __impl::__make_unsigned_helper<_T>
         { };
 
         template<typename _T>

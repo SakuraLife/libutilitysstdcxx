@@ -10,7 +10,7 @@ __utility_globalspace_start(utility)
     __utility_interspace_start(operation)
       // disjunction
       template<typename... _Types>
-      struct disjunction: __opt__::__type_or__<_Types...>
+      struct __UTILITY_TEMPLATE_VIS disjunction: __opt__::__type_or__<_Types...>
       { };
 
 #if !defined(__UTILITY_NO_CPP14__)

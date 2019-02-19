@@ -13,7 +13,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(categories)
         // is_fundamental
         template<typename _T>
-        struct is_fundamental:
+        struct __UTILITY_TEMPLATE_VIS is_fundamental:
           public trait::integral_constant<bool,
             is_void<_T>::value       ||
             is_arithmetic<_T>::value ||

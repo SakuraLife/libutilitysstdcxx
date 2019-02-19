@@ -15,7 +15,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(property)
         // is_polymorphic
         template<typename _T>
-        struct is_polymorphic :
+        struct __UTILITY_TEMPLATE_VIS is_polymorphic :
           public integral_constant<bool, __utility_is_polymorphic(_T)>
         { };
 
@@ -54,7 +54,7 @@ __utility_globalspace_start(utility)
           __twochar__ __is_polymorphic_test(...);
         }
         template<typename _T>
-        struct is_polymorphic: public integral_constant<bool,
+        struct __UTILITY_TEMPLATE_VIS is_polymorphic: public integral_constant<bool,
             sizeof(__impl::__is_polymorphic_test<_T>(0)) == 1
           >
         { };

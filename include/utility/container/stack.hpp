@@ -28,12 +28,11 @@
 
 __utility_globalspace_start(utility)
   __utility_interspace_start(container)
-    template
-    <
+    template<
       typename _T,
       typename _Container = container::list<_T>
     >
-    class stack
+    class __UTILITY_TEMPLATE_VIS stack
     {
       public:
         typedef _Container                                container_type;

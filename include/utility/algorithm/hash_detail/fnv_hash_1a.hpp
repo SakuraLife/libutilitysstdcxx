@@ -9,10 +9,10 @@ __utility_globalspace_start(utility)
     namespace hash_detail
     {
       template<size_t = sizeof(size_t)>
-      struct fnv_hash_1a;
+      struct __UTILITY_TEMPLATE_VIS fnv_hash_1a;
 
       template<>
-      struct fnv_hash_1a<4>
+      struct __UTILITY_TYPE_VIS fnv_hash_1a<4>
       {
         public:
           static inline size_t __aux(
@@ -43,7 +43,7 @@ __utility_globalspace_start(utility)
       };
 
       template<>
-      struct fnv_hash_1a<8>
+      struct __UTILITY_TYPE_VIS fnv_hash_1a<8>
       {
         public:
           static inline size_t __aux(

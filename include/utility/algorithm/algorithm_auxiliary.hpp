@@ -9,42 +9,42 @@
 __utility_globalspace_start(utility)
   __utility_interspace_start(algorithm)
     template<typename _T = void>
-    struct plus
+    struct __UTILITY_TEMPLATE_VIS plus
     {
       __UTILITY_CPP14_CONSTEXPR__
       _T operator()(const _T& _x, const _T& _y) const
       { return _x + _y;}
     };
     template<typename _T = void>
-    struct minus
+    struct __UTILITY_TEMPLATE_VIS minus
     {
       __UTILITY_CPP14_CONSTEXPR__
       _T operator()(const _T& _x, const _T& _y) const
       { return _x - _y;}
     };
     template<typename _T = void>
-    struct multiplies
+    struct __UTILITY_TEMPLATE_VIS multiplies
     {
       __UTILITY_CPP14_CONSTEXPR__
       _T operator()(const _T& _x, const _T& _y) const
       { return _x * _y;}
     };
     template<typename _T = void>
-    struct divides
+    struct __UTILITY_TEMPLATE_VIS divides
     {
       __UTILITY_CPP14_CONSTEXPR__
       _T operator()(const _T& _x, const _T& _y) const
       { return _x / _y;}
     };
     template<typename _T = void>
-    struct modulus
+    struct __UTILITY_TEMPLATE_VIS modulus
     {
       __UTILITY_CPP14_CONSTEXPR__
       _T operator()(const _T& _x, const _T& _y) const
       { return _x % _y;}
     };
     template<typename _T = void>
-    struct negate
+    struct __UTILITY_TEMPLATE_VIS negate
     {
       __UTILITY_CPP14_CONSTEXPR__
       _T operator()(const _T& _x) const
@@ -52,42 +52,42 @@ __utility_globalspace_start(utility)
     };
 
     template<typename _T = void>
-    struct equal_to
+    struct __UTILITY_TEMPLATE_VIS equal_to
     {
       __UTILITY_CPP14_CONSTEXPR__
       bool operator()(const _T& _x, const _T& _y) const
       { return _x == _y;}
     };
     template<typename _T = void>
-    struct not_equal_to
+    struct __UTILITY_TEMPLATE_VIS not_equal_to
     {
       __UTILITY_CPP14_CONSTEXPR__
       bool operator()(const _T& _x, const _T& _y) const
       { return _x != _y;}
     };
     template<typename _T = void>
-    struct less
+    struct __UTILITY_TEMPLATE_VIS less
     {
       __UTILITY_CPP14_CONSTEXPR__
       bool operator()(const _T& _x, const _T& _y) const
       { return _x < _y;}
     };
     template<typename _T = void>
-    struct less_equal
+    struct __UTILITY_TEMPLATE_VIS less_equal
     {
       __UTILITY_CPP14_CONSTEXPR__
       bool operator()(const _T& _x, const _T& _y) const
       { return _x <= _y;}
     };
     template<typename _T = void>
-    struct greater
+    struct __UTILITY_TEMPLATE_VIS greater
     {
       __UTILITY_CPP14_CONSTEXPR__
       bool operator()(const _T& _x, const _T& _y) const
       { return _x > _y;}
     };
     template<typename _T = void>
-    struct greater_equal
+    struct __UTILITY_TEMPLATE_VIS greater_equal
     {
       __UTILITY_CPP14_CONSTEXPR__
       bool operator()(const _T& _x, const _T& _y) const
@@ -95,21 +95,21 @@ __utility_globalspace_start(utility)
     };
 
     template<typename _T = void>
-    struct logical_and
+    struct __UTILITY_TEMPLATE_VIS logical_and
     {
       __UTILITY_CPP14_CONSTEXPR__
       bool operator()(const _T& _x, const _T& _y) const
       { return _x && _y;}
     };
     template<typename _T = void>
-    struct logical_or
+    struct __UTILITY_TEMPLATE_VIS logical_or
     {
       __UTILITY_CPP14_CONSTEXPR__
       bool operator()(const _T& _x, const _T& _y) const
       { return _x || _y;}
     };
     template<typename _T = void>
-    struct logical_not
+    struct __UTILITY_TEMPLATE_VIS logical_not
     {
       __UTILITY_CPP14_CONSTEXPR__
       bool operator()(const _T& _x) const
@@ -117,28 +117,28 @@ __utility_globalspace_start(utility)
     };
 
     template<typename _T = void>
-    struct bit_and
+    struct __UTILITY_TEMPLATE_VIS bit_and
     {
       __UTILITY_CPP14_CONSTEXPR__
       bool operator()(const _T& _x, const _T& _y) const
       { return _x & _y;}
     };
     template<typename _T = void>
-    struct bit_or
+    struct __UTILITY_TEMPLATE_VIS bit_or
     {
       __UTILITY_CPP14_CONSTEXPR__
       bool operator()(const _T& _x, const _T& _y) const
       { return _x | _y;}
     };
     template<typename _T = void>
-    struct bit_xor
+    struct __UTILITY_TEMPLATE_VIS bit_xor
     {
       __UTILITY_CPP14_CONSTEXPR__
       bool operator()(const _T& _x, const _T& _y) const
       { return _x ^ _y;}
     };
     template<typename _T = void>
-    struct bit_not
+    struct __UTILITY_TEMPLATE_VIS bit_not
     {
       __UTILITY_CPP14_CONSTEXPR__
       bool operator()(const _T& _x) const
@@ -146,7 +146,7 @@ __utility_globalspace_start(utility)
     };
 
     template<>
-    struct plus<void>
+    struct __UTILITY_TYPE_VIS plus<void>
     {
       template<typename _T, typename _U>
       __UTILITY_CPP14_CONSTEXPR__
@@ -155,7 +155,7 @@ __utility_globalspace_start(utility)
       { return forward<_T>(_x) + forward<_U>(_y);}
     };
     template<>
-    struct minus<void>
+    struct __UTILITY_TYPE_VIS minus<void>
     {
       template<typename _T, typename _U>
       __UTILITY_CPP14_CONSTEXPR__
@@ -164,7 +164,7 @@ __utility_globalspace_start(utility)
       { return forward<_T>(_x) - forward<_U>(_y);}
     };
     template<>
-    struct multiplies<void>
+    struct __UTILITY_TYPE_VIS multiplies<void>
     {
       template<typename _T, typename _U>
       __UTILITY_CPP14_CONSTEXPR__
@@ -173,7 +173,7 @@ __utility_globalspace_start(utility)
       { return forward<_T>(_x) * forward<_U>(_y);}
     };
     template<>
-    struct divides<void>
+    struct __UTILITY_TYPE_VIS divides<void>
     {
       template<typename _T, typename _U>
       __UTILITY_CPP14_CONSTEXPR__
@@ -182,7 +182,7 @@ __utility_globalspace_start(utility)
       { return forward<_T>(_x) / forward<_U>(_y);}
     };
     template<>
-    struct modulus<void>
+    struct __UTILITY_TYPE_VIS modulus<void>
     {
       template<typename _T, typename _U>
       __UTILITY_CPP14_CONSTEXPR__
@@ -191,7 +191,7 @@ __utility_globalspace_start(utility)
       { return forward<_T>(_x) % forward<_U>(_y);}
     };
     template<>
-    struct negate<void>
+    struct __UTILITY_TYPE_VIS negate<void>
     {
       template<typename _T>
       __UTILITY_CPP14_CONSTEXPR__
@@ -201,7 +201,7 @@ __utility_globalspace_start(utility)
     };
 
     template<>
-    struct equal_to<void>
+    struct __UTILITY_TYPE_VIS equal_to<void>
     {
       template<typename _T, typename _U>
       __UTILITY_CPP14_CONSTEXPR__
@@ -210,7 +210,7 @@ __utility_globalspace_start(utility)
       { return forward<_T>(_x) == forward<_U>(_y);}
     };
     template<>
-    struct not_equal_to<void>
+    struct __UTILITY_TYPE_VIS not_equal_to<void>
     {
       template<typename _T, typename _U>
       __UTILITY_CPP14_CONSTEXPR__
@@ -219,7 +219,7 @@ __utility_globalspace_start(utility)
       { return forward<_T>(_x) != forward<_U>(_y);}
     };
     template<>
-    struct greater<void>
+    struct __UTILITY_TYPE_VIS greater<void>
     {
       template<typename _T, typename _U>
       __UTILITY_CPP14_CONSTEXPR__
@@ -228,7 +228,7 @@ __utility_globalspace_start(utility)
       { return forward<_T>(_x) > forward<_U>(_y);}
     };
     template<>
-    struct less<void>
+    struct __UTILITY_TYPE_VIS less<void>
     {
       template<typename _T, typename _U>
       __UTILITY_CPP14_CONSTEXPR__
@@ -237,7 +237,7 @@ __utility_globalspace_start(utility)
       { return forward<_T>(_x) < forward<_U>(_y);}
     };
     template<>
-    struct greater_equal<void>
+    struct __UTILITY_TYPE_VIS greater_equal<void>
     {
       template<typename _T, typename _U>
       __UTILITY_CPP14_CONSTEXPR__
@@ -246,7 +246,7 @@ __utility_globalspace_start(utility)
       { return forward<_T>(_x) >= forward<_U>(_y);}
     };
     template<>
-    struct less_equal<void>
+    struct __UTILITY_TYPE_VIS less_equal<void>
     {
       template<typename _T, typename _U>
       __UTILITY_CPP14_CONSTEXPR__
@@ -256,7 +256,7 @@ __utility_globalspace_start(utility)
     };
 
     template<>
-    struct logical_and<void>
+    struct __UTILITY_TYPE_VIS logical_and<void>
     {
       template<typename _T, typename _U>
       __UTILITY_CPP14_CONSTEXPR__
@@ -265,7 +265,7 @@ __utility_globalspace_start(utility)
       { return forward<_T>(_x) && forward<_U>(_y);}
     };
     template<>
-    struct logical_or<void>
+    struct __UTILITY_TYPE_VIS logical_or<void>
     {
       template<typename _T, typename _U>
       __UTILITY_CPP14_CONSTEXPR__
@@ -274,7 +274,7 @@ __utility_globalspace_start(utility)
       { return forward<_T>(_x) || forward<_U>(_y);}
     };
     template<>
-    struct logical_not<void>
+    struct __UTILITY_TYPE_VIS logical_not<void>
     {
       template<typename _T>
       __UTILITY_CPP14_CONSTEXPR__
@@ -284,7 +284,7 @@ __utility_globalspace_start(utility)
     };
 
     template<>
-    struct bit_and<void>
+    struct __UTILITY_TYPE_VIS bit_and<void>
     {
       template<typename _T, typename _U>
       __UTILITY_CPP14_CONSTEXPR__
@@ -293,7 +293,7 @@ __utility_globalspace_start(utility)
       { return forward<_T>(_x) & forward<_U>(_y);}
     };
     template<>
-    struct bit_or<void>
+    struct __UTILITY_TYPE_VIS bit_or<void>
     {
       template<typename _T, typename _U>
       __UTILITY_CPP14_CONSTEXPR__
@@ -302,7 +302,7 @@ __utility_globalspace_start(utility)
       { return forward<_T>(_x) | forward<_U>(_y);}
     };
     template<>
-    struct bit_xor<void>
+    struct __UTILITY_TYPE_VIS bit_xor<void>
     {
       template<typename _T, typename _U>
       __UTILITY_CPP14_CONSTEXPR__
@@ -311,7 +311,7 @@ __utility_globalspace_start(utility)
       { return forward<_T>(_x) ^ forward<_U>(_y);}
     };
     template<>
-    struct bit_not<void>
+    struct __UTILITY_TYPE_VIS bit_not<void>
     {
       template<typename _T>
       __UTILITY_CPP14_CONSTEXPR__

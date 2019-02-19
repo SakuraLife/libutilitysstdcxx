@@ -9,11 +9,11 @@ __utility_globalspace_start(utility)
   __utility_interspace_start(trait)
     namespace __opt__
     {
-      struct __empty__
+      struct __UTILITY_TYPE_VIS __empty__
       { };
 
       template<typename... _Ts>
-      struct __template_empty__
+      struct __UTILITY_TEMPLATE_VIS __template_empty__
       { };
 
     }

@@ -12,7 +12,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(features)
         // is_nothrow_copyable
         template<typename _T>
-        struct is_nothrow_copyable:
+        struct __UTILITY_TEMPLATE_VIS is_nothrow_copyable:
           public integral_constant<bool,
             is_nothrow_copy_constructible<_T>::value &&
             is_nothrow_copy_assignable<_T>::value>

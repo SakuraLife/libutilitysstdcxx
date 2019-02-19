@@ -9,7 +9,7 @@
 __utility_globalspace_start(utility)
   __utility_interspace_start(trait)
     template<typename _type, _type... _vals>
-    struct integer_sequence
+    struct __UTILITY_TYPE_VIS integer_sequence
     {
       typedef _type value_type;
       typedef integer_sequence<_type, _vals...> type;

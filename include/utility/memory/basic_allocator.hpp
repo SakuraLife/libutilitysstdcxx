@@ -25,7 +25,7 @@ __utility_globalspace_start(utility)
     { ::operator delete(__buffer);}
 
     template<typename _T>
-    class basic_allocator
+    class __UTILITY_TEMPLATE_VIS basic_allocator
     {
       public:
         typedef _T value_type;
@@ -39,7 +39,7 @@ __utility_globalspace_start(utility)
 
       public:
         template<typename _U>
-        struct rebind
+        struct __UTILITY_TEMPLATE_VIS rebind
         { typedef basic_allocator<_U> other;};
 
       public:
@@ -108,7 +108,7 @@ __utility_globalspace_start(utility)
     * \brief the specific of the basic allocator
     */
     template<>
-    class basic_allocator<void>
+    class __UTILITY_TYPE_VIS basic_allocator<void>
     {
       public:
         typedef void*         pointer;
@@ -121,7 +121,7 @@ __utility_globalspace_start(utility)
         { typedef basic_allocator<_U> other;};
     };
     template<>
-    class basic_allocator<const void>
+    class __UTILITY_TYPE_VIS basic_allocator<const void>
     {
       public:
         typedef const void*   pointer;

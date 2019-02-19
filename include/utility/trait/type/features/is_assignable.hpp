@@ -48,7 +48,7 @@ __utility_globalspace_start(utility)
           { };
         }
         template<typename _T, typename _U>
-        struct is_assignable: public
+        struct __UTILITY_TEMPLATE_VIS is_assignable: public
           __impl::__is_assignable_helper<_T, _U>
         { };
 

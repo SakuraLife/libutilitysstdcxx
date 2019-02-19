@@ -48,7 +48,7 @@ __utility_globalspace_start(utility)
       typename _Key_Value_Container,  typename _Hash,
       typename _Key_eq,               typename _Alloc
     >
-    class hash_table
+    class __UTILITY_TEMPLATE_VIS hash_table
     {
       private:
         template<typename, typename, typename, typename>

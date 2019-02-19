@@ -32,7 +32,7 @@
 __utility_globalspace_start(utility)
   __utility_interspace_start(container)
     template<typename _T, size_t _N>
-    class array
+    class __UTILITY_TEMPLATE_VIS array
     {
       public:
         typedef _T                      value_type;
@@ -305,18 +305,18 @@ __utility_globalspace_start(utility)
     }
 
     template<typename _T>
-    struct tuple_size;
+    struct __UTILITY_TEMPLATE_VIS tuple_size;
 
     template<typename _T, size_t _N>
-    struct tuple_size<array<_T, _N>>:
+    struct __UTILITY_TEMPLATE_VIS tuple_size<array<_T, _N>>:
       public trait::integral_constant<size_t, _N>
     { };
 
     template<size_t _Idx, typename _T>
-    struct tuple_element;
+    struct __UTILITY_TEMPLATE_VIS tuple_element;
 
     template<size_t _Idx, typename _T, size_t _N>
-    struct tuple_element<_Idx, array<_T, _N>>
+    struct __UTILITY_TEMPLATE_VIS tuple_element<_Idx, array<_T, _N>>
     {
       private:
         static_assert(
@@ -334,14 +334,14 @@ __utility_globalspace_start(utility)
     namespace __opt__
     {
       template<typename _T, size_t _N>
-      struct __checkout_type_feature__<container::array<_T, _N>>
+      struct __UTILITY_TEMPLATE_VIS __checkout_type_feature__<container::array<_T, _N>>
       {
         typedef typename __type_tuple_get_array__<
           make_index_sequence<_N>, __type_array__<_T, _N>
         >::type type;
       };
       template<typename _T, size_t _N>
-      struct  __type_tuple_size__<container::array<_T, _N>>
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_size__<container::array<_T, _N>>
       { constexpr static size_t value = 1;};
     }
   __utility_interspace_end(trait)

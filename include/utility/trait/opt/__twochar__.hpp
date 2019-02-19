@@ -9,7 +9,7 @@ __utility_globalspace_start(utility)
   __utility_interspace_start(trait)
     namespace __opt__
     {
-      struct __twochar__
+      struct __UTILITY_TYPE_VIS __twochar__
       { char __tmp[2];};
 
     }

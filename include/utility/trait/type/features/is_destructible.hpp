@@ -66,16 +66,16 @@ __utility_globalspace_start(utility)
           { };
         }
         template<typename _T>
-        struct is_destructible: public
+        struct __UTILITY_TEMPLATE_VIS is_destructible: public
           __impl::__is_destructible_helper<_T,
             trait::type::categories::is_function<_T>::value
           >
         { };
         template<typename _T>
-        struct is_destructible<_T[]>: public false_type
+        struct __UTILITY_TEMPLATE_VIS is_destructible<_T[]>: public false_type
         { };
         template<>
-        struct is_destructible<void>: public false_type
+        struct __UTILITY_TYPE_VIS is_destructible<void>: public false_type
         { };
       __utility_interspace_end(features)
     __utility_interspace_end(type)

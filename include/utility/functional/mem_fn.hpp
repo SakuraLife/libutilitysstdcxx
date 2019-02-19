@@ -13,7 +13,7 @@
 __utility_globalspace_start(utility)
   __utility_interspace_start(functional)
     template<typename _Fn>
-    class mem_fner
+    class __UTILITY_TEMPLATE_VIS mem_fner
     {
       public:
         typedef _Fn function_type;

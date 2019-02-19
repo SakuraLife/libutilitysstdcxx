@@ -27,14 +27,14 @@ __utility_globalspace_start(utility)
     namespace __opt__
     {
       template<typename _Fp, typename _Sp>
-      struct __type_pair__
+      struct __UTILITY_TEMPLATE_VIS __type_pair__
       {
         typedef _Fp first;
         typedef _Sp second;
       };
 
       template<typename _Fp, typename _Sp, typename _Tp>
-      struct __type_tripair__
+      struct __UTILITY_TEMPLATE_VIS __type_tripair__
       {
         typedef _Fp first;
         typedef _Sp second;
@@ -42,21 +42,21 @@ __utility_globalspace_start(utility)
       };
 
       template<typename _T, size_t _Id>
-      struct __index_type__
+      struct __UTILITY_TEMPLATE_VIS __index_type__
       {
         typedef _T type;
         constexpr static size_t id = _Id;
       };
 
       template<typename _T, size_t _N>
-      struct __type_array__
+      struct __UTILITY_TEMPLATE_VIS __type_array__
       {
         typedef _T type;
         constexpr static size_t size = _N;
       };
 
       template<typename... _Type>
-      struct __type_tuple__
+      struct __UTILITY_TEMPLATE_VIS __type_tuple__
       { };
     }
   __utility_interspace_end(trait)

@@ -10,13 +10,13 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(property_query)
         // rank
         template<typename _T>
-        struct rank: public integral_constant<size_t, 0>
+        struct __UTILITY_TEMPLATE_VIS rank: public integral_constant<size_t, 0>
         { };
         template<typename _T>
-        struct rank<_T[]>: public integral_constant<size_t, rank<_T>::value+1>
+        struct __UTILITY_TEMPLATE_VIS rank<_T[]>: public integral_constant<size_t, rank<_T>::value+1>
         { };
         template<typename _T, size_t _size>
-        struct rank<_T[_size]>:
+        struct __UTILITY_TEMPLATE_VIS rank<_T[_size]>:
           public integral_constant<size_t, rank<_T>::value+1>
         { };
 

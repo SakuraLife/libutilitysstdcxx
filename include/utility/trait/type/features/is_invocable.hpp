@@ -73,24 +73,24 @@ __utility_globalspace_start(utility)
 
         }
         // is_invocable
-        template<class _Fn, typename... _ArgTypes>
-        struct is_invocable:
+        template<typename _Fn, typename... _ArgTypes>
+        struct __UTILITY_TEMPLATE_VIS is_invocable:
           public __invoke_related::__is_invocable_helper<
             false, typename __invoke_related::__invoke_result<_Fn, _ArgTypes...>::type,
             void>
         { };
 
         // is_invocable_r
-        template<typename _R, class _Fn, typename... _ArgTypes>
-        struct is_invocable_r:
+        template<typename _R, typename _Fn, typename... _ArgTypes>
+        struct __UTILITY_TEMPLATE_VIS is_invocable_r:
           public __invoke_related::__is_invocable_helper<
             true, typename __invoke_related::__invoke_result<_Fn, _ArgTypes...>::type,
             _R>
         { };
 
         // is_nothrow_invocable
-        template<class _Fn, typename... _ArgTypes>
-        struct is_nothrow_invocable:
+        template<typename _Fn, typename... _ArgTypes>
+        struct __UTILITY_TEMPLATE_VIS is_nothrow_invocable:
           public __invoke_related::__type_and__<is_invocable<_Fn, _ArgTypes...>,
             __invoke_related::__is_noexcept_invoke_test<
               typename __invoke_related::__invoke_result<_Fn, _ArgTypes...>::invoke_tag,
@@ -99,8 +99,8 @@ __utility_globalspace_start(utility)
         { };
 
         // is_nothrow_invocable_r
-        template<typename _R, class _Fn, typename... _ArgTypes>
-        struct is_nothrow_invocable_r:
+        template<typename _R, typename _Fn, typename... _ArgTypes>
+        struct __UTILITY_TEMPLATE_VIS is_nothrow_invocable_r:
           public __invoke_related::__type_and__<is_invocable_r<_R, _Fn, _ArgTypes...>,
             __invoke_related::__is_noexcept_invoke_test<
               typename __invoke_related::__invoke_result<_Fn, _ArgTypes...>::invoke_tag,

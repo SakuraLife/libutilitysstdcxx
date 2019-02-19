@@ -54,7 +54,7 @@ __utility_globalspace_start(utility)
       typename _T,
       typename _Alloc = memory::allocator<_T>
     >
-    class vector
+    class __UTILITY_TEMPLATE_VIS vector
     {
       public:
         typedef _T                    value_type;

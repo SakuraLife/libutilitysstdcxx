@@ -39,12 +39,12 @@ __utility_globalspace_start(utility)
       };
     }
     template<typename __Iterator>
-    struct iterator_traits : public
+    struct __UTILITY_TEMPLATE_VIS iterator_traits : public
       __impl::__iterator_traits_helper<__Iterator,
         __impl::__has_iterator_category_tag<__Iterator>::value>
     { };
     template<typename _T>
-    struct iterator_traits<_T*>
+    struct __UTILITY_TEMPLATE_VIS iterator_traits<_T*>
     {
       typedef contiguous_iterator_tag iterator_category;
       typedef typename

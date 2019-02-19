@@ -8,7 +8,7 @@
 __utility_globalspace_start(utility)
   __utility_interspace_start(memory)
     template<typename _Alloc>
-    class basic_deallocator
+    class __UTILITY_TEMPLATE_VIS basic_deallocator
     {
       public:
         typedef memory::allocator_traits<_Alloc>

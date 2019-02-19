@@ -15,7 +15,7 @@ __utility_globalspace_start(utility)
   __utility_interspace_start(algorithm)
 
     template<typename _T>
-    struct hash;
+    struct __UTILITY_TEMPLATE_VIS hash;
 
     namespace hash_detail
     {
@@ -40,79 +40,79 @@ __utility_globalspace_start(utility)
     }
 
     template<>
-    struct hash<bool>
+    struct __UTILITY_TYPE_VIS hash<bool>
     {
       inline size_t operator()(bool __v)const noexcept
       { return static_cast<size_t>(__v);}
     };
     template<>
-    struct hash<char>
+    struct __UTILITY_TYPE_VIS hash<char>
     {
       inline size_t operator()(char __v) const noexcept
       { return static_cast<size_t>(__v);}
     };
     template<>
-    struct hash<signed char>
+    struct __UTILITY_TYPE_VIS hash<signed char>
     {
       inline size_t operator()(signed char __v) const noexcept
       { return static_cast<size_t>(__v);}
     };
     template<>
-    struct hash<unsigned char>
+    struct __UTILITY_TYPE_VIS hash<unsigned char>
     {
       inline size_t operator()(unsigned char __v) const noexcept
       { return static_cast<size_t>(__v);}
     };
     template<>
-    struct hash<signed short>
+    struct __UTILITY_TYPE_VIS hash<signed short>
     {
       inline size_t operator()(signed short __v) const noexcept
       { return static_cast<size_t>(__v);}
     };
     template<>
-    struct hash<unsigned short>
+    struct __UTILITY_TYPE_VIS hash<unsigned short>
     {
       inline size_t operator()(unsigned short __v) const noexcept
       { return static_cast<size_t>(__v);}
     };
     template<>
-    struct hash<signed int>
+    struct __UTILITY_TYPE_VIS hash<signed int>
     {
       inline size_t operator()(signed int __v) const noexcept
       { return static_cast<size_t>(__v);}
     };
     template<>
-    struct hash<unsigned int>
+    struct __UTILITY_TYPE_VIS hash<unsigned int>
     {
       inline size_t operator()(unsigned int __v) const noexcept
       { return static_cast<size_t>(__v);}
     };
     template<>
-    struct hash<signed long>
+    struct __UTILITY_TYPE_VIS hash<signed long>
     {
       inline size_t operator()(signed long __v) const noexcept
       { return static_cast<size_t>(__v);}
     };
     template<>
-    struct hash<unsigned long>
+    struct __UTILITY_TYPE_VIS hash<unsigned long>
     {
       inline size_t operator()(unsigned long __v) const noexcept
       { return static_cast<size_t>(__v);}
     };
     template<>
-    struct hash<signed long long>
+    struct __UTILITY_TYPE_VIS hash<signed long long>
     {
       inline size_t operator()(signed long long __v) const noexcept
       { return static_cast<size_t>(__v);}
     };
     template<>
-    struct hash<unsigned long long>
+    struct __UTILITY_TYPE_VIS hash<unsigned long long>
     {
       inline size_t operator()(unsigned long long __v) const noexcept
       { return static_cast<size_t>(__v);}
     };
     template<>
-    struct hash<float>
+    struct __UTILITY_TYPE_VIS hash<float>
     {
       inline size_t operator()(float __v) const noexcept
       {
@@ -123,7 +123,7 @@ __utility_globalspace_start(utility)
       }
     };
     template<>
-    struct hash<double>
+    struct __UTILITY_TYPE_VIS hash<double>
     {
       inline size_t operator()(double __v) const noexcept
       {
@@ -134,7 +134,7 @@ __utility_globalspace_start(utility)
       }
     };
     template<>
-    struct hash<long double>
+    struct __UTILITY_TYPE_VIS hash<long double>
     {
       inline size_t operator()(long double __v) const noexcept
       {
@@ -145,7 +145,7 @@ __utility_globalspace_start(utility)
       }
     };
     template<typename _T>
-    struct hash<_T*>
+    struct __UTILITY_TEMPLATE_VIS hash<_T*>
     {
       inline size_t operator()(_T* __v) const noexcept
       { return reinterpret_cast<size_t>(__v);}

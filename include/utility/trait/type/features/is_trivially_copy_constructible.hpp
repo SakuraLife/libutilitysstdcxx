@@ -13,7 +13,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(features)
         // is_trivially_copy_constructible
         template<typename _T>
-        struct is_trivially_copy_constructible: public
+        struct __UTILITY_TEMPLATE_VIS is_trivially_copy_constructible: public
           trait::type::features::is_trivially_constructible<_T,
             trait::type::transform::add_lvalue_reference_t<
               trait::type::transform::add_const_t<_T>

@@ -119,6 +119,8 @@ module math
 | helper          | math_helper.hpp           | D | - |
 | bit             | bitset.hpp                | U | - |
 | HP              | cppint.hpp                | P | - |
+| type            | ratio                     | F | P |
+| type            | complex                   | P | - |
 | SPMF            | :----:                    | P | - |
 
 module trait  
@@ -157,13 +159,13 @@ module algorithm
 | search          | equal_range.hpp                   | P | - |
 | compare         | equal.hpp                         | F | N |
 | compare         | lexicographical_compare.hpp       | F | N |
-| compare         | max.hpp                           | U | D |
-| compare         | min.hpp                           | U | D |
-| compare         | minmax.hpp                        | P | - |
-| compare         | max_element.hpp                   | P | - |
-| compare         | min_element.hpp                   | P | - |
-| compare         | minmax_element.hpp                | P | - |
-| compare         | clamp.hpp                         | P | - |
+| compare         | max.hpp                           | F | P |
+| compare         | min.hpp                           | F | P |
+| compare         | minmax.hpp                        | F | P |
+| compare         | max_element.hpp                   | F | P |
+| compare         | min_element.hpp                   | F | P |
+| compare         | minmax_element.hpp                | F | P |
+| compare         | clamp.hpp                         | P | N |
 | compare         | exchange.hpp                      | F | N |
 | operate         | for_each.hpp                      | F | N |
 | operate         | for_each_n.hpp                    | F | N |

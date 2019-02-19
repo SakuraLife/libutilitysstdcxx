@@ -27,7 +27,7 @@ __utility_globalspace_start(utility)
     * \todo another need combine version constructor
     */
     template<typename _T1, typename _T2>
-    class pair
+    class __UTILITY_TEMPLATE_VIS pair
     {
       public:
         typedef _T1   first_type;
@@ -274,10 +274,10 @@ __utility_globalspace_start(utility)
 
     // tuple_size implement
     template<typename _T>
-    struct tuple_size;
+    struct __UTILITY_TEMPLATE_VIS tuple_size;
 
     template<typename _T1, typename _T2>
-    struct tuple_size<pair<_T1, _T2>>:
+    struct __UTILITY_TEMPLATE_VIS tuple_size<pair<_T1, _T2>>:
       public trait::integral_constant<size_t, 2>
     { };
 
@@ -287,10 +287,10 @@ __utility_globalspace_start(utility)
     namespace __opt__
     {
       template<typename _Fp, typename _Sp>
-      struct __type_tuple_size__<container::pair<_Fp, _Sp>>
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_size__<container::pair<_Fp, _Sp>>
       { constexpr static size_t value = 2;};
       template<typename _Fp, typename _Sp>
-      struct __checkout_type_feature__<container::pair<_Fp, _Sp>>
+      struct __UTILITY_TEMPLATE_VIS __checkout_type_feature__<container::pair<_Fp, _Sp>>
       { typedef __type_pair__<_Fp, _Sp> type;};
     }
   __utility_interspace_end(trait)

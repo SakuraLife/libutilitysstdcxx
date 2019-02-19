@@ -15,15 +15,15 @@
 __utility_globalspace_start(utility)
   __utility_interspace_start(container)
     __utility_interspace_start(_helper)
-      struct in_place_t
+      struct __UTILITY_TYPE_VIS in_place_t
       { explicit in_place_t() = default;};
 
       template<typename _T>
-      struct in_place_type_t
+      struct __UTILITY_TEMPLATE_VIS in_place_type_t
       { explicit in_place_type_t() = default;};
 
       template<size_t _I>
-      struct in_place_index_t
+      struct __UTILITY_TEMPLATE_VIS in_place_index_t
       { explicit in_place_index_t() = default;};
 
       __UTILITY_CPP17_INLINE__

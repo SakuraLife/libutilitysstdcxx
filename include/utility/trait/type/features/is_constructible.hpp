@@ -15,7 +15,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(features)
         // is_constructible
         template<class _T, typename... _Args>
-        struct is_constructible:
+        struct __UTILITY_TEMPLATE_VIS is_constructible:
           public integral_constant<bool,
             __utility_is_constructible(_T, _Args...)
           >
@@ -169,8 +169,8 @@ __utility_globalspace_start(utility)
             decltype(__is_constructible_test_helper::__test_cast<_T&&, _Arg>(0))
           { };
         }
-        template<class _T, class... _Args>
-        struct is_constructible: public
+        template<class _T, typename... _Args>
+        struct __UTILITY_TEMPLATE_VIS is_constructible: public
           __impl::__is_constructible_helper<_T, _Args...>::type
         { };
       __utility_interspace_end(features)

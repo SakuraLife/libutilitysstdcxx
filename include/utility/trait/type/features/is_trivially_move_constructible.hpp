@@ -12,7 +12,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(features)
         // is_trivially_move_constructible
         template<typename _T>
-        struct is_trivially_move_constructible: public
+        struct __UTILITY_TEMPLATE_VIS is_trivially_move_constructible: public
           is_trivially_constructible<
             _T,
             trait::type::transform::add_rvalue_reference_t<_T>

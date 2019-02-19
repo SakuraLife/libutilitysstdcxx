@@ -12,7 +12,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(features)
         // is_copyable
         template<typename _T>
-        struct is_copyable: public trait::integral_constant<bool,
+        struct __UTILITY_TEMPLATE_VIS is_copyable: public trait::integral_constant<bool,
             is_copy_constructible<_T>::value &&
             is_copy_assignable<_T>::value
           >

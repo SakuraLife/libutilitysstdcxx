@@ -21,30 +21,30 @@ __utility_globalspace_start(utility)
           { }
 
           template<bool /*is constructible*/, bool /*is reference*/,
-          class _T, class... _Args>
+          class _T, typename... _Args>
           struct __is_nothrow_constructible_helper;
 
-          template<class _T, class... _Args>
+          template<class _T, typename... _Args>
           struct __is_nothrow_constructible_helper<true, false, _T, _Args...>:
             public integral_constant<bool, noexcept(_T(declval<_Args>()...))>
           { };
-          template<class _T, class... _Args>
+          template<class _T, typename... _Args>
           struct __is_nothrow_constructible_helper<true, true, _T, _Args...>:
             public integral_constant<bool,
               noexcept(__is_nothrow_constructible_test<_T>(declval<_Args>()...))
             >
           { };
-          template<class _T, class... _Args>
+          template<class _T, typename... _Args>
           struct __is_nothrow_constructible_helper<false, true, _T, _Args...>:
             public false_type
           { };
-          template<class _T, class... _Args>
+          template<class _T, typename... _Args>
           struct __is_nothrow_constructible_helper<false, false, _T, _Args...>:
             public false_type
           { };
         }
-        template<class _T, class... _Args>
-        struct is_nothrow_constructible: public
+        template<class _T, typename... _Args>
+        struct __UTILITY_TEMPLATE_VIS is_nothrow_constructible: public
           __impl::__is_nothrow_constructible_helper<
             is_constructible<_T, _Args...>::value,
             trait::type::categories::is_reference<_T>::value,
@@ -52,7 +52,7 @@ __utility_globalspace_start(utility)
           >
         { };
         template<class _T, size_t __Size>
-        struct is_nothrow_constructible<_T[__Size]>: public
+        struct __UTILITY_TEMPLATE_VIS is_nothrow_constructible<_T[__Size]>: public
           __impl::__is_nothrow_constructible_helper<
             is_constructible<_T>::value,
             trait::type::categories::is_reference<_T>::value,

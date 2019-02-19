@@ -30,7 +30,7 @@ __utility_globalspace_start(utility)
       bool = trait::type::property::is_empty<_T>::value &&
         !trait::type::property::is_final<_T>::value
     >
-    class compressed_index
+    class __UTILITY_TEMPLATE_VIS compressed_index
     {
       public:
         typedef _T            pair_value_type;
@@ -200,7 +200,7 @@ __utility_globalspace_start(utility)
     };
 
     template<typename _T, size_t _Index>
-    class compressed_index<_T, _Index, true> : public _T
+    class __UTILITY_TEMPLATE_VIS compressed_index<_T, _Index, true> : public _T
     {
       public:
         typedef _T            pair_value_type;

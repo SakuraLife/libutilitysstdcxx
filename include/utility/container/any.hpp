@@ -28,7 +28,7 @@
 
 __utility_globalspace_start(utility)
   __utility_interspace_start(container)
-    class any;
+    class __UTILITY_TEMPLATE_VIS any;
 
     namespace __detail
     {
@@ -52,7 +52,7 @@ __utility_globalspace_start(utility)
       struct __is_small_object
       { constexpr static bool value = _Safe && _Fits;};
 
-      enum class __any_operator
+      enum class __UTILITY_ENUM_VIS __any_operator
       {
         any_access,
         any_copy,
@@ -61,14 +61,14 @@ __utility_globalspace_start(utility)
         any_info
       };
 
-      union __any_args
+      union __UTILITY_TYPE_VIS __any_args
       {
         void* __ptr;
         any*  __any;
       };
 
       template<unsigned short _L = 1U>
-      union __any_storage
+      union __UTILITY_TEMPLATE_VIS __any_storage
       {
         constexpr __any_storage() noexcept
           :__ptr{nullptr}
@@ -82,7 +82,7 @@ __utility_globalspace_start(utility)
       };
 
       template<typename _T, unsigned short _L = 1U>
-      class __small_object_manager
+      class __UTILITY_TEMPLATE_VIS __small_object_manager
       {
         public:
           typedef _T                                  cast_type;
@@ -102,7 +102,7 @@ __utility_globalspace_start(utility)
           static inline void create(any_storage& _storage, _Args&&... _args);
       };
       template<typename _T, unsigned short _L = 1U>
-      class __large_object_manager
+      class __UTILITY_TEMPLATE_VIS __large_object_manager
       {
         public:
           typedef _T                                  cast_type;
@@ -133,7 +133,7 @@ __utility_globalspace_start(utility)
         is_in_place_type<typename remove_cv_ref<_T>::type>;
     }
 
-    class any
+    class __UTILITY_TEMPLATE_VIS any
     {
       private:
         template<typename, unsigned short>

@@ -20,13 +20,13 @@ __utility_globalspace_start(utility)
           { };
         }
         template<typename _T>
-        struct is_nullptr_t:
+        struct __UTILITY_TEMPLATE_VIS is_nullptr_t:
           public __impl::__is_null_pointer_test<
             trait::type::transform::remove_cv_t<_T>
           >
         { };
         template<typename _T>
-        struct is_null_pointer:
+        struct __UTILITY_TEMPLATE_VIS is_null_pointer:
           public __impl::__is_null_pointer_test<
               trait::type::transform::remove_cv_t<_T>
             >

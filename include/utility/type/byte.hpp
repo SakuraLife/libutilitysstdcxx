@@ -142,7 +142,7 @@ __utility_globalspace_start(utility)
     { return static_cast<_Integer>(static_cast<unsigned char>(_by));}
 
 
-    class bit_field
+    class __UTILITY_TYPE_VIS  bit_field
     {
       private:
         unsigned char __byte;

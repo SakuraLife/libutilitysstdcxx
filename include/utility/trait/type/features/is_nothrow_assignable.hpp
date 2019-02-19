@@ -30,7 +30,7 @@ __utility_globalspace_start(utility)
           { };
         }
         template<typename _T, typename _U>
-        struct is_nothrow_assignable: public
+        struct __UTILITY_TEMPLATE_VIS is_nothrow_assignable: public
           __impl::__is_nothrow_assignable_helper<
             is_assignable<_T, _U>::value, _T, _U
           >

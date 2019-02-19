@@ -46,7 +46,7 @@ __utility_globalspace_start(utility)
       size_t    _Len,
       typename  _Traits = char_traits<_CharT>
     >
-    class basic_static_string
+    class __UTILITY_TEMPLATE_VIS basic_static_string
     {
       public:
         typedef _CharT                value_type;

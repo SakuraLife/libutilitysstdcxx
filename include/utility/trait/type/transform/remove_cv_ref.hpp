@@ -12,15 +12,15 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(transform)
         // remove_const_reference
         template<typename _T>
-        struct remove_const_reference
+        struct __UTILITY_TEMPLATE_VIS remove_const_reference
         { typedef remove_const_t<remove_reference_t<_T>> type;};
         // remove_volatile_reference
         template<typename _T>
-        struct remove_volatile_reference
+        struct __UTILITY_TEMPLATE_VIS remove_volatile_reference
         { typedef remove_volatile_t<remove_reference_t<_T>> type;};
         // remove_cv_reference
         template<typename _T>
-        struct remove_cv_reference
+        struct __UTILITY_TEMPLATE_VIS remove_cv_reference
         { typedef remove_cv_t<remove_reference_t<_T>> type;};
 
         template<typename _T>

@@ -39,7 +39,7 @@ __utility_globalspace_start(utility)
       typename _T,
       typename _Alloc = memory::allocator<_T>
     >
-    class forward_list;
+    class __UTILITY_TEMPLATE_VIS forward_list;
 
     namespace __detail
     {
@@ -56,10 +56,10 @@ __utility_globalspace_start(utility)
       using __slist_node = __node<_T, __snode>;
 
       template<typename _T>
-      class __slist_const_iterator;
+      class __UTILITY_TEMPLATE_VIS __slist_const_iterator;
 
       template<typename _T>
-      class __slist_iterator
+      class __UTILITY_TEMPLATE_VIS __slist_iterator
       {
         private:
           template<typename>
@@ -121,7 +121,7 @@ __utility_globalspace_start(utility)
       };
 
       template<typename _T>
-      class __slist_const_iterator
+      class __UTILITY_TEMPLATE_VIS __slist_const_iterator
       {
         private:
           template<typename, typename>
@@ -186,7 +186,7 @@ __utility_globalspace_start(utility)
     }
 
     template<typename _T, typename _Alloc>
-    class forward_list
+    class __UTILITY_TEMPLATE_VIS forward_list
     {
       public:
         typedef _T                                value_type;

@@ -10,23 +10,23 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(transform)
         // remove_const
         template<typename _T>
-        struct remove_const
+        struct __UTILITY_TEMPLATE_VIS remove_const
         { typedef _T type;};
         template<typename _T>
-        struct remove_const<_T const>
+        struct __UTILITY_TEMPLATE_VIS remove_const<_T const>
         { typedef _T type;};
 
         // remove_volatile
         template<typename _T>
-        struct remove_volatile
+        struct __UTILITY_TEMPLATE_VIS remove_volatile
         { typedef _T type;};
         template<typename _T>
-        struct remove_volatile<_T volatile>
+        struct __UTILITY_TEMPLATE_VIS remove_volatile<_T volatile>
         { typedef _T type;};
 
         // remove_cv
         template<typename _T>
-        struct remove_cv
+        struct __UTILITY_TEMPLATE_VIS remove_cv
         {
           typedef typename remove_volatile<
             typename remove_const<_T>::type

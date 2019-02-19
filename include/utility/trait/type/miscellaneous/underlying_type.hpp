@@ -15,7 +15,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(miscellaneous)
         // underlying_type
         template<typename _T>
-        struct underlying_type
+        struct __UTILITY_TEMPLATE_VIS underlying_type
         { typedef __utility_underlying_type(_T) type;};
 
         template<typename _T>

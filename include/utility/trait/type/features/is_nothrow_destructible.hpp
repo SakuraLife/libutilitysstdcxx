@@ -28,19 +28,19 @@ __utility_globalspace_start(utility)
           { };
         }
         template<typename _T>
-        struct is_nothrow_destructible: public
+        struct __UTILITY_TEMPLATE_VIS is_nothrow_destructible: public
           __impl::__is_nothrow_destructible_helper<
             is_destructible<_T>::value,_T
           >
         { };
         template<typename _T>
-        struct is_nothrow_destructible<_T&>: public true_type
+        struct __UTILITY_TEMPLATE_VIS is_nothrow_destructible<_T&>: public true_type
         { };
         template<typename _T>
-        struct is_nothrow_destructible<_T&&>: public true_type
+        struct __UTILITY_TEMPLATE_VIS is_nothrow_destructible<_T&&>: public true_type
         { };
         template<typename _T, size_t _Size>
-        struct is_nothrow_destructible<_T[_Size]>:
+        struct __UTILITY_TEMPLATE_VIS is_nothrow_destructible<_T[_Size]>:
           public is_nothrow_destructible<_T>
         { };
       __utility_interspace_end(features)

@@ -9,14 +9,14 @@
 __utility_globalspace_start(utility)
   __utility_interspace_start(functional)
     template<typename _T>
-    class reference_wrapper;
+    class __UTILITY_TYPE_VIS reference_wrapper;
   __utility_interspace_end(functional)
 __utility_globalspace_end(utility)
 
 __utility_globalspace_start(utility)
   __utility_interspace_start(trait)
     template<typename... Ts>
-    struct void_type
+    struct __UTILITY_TYPE_VIS void_type
     { typedef void type;};
 
 #if defined(__UTILITY_NO_CPP17__)
@@ -34,7 +34,7 @@ __utility_globalspace_start(utility)
     *          it's a independent class
     */
     template<bool _Default = false>
-    struct unsupport_trait
+    struct __UTILITY_TYPE_VIS unsupport_trait
     {
       constexpr static bool value = _Default;
       typedef bool value_type;

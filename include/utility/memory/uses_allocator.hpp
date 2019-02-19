@@ -39,12 +39,12 @@ __utility_globalspace_start(utility)
       { };
     }
     template<typename _T, typename _Alloc>
-    struct uses_allocator: __detail::__uses_allocator<_T, _Alloc>
+    struct __UTILITY_TEMPLATE_VIS uses_allocator: __detail::__uses_allocator<_T, _Alloc>
     { };
 
 #if !defined(__UTILITY_NO_CPP14__)
-      template<typename _T, typename _Alloc>
-      constexpr bool uses_allocator_v = uses_allocator<_T, _Alloc>::value;
+    template<typename _T, typename _Alloc>
+    constexpr bool uses_allocator_v = uses_allocator<_T, _Alloc>::value;
 #endif
 
   __utility_interspace_end(memory)

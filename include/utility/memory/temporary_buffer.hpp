@@ -58,7 +58,7 @@ __utility_globalspace_start(utility)
       { ::operator delete(__ptr);}
     }
     template<typename _T>
-    class temporary_buffer
+    class __UTILITY_TEMPLATE_VIS temporary_buffer
     {
       public:
         typedef typename

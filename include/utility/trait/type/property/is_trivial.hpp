@@ -13,7 +13,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(property)
         // is_trivial
         template<typename _T>
-        struct is_trivial: public
+        struct __UTILITY_TEMPLATE_VIS is_trivial: public
           integral_constant<bool, __utility_is_trivial(_T)>
         { };
 
@@ -33,7 +33,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(property)
         // is_trivial
         template<typename _T>
-        struct is_trivial: public integral_constant<bool,
+        struct __UTILITY_TEMPLATE_VIS is_trivial: public integral_constant<bool,
             is_trivially_copyable<_T>::value &&
             features::is_trivially_default_constructible<_T>::value
           >

@@ -32,7 +32,7 @@ __utility_globalspace_start(utility)
           };
         }
         template<typename _T, typename _U = _T>
-        struct eq : public integral_constant<bool,
+        struct __UTILITY_TEMPLATE_VIS eq : public integral_constant<bool,
             __impl::__eq_test<_T, _U>::value>
         { };
 

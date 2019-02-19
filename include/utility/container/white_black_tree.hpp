@@ -47,7 +47,7 @@
 __utility_globalspace_start(utility)
   __utility_interspace_start(container)
     __utility_interspace_start(_helper)
-      struct __wbtree_node
+      struct __UTILITY_TYPE_VIS __wbtree_node
       {
         public:
           typedef __tree_tag        __tag;
@@ -61,7 +61,7 @@ __utility_globalspace_start(utility)
       };
 
       template<>
-      struct __node_trait<__wbtree_node, __tree_tag>
+      struct __UTILITY_TYPE_VIS __node_trait<__wbtree_node, __tree_tag>
       {
         typedef __wbtree_node          __node_type;
         typedef __wbtree_node*         __link_type;
@@ -179,10 +179,10 @@ __utility_globalspace_start(utility)
       using trait::type::miscellaneous::enable_if;
 
       template<typename _T>
-      class __wbtree_const_iterator;
+      class __UTILITY_TEMPLATE_VIS __wbtree_const_iterator;
 
       template<typename _T>
-      class __wbtree_iterator
+      class __UTILITY_TEMPLATE_VIS __wbtree_iterator
       {
         private:
           template<typename, typename, typename, typename, typename>
@@ -254,7 +254,7 @@ __utility_globalspace_start(utility)
       };
 
       template<typename _T>
-      class __wbtree_const_iterator
+      class __UTILITY_TEMPLATE_VIS __wbtree_const_iterator
       {
         private:
           template<typename, typename, typename, typename, typename>
@@ -339,7 +339,7 @@ __utility_globalspace_start(utility)
       typename _Container,
       typename _Alloc
     >
-    class white_black_tree
+    class __UTILITY_TEMPLATE_VIS white_black_tree
     {
       private:
         constexpr static bool __white = true;

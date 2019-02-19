@@ -6,7 +6,7 @@ __utility_globalspace_start(utility)
   __utility_interspace_start(trait)
     // helper class and declaration
     template<typename _type, _type _val>
-    struct integral_constant
+    struct __UTILITY_TYPE_VIS integral_constant
     {
       constexpr static _type value = _val;
       typedef _type value_type;

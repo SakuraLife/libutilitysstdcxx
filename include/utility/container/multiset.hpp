@@ -37,11 +37,11 @@ __utility_globalspace_start(utility)
       typename _Compare = algorithm::less<void>,
       typename _Alloc = memory::allocator<_Key>
     >
-    class multiset
+    class __UTILITY_TEMPLATE_VIS multiset
     {
       private:
         template<typename _Iterator>
-        class __multiset_iterator
+        class __UTILITY_TEMPLATE_VIS __multiset_iterator
         {
           private:
             template<typename, typename, typename>

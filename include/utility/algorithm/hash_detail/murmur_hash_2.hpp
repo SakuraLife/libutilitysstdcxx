@@ -46,10 +46,10 @@ __utility_globalspace_start(utility)
       }
 
       template<size_t = sizeof(size_t)>
-      struct murmur_hash_2;
+      struct __UTILITY_TEMPLATE_VIS murmur_hash_2;
 
       template<>
-      struct murmur_hash_2<4>
+      struct __UTILITY_TYPE_VIS murmur_hash_2<4>
       {
         private:
           UTILITY_ALWAYS_INLINE
@@ -99,7 +99,7 @@ __utility_globalspace_start(utility)
       };
 
       template<>
-      struct murmur_hash_2<8>
+      struct __UTILITY_TYPE_VIS murmur_hash_2<8>
       {
         private:
           UTILITY_ALWAYS_INLINE

@@ -19,7 +19,7 @@ __utility_globalspace_start(utility)
       using trait::type::releations::is_same;
       using trait::type::transform::decay_t;
     }
-    struct unexpect_t
+    struct __UTILITY_TYPE_VIS unexpect_t
     {
       explicit unexpect_t() = default;
     };
@@ -28,7 +28,7 @@ __utility_globalspace_start(utility)
     constexpr unexpect_t unexpect{};
 
     template<typename _E>
-    class unexpected
+    class __UTILITY_TEMPLATE_VIS unexpected
     {
       public:
         typedef _E error_type;

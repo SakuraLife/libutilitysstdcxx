@@ -24,7 +24,7 @@
 __utility_globalspace_start(utility)
   __utility_interspace_start(functional)
     template<typename _Expr>
-    struct is_bind_expression: public trait::false_type
+    struct __UTILITY_TEMPLATE_VIS is_bind_expression: public trait::false_type
     { };
 
     struct bind_auto_detected;
@@ -151,7 +151,7 @@ __utility_globalspace_start(utility)
     }
 
     template<typename _Ret>
-    class binder_executor
+    class __UTILITY_TEMPLATE_VIS binder_executor
     {
       public:
         template<
@@ -194,7 +194,7 @@ __utility_globalspace_start(utility)
     };
 
     template<>
-    class binder_executor<bind_auto_detected>
+    class __UTILITY_TYPE_VIS binder_executor<bind_auto_detected>
     {
       public:
         template<
@@ -225,7 +225,7 @@ __utility_globalspace_start(utility)
     };
 
     template<>
-    class binder_executor<void>
+    class __UTILITY_TYPE_VIS binder_executor<void>
     {
       public:
         template<
@@ -252,10 +252,10 @@ __utility_globalspace_start(utility)
     };
 
     template<typename _Executor, typename _Fn, typename... _Bind>
-    class binder;
+    class __UTILITY_TEMPLATE_VIS binder;
 
     template<typename _Policy, typename _Fn, typename... _Bind>
-    class binder<binder_executor<_Policy>, _Fn, _Bind...>
+    class __UTILITY_TEMPLATE_VIS binder<binder_executor<_Policy>, _Fn, _Bind...>
     {
       private:
         typedef __detail::decay_t<_Fn>                        function_type;
@@ -307,7 +307,7 @@ __utility_globalspace_start(utility)
     };
 
     template<typename _Ret, typename _Fn, typename... _Bind>
-    struct is_bind_expression<binder<_Ret, _Fn, _Bind...>>:
+    struct __UTILITY_TEMPLATE_VIS is_bind_expression<binder<_Ret, _Fn, _Bind...>>:
       public trait::true_type
     { };
 

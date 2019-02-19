@@ -13,7 +13,7 @@ __utility_globalspace_start(utility)
       typename __Pointer = __T*,
       typename __Reference = __T&
     >
-    class iterator
+    class __UTILITY_TEMPLATE_VIS iterator
     {
       public:
         typedef __Category    iterator_category;

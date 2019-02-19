@@ -10,10 +10,10 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(miscellaneous)
         // enable_if
         template<bool _B, typename _T = void>
-        struct enable_if
+        struct __UTILITY_TEMPLATE_VIS enable_if
         { };
         template<typename _T>
-        struct enable_if<true, _T>
+        struct __UTILITY_TEMPLATE_VIS enable_if<true, _T>
         { typedef _T type;};
 
         template<bool _B, typename _T = void>

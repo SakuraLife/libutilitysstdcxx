@@ -12,7 +12,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(categories)
         // is_arithmetic
         template<typename _T>
-        struct is_arithmetic: public integral_constant<bool,
+        struct __UTILITY_TEMPLATE_VIS is_arithmetic: public integral_constant<bool,
             is_integral<_T>::value || is_floating_point<_T>::value
           >
         { };

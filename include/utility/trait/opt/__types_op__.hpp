@@ -68,16 +68,16 @@ __utility_globalspace_start(utility)
         >::type;
 
       template<typename _T>
-      struct __type_tuple_size__
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_size__
       { constexpr static size_t value = 1;};
       template<typename _Fp, typename _Sp>
-      struct __type_tuple_size__<__type_pair__<_Fp, _Sp>>
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_size__<__type_pair__<_Fp, _Sp>>
       { constexpr static size_t value = 2;};
       template<typename _Fp, typename _Sp, typename _Tp>
-      struct __type_tuple_size__<__type_tripair__<_Fp, _Sp, _Tp>>
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_size__<__type_tripair__<_Fp, _Sp, _Tp>>
       { constexpr static size_t value = 3;};
       template<typename... _Types>
-      struct __type_tuple_size__<__type_tuple__<_Types...>>
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_size__<__type_tuple__<_Types...>>
       { constexpr static size_t value = sizeof...(_Types);};
 
       namespace __helper__
@@ -105,10 +105,10 @@ __utility_globalspace_start(utility)
       }
 
       template<size_t _Idx, typename _T>
-      struct __type_tuple_get__;
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_get__;
 
       template<size_t _Idx, typename... _Type>
-      struct __type_tuple_get__<_Idx, __type_tuple__<_Type...>>
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_get__<_Idx, __type_tuple__<_Type...>>
       {
         private:
           static_assert(_Idx < sizeof...(_Type), "index out of range.");
@@ -121,7 +121,7 @@ __utility_globalspace_start(utility)
       };
 
       template<size_t _Idx, typename _T, size_t _N>
-      struct __type_tuple_get__<_Idx, __type_array__<_T, _N>>
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_get__<_Idx, __type_array__<_T, _N>>
       {
         private:
           static_assert(_Idx < _N, "index out of range.");
@@ -131,19 +131,19 @@ __utility_globalspace_start(utility)
       };
 
       template<size_t _Idx, typename _Fp, typename _Sp>
-      struct __type_tuple_get__<_Idx, __type_pair__<_Fp, _Sp>>:
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_get__<_Idx, __type_pair__<_Fp, _Sp>>:
         public __type_tuple_get__<_Idx, __type_tuple__<_Fp, _Sp>>
       { };
 
       template<size_t _Idx, typename _Fp, typename _Sp, typename _Tp>
-      struct __type_tuple_get__<_Idx, __type_tripair__<_Fp, _Sp, _Tp>>:
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_get__<_Idx, __type_tripair__<_Fp, _Sp, _Tp>>:
         public __type_tuple_get__<_Idx, __type_tuple__<_Fp, _Sp, _Tp>>
       { };
 
       template<typename _IdSeq, typename _T>
-      struct __type_tuple_get_array__;
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_get_array__;
       template<size_t... _Id, typename... _Type>
-      struct __type_tuple_get_array__<
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_get_array__<
         index_sequence<_Id...>, __type_tuple__<_Type...>
       >
       {
@@ -153,7 +153,7 @@ __utility_globalspace_start(utility)
         > type;
       };
       template<size_t... _Id, typename _T, size_t _N>
-      struct __type_tuple_get_array__<
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_get_array__<
         index_sequence<_Id...>, __type_array__<_T, _N>
       >
       {
@@ -168,62 +168,62 @@ __utility_globalspace_start(utility)
         typename __type_tuple_get_array__<_IdSeq, _T>::type;
 
       template<typename _T>
-      struct __checkout_type_feature__
+      struct __UTILITY_TEMPLATE_VIS __checkout_type_feature__
       { typedef __type_tuple__<_T> type;};
       template<typename _Fp, typename _Sp>
-      struct __checkout_type_feature__<__type_pair__<_Fp, _Sp>>
+      struct __UTILITY_TEMPLATE_VIS __checkout_type_feature__<__type_pair__<_Fp, _Sp>>
       { typedef __type_pair__<_Fp, _Sp> type;};
       template<typename _Fp, typename _Sp, typename _Tp>
-      struct __checkout_type_feature__<__type_tripair__<_Fp, _Sp, _Tp>>
+      struct __UTILITY_TEMPLATE_VIS __checkout_type_feature__<__type_tripair__<_Fp, _Sp, _Tp>>
       { typedef __type_tripair__<_Fp, _Sp, _Tp> type;};
       template<typename _T, size_t _N>
-      struct __checkout_type_feature__<__type_array__<_T, _N>>
+      struct __UTILITY_TEMPLATE_VIS __checkout_type_feature__<__type_array__<_T, _N>>
       {
         typedef typename __type_tuple_get_array__<
           make_index_sequence<_N>, __type_array__<_T, _N>
         >::type type;
       };
       template<typename... _Types>
-      struct __checkout_type_feature__<__type_tuple__<_Types...>>
+      struct __UTILITY_TEMPLATE_VIS __checkout_type_feature__<__type_tuple__<_Types...>>
       { typedef __type_tuple__<_Types...> type;};
 
       template<typename... _Types>
-      struct __type_tuple_cat__;
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_cat__;
 
       template<>
-      struct __type_tuple_cat__<>
+      struct __UTILITY_TYPE_VIS __type_tuple_cat__<>
       { typedef __type_tuple__<> type;};
       // template<typename _Fp, typename _Sp>
-      // struct __type_tuple_cat__<__type_pair__<_Fp, _Sp>>
+      // struct __UTILITY_TEMPLATE_VIS __type_tuple_cat__<__type_pair__<_Fp, _Sp>>
       // { typedef __type_tuple__<_Fp, _Sp> type;};
       // template<typename _Fp, typename _Sp, typename _Tp>
-      // struct __type_tuple_cat__<__type_tripair__<_Fp, _Sp, _Tp>>
+      // struct __UTILITY_TEMPLATE_VIS __type_tuple_cat__<__type_tripair__<_Fp, _Sp, _Tp>>
       // { typedef __type_tuple__<_Fp, _Sp, _Tp> type;};
       template<typename... _Types>
-      struct __type_tuple_cat__<__type_tuple__<_Types...>>
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_cat__<__type_tuple__<_Types...>>
       { typedef __type_tuple__<_Types...> type;};
 
       template<typename _T, typename... _ArgTypes>
-      struct __type_tuple_cat__<_T, _ArgTypes...>:
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_cat__<_T, _ArgTypes...>:
         public __type_tuple_cat__<__type_tuple__<_T>, _ArgTypes...>
       { };
       template<typename _Fp, typename _Sp, typename... _ArgTypes>
-      struct __type_tuple_cat__<__type_pair__<_Fp, _Sp>, _ArgTypes...>:
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_cat__<__type_pair__<_Fp, _Sp>, _ArgTypes...>:
         public __type_tuple_cat__<__type_tuple__<_Fp, _Sp>, _ArgTypes...>
       { };
       template<typename _Fp, typename _Sp, typename _Tp, typename... _ArgTypes>
-      struct __type_tuple_cat__<__type_tripair__<_Fp, _Sp, _Tp>, _ArgTypes...>:
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_cat__<__type_tripair__<_Fp, _Sp, _Tp>, _ArgTypes...>:
         public __type_tuple_cat__<__type_tuple__<_Fp, _Sp, _Tp>, _ArgTypes...>
       { };
       template<typename... _Types, typename _T, typename... _ArgTypes>
-      struct __type_tuple_cat__<__type_tuple__<_Types...>, _T, _ArgTypes...>:
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_cat__<__type_tuple__<_Types...>, _T, _ArgTypes...>:
         public __type_tuple_cat__<__type_tuple__<_Types..., _T>, _ArgTypes...>
       { };
       template<
         typename... _Types, typename _Fp, typename _Sp,
         typename... _ArgTypes
       >
-      struct __type_tuple_cat__<
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_cat__<
         __type_tuple__<_Types...>,
         __type_pair__<_Fp, _Sp>,
         _ArgTypes...
@@ -235,7 +235,7 @@ __utility_globalspace_start(utility)
         typename... _Types, typename _Fp, typename _Sp, typename _Tp,
         typename... _ArgTypes
       >
-      struct __type_tuple_cat__<
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_cat__<
         __type_tuple__<_Types...>,
         __type_tripair__<_Fp, _Sp, _Tp>,
         _ArgTypes...
@@ -244,7 +244,7 @@ __utility_globalspace_start(utility)
         >
       { };
       template<typename... _Types, typename... _Utypes, typename... _ArgTypes>
-      struct __type_tuple_cat__<
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_cat__<
         __type_tuple__<_Types...>,
         __type_tuple__<_Utypes...>,
         _ArgTypes...
@@ -283,10 +283,10 @@ __utility_globalspace_start(utility)
       }
 
       template<typename _T, typename _Tuple>
-      struct __type_tuple_get_unique_id__;
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_get_unique_id__;
 
       template<typename _T, typename... _Type>
-      struct __type_tuple_get_unique_id__<_T, __type_tuple__<_Type...>>
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_get_unique_id__<_T, __type_tuple__<_Type...>>
       {
         public:
           constexpr static size_t id =
@@ -296,9 +296,9 @@ __utility_globalspace_start(utility)
       };
 
       template<typename _T, typename _Tuple>
-      struct __type_tuple_check__;
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_check__;
       template<typename _T, typename... _Type>
-      struct __type_tuple_check__<_T, __type_tuple__<_Type...>>
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_check__<_T, __type_tuple__<_Type...>>
       {
         private:
           template<typename _Tp>

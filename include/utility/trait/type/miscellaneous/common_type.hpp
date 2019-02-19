@@ -76,7 +76,7 @@ __utility_globalspace_start(utility)
           { };
         }
         template<typename... _Ts>
-        struct common_type : public __impl::__common_type_helper<_Ts...>
+        struct __UTILITY_TEMPLATE_VIS common_type : public __impl::__common_type_helper<_Ts...>
         { };
 
         template<typename... _Ts>

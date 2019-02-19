@@ -16,7 +16,7 @@
 __utility_globalspace_start(utility)
   __utility_interspace_start(container)
     template<typename _T1, typename _T2, typename _T3>
-    class tripair
+    class __UTILITY_TEMPLATE_VIS tripair
     {
       public:
         typedef _T1             first_type;
@@ -262,10 +262,10 @@ __utility_globalspace_start(utility)
 
     // tuple_size implement
     template<typename _T>
-    struct tuple_size;
+    struct __UTILITY_TEMPLATE_VIS tuple_size;
 
     template<typename _T1, typename _T2, typename _T3>
-    struct tuple_size<tripair<_T1, _T2, _T3>>:
+    struct __UTILITY_TEMPLATE_VIS tuple_size<tripair<_T1, _T2, _T3>>:
       public trait::integral_constant<size_t, 3>
     { };
 
@@ -275,10 +275,10 @@ __utility_globalspace_start(utility)
     namespace __opt__
     {
       template<typename _Fp, typename _Sp, typename _Tp>
-      struct __type_tuple_size__<container::tripair<_Fp, _Sp, _Tp>>
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_size__<container::tripair<_Fp, _Sp, _Tp>>
       { constexpr static size_t value = 3;};
       template<typename _Fp, typename _Sp, typename _Tp>
-      struct __checkout_type_feature__<container::tripair<_Fp, _Sp, _Tp>>
+      struct __UTILITY_TEMPLATE_VIS __checkout_type_feature__<container::tripair<_Fp, _Sp, _Tp>>
       { typedef __type_tripair__<_Fp, _Sp, _Tp> type;};
     }
   __utility_interspace_end(trait)

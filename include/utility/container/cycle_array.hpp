@@ -16,7 +16,7 @@ __utility_globalspace_start(utility)
       typename _T,
       size_t _Size
     >
-    class cycle_array
+    class __UTILITY_TEMPLATE_VIS cycle_array
     {
       public:
         typedef _T                      value_type;

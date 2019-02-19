@@ -14,7 +14,7 @@ __utility_globalspace_start(utility)
   __utility_interspace_start(container)
 
     __utility_interspace_start(_helper)
-      struct monostate
+      struct __UTILITY_TYPE_VIS monostate
       { };
       constexpr bool operator<(monostate, monostate) noexcept
       { return false;}

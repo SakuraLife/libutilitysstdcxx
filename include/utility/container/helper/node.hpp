@@ -7,14 +7,14 @@
 __utility_globalspace_start(utility)
   __utility_interspace_start(container)
     __utility_interspace_start(_helper)
-      struct __single_tag
+      struct __UTILITY_TYPE_VIS __single_tag
       { };
-      struct __double_tag
+      struct __UTILITY_TYPE_VIS __double_tag
       { };
-      struct __tree_tag
+      struct __UTILITY_TYPE_VIS __tree_tag
       { };
 
-      struct __dnode
+      struct __UTILITY_TYPE_VIS __dnode
       {
         typedef __double_tag    __tag;
         typedef __dnode*        __link_type;
@@ -23,7 +23,7 @@ __utility_globalspace_start(utility)
         __link_type             next;
       };
 
-      struct __snode
+      struct __UTILITY_TYPE_VIS __snode
       {
         typedef __single_tag    __tag;
         typedef __snode*        __link_type;
@@ -31,7 +31,7 @@ __utility_globalspace_start(utility)
         __link_type             next;
       };
 
-      struct __tree_node
+      struct __UTILITY_TYPE_VIS __tree_node
       {
         typedef __tree_tag      __tag;
         typedef __tree_node*    __link_type;
@@ -51,10 +51,10 @@ __utility_globalspace_start(utility)
       };
 
       template<typename _T, typename = typename _T::__tag>
-      struct __node_trait;
+      struct __UTILITY_TEMPLATE_VIS __node_trait;
 
       template<typename _T>
-      struct __node_trait<_T, __single_tag>
+      struct __UTILITY_TEMPLATE_VIS __node_trait<_T, __single_tag>
       {
         typedef _T          __node_type;
         typedef _T*         __link_type;
@@ -100,7 +100,7 @@ __utility_globalspace_start(utility)
       };
 
       template<typename _T>
-      struct __node_trait<_T, __double_tag>
+      struct __UTILITY_TEMPLATE_VIS __node_trait<_T, __double_tag>
       {
         typedef _T          __node_type;
         typedef _T*         __link_type;
@@ -154,7 +154,7 @@ __utility_globalspace_start(utility)
       };
 
       template<typename _T>
-      struct __node_trait<_T, __tree_tag>
+      struct __UTILITY_TEMPLATE_VIS __node_trait<_T, __tree_tag>
       {
         typedef _T          __node_type;
         typedef _T*         __link_type;

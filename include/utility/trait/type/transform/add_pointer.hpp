@@ -30,7 +30,7 @@ __utility_globalspace_start(utility)
           { typedef _T type;};
         }
         template<typename _T>
-        struct add_pointer
+        struct __UTILITY_TEMPLATE_VIS add_pointer
         { typedef typename __impl::__add_pointer_helper<_T>::type type;};
 
         template<typename _T>

@@ -13,7 +13,7 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(features)
         // is_nothrow_copy_constructible
         template<typename _T>
-        struct is_nothrow_copy_constructible: public is_nothrow_constructible<
+        struct __UTILITY_TEMPLATE_VIS is_nothrow_copy_constructible: public is_nothrow_constructible<
             _T,
             trait::type::transform::add_lvalue_reference_t<
               trait::type::transform::add_const_t<_T>

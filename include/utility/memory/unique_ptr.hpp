@@ -72,12 +72,11 @@ __utility_globalspace_start(utility)
       { typedef _Value* type;};
     }
 
-    template
-    <
+    template<
       typename _T,
       typename _Deleter = default_delete<_T>
     >
-    class unique_ptr
+    class __UTILITY_TEMPLATE_VIS unique_ptr
     {
       public:
         typedef _T element_type;
@@ -487,12 +486,11 @@ __utility_globalspace_start(utility)
         }
     };
 
-    template
-    <
+    template<
       typename _T,
       typename _Deleter
     >
-    class unique_ptr<_T[], _Deleter>
+    class __UTILITY_TEMPLATE_VIS unique_ptr<_T[], _Deleter>
     {
       public:
         typedef _T element_type;

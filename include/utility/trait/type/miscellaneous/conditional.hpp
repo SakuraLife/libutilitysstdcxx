@@ -10,10 +10,10 @@ __utility_globalspace_start(utility)
       __utility_interspace_start(miscellaneous)
         // conditional
         template<bool _B, typename _IF, typename _ELSE>
-        struct conditional
+        struct __UTILITY_TEMPLATE_VIS conditional
         { typedef _IF type;};
         template<typename _IF, typename _ELSE>
-        struct conditional<false, _IF, _ELSE>
+        struct __UTILITY_TEMPLATE_VIS conditional<false, _IF, _ELSE>
         { typedef _ELSE type;};
 
         template<bool _B, typename _IF, typename _ELSE>

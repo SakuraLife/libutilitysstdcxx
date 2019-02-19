@@ -8,7 +8,7 @@
 
 __utility_globalspace_start(utility)
   __utility_interspace_start(memory)
-    struct raw_delete
+    struct __UTILITY_TYPE_VIS raw_delete
     {
       template<typename _T>
       inline void operator()(_T* _ptr)

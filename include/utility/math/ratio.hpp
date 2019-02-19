@@ -12,7 +12,7 @@
 __utility_globalspace_start(utility)
   __utility_interspace_start(math)
   template<intmax_t _Num, intmax_t _Denom = 1>
-  struct ratio;
+  struct __UTILITY_TEMPLATE_VIS ratio;
 
   namespace __detail
   {
@@ -83,7 +83,7 @@ __utility_globalspace_start(utility)
   }
 
   template<intmax_t _Num, intmax_t _Denom>
-  struct ratio
+  struct __UTILITY_TEMPLATE_VIS ratio
   {
     private:
       static_assert(
@@ -205,7 +205,7 @@ __utility_globalspace_start(utility)
   template<typename _X>
   using ratio_trunc = typename __detail::__ratio_trunc<_X>::type;
   template<typename _X>
-  struct ratio_div
+  struct __UTILITY_TEMPLATE_VIS ratio_div
   {
     typedef typename ratio<_X::num / _X::den, 1>::type       integral;
     typedef typename ratio<_X::num % _X::den, _X::den>::type fractional;
@@ -291,38 +291,38 @@ __utility_globalspace_start(utility)
   }
 
   template<typename _X, typename _Y>
-  struct ratio_compare: public trait::integral_constant<
+  struct __UTILITY_TEMPLATE_VIS ratio_compare: public trait::integral_constant<
       int, __detail::__ratio_compare<_X, _Y>::value
     >
   { };
 
   template<typename _X, typename _Y>
-  struct ratio_equal: public trait::bool_constant<
+  struct __UTILITY_TEMPLATE_VIS ratio_equal: public trait::bool_constant<
       ratio_compare<_X, _Y>::value == 0
     >
   { };
   template<typename _X, typename _Y>
-  struct ratio_not_equal: public trait::bool_constant<
+  struct __UTILITY_TEMPLATE_VIS ratio_not_equal: public trait::bool_constant<
       ratio_compare<_X, _Y>::value != 0
     >
   { };
   template<typename _X, typename _Y>
-  struct ratio_less: public trait::bool_constant<
+  struct __UTILITY_TEMPLATE_VIS ratio_less: public trait::bool_constant<
       (ratio_compare<_X, _Y>::value < 0)
     >
   { };
   template<typename _X, typename _Y>
-  struct ratio_less_equal: public trait::bool_constant<
+  struct __UTILITY_TEMPLATE_VIS ratio_less_equal: public trait::bool_constant<
       (ratio_compare<_X, _Y>::value <= 0)
     >
   { };
   template<typename _X, typename _Y>
-  struct ratio_greater: public trait::bool_constant<
+  struct __UTILITY_TEMPLATE_VIS ratio_greater: public trait::bool_constant<
       (0 < ratio_compare<_X, _Y>::value)
     >
   { };
   template<typename _X, typename _Y>
-  struct ratio_greater_equal: public trait::bool_constant<
+  struct __UTILITY_TEMPLATE_VIS ratio_greater_equal: public trait::bool_constant<
       (0 <= ratio_compare<_X, _Y>::value)
     >
   { };

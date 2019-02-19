@@ -16,6 +16,7 @@
 #define UTILITY_MATH_HAS_EXTRA true
 #define UTILITY_MEMORY_HAS_EXTRA true
 #define UTILITY_TRAIT_HAS_EXTRA true
+#define UTILITY_EXTERN_TEMPLATE(...)
 
 #ifndef UTILITY_NO_EXTRA_CHECK
 
@@ -54,6 +55,10 @@
 # define __utility_extra   public
 #else
 # define __utility_extra   private
+#endif
+
+#ifndef UTILITY_EXTERN_TEMPLATE
+#define UTILITY_EXTERN_TEMPLATE(...) extern template __VA_ARGS__;
 #endif
 
 #endif // ! ___UTILITY__DEBUG__CONFIG___
