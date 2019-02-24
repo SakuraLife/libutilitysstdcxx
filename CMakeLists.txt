@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.11)
 
 set(CMAKE_MODULE_PATH
-  "./cmake"
+  "${PROJECT_SOURCE_DIR}/cmake"
   ${CMAKE_MODULE_PATH}
 )
 
@@ -39,23 +39,29 @@ configure_file(generate/utility_preconfig.hpp.in include/utility/config/utility_
 
 include_directories("./include")
 
+file(GLOB_RECURSE SSTD_HEADERS ${PROJECT_SOURCE_DIR}/include/*)
+
 aux_source_directory("./src/builtin" SSTD_BUILTIN_SRC)
 
-add_library(sstdabi_shared SHARED ${SSTD_BUILTIN_SRC})
-add_library(sstdabi_static STATIC ${SSTD_BUILTIN_SRC})
+add_library(sstdabi_object OBJECT ${SSTD_BUILTIN_SRC})
+set(sstdabi_static_object $<TARGET_OBJECTS:sstdabi_object>)
+set(sstdabi_shared_object $<TARGET_OBJECTS:sstdabi_object>)
 
+
+add_library(sstdabi_shared SHARED ${sstdabi_shared_object})
 set_target_properties(sstdabi_shared PROPERTIES LINKER_LANGUAGE C)
 set_target_properties(sstdabi_shared PROPERTIES OUTPUT_NAME sstdabi)
 set_target_properties(sstdabi_shared PROPERTIES LINK_FLAGS "-fno-rtti -fno-exceptions")
 
+add_library(sstdabi_static STATIC ${sstdabi_static_object})
 set_target_properties(sstdabi_static PROPERTIES LINKER_LANGUAGE C)
 set_target_properties(sstdabi_static PROPERTIES OUTPUT_NAME sstdabi)
 set_target_properties(sstdabi_static PROPERTIES LINK_FLAGS "-fno-rtti -fno-exceptions")
 
-# aux_source_directory(./src/charS SSTD_LIB_SRC)
-# aux_source_directory(./src/ctype LIB_SRC)
-# aux_source_directory(./src/errno LIB_SRC)
+add_library(sstdc++_shared SHARED ${SSTD_HEADERS})
+set_target_properties(sstdc++_shared PROPERTIES LINKER_LANGUAGE C)
+set_target_properties(sstdc++_shared PROPERTIES OUTPUT_NAME sstdc++)
 
-# add_library(sstdc++_shared SHARED ${LIB_SRC})
-# add_library(sstdc++_static STATIC ${LIB_SRC})
-
+add_library(sstdc++_static STATIC ${SSTD_HEADERS})
+set_target_properties(sstdc++_static PROPERTIES LINKER_LANGUAGE C)
+set_target_properties(sstdc++_static PROPERTIES OUTPUT_NAME sstdc++)
