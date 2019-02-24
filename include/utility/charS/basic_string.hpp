@@ -449,18 +449,12 @@ __utility_globalspace_start(utility)
         { return data()[_pos];}
         reference at(size_type _pos)
         {
-#ifdef __UTILITY_USE_EXCEPTION
-          if(_pos > size())
-          { }
-#endif
+          check_pos(_pos);
           return data()[_pos];
         }
         const_reference at(size_type _pos) const
         {
-#ifdef __UTILITY_USE_EXCEPTION
-          if(_pos > size())
-          { }
-#endif
+          check_pos(_pos);
           return data()[_pos];
         }
 
@@ -540,6 +534,8 @@ __utility_globalspace_start(utility)
         { return basic_string_view<char_type, traits_type>{data(), size()};}
 
       public:
+        inline void reserve()
+        { reallocate(0);}
         inline void reserve(size_type __cap = 0U)
         { reallocate(__cap);}
         inline void shrink_to_fit()
@@ -844,7 +840,7 @@ __utility_globalspace_start(utility)
       public:
         basic_string& erase(
           size_type _idx = 0U, size_type _count = npos
-        ) noexcept
+        )
         {
           using algorithm::min;
           using memory::uninitialized_possible_move;
@@ -1210,7 +1206,7 @@ __utility_globalspace_start(utility)
         ) const noexcept
         {
           return impl::__find<char_type, traits_type, size_type, npos>(
-            data(), size(), _str.data(), _str.size(), check_pos(_pos)
+            data(), size(), _str.data(), _str.size(), _pos
           );
         }
         size_type find(
@@ -1218,7 +1214,7 @@ __utility_globalspace_start(utility)
         ) const noexcept
         {
           return impl::__find<char_type, traits_type, size_type, npos>(
-            data(), size(), _str, traits_type::length(_str), check_pos(_pos)
+            data(), size(), _str, traits_type::length(_str), _pos
           );
         }
         size_type find(
@@ -1226,13 +1222,13 @@ __utility_globalspace_start(utility)
         ) const noexcept
         {
           return impl::__find<char_type, traits_type, size_type, npos>(
-            data(), size(), _str, _count, check_pos(_pos)
+            data(), size(), _str, _count, _pos
           );
         }
         size_type find(char_type _ch, size_type _pos = 0) const noexcept
         {
           return impl::__find<char_type, traits_type, size_type, npos>(
-            data(), size(), _ch, check_pos(_pos)
+            data(), size(), _ch, _pos
           );
         }
         template<
@@ -1247,7 +1243,7 @@ __utility_globalspace_start(utility)
         {
           view_type __sv = _sv;
           return impl::__find<char_type, traits_type, size_type, npos>(
-            data(), size(), __sv.data(), __sv.size(), check_pos(_pos)
+            data(), size(), __sv.data(), __sv.size(), _pos
           );
         }
         size_type rfind(
@@ -1255,7 +1251,7 @@ __utility_globalspace_start(utility)
         ) const noexcept
         {
           return impl::__rfind<char_type, traits_type, size_type, npos>(
-            data(), size(), _str.data(), _str.size(), check_pos(_pos)
+            data(), size(), _str.data(), _str.size(), _pos
           );
         }
         size_type rfind(
@@ -1263,7 +1259,7 @@ __utility_globalspace_start(utility)
         ) const noexcept
         {
           return impl::__rfind<char_type, traits_type, size_type, npos>(
-            data(), size(), _str, traits_type::length(_str), check_pos(_pos)
+            data(), size(), _str, traits_type::length(_str), _pos
           );
         }
         size_type rfind(
@@ -1271,13 +1267,13 @@ __utility_globalspace_start(utility)
         ) const noexcept
         {
           return impl::__rfind<char_type, traits_type, size_type, npos>(
-            data(), size(), _str, _count, check_pos(_pos)
+            data(), size(), _str, _count, _pos
           );
         }
         size_type rfind(char_type _ch, size_type _pos = npos) const noexcept
         {
           return impl::__rfind<char_type, traits_type, size_type, npos>(
-            data(), size(), _ch, check_pos(_pos)
+            data(), size(), _ch, _pos
           );
         }
         template<
@@ -1292,7 +1288,7 @@ __utility_globalspace_start(utility)
         {
           view_type __sv = _sv;
           return impl::__rfind<char_type, traits_type, size_type, npos>(
-            data(), size(), __sv.data(), __sv.size(), check_pos(_pos)
+            data(), size(), __sv.data(), __sv.size(), _pos
           );
         }
 
@@ -1302,7 +1298,7 @@ __utility_globalspace_start(utility)
         ) const noexcept
         {
           return impl::__find_first_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _str.data(), _str.size(), check_pos(_pos)
+            data(), size(), _str.data(), _str.size(), _pos
           );
         }
         size_type find_first_of(
@@ -1310,7 +1306,7 @@ __utility_globalspace_start(utility)
         ) const noexcept
         {
           return impl::__find_first_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _str, traits_type::length(_str), check_pos(_pos)
+            data(), size(), _str, traits_type::length(_str), _pos
           );
         }
         size_type find_first_of(
@@ -1318,13 +1314,13 @@ __utility_globalspace_start(utility)
         ) const noexcept
         {
           return impl::__find_first_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _str, _count, check_pos(_pos)
+            data(), size(), _str, _count, _pos
           );
         }
         size_type find_first_of(char_type _ch, size_type _pos = 0) const noexcept
         {
           return impl::__find_first_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _ch, check_pos(_pos)
+            data(), size(), _ch, _pos
           );
         }
         template<
@@ -1339,7 +1335,7 @@ __utility_globalspace_start(utility)
         {
           view_type __sv = _sv;
           return impl::__find_first_of<char_type, traits_type, size_type, npos>(
-            data(), size(), __sv.data(), __sv.size(), check_pos(_pos)
+            data(), size(), __sv.data(), __sv.size(), _pos
           );
         }
         size_type find_last_of(
@@ -1347,7 +1343,7 @@ __utility_globalspace_start(utility)
         ) const noexcept
         {
           return impl::__find_last_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _str.data(), _str.size(), check_pos(_pos)
+            data(), size(), _str.data(), _str.size(), _pos
           );
         }
         size_type find_last_of(
@@ -1355,7 +1351,7 @@ __utility_globalspace_start(utility)
         ) const noexcept
         {
           return impl::__find_last_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _str, traits_type::length(_str), check_pos(_pos)
+            data(), size(), _str, traits_type::length(_str), _pos
           );
         }
         size_type find_last_of(
@@ -1363,13 +1359,13 @@ __utility_globalspace_start(utility)
         ) const noexcept
         {
           return impl::__find_last_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _str, _count, check_pos(_pos)
+            data(), size(), _str, _count, _pos
           );
         }
         size_type find_last_of(char_type _ch, size_type _pos = npos) const noexcept
         {
           return impl::__find_last_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _ch, check_pos(_pos)
+            data(), size(), _ch, _pos
           );
         }
         template<
@@ -1384,7 +1380,7 @@ __utility_globalspace_start(utility)
         {
           view_type __sv = _sv;
           return impl::__find_last_of<char_type, traits_type, size_type, npos>(
-            data(), size(), __sv.data(), __sv.size(), check_pos(_pos)
+            data(), size(), __sv.data(), __sv.size(), _pos
           );
         }
         size_type find_first_not_of(
@@ -1392,7 +1388,7 @@ __utility_globalspace_start(utility)
         ) const noexcept
         {
           return impl::__find_first_not_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _str.data(), _str.size(), check_pos(_pos)
+            data(), size(), _str.data(), _str.size(), _pos
           );
         }
         size_type find_first_not_of(
@@ -1400,7 +1396,7 @@ __utility_globalspace_start(utility)
         ) const noexcept
         {
           return impl::__find_first_not_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _str, traits_type::length(_str), check_pos(_pos)
+            data(), size(), _str, traits_type::length(_str), _pos
           );
         }
         size_type find_first_not_of(
@@ -1408,13 +1404,13 @@ __utility_globalspace_start(utility)
         ) const noexcept
         {
           return impl::__find_first_not_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _str, _count, check_pos(_pos)
+            data(), size(), _str, _count, _pos
           );
         }
         size_type find_first_not_of(char_type _ch, size_type _pos = 0) const noexcept
         {
           return impl::__find_first_not_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _ch, check_pos(_pos)
+            data(), size(), _ch, _pos
           );
         }
         template<
@@ -1429,7 +1425,7 @@ __utility_globalspace_start(utility)
         {
           view_type __sv = _sv;
           return impl::__find_first_not_of<char_type, traits_type, size_type, npos>(
-            data(), size(), __sv.data(), __sv.size(), check_pos(_pos)
+            data(), size(), __sv.data(), __sv.size(), _pos
           );
         }
         size_type find_last_not_of(
@@ -1437,7 +1433,7 @@ __utility_globalspace_start(utility)
         ) const noexcept
         {
           return impl::__find_last_not_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _str.data(), _str.size(), check_pos(_pos)
+            data(), size(), _str.data(), _str.size(), _pos
           );
         }
         size_type find_last_not_of(
@@ -1445,7 +1441,7 @@ __utility_globalspace_start(utility)
         ) const noexcept
         {
           return impl::__find_last_not_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _str, traits_type::length(_str), check_pos(_pos)
+            data(), size(), _str, traits_type::length(_str), _pos
           );
         }
         size_type find_last_not_of(
@@ -1453,7 +1449,7 @@ __utility_globalspace_start(utility)
         ) const noexcept
         {
           return impl::__find_last_not_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _str, _count, check_pos(_pos)
+            data(), size(), _str, _count, _pos
           );
         }
         size_type find_last_not_of(
@@ -1461,7 +1457,7 @@ __utility_globalspace_start(utility)
         ) const noexcept
         {
           return impl::__find_last_not_of<char_type, traits_type, size_type, npos>(
-            data(), size(), _ch, check_pos(_pos)
+            data(), size(), _ch, _pos
           );
         }
         template<
@@ -1478,7 +1474,7 @@ __utility_globalspace_start(utility)
         {
           view_type __sv = _sv;
           return impl::__find_last_not_of<char_type, traits_type, size_type, npos>(
-            data(), size(), __sv.data(), __sv.size(), check_pos(_pos)
+            data(), size(), __sv.data(), __sv.size(), _pos
           );
         }
 
@@ -1515,6 +1511,7 @@ __utility_globalspace_start(utility)
         { return append(_init);}
 
       private:
+        // TODO: exception out_of_range
         size_type check_pos(size_type& _pos) const
         {
           if(_pos > length())
@@ -1527,6 +1524,7 @@ __utility_globalspace_start(utility)
 #endif
           return _pos;
         }
+        // TODO: exception length_error
         bool check_reallocate(size_type _count) const
         {
           if(_count > max_size())
@@ -1540,7 +1538,7 @@ __utility_globalspace_start(utility)
 
       private:
         container::pair<const char_type*, const char_type*>
-        substr_ptr(size_type _idx, size_type _count = npos) const noexcept
+        substr_ptr(size_type _idx, size_type _count = npos) const
         {
           typedef container::pair<const char_type*, const char_type*> __result;
 

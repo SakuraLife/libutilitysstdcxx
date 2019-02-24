@@ -622,6 +622,8 @@ __utility_globalspace_start(utility)
         { return __base.first().head == nullptr;}
         size_type size() const noexcept
         { return __mis.first();}
+        inline size_type max_size() const noexcept
+        { return ~size_type{0U};}
 
       public:
         reference minimum() noexcept

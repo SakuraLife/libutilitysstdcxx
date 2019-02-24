@@ -307,6 +307,7 @@ __utility_globalspace_start(utility)
         }
 
       public:
+        // TODO: exception bad_function_call
         result_type operator()(_Args... _args) const
         {
           using algorithm::forward;

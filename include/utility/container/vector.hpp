@@ -255,7 +255,9 @@ __utility_globalspace_start(utility)
         { return __mis.second();}
 
       public:
+        // TODO: exception out_of_range
         inline reference at(size_type _pos);
+        // TODO: exception out_of_range
         inline const_reference at(size_type _pos) const;
         inline reference operator[](size_type _pos)
         { return __begin[_pos];}
@@ -281,6 +283,8 @@ __utility_globalspace_start(utility)
         { return __begin == __end;}
         inline size_type size() const noexcept
         { return __end - __begin;}
+        inline size_type max_size() const noexcept
+        { return ~size_type{0U};}
         inline size_type capacity() const noexcept
         { return __mis.first() - __begin;}
 

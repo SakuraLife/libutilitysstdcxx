@@ -347,11 +347,11 @@ __utility_globalspace_start(utility)
       {
         private:
           template<typename __T, typename __Size, typename __Ptr>
-          static auto __test(__T&& __alloc, __Size&& __n, __Ptr&& __ptr)
-            -> decltype(__alloc.allocate(__n, __ptr),
+          static auto __test(__T&& _alloc, __Size&& __n, __Ptr&& __ptr)
+            -> decltype(_alloc.allocate(__n, __ptr),
             trait::true_type());
           template<typename __T, typename __Size, typename __Ptr>
-          static auto __test(const __T& __alloc, __Size&& __n, __Ptr&& __ptr)
+          static auto __test(const __T& _alloc, __Size&& __n, __Ptr&& __ptr)
             -> trait::false_type;
 
         public:
@@ -371,11 +371,11 @@ __utility_globalspace_start(utility)
       { };
 
       template<typename _Allocator, typename _Size, typename _Const_Void_Ptr, typename _Return>
-      _Return __allocate(_Allocator& __alloc, _Size __size,_Const_Void_Ptr __hint, trait::true_type)
-      { return __alloc.allocate(__size, __hint);}
+      _Return __allocate(_Allocator& _alloc, _Size __size,_Const_Void_Ptr __hint, trait::true_type)
+      { return _alloc.allocate(__size, __hint);}
       template<typename _Allocator, typename _Size, typename _Const_Void_Ptr, typename _Return>
-      _Return __allocate(_Allocator& __alloc, _Size __size,_Const_Void_Ptr __hint, trait::false_type)
-      { return __alloc.allocate(__size);}
+      _Return __allocate(_Allocator& _alloc, _Size __size,_Const_Void_Ptr __hint, trait::false_type)
+      { return _alloc.allocate(__size);}
 
 
       template<typename _Allocator, typename _Ptr, typename... _Args>
@@ -383,11 +383,11 @@ __utility_globalspace_start(utility)
       {
         private:
           template<typename __T, typename __P, typename... __Args>
-          static auto __test(__T&& __alloc, __P* __ptr, __Args&&... __args)
-            ->decltype(__alloc.construct(__ptr, __args...),
+          static auto __test(__T&& _alloc, __P* __ptr, __Args&&... __args)
+            ->decltype(_alloc.construct(__ptr, __args...),
               trait::true_type());
           template<typename __T, typename __P, typename... __Args>
-          static auto __test(const __T& __alloc, __P* __ptr, __Args&&... __args)
+          static auto __test(const __T& _alloc, __P* __ptr, __Args&&... __args)
             -> trait::false_type;
 
         public:
@@ -407,11 +407,11 @@ __utility_globalspace_start(utility)
       { };
 
       template<typename _Allocator, typename _P_T, typename... _Args>
-      void __construct(trait::true_type, _Allocator& __alloc,
+      void __construct(trait::true_type, _Allocator& _alloc,
          _P_T* __ptr, _Args&&... __args)
-      { __alloc.construct(__ptr, algorithm::forward<_Args>(__args)...);}
+      { _alloc.construct(__ptr, algorithm::forward<_Args>(__args)...);}
       template<typename _Allocator, typename _P_T, typename... _Args>
-      void __construct(trait::false_type, _Allocator& __alloc,
+      void __construct(trait::false_type, _Allocator& _alloc,
         _P_T* __ptr, _Args&&... __args)
       { ::new (static_cast<void*>(__ptr))
         _P_T(algorithm::forward<_Args>(__args)...);}
@@ -421,11 +421,11 @@ __utility_globalspace_start(utility)
       {
         private:
           template<typename __T, typename __P>
-          static auto __test(__T&& __alloc, __P* __ptr)
-            ->decltype(__alloc.destroy(__ptr),
+          static auto __test(__T&& _alloc, __P* __ptr)
+            ->decltype(_alloc.destroy(__ptr),
               trait::true_type());
           template<typename __T, typename __P>
-          static auto __test(const __T& __alloc, __P* __ptr)
+          static auto __test(const __T& _alloc, __P* __ptr)
             -> trait::false_type;
 
         public:
@@ -450,27 +450,27 @@ __utility_globalspace_start(utility)
       >
       struct __alloc_destroy
       {
-        static inline void __aux(_Allocator& __alloc, _Ptr* __ptr)
+        static inline void __aux(_Allocator& _alloc, _Ptr* __ptr)
         { __ptr->~_T();}
       };
 
       template<typename _Allocator, typename _Ptr>
       struct __alloc_destroy<_Allocator, _Ptr, true, true>
       {
-        static inline void __aux(_Allocator& __alloc, _Ptr* __ptr)
+        static inline void __aux(_Allocator& _alloc, _Ptr* __ptr)
         { }
       };
       template<typename _Allocator, typename _Ptr>
       struct __alloc_destroy<_Allocator, _Ptr, false, true>
       {
-        static inline void __aux(_Allocator& __alloc, _Ptr* __ptr)
+        static inline void __aux(_Allocator& _alloc, _Ptr* __ptr)
         { }
       };
       template<typename _Allocator, typename _Ptr>
       struct __alloc_destroy<_Allocator, _Ptr, true, false>
       {
-        static inline void __aux(_Allocator& __alloc, _Ptr* __ptr)
-        { __alloc.destroy(__ptr);}
+        static inline void __aux(_Allocator& _alloc, _Ptr* __ptr)
+        { _alloc.destroy(__ptr);}
       };
 
       template<typename _Allocator>
@@ -478,11 +478,11 @@ __utility_globalspace_start(utility)
       {
         private:
           template<typename __T>
-          static auto __test(__T&& __alloc)
-            ->decltype(__alloc.max_size(),
+          static auto __test(__T&& _alloc)
+            ->decltype(_alloc.max_size(),
               trait::true_type());
           template<typename __T>
-          static auto __test(const __T& __alloc)
+          static auto __test(const __T& _alloc)
             -> trait::false_type;
 
         public:
@@ -497,14 +497,14 @@ __utility_globalspace_start(utility)
         bool = __alloc_has_max_size_test<_Allocator>::value>
       struct __max_size
       {
-        static _Size __aux(const _Allocator& __alloc) noexcept
-        { return _Size(65535) / sizeof(_T) == 0 ? 1 : _Size(65535) / sizeof(_T);}
+        static _Size __aux(const _Allocator& _alloc) noexcept
+        { return (~_Size(0)) / sizeof(_T) == 0 ? 1 : (~_Size(0)) / sizeof(_T);}
       };
       template<typename _Allocator, typename _Size, typename _T>
       struct __max_size<_Allocator, _Size, _T, true>
       {
-        static _Size __aux(const _Allocator& __alloc) noexcept
-        { return __alloc.max_size();}
+        static _Size __aux(const _Allocator& _alloc) noexcept
+        { return _alloc.max_size();}
       };
 
       template<typename _Allocator>
@@ -512,11 +512,11 @@ __utility_globalspace_start(utility)
       {
         private:
           template<typename __T>
-          static auto __test(__T&& __alloc)
-            ->decltype(__alloc.select_on_container_copy_construction(),
+          static auto __test(__T&& _alloc)
+            ->decltype(_alloc.select_on_container_copy_construction(),
               trait::true_type());
           template<typename __T>
-          static auto __test(const __T& __alloc)
+          static auto __test(const __T& _alloc)
             -> trait::false_type;
 
         public:
@@ -531,15 +531,15 @@ __utility_globalspace_start(utility)
         bool = __alloc_has_select_on_container_copy_construction_test<_Allocator>::value>
       struct __select_on_container_copy_construction
       {
-        static inline _Allocator __aux(const _Allocator& __alloc)
-        { return __alloc;}
+        static inline _Allocator __aux(const _Allocator& _alloc)
+        { return _alloc;}
       };
 
       template<typename _Allocator>
       struct __select_on_container_copy_construction<_Allocator, true>
       {
-        static inline _Allocator __aux(const _Allocator& __alloc)
-        { return __alloc.select_on_container_copy_construction();}
+        static inline _Allocator __aux(const _Allocator& _alloc)
+        { return _alloc.select_on_container_copy_construction();}
       };
     }
 
@@ -593,56 +593,56 @@ __utility_globalspace_start(utility)
         using rebind_traits = allocator_traits<rebind_alloc<_T>>;
 
       public:
-        static inline pointer allocate(allocator_type& __alloc)
-        { return __alloc.allocate(1U);}
-        static inline pointer allocate(allocator_type& __alloc, size_type __size)
-        { return __alloc.allocate(__size);}
-        static pointer allocate(allocator_type& __alloc, size_type __size,const_void_pointer __hint)
+        static inline pointer allocate(allocator_type& _alloc)
+        { return _alloc.allocate(1U);}
+        static inline pointer allocate(allocator_type& _alloc, size_type __size)
+        { return _alloc.allocate(__size);}
+        static pointer allocate(allocator_type& _alloc, size_type __size,const_void_pointer __hint)
         {
           return __impl::__allocate<
             allocator_type, size_type, const_void_pointer, pointer>
-            (__alloc, __size, __hint,
+            (_alloc, __size, __hint,
               __impl::__alloc_has_hint<
               allocator_type, size_type, const_void_pointer>());
         }
 
-        static inline void deallocate(allocator_type& __alloc, pointer __ptr, size_type __size)
-        { __alloc.deallocate(__ptr, __size);}
+        static inline void deallocate(allocator_type& _alloc, pointer __ptr, size_type __size)
+        { _alloc.deallocate(__ptr, __size);}
 
       public:
         template<typename _T, typename... _Args>
-        static inline void construct(allocator_type& __alloc, _T* __ptr, _Args&&... __args)
+        static inline void construct(allocator_type& _alloc, _T* __ptr, _Args&&... __args)
         {
           static_assert(
             trait::type::features::is_constructible<_T, _Args...>::value,
             "The args is not vaild.");
           __impl::__construct(
             __impl::__alloc_has_construct<allocator_type, _T, _Args...>(),
-            __alloc, __ptr,
+            _alloc, __ptr,
             algorithm::forward<_Args>(__args)...);
         }
 
         template<typename _T>
-        static inline void destroy(allocator_type& __alloc, _T* __ptr)
+        static inline void destroy(allocator_type& _alloc, _T* __ptr)
         {
           __impl::__alloc_destroy<allocator_type, _T
-            >::__aux(__alloc, __ptr);
+            >::__aux(_alloc, __ptr);
         }
 
       public:
-        static inline size_type max_size(const allocator_type& __alloc) noexcept
+        static inline size_type max_size(const allocator_type& _alloc) noexcept
         {
           return __impl::__max_size<allocator_type,
-            size_type, value_type>::__aux(__alloc);
+            size_type, value_type>::__aux(_alloc);
         }
 
       public:
         static inline allocator_type
-          select_on_container_copy_construction(const allocator_type& __alloc)
+          select_on_container_copy_construction(const allocator_type& _alloc)
         {
           return
             __impl::__select_on_container_copy_construction<
-              allocator_type>::__aux(__alloc);
+              allocator_type>::__aux(_alloc);
         }
     };
   __utility_interspace_end(memory)

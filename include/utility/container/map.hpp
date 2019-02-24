@@ -225,6 +225,8 @@ __utility_globalspace_start(utility)
         { return this->__tree.empty();}
         size_type size() const noexcept
         { return this->__tree.size();}
+        inline size_type max_size() const noexcept
+        { return ~size_type{0U};}
 
       public:
         container::pair<iterator, bool>

@@ -55,9 +55,7 @@ __utility_globalspace_start(utility)
         value_type __element[_N];
 
       public:
-
-#ifdef __UTILITY_USE_EXCEPTION
-
+        // TODO: exception out_of_range
         __UTILITY_CPP14_CONSTEXPR__
         reference at(size_type _pos)
         {
@@ -65,6 +63,7 @@ __utility_globalspace_start(utility)
           { throw 1;}
           return __element[_pos];
         }
+        // TODO: exception out_of_range
         __UTILITY_CPP14_CONSTEXPR__
         const_reference at(size_type _pos) const
         {
@@ -72,8 +71,6 @@ __utility_globalspace_start(utility)
           { throw 1;}
           return __element[_pos];
         }
-
-#endif // ! __UTILITY_USE_EXCEPTION
 
         __UTILITY_CPP14_CONSTEXPR__
         reference operator[](size_type _pos)

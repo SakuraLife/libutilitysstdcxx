@@ -70,7 +70,7 @@ __utility_globalspace_start(utility)
 
       public:
         size_type max_size() const
-        { return size_type(~0)/sizeof(_T) ;}
+        { return (~size_type(0))/sizeof(_T) ;}
 
       public:
         template<typename... _Args>

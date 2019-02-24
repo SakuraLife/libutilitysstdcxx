@@ -289,13 +289,13 @@ __utility_globalspace_start(utility)
         }
 
       private:
+        // TODO: exception out_of_range
         __UTILITY_CPP14_CONSTEXPR__
         container::pair<const char_type*, const char_type*>
         substr_ptr(size_type _idx, size_type _count = npos) const noexcept
         {
           typedef container::pair<const char_type*, const char_type*> __result;
 
-          ///< TODO: throw exception
           if(_idx >= __size)
           { }
 

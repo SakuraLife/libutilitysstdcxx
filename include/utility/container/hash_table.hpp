@@ -519,6 +519,8 @@ __utility_globalspace_start(utility)
         { return this->__mis.first();}
         inline size_type bucket_size() const noexcept
         { return this->__bucket.size();}
+        inline size_type max_size() const noexcept
+        { return ~size_type{0U};}
 
       public:
         inline iterator begin() noexcept

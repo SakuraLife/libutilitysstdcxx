@@ -143,8 +143,6 @@
 // get std support config
 #include<utility/config/utility_control_config.hpp>
 
-#define utility_null nullptr
-
 // utility global type declaration
 #include<utility/config/utility_type.hpp>
 

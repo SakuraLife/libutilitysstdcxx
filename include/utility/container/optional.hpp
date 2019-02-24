@@ -767,18 +767,18 @@ __utility_globalspace_start(utility)
         { return __base.__info;}
 
       public:
+        // TODO: exception bad_optional_access
         __UTILITY_CPP14_CONSTEXPR__
         const value_type& value() const &
         {
-          // TODO: Exception
           if(empty())
           { }
           return __base.__value();
         }
+        // TODO: exception bad_optional_access
         __UTILITY_CPP14_CONSTEXPR__
         const value_type&& value() const &&
         {
-          // TODO: Exception
           using algorithm::move;
           if(empty())
           { }
