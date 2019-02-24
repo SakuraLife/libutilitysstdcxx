@@ -3,17 +3,10 @@
 #define ___UTILITY__STANDARD__LIBRARY__CERRNO___
 
 #include<utility/config/utility_config.hpp>
+#include<errno.h>
 
-extern "C++"
-{
-
-__utility_globalspace_start(utility)
-  namespace sstd
-  {
-    extern int* errno_ptr() noexcept;
-  }
-__utility_globalspace_end(utility)
-
-}
+#if !defined(__UTILITY_BUILD_LIB) || !defined(__UTILITY_NO_SYSHEADER)
+#pragma GCC system_header
+#endif
 
 #endif // ! ___UTILITY__STANDARD__LIBRARY__CERRNO___

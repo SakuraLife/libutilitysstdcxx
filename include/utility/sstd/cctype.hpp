@@ -3,49 +3,86 @@
 #define ___UTILITY__STANDARD__LIBRARY__CCTYPE___
 
 #include<utility/config/utility_config.hpp>
+#include<ctype.h>
 
-#define __CTYPE_UPPER     0X0001 // upper
-#define __CTYPE_LOWER     0X0002 // lower
-#define __CTYPE_DIGIT     0X0004 // dight
-#define __CTYPE_CNTRL     0X0008 // cntrl
-#define __CTYPE_PUNCT     0X0010 // punct
-#define __CTYPE_XDIGHT    0X0020 // hex dight
-#define __CTYPE_HSPACE    0X0040 // ' ' (0x20)
-#define __CTYPE_SPACE     0X0080 // whitespace
-#define __CTYPE_TAB       0X0100 // '\t' (0x9)
+#if !defined(__UTILITY_BUILD_LIB) || !defined(__UTILITY_NO_SYSHEADER)
+#pragma GCC system_header
+#endif
 
-#define __CTYPE_ALPHA     (__CTYPE_UPPER | __CTYPE_LOWER)
-#define __CTYPE_ALNUM     (__CTYPE_DIGIT | __CTYPE_ALPHA)
-#define __CTYPE_GRAPH     (__CTYPE_ALNUM | __CTYPE_PUNCT)
-#define __CTYPE_PRINT     (__CTYPE_GRAPH | __CTYPE_HSPACE)
-#define __CTYPE_BLANK     (__CTYPE_HSPACE | __CTYPE_TAB)
+#ifdef isalnum
+#undef isalnum
+#endif
 
-extern "C++"
-{
+#ifdef isalpha
+#undef isalpha
+#endif
+
+#ifdef isblank
+#undef isblank
+#endif
+
+#ifdef iscntrl
+#undef iscntrl
+#endif
+
+#ifdef isdigit
+#undef isdigit
+#endif
+
+#ifdef isgraph
+#undef isgraph
+#endif
+
+#ifdef islower
+#undef islower
+#endif
+
+#ifdef isprint
+#undef isprint
+#endif
+
+#ifdef ispunct
+#undef ispunct
+#endif
+
+#ifdef isspace
+#undef isspace
+#endif
+
+#ifdef isupper
+#undef isupper
+#endif
+
+#ifdef isxdigit
+#undef isxdigit
+#endif
+
+#ifdef tolower
+#undef tolower
+#endif
+
+#ifdef toupper
+#undef toupper
+#endif
 
 __utility_globalspace_start(utility)
   namespace sstd
   {
-    extern int cctype(int _ch) noexcept;
-
-    extern int isalnum(int _ch) noexcept;
-    extern int isalpha(int _ch) noexcept;
-    extern int islower(int _ch) noexcept;
-    extern int isupper(int _ch) noexcept;
-    extern int isdigit(int _ch) noexcept;
-    extern int isxdigit(int _ch) noexcept;
-    extern int iscntrl(int _ch) noexcept;
-    extern int isgraph(int _ch) noexcept;
-    extern int isspace(int _ch) noexcept;
-    extern int isblank(int _ch) noexcept;
-    extern int isprint(int _ch) noexcept;
-    extern int ispunct(int _ch) noexcept;
-
-    extern int tolower(int _ch) noexcept;
-    extern int toupper(int _ch) noexcept;
+    using ::isalnum;
+    using ::isalpha;
+    using ::isblank;
+    using ::iscntrl;
+    using ::isdigit;
+    using ::isgraph;
+    using ::islower;
+    using ::isprint;
+    using ::ispunct;
+    using ::isspace;
+    using ::isupper;
+    using ::isxdigit;
+    using ::tolower;
+    using ::toupper;
   }
 __utility_globalspace_end(utility)
-
-}
 
 #endif // ! ___UTILITY__STANDARD__LIBRARY__CCTYPE___
