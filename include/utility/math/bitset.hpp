@@ -23,6 +23,7 @@ __utility_globalspace_start(utility)
         private:
           template<size_t>
           friend class bitset;
+          friend class bitset<0>;
 
         private:
           typedef _Type   storage_type;
@@ -317,22 +318,22 @@ __utility_globalspace_start(utility)
         { }
 
         // TODO: exception out_of_range(from string_view), invalid_argument
-        template<typename _CharT>
-        explicit bitset(
-          const _CharT* str,
-          typename charS::basic_string<_CharT>::size_type n =
-          charS::basic_string<_CharT>::npos,
-          _CharT zero = _CharT('0'), _CharT one = _CharT('1')
-        );
+        // template<typename _CharT>
+        // explicit bitset(
+        //   const _CharT* str,
+        //   typename charS::basic_string<_CharT>::size_type n =
+        //   charS::basic_string<_CharT>::npos,
+        //   _CharT zero = _CharT('0'), _CharT one = _CharT('1')
+        // );
 
         // TODO: exception invalid_argument
-        template<typename _CharT>
-        explicit bitset(
-          const _CharT* str,
-          typename charS::basic_string<_CharT>::size_type n =
-          charS::basic_string<_CharT>::npos,
-          _CharT zero = _CharT('0'), _CharT one = _CharT('1')
-        );
+        // template<typename _CharT>
+        // explicit bitset(
+        //   const _CharT* str,
+        //   typename charS::basic_string<_CharT>::size_type n =
+        //   charS::basic_string<_CharT>::npos,
+        //   _CharT zero = _CharT('0'), _CharT one = _CharT('1')
+        // );
 
       public:
         // TODO: exception out_of_range
@@ -548,6 +549,132 @@ __utility_globalspace_start(utility)
         }
     };
 
+    template<>
+    class bitset<0>
+    {
+      public:
+        constexpr static unsigned long _bitlen =
+          sizeof(unsigned long) * _char_bits;
+        constexpr static unsigned long _arrlen = 0;
+        constexpr static unsigned long _mask = 0;
+        constexpr static unsigned long _left = 0;
+
+      private:
+        typedef unsigned long                               container;
+
+      public:
+        typedef __detail::bit_reference<container> reference;
+
+      public:
+        constexpr bitset() noexcept
+        { }
+        constexpr bitset(unsigned long long _val) noexcept
+        { }
+
+        // TODO: exception out_of_range(from string_view), invalid_argument
+        // template<typename _CharT>
+        // explicit bitset(
+        //   const _CharT* str,
+        //   typename charS::basic_string<_CharT>::size_type n =
+        //   charS::basic_string<_CharT>::npos,
+        //   _CharT zero = _CharT('0'), _CharT one = _CharT('1')
+        // );
+
+        // TODO: exception invalid_argument
+        // template<typename _CharT>
+        // explicit bitset(
+        //   const _CharT* str,
+        //   typename charS::basic_string<_CharT>::size_type n =
+        //   charS::basic_string<_CharT>::npos,
+        //   _CharT zero = _CharT('0'), _CharT one = _CharT('1')
+        // );
+
+      public:
+        // TODO: exception out_of_range
+        bool test(size_t _pos) const
+        {
+          return false;
+        }
+        // TODO: exception out_of_range
+        reference test(size_t _pos)
+        {
+          return reference{nullptr, container{1}};
+        }
+
+      public:
+        constexpr bool all() const noexcept
+        { return false;}
+        constexpr bool any() const noexcept
+        { return false;}
+        constexpr bool none() const noexcept
+        { return true;}
+        constexpr size_t count() const noexcept
+        { return 0;}
+
+      public:
+        bitset& set() noexcept
+        { return *this;}
+        // TODO: exception out_of_range
+        bitset& set(size_t _pos, bool _val = true)
+        {
+          return *this;
+        }
+        bitset& reset() noexcept
+        { return *this;}
+        // TODO: exception out_of_range
+        bitset& reset(size_t _pos)
+        {
+          return *this;
+        }
+        bitset& flip() noexcept
+        { return *this;}
+        // TODO: exception out_of_range
+        bitset& flip(size_t _pos)
+        {
+          return *this;
+        }
+
+      public:
+        constexpr size_t size() const noexcept
+        { return 0;}
+
+      public:
+        reference operator[](size_t)
+        { return reference{nullptr, container{1}};}
+        // constexpr bool operator[](size_t _pos) const
+        // { return false;}
+
+      public:
+        unsigned long to_ulong() const noexcept
+        { return 0;}
+        unsigned long long to_ullong() const noexcept
+        { return 0;}
+        // TODO: to_string
+        // TODO: exception bad_alloc(from string)
+
+      public:
+        bool operator==(const bitset& _other) const noexcept
+        { return true;}
+        bool operator!=(const bitset& _other) const noexcept
+        { return false;}
+        bitset& operator&=(const bitset& _other) noexcept
+        { return *this;}
+        bitset& operator|=(const bitset& _other) noexcept
+        { return *this;}
+        bitset& operator^=(const bitset& _other) noexcept
+        { return *this;}
+        bitset operator~() const noexcept
+        { return *this;}
+        bitset& operator>>=(size_t _pos) noexcept
+        { return *this;}
+        bitset& operator<<=(size_t _pos) noexcept
+        { return *this;}
+        bitset operator>>(size_t _pos) const noexcept
+        { return *this;}
+        bitset operator<<(size_t _pos) const noexcept
+        { return *this;}
+    };
+
     template<size_t _I>
     bitset<_I> operator&(const bitset<_I>& _x, const bitset<_I>& _y) noexcept
     {
@@ -574,8 +701,3 @@ __utility_globalspace_start(utility)
 __utility_globalspace_end(utility)
 
 #endif // ! __UTILITY_MATH_BITSET___
-
-int main()
-{
-  return 0;
-}
