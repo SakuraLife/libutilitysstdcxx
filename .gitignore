@@ -1,6 +1,7 @@
 # Project
 include/utility/config/utility_preconfig.hpp
 script/*
+build/*
 
 #vscode
 .vscode/*
