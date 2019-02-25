@@ -38,7 +38,10 @@
 #define __utility_interspace_end(_name) }
 #define __utility_globalspace_start(_name) namespace _name {
 #define __utility_globalspace_end(_name) }
+#define __utility_exceptspace_start(_name) namespace _name {
+#define __utility_exceptspace_end(_name) }
 #define __uspace(_name) _name
+#define __exceptspace(_name) _name
 
 #else
 
@@ -47,7 +50,10 @@
 #define __utility_globalspace_start(_name) namespace std { \
   inline namespace _name {
 #define __utility_globalspace_end(_name) } }
+#define __utility_exceptspace_start(_name) namespace std {
+#define __utility_exceptspace_end(_name) }
 #define __uspace(_name) std::_name
+#define __exceptspace(_name) std
 
 #endif // ! __UTILITY_DEV
 

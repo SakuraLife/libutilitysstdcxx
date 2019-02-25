@@ -4,6 +4,10 @@
 
 #include<utility/config/utility_config.hpp>
 
+#if !defined(__UTILITY_BUILD_LIB) || !defined(__UTILITY_NO_SYSHEADER)
+#pragma GCC system_header
+#endif
+
 __utility_globalspace_start(utility)
   namespace _builtin
   {
@@ -65,6 +69,8 @@ __utility_globalspace_start(utility)
     extern unsigned int _lex_prev(unsigned int _val) noexcept;
     extern unsigned long _lex_prev(unsigned long _val) noexcept;
     extern unsigned long long _lex_prev(unsigned long long _val) noexcept;
+    extern void [[noreturn]] _about(const char*) noexcept;
+    extern void [[noreturn]] _about() noexcept;
   }
 __utility_globalspace_end(utility)
 

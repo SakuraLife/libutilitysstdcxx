@@ -48,9 +48,11 @@
 #ifndef __UTILITY_NO_CPP20__
 # define __UTILITY_CPP20_CONSTEXPR__ constexpr
 # define __UTILITY_CPP20_ATTRIBUTE__(_attr) [[_attr]]
+# define UTLITY_CPP20_TYPENAME(...) typename
 #else
 # define __UTILITY_CPP20_CONSTEXPR__
 # define __UTILITY_CPP20_ATTRIBUTE__(_attr)
+# define UTLITY_CPP20_TYPENAME(...) __VA_ARGS__
 #endif // ! __UTILITY_NO_CPP17__
 
 #define UTILITY_INTERFACE       1L

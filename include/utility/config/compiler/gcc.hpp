@@ -12,5 +12,8 @@
 # define UTILITY_VISBLITY __attribute__ ((__visibility__("default")))
 # define UTILITY_TEMPLATE_VISBLITY __attribute__ ((__visibility__("default")))
 
+#if UTILITY_GCC_VERSION >= 80000
+#define __UTILITY_HAS_LAUNDER
+#endif
 
 #endif // ! __UTILITY_GCC_CONFIG__

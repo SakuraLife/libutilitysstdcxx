@@ -5,38 +5,40 @@
 #include<utility/config/utility_config.hpp>
 #include<utility/config/builtin_function.hpp>
 
-__utility_globalspace_start(utility)
-  __utility_interspace_start(exception)
-    class exception
-    {
-      public:
-        exception() noexcept;
-        virtual ~exception() noexcept;
+#if !defined(__UTILITY_BUILD_LIB) || !defined(__UTILITY_NO_SYSHEADER)
+#pragma GCC system_header
+#endif
 
-      public:
-        virtual const char* what() const noexcept;
-    };
+__utility_exceptspace_start(utility)
+  class exception
+  {
+    public:
+      exception() noexcept;
+      virtual ~exception() noexcept;
 
-    exception::exception() noexcept
-    { }
+    public:
+      virtual const char* what() const noexcept;
+  };
 
-    exception::~exception() noexcept
-    { }
-
-    const char* exception::what() const noexcept
-    { return "exception::exception";}
-
-
-    template<typename _Exception>
-    [[noreturn]] inline void exception_throw(const char* _info)
-    {
-#if defined(__UTILITY_NO_EXCEPTION__)
-      throw _Exception{_info};
+  template<typename _Exception>
+  [[noreturn]] inline void exception_throw(const char* _info)
+  {
+#if !defined(__UTILITY_NO_EXCEPTION__)
+    throw _Exception{_info};
 #else
-      ;
+    _builtin::_about(_info);
 #endif // __UTILITY_NO_EXCEPTION__
-    }
-  __utility_interspace_end(exception)
-__utility_globalspace_end(utility)
+  }
+
+  template<typename _Exception>
+  [[noreturn]] inline void exception_throw()
+  {
+#if !defined(__UTILITY_NO_EXCEPTION__)
+    throw _Exception{};
+#else
+    _builtin::_about();
+#endif // __UTILITY_NO_EXCEPTION__
+  }
+__utility_exceptspace_end(utility)
 
 #endif // ! ___UTILITY__EXCEPTION__EXCEPTION___

@@ -12,6 +12,7 @@ include(SysInfo)
 add_compile_flags_if_supported(-Wall -Warray-bounds -Wcast-align -Wfloat-equal -Wfloat-conversion -Winit-self -Winline -Wlogical-op -Wunused -Wmain -Wreturn-type -Wshadow -Wtype-limits -Wsign-conversion)
 add_compile_flags_if_supported(-O3)
 add_compile_flags_if_supported(-std=c++11)
+add_compile_flags_if_supported(-fPIC)
 
 string(REGEX REPLACE ";" " " CXX_COMPILE_OPTIONS "${CXX_COMPILE_FLAGS}")
 set(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "")
