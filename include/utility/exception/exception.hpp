@@ -10,7 +10,7 @@
 #endif
 
 __utility_exceptspace_start(utility)
-  class exception
+  class __UTILITY_EXCEPTION_ABI exception
   {
     public:
       exception() noexcept;
