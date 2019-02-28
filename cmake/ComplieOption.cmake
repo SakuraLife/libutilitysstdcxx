@@ -1,6 +1,7 @@
 include(CheckCXXCompilerFlag)
 include(CheckTypeSize)
 include(CheckVariableExists)
+include(CheckLibraryExists)
 
 macro(mangle_name str output)
 string(STRIP "${str}" strippedStr)
@@ -27,10 +28,17 @@ endmacro()
 
 macro(add_compile_flags_if_supported)
   foreach(flag ${ARGN})
-      mangle_name("${flag}" flagname)
-      check_cxx_compiler_flag("${flag}" "CXX_SUPPORTS_${flagname}_FLAG")
-      add_compile_flags_if(CXX_SUPPORTS_${flagname}_FLAG ${flag})
+    mangle_name("${flag}" flagname)
+    check_cxx_compiler_flag("${flag}" "CXX_SUPPORTS_${flagname}_FLAG")
+    add_compile_flags_if(CXX_SUPPORTS_${flagname}_FLAG ${flag})
   endforeach()
+endmacro()
+
+macro(add_link_flags_if_have deplist library func)
+  check_library_exists(${library} "${func}" "" ___CHECK_ADD)
+  if(${___CHECK_ADD})
+    list(APPEND ${deplist} ${library})
+  endif()
 endmacro()
 
 function(JOIN VALUES GLUE OUTPUT)

@@ -55,10 +55,11 @@
 # define UTLITY_CPP20_TYPENAME(...) __VA_ARGS__
 #endif // ! __UTILITY_NO_CPP17__
 
-#define UTILITY_INTERFACE       1L
-#define UTILITY_INCREMENTAL     1L
 #define UTILITY_RELEASE         0L
-#define UTILITY_VERSION         10101L
+#define UTILITY_INTERFACE       4L
+#define UTILITY_INCREMENTAL     0L
+#define UTILITY_VERSION \
+  (UTILITY_INCREMENTAL + UTILITY_INTERFACE * 100L + UTILITY_RELEASE * 10000L)
 
 // utility preconfig generate by system.
 // will used if need.

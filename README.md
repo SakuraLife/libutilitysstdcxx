@@ -106,10 +106,11 @@ module memory
 | uninitialized   | uninitialized_possible_move.hpp   | F | N |
 | uninitialized   | uninitialized_possible_move_n.hpp | F | N |
 | memory          | new.hpp                           | P | - |
-| memory          | raw_delete.hpp                    | P | - |
-| memory          | destroy.hpp                       | P | - |
-| memory          | destroy_n.hpp                     | P | - |
-| memory          | destroy_at.hpp                    | P | - |
+| memory          | raw_delete.hpp                    | F | P |
+| memory          | destroy.hpp                       | F | P |
+| memory          | destroy_n.hpp                     | F | P |
+| memory          | destroy_at.hpp                    | F | P |
+| memory          | align.hpp                         | F | P |
 | buffer          | temporary_buffer.hpp              | F | P |
 
 module math  
