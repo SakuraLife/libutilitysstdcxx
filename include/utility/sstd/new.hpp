@@ -116,6 +116,7 @@ void operator delete[](void*, void*) noexcept
 
 __UTILITY_OVERRIDABLE_FUNC_VIS
 void operator delete(void* _ptr, __exceptspace(utility)::size_t _count) noexcept;
+__UTILITY_OVERRIDABLE_FUNC_VIS
 void operator delete[](void* _ptr, __exceptspace(utility)::size_t _count) noexcept;
 
 #endif // ! __UTILITY_NO_CPP14__
