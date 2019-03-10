@@ -1,5 +1,4 @@
 
-
 #ifndef __UTILITY_TRAIT_OPT___TYPES_OP____
 #define __UTILITY_TRAIT_OPT___TYPES_OP____
 
@@ -10,10 +9,14 @@
 
 #include<utility/trait/integer_sequence.hpp>
 
-/**
+/*
  * [type tuple library reference]
  * this library is the meta version of tuple,
  *
+ * T type for operate
+ * I integer, usually is id
+ * Tp type tuple
+ * IS is index sequence
  *
  * __index_type__<T, I>
  * type container with id
@@ -21,25 +24,28 @@
  * __make_type_index_sequence__<T...>
  * transfer tuple to <I, T> tuple
  *
- * __type_tuple_size__<T>
+ * __type_tuple_size__<Tp>
  * tuple size
  *
- * __type_tuple_get__<I, T>
+ * __type_tuple_get__<I, Tp>
  * extract types by id from tuple
  *
- * __type_tuple_get_unique_id__<T, T>
+ * __type_tuple_get_unique_id__<T, Tp>
  * extract id by types from tuple, type is unique
  *
- * __type_tuple_get_array__<IS, T>
+ * __type_tuple_find_first__<T, Tp>
+ * find first type id of T in Tp.
+ *
+ * __type_tuple_get_array__<IS, Tp>
  * extract types by id array from tuple as tuple
  *
- * __type_tuple_check__<T, T>
+ * __type_tuple_check__<T, Tp>
  * check type in tuple
  *
  * __checkout_type_feature__<T>
  * repack with tuple
  *
- * __type_tuple_cat__<T...>
+ * __type_tuple_cat__<T/Tp ...>
  * merge T as one tuple
  *
  *
@@ -294,6 +300,89 @@ __utility_globalspace_start(utility)
               _T, __make_type_index_sequence__<_Type...>
             >::id;
       };
+
+      namespace __helper__
+      {
+        template<size_t _L>
+        constexpr size_t __tuple_get_id_checkout__(
+          size_t _id, const bool (&_checks)[_L]
+        )
+        {
+          return _id < _L ? (
+            _checks[_id] ? _id : __tuple_get_id_checkout__(_id+1, _checks)):
+            __type_not_find_or_duplicate__;
+        }
+
+        template<typename _T, typename _Tuple, size_t _S>
+        struct __type_tuple_find_helper__;
+
+        template<typename _T, typename... _Types, size_t _S>
+        struct __type_tuple_find_helper__<_T, __type_tuple__<_Types...>, _S>
+        {
+          constexpr static size_t unfixed = __type_tuple_find_helper__<
+              _T,
+              typename __type_tuple_get_array__<
+                make_index_sequence<sizeof...(_Types), _S>,
+                __type_tuple__<_Types...>
+              >::type,
+              0
+            >::value;
+          constexpr static size_t value =
+            unfixed == __type_not_find_or_duplicate__?
+            __type_not_find_or_duplicate__ : unfixed + _S;
+        };
+
+        template<typename _T>
+        struct __type_tuple_find_helper__<_T, __type_tuple__<>, 0>
+        { constexpr static size_t value = __type_not_find_or_duplicate__;};
+
+
+        template<typename _T, typename... _Types>
+        struct __type_tuple_find_helper__<_T, __type_tuple__<_Types...>, 0>
+        {
+          constexpr static bool _checks[sizeof...(_Types)] =
+            { __eq__<_T, _Types>::value...};
+
+          constexpr static size_t value = __tuple_get_id_checkout__(0, _checks);
+        };
+
+      }
+
+      template<typename _T, typename _Tuple>
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_find_first__
+      {
+        constexpr static size_t value =
+          __helper__::__type_tuple_find_helper__<_T, _Tuple, 0>::value;
+      };
+
+      namespace __helper__
+      {
+        template<typename _IdS, typename _T, typename _Tuple, size_t _I>
+        struct __type_tuple_get_id_helper__;
+
+        template<size_t... _Id, typename _T, typename _Tuple, size_t _I>
+        struct __type_tuple_get_id_helper__<index_sequence<_Id...>, _T, _Tuple, _I>
+        {
+          typedef typename __type_tuple_get_id_helper__<
+            index_sequence<_Id..., _I>, _T, _Tuple,
+            __type_tuple_find_helper__<_T, _Tuple, _I+1>::value
+          >::type type;
+        };
+
+        template<size_t... _Id, typename _T, typename _Tuple>
+        struct __type_tuple_get_id_helper__<index_sequence<_Id...>, _T, _Tuple, __type_not_find_or_duplicate__>
+        { typedef index_sequence<_Id...> type;};
+      }
+
+      template<typename _T, typename _Tuple>
+      struct __UTILITY_TEMPLATE_VIS __type_tuple_get_id__
+      {
+        typedef typename __helper__::__type_tuple_get_id_helper__<
+          index_sequence<>, _T, _Tuple,
+          __helper__::__type_tuple_find_helper__<_T, _Tuple, 0>::value
+        >::type type;
+      };
+
 
       template<typename _T, typename _Tuple>
       struct __UTILITY_TEMPLATE_VIS __type_tuple_check__;
