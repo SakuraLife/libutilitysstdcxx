@@ -16,12 +16,12 @@ __utility_globalspace_end(utility)
 __utility_globalspace_start(utility)
   __utility_interspace_start(trait)
     template<typename... Ts>
-    struct __UTILITY_TYPE_VIS void_type
+    struct __UTILITY_TYPE_VIS _void_type
     { typedef void type;};
 
 #if defined(__UTILITY_NO_CPP17__)
     template<typename... _Types>
-    using void_t = typename void_type<_Types...>::type;
+    using void_t = typename _void_type<_Types...>::type;
 #else
     template<typename ...>
     using void_t = void;
@@ -44,6 +44,24 @@ __utility_globalspace_start(utility)
       constexpr value_type operator()() const noexcept
       { return _Default;}
     };
+
+    enum class _trait_state: unsigned char
+    {
+      unsupport = 0,
+      support = 1,
+      trivial = 3
+    };
+
+    UTILITY_ALWAYS_INLINE constexpr inline
+    _trait_state operator&(_trait_state _x, _trait_state _y) noexcept
+    {
+      return static_cast<_trait_state>(
+        static_cast<unsigned char>(_x) & static_cast<unsigned char>(_y)
+      );
+    }
+
+    constexpr bool _is_support_trait_state(_trait_state _state)
+    { return (_state & _trait_state::support) == _trait_state::support;}
 
     namespace __opt__
     {

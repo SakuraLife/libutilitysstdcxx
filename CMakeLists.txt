@@ -2,16 +2,16 @@
 cmake_minimum_required(VERSION 3.11)
 
 set(CMAKE_MODULE_PATH
-  "${PROJECT_SOURCE_DIR}/cmake"
+  "${CMAKE_CURRENT_SOURCE_DIR}/cmake"
   ${CMAKE_MODULE_PATH}
 )
 
 include(ComplieOption)
 include(SysInfo)
 
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/build)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/build)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/build)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build)
 
 # LINK_DIRECTORIES(${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
 
@@ -60,11 +60,11 @@ configure_file(generate/utility_preconfig.hpp.in include/utility/config/utility_
 
 include_directories("./include")
 
-file(GLOB_RECURSE SSTD_SRC ${PROJECT_SOURCE_DIR}/include/*)
-file(GLOB_RECURSE SSTD_SRC_memory ${PROJECT_SOURCE_DIR}/src/memory/*)
+file(GLOB_RECURSE SSTD_SRC ${CMAKE_CURRENT_SOURCE_DIR}/include/*)
+file(GLOB_RECURSE SSTD_SRC_memory ${CMAKE_CURRENT_SOURCE_DIR}/src/memory/*)
 
 list(APPEND SSTD_SRC ${SSTD_SRC_memory})
-aux_source_directory("${PROJECT_SOURCE_DIR}/src/builtin" SSTD_BUILTIN_SRC)
+aux_source_directory("${CMAKE_CURRENT_SOURCE_DIR}/src/builtin" SSTD_BUILTIN_SRC)
 
 add_library(sstdabi_object OBJECT ${SSTD_BUILTIN_SRC})
 set(sstdabi_static_object $<TARGET_OBJECTS:sstdabi_object>)

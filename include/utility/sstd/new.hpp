@@ -56,9 +56,9 @@ __utility_exceptspace_start(utility)
   __UTILITY_CPP20_ATTRIBUTE__(nodiscard)
   inline constexpr _T* launder(_T* _ptr) noexcept
   {
-    using trait::type::categories::is_function;
-    using trait::type::releations::is_same;
-    using trait::type::transform::remove_cv_t;
+    using __uspace(utility)::trait::type::categories::is_function;
+    using __uspace(utility)::trait::type::releations::is_same;
+    using __uspace(utility)::trait::type::transform::remove_cv_t;
     static_assert(!(is_function<_T>::value), "can't launder functions" );
     static_assert(!(is_same<void, remove_cv_t<_T>>::value), "can't launder cv-void" );
 #if __has_builtin(__builtin_launder) || defined(__UTILITY_HAS_LAUNDER)
@@ -130,9 +130,9 @@ __UTILITY_CPP20_ATTRIBUTE__(nodiscard)
 __UTILITY_OVERRIDABLE_FUNC_VIS
 void* operator new(__exceptspace(utility)::size_t _count, __exceptspace(utility)::align_val_t _al, const __exceptspace(utility)::nothrow_t&) noexcept;
 
-__UTILITY_CPP20_ATTRIBUTE__(nodiscard)
-__UTILITY_OVERRIDABLE_FUNC_VIS
-void* operator new[](__exceptspace(utility)::size_t _count, __exceptspace(utility)::align_val_t _al) noexcept;
+// __UTILITY_CPP20_ATTRIBUTE__(nodiscard)
+// __UTILITY_OVERRIDABLE_FUNC_VIS
+// void* operator new[](__exceptspace(utility)::size_t _count, __exceptspace(utility)::align_val_t _al) noexcept;
 __UTILITY_CPP20_ATTRIBUTE__(nodiscard)
 __UTILITY_OVERRIDABLE_FUNC_VIS
 void* operator new[](__exceptspace(utility)::size_t _count, __exceptspace(utility)::align_val_t _al, const __exceptspace(utility)::nothrow_t&) noexcept;

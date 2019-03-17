@@ -69,8 +69,10 @@ __utility_globalspace_start(utility)
     extern unsigned int _lex_prev(unsigned int _val) noexcept;
     extern unsigned long _lex_prev(unsigned long _val) noexcept;
     extern unsigned long long _lex_prev(unsigned long long _val) noexcept;
-    extern void [[noreturn]] _about(const char*) noexcept;
-    extern void [[noreturn]] _about() noexcept;
+    UTILITY_VISBLITY
+    void _about [[noreturn]] (const char*) noexcept;
+    UTILITY_VISBLITY
+    void _about [[noreturn]] () noexcept;
   }
 __utility_globalspace_end(utility)
 
