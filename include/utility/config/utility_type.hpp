@@ -5,6 +5,14 @@
 
 #include<utility/config/debug/utility_debug_config.hpp>
 
+#if defined(__GNUC__) && ((__GNUC__ > 3) || (__GNUC__ == 3 && __GNUC_MINOR__ >= 1))
+#define __utility_restrict __restrict
+#elif defined(_MSC_VER) && _MSC_VER >= 1400
+#define __utility_restrict __restrict
+#else
+#define __utility_restrict
+#endif
+
 __utility_globalspace_start(utility)
   using size_t = decltype(sizeof(char));  ///< size type
   using nullptr_t = decltype(nullptr);    ///< nullptr type
